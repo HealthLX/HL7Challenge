@@ -6,14 +6,13 @@ var Panel=React.createClass(
 
         var titleNodes = this.props.data.map(function(component)
         {
-            return(
-                <div className="col-lg-4 col-md-4 col-sm-4 mb">
+            return (
+                <div className="col-md-4 col-sm-4 mb">
                     <div className="darkblue-panel pn">
-                        <div className="darkblue-panel pn">
-                            <i className="fa fa-twitter fa-4x"></i>
-                            <p>{component.title}</p>
-                            <p className="user">@Alvrz_is</p>
-                        </div>
+                            <div class="darkblue-header">
+                                <h5>{component.section.title}</h5>
+                            </div>
+                            <p className="user">{component.section.code.code}</p>
                     </div>
                 </div>
             );
@@ -72,17 +71,17 @@ class XMLForm extends React.Component
 
                 var components = data.ClinicalDocument.component.structuredBody.component;
                 var title = data.ClinicalDocument.title;
-                var titles = new Array();
+                /*var titles = new Array();
 
                 for(var i = 0; i < components.length; i++){
                     console.log(components[i].section.title);
-                    titles[i]= {"title": components[i].section.title};
-                }
+                    titles[i]= {"title": components[i].section.title, "code": components.[i].code.code};
+
+                }*/
 
                 $('#myModal').modal('toggle');
 
-                ReactDOM.render(<Panel data={titles}/>, document.getElementById('panels'));
-
+                ReactDOM.render(<Panel data={components}/>, document.getElementById('panels'));
 
             },
             error: function(err)
