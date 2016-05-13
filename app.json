@@ -1,0 +1,13 @@
+{
+  "name": "HL7 CCDA Renderer",
+  "description": "HL7 Renderer for the HL7 Challenge",
+  "keywords": [ "hl7", "c-cda", "challenge","TeschGlobal" ],
+  "repository": "",
+  "logo": "",
+  "website": "",
+  "success_url": "/",
+  "env" : {
+    
+  }
+}
+
