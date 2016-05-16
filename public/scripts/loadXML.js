@@ -2,8 +2,6 @@ var Panel=React.createClass(
 {
     render: function()
     {
-        console.log(this.props.data);
-
         var titleNodes = this.props.data.map(function(component)
         {
             return (
@@ -132,13 +130,18 @@ class XMLForm extends React.Component
                 var components = data.ClinicalDocument.component.structuredBody.component;
                 var title = data.ClinicalDocument.title;
                 var patientRole=data.ClinicalDocument.recordTarget.patientRole;
-                /*var titles = new Array();
-
+                
+                var x = 0;
                 for(var i = 0; i < components.length; i++){
                     console.log(components[i].section.title);
-                    titles[i]= {"title": components[i].section.title, "code": components.[i].code.code};
+                    if(components[i].section.code.code === "48765-2")
+                    {
+                        var allergies = components[i];
+                        x++;
+                    }   
+                }
 
-                }*/
+                iterate(allergies.section.text);
 
                 $("#myModal").modal("toggle");
 
@@ -164,6 +167,21 @@ function getNodeText(nodeElement)
     if(typeof nodeElement==="string" || nodeElement instanceof String)
         return nodeElement;
     return nodeElement.$
+}
+
+//Obtain all text from an unformated node
+function iterate(obj) {
+    for(var key in obj) { 
+        var elem = obj[key]; 
+
+        if(typeof elem === "object") {
+            iterate(elem); // call recursively
+        }
+        else{
+            //if(key.toString()!== "ID")
+                console.log("type: "+(typeof elem)+", key: "+key.toString()+", text: "+elem);
+        }
+    }
 }
 
 function buildName(nameNode)
