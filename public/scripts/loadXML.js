@@ -104,26 +104,25 @@ class Allergies extends React.Component
                 elements[r].push(
                     // <div className="list-group-item">
                     //     <p className="list-group-item-text">
-                    <div>
+                    <p>
                             <span className="label label-primary">{headers[i]}</span>
                             {rows[r][i]}
-                    </div>
+                    </p>
                     //     </p>
                     // </div>
                 );
         }
 
-        for(var e=0; e<elements.length; e++)
-            var listItems=elements[e].map(function(element)
-            {
-                return(
-                    <div className="list-group-item">
-                        <p className="list-group-item-text">
-                            {element}
-                        </p>
+        var listItems=(elements.map(function(element)
+        {
+            return(
+                <div className="list-group-item">
+                    <div className="list-group-item-text">
+                        {element}
                     </div>
-                );
-            });
+                </div>
+            );
+        }));
 
         return(
             <div className="col-lg-4 col-md-4 col-sm-4 mb">
