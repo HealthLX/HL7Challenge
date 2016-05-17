@@ -125,23 +125,37 @@ class XMLForm extends React.Component
             data: new FormData(event.target),
             success: function(data)
             {
-                console.log("success: "+data);
-                debugvar=data;
+                //console.log("success: "+data);
+                //debugvar=data;
                 var components = data.ClinicalDocument.component.structuredBody.component;
                 var title = data.ClinicalDocument.title;
                 var patientRole=data.ClinicalDocument.recordTarget.patientRole;
                 
-                var x = 0;
                 for(var i = 0; i < components.length; i++){
-                    console.log(components[i].section.title);
+                    //console.log(components[i].section.title);
                     if(components[i].section.code.code === "48765-2")
                     {
                         var allergies = components[i];
-                        x++;
                     }   
                 }
 
-                iterate(allergies.section.text);
+                var allergiesArr = new Array();
+                iterate(allergies.section.text, allergiesArr);
+                console.log(searchString("table", allergies.section.text));
+
+                 for(var i = 0; i < components.length; i++){
+                    //console.log(components[i].section.title);
+                    if(components[i].section.code.code === "48765-2")
+                    {
+                        var allergies = components[i];
+                    }   
+                }
+
+                for(var j = 0; j < allergiesArr.length; j++){
+                    console.log(allergiesArr[j]); 
+                    //console.log(allergiesArr[j].text); 
+                }
+
 
                 $("#myModal").modal("toggle");
 
@@ -170,16 +184,34 @@ function getNodeText(nodeElement)
 }
 
 //Obtain all text from an unformated node
-function iterate(obj) {
+function iterate(obj, jsonArr) {
     for(var key in obj) { 
         var elem = obj[key]; 
 
         if(typeof elem === "object") {
-            iterate(elem); // call recursively
+            iterate(elem, jsonArr); // call recursively
         }
         else{
-            //if(key.toString()!== "ID")
-                console.log("type: "+(typeof elem)+", key: "+key.toString()+", text: "+elem);
+            var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing/;
+            
+            if(!patt.test(key.toString()))
+            {
+                console.log("key: "+key.toString()+", text: "+elem);
+                jsonArr.push({"key":key.toString(),"text":elem});
+            }
+        }
+    }
+}
+
+function searchString(str, obj) {
+    for(var key in obj) { 
+        if(key.toString() === str)
+            return true;
+
+        var elem = obj[key]; 
+
+        if(typeof elem === "object") {
+            searchString(elem); // call recursively
         }
     }
 }
