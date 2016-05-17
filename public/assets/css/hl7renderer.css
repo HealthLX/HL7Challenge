@@ -27,6 +27,11 @@ body {
     }
 }
 
+.pn
+{
+    height: auto;
+}
+
 .navbar-heading {
 	position: fixed;
 	width: 100%;

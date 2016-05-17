@@ -113,10 +113,7 @@ class XMLForm extends React.Component
     handleSubmit(event)
     {
         event.preventDefault();
-        // document.getElementById('heading').scrollIntoView();
         // this.setState({ type: 'info', message: 'Sending...' }, this.sendFormData);
-        console.log("url: "+$(event.target).prop("action"));
-        console.log("type: "+$(event.target).prop("method"));
 
         $.ajax(
         {
@@ -125,32 +122,34 @@ class XMLForm extends React.Component
             data: new FormData(event.target),
             success: function(data)
             {
-                //console.log("success: "+data);
                 //debugvar=data;
                 var components = data.ClinicalDocument.component.structuredBody.component;
                 var title = data.ClinicalDocument.title;
                 var patientRole=data.ClinicalDocument.recordTarget.patientRole;
                 var allergiesTitle = "";
-                var allergiesArr = new Array();
                 var medicationsTitle = "";
                 var medicationsArr = new Array();
 
-                for(var i = 0; i < components.length; i++){
+                for(let i=0; i<components.length; i++)
+                {
+                    let sectionItems=components[i];
+                    let sectionTitle=sectionItems.section.title;
+                    let itemsArray=new Array();
+
+                    console.log("displaying section: "+sectionTitle);
+
                     switch(components[i].section.code.code)
                     {
+                        // Allergies
+                        case "48765-2":
+                            iterate(sectionItems.section.text, itemsArray);
+                            console.log(searchString("table", sectionItems.section.text));
 
-                        case "48765-2": 
-                                /*var allergies = components[i];
-                                allergiesTitle = components[i].section.title;
-
-                                iterate(allergies.section.text, allergiesArr);
-                                console.log(searchString("table", allergies.section.text));
-                                console.log(allergiesTitle);
-
-                                for(var j = 0; j < allergiesArr.length; j++){
-                                    console.log(allergiesArr[j]); 
-                                }*/
-                                break;
+                            for(var j=0; j<itemsArray.length; j++)
+                            {
+                                console.log(itemsArray[j]);
+                            }
+                            break;
                         case "10160-0":
                                 var medications = components[i];
                                 medicationsTitle = components[i].section.title;
@@ -160,11 +159,10 @@ class XMLForm extends React.Component
                                 console.log(medicationsArr);
 
                                 for(var j = 0; j < medicationsArr.length; j++){
-                                    console.log(medicationsArr[j]); 
+                                    console.log(medicationsArr[j]);
                                 }
                                 break;
                     }
-
                 }
 
                 $("#myModal").modal("toggle");
@@ -195,15 +193,15 @@ function getNodeText(nodeElement)
 
 //Obtain all text from an unformated node
 function iterate(obj, jsonArr) {
-    for(var key in obj) { 
-        var elem = obj[key]; 
+    for(var key in obj) {
+        var elem = obj[key];
 
         if(typeof elem === "object") {
             iterate(elem, jsonArr); // call recursively
         }
         else{
             var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing/;
-            
+
             if(!patt.test(key.toString())){
                 jsonArr.push({"key":key.toString(),"text":elem});
             }
@@ -212,11 +210,11 @@ function iterate(obj, jsonArr) {
 }
 
 function searchString(str, obj) {
-    for(var key in obj) { 
+    for(var key in obj) {
         if(key.toString() === str)
             return true;
 
-        var elem = obj[key]; 
+        var elem = obj[key];
 
         if(typeof elem === "object") {
             searchString(elem); // call recursively
