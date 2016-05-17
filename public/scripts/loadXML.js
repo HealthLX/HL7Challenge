@@ -7,7 +7,7 @@ var Panel=React.createClass(
             return (
                 <div className="col-md-4 col-sm-4 mb">
                     <div className="darkblue-panel pn">
-                            <div class="darkblue-header">
+                            <div className="darkblue-header">
                                 <h5>{component.section.title}</h5>
                             </div>
                             <p className="user">{component.section.code.code}</p>
@@ -84,6 +84,62 @@ class PatientDetails extends React.Component
     }
 }
 
+class Allergies extends React.Component
+{
+    render()
+    {
+        if(!this.props.data)
+            return;
+
+        var elements=[];
+        var rows=this.props.data.rows;
+        var headers=this.props.data.headers;
+
+        for(var r=0; r<rows.length; r++)
+        {
+            if(!elements[r])
+                elements[r]=[];
+
+            for(var i=0; i<headers.length; i++)
+                elements[r].push(
+                    // <div className="list-group-item">
+                    //     <p className="list-group-item-text">
+                    <div>
+                            <span className="label label-primary">{headers[i]}</span>
+                            {rows[r][i]}
+                    </div>
+                    //     </p>
+                    // </div>
+                );
+        }
+
+        for(var e=0; e<elements.length; e++)
+            var listItems=elements[e].map(function(element)
+            {
+                return(
+                    <div className="list-group-item">
+                        <p className="list-group-item-text">
+                            {element}
+                        </p>
+                    </div>
+                );
+            });
+
+        return(
+            <div className="col-lg-4 col-md-4 col-sm-4 mb">
+                <div className="white-panel pn">
+                    <div className="white-header">
+                        <h4>{this.props.title}</h4>
+                    </div>
+                    <div className="list-group">
+                        {listItems}
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
+
 class XMLForm extends React.Component
 {
     render()
@@ -122,33 +178,27 @@ class XMLForm extends React.Component
             data: new FormData(event.target),
             success: function(data)
             {
-                //debugvar=data;
+                debugvar=data;
                 var components = data.ClinicalDocument.component.structuredBody.component;
                 var title = data.ClinicalDocument.title;
                 var patientRole=data.ClinicalDocument.recordTarget.patientRole;
-                var allergiesTitle = "";
                 var medicationsTitle = "";
                 var medicationsArr = new Array();
 
                 for(let i=0; i<components.length; i++)
                 {
-                    let sectionItems=components[i];
-                    let sectionTitle=sectionItems.section.title;
+                    let section=components[i].section;
+                    let sectionTitle=section.title;
                     let itemsArray=new Array();
 
                     console.log("displaying section: "+sectionTitle);
 
-                    switch(components[i].section.code.code)
+                    switch(section.code.code)
                     {
                         // Allergies
                         case "48765-2":
-                            iterate(sectionItems.section.text, itemsArray);
-                            console.log(searchString("table", sectionItems.section.text));
-
-                            for(var j=0; j<itemsArray.length; j++)
-                            {
-                                console.log(itemsArray[j]);
-                            }
+                            let tableData=getNodeTableData(section.text.table);
+                            ReactDOM.render(<Allergies title={sectionTitle} data={tableData}/>, document.getElementById("allergies"));
                             break;
                         case "10160-0":
                                 var medications = components[i];
@@ -222,6 +272,28 @@ function searchString(str, obj) {
     }
 
     return false;
+}
+
+function getNodeTableData(tableNode)
+{
+    if(!tableNode)
+        return null;
+
+    var tableData={headers:[], rows:[]}
+
+    for(var i=0; i<tableNode.thead.tr.th.length; i++)
+        tableData.headers.push(getNodeText(tableNode.thead.tr.th[i]));
+
+    for(var r=0; r<tableNode.tbody.tr.length; r++)
+        for(var c=0; c<tableNode.tbody.tr[r].td.length; c++)
+        {
+            if(!tableData.rows[r])
+                tableData.rows[r]=[];
+            tableData.rows[r].push(getNodeText(tableNode.tbody.tr[r].td[c]));
+        }
+
+    debug2=tableData;
+    return tableData;
 }
 
 function buildName(nameNode)
