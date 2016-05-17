@@ -194,9 +194,7 @@ function iterate(obj, jsonArr) {
         else{
             var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing/;
             
-            if(!patt.test(key.toString()))
-            {
-                console.log("key: "+key.toString()+", text: "+elem);
+            if(!patt.test(key.toString())){
                 jsonArr.push({"key":key.toString(),"text":elem});
             }
         }
@@ -214,6 +212,8 @@ function searchString(str, obj) {
             searchString(elem); // call recursively
         }
     }
+
+    return false;
 }
 
 function buildName(nameNode)
