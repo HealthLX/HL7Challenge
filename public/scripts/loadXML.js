@@ -132,23 +132,38 @@ class XMLForm extends React.Component
                 var patientRole=data.ClinicalDocument.recordTarget.patientRole;
                 var allergiesTitle = "";
                 var allergiesArr = new Array();
+                var medicationsTitle = "";
+                var medicationsArr = new Array();
 
                 for(var i = 0; i < components.length; i++){
-                    if(components[i].section.code.code === "48765-2")
+                    switch(components[i].section.code.code)
                     {
 
-                        var allergies = components[i];
-                        allergiesTitle = components[i].section.title;
+                        case "48765-2": 
+                                /*var allergies = components[i];
+                                allergiesTitle = components[i].section.title;
 
-                        iterate(allergies.section.text, allergiesArr);
-                        console.log(searchString("table", allergies.section.text));
-                        console.log(allergiesTitle);
+                                iterate(allergies.section.text, allergiesArr);
+                                console.log(searchString("table", allergies.section.text));
+                                console.log(allergiesTitle);
 
-                        for(var j = 0; j < allergiesArr.length; j++){
-                            console.log(allergiesArr[j]); 
-                        }
+                                for(var j = 0; j < allergiesArr.length; j++){
+                                    console.log(allergiesArr[j]); 
+                                }*/
+                                break;
+                        case "10160-0":
+                                var medications = components[i];
+                                medicationsTitle = components[i].section.title;
 
-                    }   
+                                iterate(medications.section.text, medicationsArr);
+                                console.log(searchString("table", medications.section.text));
+                                console.log(medicationsArr);
+
+                                for(var j = 0; j < medicationsArr.length; j++){
+                                    console.log(medicationsArr[j]); 
+                                }
+                                break;
+                    }
 
                 }
 
