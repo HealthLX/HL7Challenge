@@ -188,29 +188,27 @@ class XMLForm extends React.Component
                 {
                     let section=components[i].section;
                     let sectionTitle=section.title;
-                    let itemsArray=new Array();
 
+                    let tableData=getNodeTableData(section.text.table);
                     console.log("displaying section: "+sectionTitle);
 
                     switch(section.code.code)
                     {
                         // Allergies
                         case "48765-2":
-                            let tableData=getNodeTableData(section.text.table);
                             ReactDOM.render(<Allergies title={sectionTitle} data={tableData}/>, document.getElementById("allergies"));
                             break;
                         case "10160-0":
-                                var medications = components[i];
-                                medicationsTitle = components[i].section.title;
+                            /*iterate(section.text, medicationsArr);
+                            console.log(searchString("table", section.text));
+                            console.log(medicationsArr);
 
-                                iterate(medications.section.text, medicationsArr);
-                                console.log(searchString("table", medications.section.text));
-                                console.log(medicationsArr);
+                            for(var j = 0; j < medicationsArr.length; j++){
+                                console.log(medicationsArr[j]);
+                            }*/
 
-                                for(var j = 0; j < medicationsArr.length; j++){
-                                    console.log(medicationsArr[j]);
-                                }
-                                break;
+                            //ReactDOM.render(<Allergies title={sectionTitle} data={tableData}/>, document.getElementById("medications"));
+                            break;
                     }
                 }
 
@@ -280,16 +278,27 @@ function getNodeTableData(tableNode)
 
     var tableData={headers:[], rows:[]}
 
-    for(var i=0; i<tableNode.thead.tr.th.length; i++)
-        tableData.headers.push(getNodeText(tableNode.thead.tr.th[i]));
+    if(tableNode.thead)
+        for(var i=0; i<tableNode.thead.tr.th.length; i++)
+            tableData.headers.push(getNodeText(tableNode.thead.tr.th[i]));
+    else
+        tableData.headers[0]=[];
+
+    if(!Array.isArray(tableNode.tbody.tr))
+       tableNode.tbody.tr=[tableNode.tbody.tr];
 
     for(var r=0; r<tableNode.tbody.tr.length; r++)
-        for(var c=0; c<tableNode.tbody.tr[r].td.length; c++)
-        {
-            if(!tableData.rows[r])
-                tableData.rows[r]=[];
-            tableData.rows[r].push(getNodeText(tableNode.tbody.tr[r].td[c]));
-        }
+    {
+
+        if(tableNode.tbody.tr[r].td)
+            for(var c=0; c<tableNode.tbody.tr[r].td.length; c++)
+            {
+                if(!tableData.rows[r])
+                    tableData.rows[r]=[];
+
+                tableData.rows[r].push(getNodeText(tableNode.tbody.tr[r].td[c]));
+            }
+    }
 
     debug2=tableData;
     return tableData;
