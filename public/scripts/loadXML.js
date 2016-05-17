@@ -130,32 +130,27 @@ class XMLForm extends React.Component
                 var components = data.ClinicalDocument.component.structuredBody.component;
                 var title = data.ClinicalDocument.title;
                 var patientRole=data.ClinicalDocument.recordTarget.patientRole;
-                
-                for(var i = 0; i < components.length; i++){
-                    //console.log(components[i].section.title);
-                    if(components[i].section.code.code === "48765-2")
-                    {
-                        var allergies = components[i];
-                    }   
-                }
-
+                var allergiesTitle = "";
                 var allergiesArr = new Array();
-                iterate(allergies.section.text, allergiesArr);
-                console.log(searchString("table", allergies.section.text));
 
-                 for(var i = 0; i < components.length; i++){
-                    //console.log(components[i].section.title);
+                for(var i = 0; i < components.length; i++){
                     if(components[i].section.code.code === "48765-2")
                     {
+
                         var allergies = components[i];
+                        allergiesTitle = components[i].section.title;
+
+                        iterate(allergies.section.text, allergiesArr);
+                        console.log(searchString("table", allergies.section.text));
+                        console.log(allergiesTitle);
+
+                        for(var j = 0; j < allergiesArr.length; j++){
+                            console.log(allergiesArr[j]); 
+                        }
+
                     }   
-                }
 
-                for(var j = 0; j < allergiesArr.length; j++){
-                    console.log(allergiesArr[j]); 
-                    //console.log(allergiesArr[j].text); 
                 }
-
 
                 $("#myModal").modal("toggle");
 
