@@ -245,7 +245,17 @@ class XMLForm extends React.Component
             },
             error: function(err)
             {
-                console.log("error: "+err);
+                var message = "";
+
+                if(err.responseText != null)
+                  message = $.parseJSON(err.responseText).errorMessage;
+                else if(err.statusText != null)
+                  message = err.statusText;
+                
+                if(err.status == 0)
+                  message = "Service Unavailable";
+
+                showAlert("danger", "Error: "+message);
             },
             processData: false,
             contentType: false
@@ -655,6 +665,23 @@ function buildTelecom(telecomNode)
             <a href={telecomNode.value}>{telecomNode.value}</a>
         </div>
     );
+}
+
+//Alerts function
+function showAlert(alertType, message)
+{
+  var alert=$("<div/>").addClass("alert alert-dismissable alert-"+alertType)
+  var closeBtn=$("<a/>").attr("href", "#").addClass("close").attr("data-dismiss", "alert").html("&times;");
+
+  alert.html(closeBtn);
+  alert.append(message);
+
+  $("#alerts").append(alert);
+
+  alert.fadeTo(2000, 500).slideUp(1500, function()
+  {
+    alert.alert("close");
+  });
 }
 
 ReactDOM.render(<XMLForm/>, document.getElementById("modal-container"));
