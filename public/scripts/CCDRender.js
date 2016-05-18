@@ -17,10 +17,10 @@ var Panel=React.createClass(
 {
     render: function()
     {
-        var titleNodes = this.props.data.map(function(component)
+        var titleNodes = this.props.data.map(function(component, index)
         {
             return (
-                <div className="col-md-4 col-sm-4 mb">
+                <div key={index} className="col-md-4 col-sm-4 mb">
                     <div className="darkblue-panel pn">
                             <div className="darkblue-header">
                                 <h5>{component.section.title}</h5>
@@ -157,8 +157,9 @@ class Allergies extends React.Component
         var listItems=(elements.map(function(element, index)
         {
             return(
-                <div key={index} style={{paddingBottom: "5px"}}>
+                <div key={index}>
                     {element}
+                    <hr/>
                 </div>
             );
         }));
@@ -605,12 +606,12 @@ function getNodeTableData(tableNode)
     {
       if(!Array.isArray(tableNode.thead.tr.th))
         tableNode.thead.tr.th=[tableNode.thead.tr.th];
-      
+
       for(var i=0; i<tableNode.thead.tr.th.length; i++)
           tableData.headers.push(getNodeText(tableNode.thead.tr.th[i]));
-    }     
+    }
     else
-      tableData.headers.push(new Array());        
+      tableData.headers.push(new Array());
 
     if(!Array.isArray(tableNode.tbody.tr))
        tableNode.tbody.tr=[tableNode.tbody.tr];

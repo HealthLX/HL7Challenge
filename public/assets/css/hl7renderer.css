@@ -37,6 +37,12 @@ dl
     margin-bottom: 0;
 }
 
+hr
+{
+    margin: 5px 20px;
+    border-color: lightgrey;
+}
+
 .navbar-heading {
 	position: fixed;
 	width: 100%;
