@@ -54,6 +54,7 @@ var PanelBox=React.createClass(
               break;
             //Medications
             case "10160-0":
+                debug2=component.data;
               panel = (<Allergies title={component.title} data={component.data}/>);
               break;
             //Immunizations
@@ -687,14 +688,13 @@ function getNodeTableData(tableNode)
        tableNode.tbody.tr=[tableNode.tbody.tr];
 
     for(var r=0; r<tableNode.tbody.tr.length; r++)
-    {
-        tableData.rows[r]=[];
-        if(tableNode.tbody.tr[r].td)
+        if(tableNode.tbody.tr[r].td && tableNode.tbody.tr[r].td.length)
+        {
+            tableData.rows.push([]);
             for(var c=0; c<tableNode.tbody.tr[r].td.length; c++)
-                tableData.rows[r].push(getNodeText(tableNode.tbody.tr[r].td[c]));
-    }
+                tableData.rows[tableData.rows.length-1].push(getNodeText(tableNode.tbody.tr[r].td[c]));
+        }
 
-    debug2=tableData;
     return tableData;
 }
 
