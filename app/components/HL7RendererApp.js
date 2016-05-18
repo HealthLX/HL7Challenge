@@ -4,13 +4,13 @@ var HL7RendererApp = React.createClass({
     
     render: function () {
         return (
-        	<ul class='nav' id="side-menu">
-	        	<li class="sidebar-search">
-	                <div class="input-group custom-search-form">
-	                    <input type="text" class="form-control" placeholder="Search..." />
-	                    <span class="input-group-btn">
-		                    <button class="btn btn-default" type="button">
-		                        <i class="fa fa-search"></i>
+        	<ul className='nav' id="side-menu">
+	        	<li className="sidebar-search">
+	                <div className="input-group custom-search-form">
+	                    <input type="text" className="form-control" placeholder="Search..." />
+	                    <span className="input-group-btn">
+		                    <button className="btn btn-default" type="button">
+		                        <i className="fa fa-search"></i>
 		                    </button>
 	                	</span>
 	                </div>

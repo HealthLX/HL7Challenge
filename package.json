@@ -7,14 +7,14 @@
     "body-parser": "^1.4.3",
     "express": "^4.4.5"
   },
-  "devDependencies": {},
+  "devDependencies": { },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/healthlx/HL7Challenge.git"
   },
   "keywords": [
   ],

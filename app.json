@@ -2,12 +2,12 @@
   "name": "HL7 CCDA Renderer",
   "description": "HL7 Renderer for the HL7 Challenge",
   "keywords": [ "hl7", "c-cda", "challenge","TeschGlobal" ],
-  "repository": "",
+  "repository": "https://github.com/healthlx/HL7Challenge.git",
   "logo": "",
   "website": "",
   "success_url": "/",
   "env" : {
-    
+    "BUILDPACK_URL": "https://github.com/healthlx/HL7Challenge.git"
   }
 }
 
