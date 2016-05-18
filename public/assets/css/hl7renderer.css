@@ -32,6 +32,11 @@ body {
     height: auto;
 }
 
+dl
+{
+    margin-bottom: 0;
+}
+
 .navbar-heading {
 	position: fixed;
 	width: 100%;

@@ -117,14 +117,10 @@ class Allergies extends React.Component
 
             for(var i=0; i<headers.length; i++)
                 elements[r].push(
-                    <div className="row">
-                        <div className="col-md-5 text-right">
-                            <span className="label label-primary">{headers[i]}</span>
-                        </div>
-                        <div className="col-md-7 text-left">
-                            {rows[r][i]}
-                        </div>
-                    </div>
+                    <dl className="dl-horizontal">
+                        <dt><span className="label label-default">{headers[i]}</span></dt>
+                        <dd className="text-left">{rows[r][i]}</dd>
+                    </dl>
                 );
         }
 
@@ -139,8 +135,8 @@ class Allergies extends React.Component
 
         return(
             <div className="col-lg-4 col-md-4 col-sm-4 mb">
-                <div className="white-panel pn">
-                    <div className="white-header">
+                <div className="grey-panel pn">
+                    <div className="grey-header">
                         <h4>{this.props.title}</h4>
                     </div>
                     <span className="pn-bg fa fa-heartbeat fa-5x"></span>
