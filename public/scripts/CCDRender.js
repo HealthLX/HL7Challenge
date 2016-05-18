@@ -198,11 +198,13 @@ class XMLForm extends React.Component
                     let sectionTitle=section.title;
                     console.log("displaying section: "+sectionTitle);
 
+                    let tableData=getNodeTableData(section.text.table);
+
                     switch(section.code.code)
                     {
                         // Allergies
                         case "48765-2":
-                            let tableData=getNodeTableData(section.text.table);
+                            // let tableData=getNodeTableData(section.text.table);
                             ReactDOM.render(<Allergies title={sectionTitle} data={tableData}/>, document.getElementById("allergies"));
                             break;
                         case "10160-0":
@@ -213,7 +215,8 @@ class XMLForm extends React.Component
                             for(var j = 0; j < medicationsArr.length; j++){
                                 console.log(medicationsArr[j]);
                             }*/
-
+                            
+                            ReactDOM.render(<Allergies title={sectionTitle} data={tableData}/>, document.getElementById("medications"));
                             //ReactDOM.render(<Allergies title={sectionTitle} data={tableData}/>, document.getElementById("medications"));
                             break;
                     }
@@ -564,10 +567,16 @@ function getNodeTableData(tableNode)
     var tableData={headers:[], rows:[]}
 
     if(tableNode.thead)
-        for(var i=0; i<tableNode.thead.tr.th.length; i++)
-            tableData.headers.push(getNodeText(tableNode.thead.tr.th[i]));
+    {
+      if(!Array.isArray(tableNode.thead.tr.th))
+        tableNode.thead.tr.th=[tableNode.thead.tr.th];
+      
+      for(var i=0; i<tableNode.thead.tr.th.length; i++)
+          tableData.headers.push(getNodeText(tableNode.thead.tr.th[i]));
+    }     
     else
-        tableData.headers[0]=[];
+      tableData.headers.push(new Array());
+        
 
     if(!Array.isArray(tableNode.tbody.tr))
        tableNode.tbody.tr=[tableNode.tbody.tr];
