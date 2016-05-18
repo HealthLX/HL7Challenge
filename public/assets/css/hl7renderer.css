@@ -92,7 +92,8 @@ body {
 
 .sidebar {
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
+
 }
 
 .sidebar .sidebar-nav.navbar-collapse {
@@ -142,7 +143,7 @@ body {
         z-index: 1;
         position: absolute;
         width: 250px;
-        margin-top: 51px;
+        margin-top: 65px;
     }
 
     .navbar-top-links .dropdown-messages,
