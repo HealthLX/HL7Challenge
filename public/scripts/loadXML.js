@@ -22,7 +22,7 @@ var Panel=React.createClass(
             return (
                 <div className="col-md-4 col-sm-4 mb">
                     <div className="darkblue-panel pn">
-                            <div class="darkblue-header">
+                            <div className="darkblue-header">
                                 <h5>{component.section.title}</h5>
                             </div>
                             <p className="user">{component.section.code.code}</p>
@@ -99,6 +99,61 @@ class PatientDetails extends React.Component
     }
 }
 
+class Allergies extends React.Component
+{
+    render()
+    {
+        if(!this.props.data)
+            return;
+
+        var elements=[];
+        var rows=this.props.data.rows;
+        var headers=this.props.data.headers;
+
+        for(var r=0; r<rows.length; r++)
+        {
+            if(!elements[r])
+                elements[r]=[];
+
+            for(var i=0; i<headers.length; i++)
+                elements[r].push(
+                    // <div className="list-group-item">
+                    //     <p className="list-group-item-text">
+                    <p>
+                            <span className="label label-primary">{headers[i]}</span>
+                            {rows[r][i]}
+                    </p>
+                    //     </p>
+                    // </div>
+                );
+        }
+
+        var listItems=(elements.map(function(element)
+        {
+            return(
+                <div className="list-group-item">
+                    <div className="list-group-item-text">
+                        {element}
+                    </div>
+                </div>
+            );
+        }));
+
+        return(
+            <div className="col-lg-4 col-md-4 col-sm-4 mb">
+                <div className="white-panel pn">
+                    <div className="white-header">
+                        <h4>{this.props.title}</h4>
+                    </div>
+                    <div className="list-group">
+                        {listItems}
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
+
 class XMLForm extends React.Component
 {
     render()
@@ -128,10 +183,7 @@ class XMLForm extends React.Component
     handleSubmit(event)
     {
         event.preventDefault();
-        // document.getElementById('heading').scrollIntoView();
         // this.setState({ type: 'info', message: 'Sending...' }, this.sendFormData);
-        console.log("url: "+$(event.target).prop("action"));
-        console.log("type: "+$(event.target).prop("method"));
 
         $.ajax(
         {
@@ -140,23 +192,40 @@ class XMLForm extends React.Component
             data: new FormData(event.target),
             success: function(data)
             {
-                console.log("success: "+data);
                 debugvar=data;
                 var components = data.ClinicalDocument.component.structuredBody.component;
                 var title = data.ClinicalDocument.title;
                 var patientRole=data.ClinicalDocument.recordTarget.patientRole;
-                
-                var x = 0;
-                for(var i = 0; i < components.length; i++){
-                    console.log(components[i].section.title);
-                    if(components[i].section.code.code === "48765-2")
-                    {
-                        var allergies = components[i];
-                        x++;
-                    }   
-                }
+                var medicationsTitle = "";
+                var medicationsArr = new Array();
 
-                iterate(allergies.section.text);
+                for(let i=0; i<components.length; i++)
+                {
+                    let section=components[i].section;
+                    let sectionTitle=section.title;
+
+                    let tableData=getNodeTableData(section.text.table);
+                    console.log("displaying section: "+sectionTitle);
+
+                    switch(section.code.code)
+                    {
+                        // Allergies
+                        case "48765-2":
+                            ReactDOM.render(<Allergies title={sectionTitle} data={tableData}/>, document.getElementById("allergies"));
+                            break;
+                        case "10160-0":
+                            /*iterate(section.text, medicationsArr);
+                            console.log(searchString("table", section.text));
+                            console.log(medicationsArr);
+
+                            for(var j = 0; j < medicationsArr.length; j++){
+                                console.log(medicationsArr[j]);
+                            }*/
+
+                            //ReactDOM.render(<Allergies title={sectionTitle} data={tableData}/>, document.getElementById("medications"));
+                            break;
+                    }
+                }
 
                 $("#myModal").modal("toggle");
 
@@ -448,18 +517,69 @@ function getSectionTitle(nodeElement)
 }
 
 //Obtain all text from an unformated node
-function iterate(obj) {
-    for(var key in obj) { 
-        var elem = obj[key]; 
+function iterate(obj, jsonArr) {
+    for(var key in obj) {
+        var elem = obj[key];
 
         if(typeof elem === "object") {
-            iterate(elem); // call recursively
+            iterate(elem, jsonArr); // call recursively
         }
         else{
-            //if(key.toString()!== "ID")
-                console.log("type: "+(typeof elem)+", key: "+key.toString()+", text: "+elem);
+            var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing/;
+
+            if(!patt.test(key.toString())){
+                jsonArr.push({"key":key.toString(),"text":elem});
+            }
         }
     }
+}
+
+function searchString(str, obj) {
+    for(var key in obj) {
+        if(key.toString() === str)
+            return true;
+
+        var elem = obj[key];
+
+        if(typeof elem === "object") {
+            searchString(elem); // call recursively
+        }
+    }
+
+    return false;
+}
+
+function getNodeTableData(tableNode)
+{
+    if(!tableNode)
+        return null;
+
+    var tableData={headers:[], rows:[]}
+
+    if(tableNode.thead)
+        for(var i=0; i<tableNode.thead.tr.th.length; i++)
+            tableData.headers.push(getNodeText(tableNode.thead.tr.th[i]));
+    else
+        tableData.headers[0]=[];
+
+    if(!Array.isArray(tableNode.tbody.tr))
+       tableNode.tbody.tr=[tableNode.tbody.tr];
+
+    for(var r=0; r<tableNode.tbody.tr.length; r++)
+    {
+
+        if(tableNode.tbody.tr[r].td)
+            for(var c=0; c<tableNode.tbody.tr[r].td.length; c++)
+            {
+                if(!tableData.rows[r])
+                    tableData.rows[r]=[];
+
+                tableData.rows[r].push(getNodeText(tableNode.tbody.tr[r].td[c]));
+            }
+    }
+
+    debug2=tableData;
+    return tableData;
 }
 
 function buildName(nameNode)
