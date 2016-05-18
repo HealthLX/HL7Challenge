@@ -39,6 +39,30 @@ var Panel=React.createClass(
     }
 });
 
+var PanelBox=React.createClass(
+{
+    render: function()
+    {
+        var nodes = this.props.data.map(function(component)
+        {
+          var panel;
+
+          if(component.type === "48765-2")
+              panel = (<Allergies title={component.title} data={component.data}/>);
+          else
+              panel = (<Allergies title={component.title} data={component.data}/>);
+
+          return(panel);
+
+        });
+
+        return(
+            <div>
+                {nodes}
+            </div>
+        );
+    }
+});
 class PatientDetails extends React.Component
 {
     render()
@@ -189,8 +213,7 @@ class XMLForm extends React.Component
                 var components = data.ClinicalDocument.component.structuredBody.component;
                 var title = data.ClinicalDocument.title;
                 var patientRole=data.ClinicalDocument.recordTarget.patientRole;
-                var medicationsTitle = "";
-                var medicationsArr = new Array();
+                var allComponents = new Array();
 
                 for(let i=0; i<components.length; i++)
                 {
@@ -198,28 +221,33 @@ class XMLForm extends React.Component
                     let sectionTitle=section.title;
                     console.log("displaying section: "+sectionTitle);
 
-                    let tableData=getNodeTableData(section.text.table);
+                    var tableData;
+                    if(section.code.code !== "18776-5")
+                      tableData=getNodeTableData(section.text.table);
 
-                    switch(section.code.code)
+                    allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData});
+
+                    /*switch(section.code.code)
                     {
                         // Allergies
                         case "48765-2":
                             // let tableData=getNodeTableData(section.text.table);
-                            ReactDOM.render(<Allergies title={sectionTitle} data={tableData}/>, document.getElementById("allergies"));
+                            allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData});
                             break;
                         case "10160-0":
+                            allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData});
                             /*iterate(section.text, medicationsArr);
                             console.log(searchString("table", section.text));
                             console.log(medicationsArr);
 
                             for(var j = 0; j < medicationsArr.length; j++){
                                 console.log(medicationsArr[j]);
-                            }*/
+                            }*
                             
-                            ReactDOM.render(<Allergies title={sectionTitle} data={tableData}/>, document.getElementById("medications"));
+                            //ReactDOM.render(<Allergies title={sectionTitle} data={tableData}/>, document.getElementById("medications"));
                             //ReactDOM.render(<Allergies title={sectionTitle} data={tableData}/>, document.getElementById("medications"));
                             break;
-                    }
+                    }*/
                 }
 
                 $("#myModal").modal("toggle");
@@ -242,7 +270,8 @@ class XMLForm extends React.Component
                 originalData.push({text: 'CCDA Info',icon: 'glyphicon glyphicon-list-alt', nodes: titles});
 
                 console.log("originalData: " + JSON.stringify(originalData));
-                ReactDOM.render(<Panel data={components}/>, document.getElementById("panels"));
+                //ReactDOM.render(<Panel data={components}/>, document.getElementById("panels"));
+                ReactDOM.render(<PanelBox data={allComponents}/>, document.getElementById("panels"));
                 ReactDOM.render(<PatientDetails patientRole={patientRole}/>, document.getElementById("patientDetails"));
                 ReactDOM.render(<TreeView treeData={originalData}/>, document.getElementById("tree_menu"));
             },
@@ -575,8 +604,7 @@ function getNodeTableData(tableNode)
           tableData.headers.push(getNodeText(tableNode.thead.tr.th[i]));
     }     
     else
-      tableData.headers.push(new Array());
-        
+      tableData.headers.push(new Array());        
 
     if(!Array.isArray(tableNode.tbody.tr))
        tableNode.tbody.tr=[tableNode.tbody.tr];
