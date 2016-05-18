@@ -1,3 +1,18 @@
+var menuData =  [
+  {
+    text: 'Main Information',
+    icon: 'glyphicon glyphicon-signal'
+  },
+  {
+    text: 'Health Status',
+    icon: 'glyphicon glyphicon-scale'
+  },
+  {
+    text: 'CCDA Information',
+    icon: 'glyphicon glyphicon-list-alt'
+  }
+];
+
 var Panel=React.createClass(
 {
     render: function()
@@ -145,8 +160,27 @@ class XMLForm extends React.Component
 
                 $("#myModal").modal("toggle");
 
+                /* Added by VV to get the sections, for build the menu. */
+            
+                var title = null;
+                var titles=[];
+                for(var i = 0; i < components.length; i++){
+                    
+                    title = getSectionTitle(components[i].section)
+                    if (title!=null) {
+                        titles.push({"text": title, "code": components[i].section.code.code});
+                    }   
+                }
+                
+                var originalData = [];
+                originalData.push({text: 'Main Information',icon: 'glyphicon glyphicon-signal'});
+                originalData.push({text: 'Health Status',icon: 'glyphicon glyphicon-scale'});
+                originalData.push({text: 'CCDA Info',icon: 'glyphicon glyphicon-list-alt', nodes: titles});
+
+                console.log("originalData: " + JSON.stringify(originalData));
                 ReactDOM.render(<Panel data={components}/>, document.getElementById("panels"));
                 ReactDOM.render(<PatientDetails patientRole={patientRole}/>, document.getElementById("patientDetails"));
+                ReactDOM.render(<TreeView treeData={originalData}/>, document.getElementById("tree_menu"));
             },
             error: function(err)
             {
@@ -158,6 +192,241 @@ class XMLForm extends React.Component
     }
 }
 
+/* Classes created by VV to create handle the menu. */
+var TreeView = React.createClass(
+  {
+  displayName: "TreeView",
+  propTypes: {
+    levels: React.PropTypes.number,
+    treeData: React.PropTypes.array,
+    expandIcon: React.PropTypes.string,
+    collapseIcon: React.PropTypes.string,
+    emptyIcon: React.PropTypes.string,
+    nodeIcon: React.PropTypes.string,
+
+    color: React.PropTypes.string,
+    backColor: React.PropTypes.string,
+    borderColor: React.PropTypes.string,
+    onhoverColor: React.PropTypes.string,
+    selectedColor: React.PropTypes.string,
+    selectedBackColor: React.PropTypes.string,
+
+    enableLinks: React.PropTypes.bool,
+    highlightSelected: React.PropTypes.bool,
+    showBorder: React.PropTypes.bool,
+    showTags: React.PropTypes.bool,
+
+    nodes: React.PropTypes.array
+  },
+
+  getDefaultProps: function () {
+    return {
+      levels: 2,
+      treeData: undefined,
+      expandIcon: 'glyphicon glyphicon-plus',
+      collapseIcon: 'glyphicon glyphicon-minus',
+      emptyIcon: 'glyphicon',
+      nodeIcon: 'glyphicon glyphicon-asterisk',
+
+      color: '#0A3F6C',
+      backColor: undefined,
+      borderColor: undefined,
+      onhoverColor: '#F5F5F5', // TODO Not implemented yet, investigate radium.js 'A toolchain for React component styling'
+      selectedColor: '#FFFFFF',
+      selectedBackColor: '#428bca',
+
+      enableLinks: false,
+      highlightSelected: true,
+      showBorder: true,
+      showTags: false,
+
+      nodes: []
+    }
+  },
+
+  setNodeId: function(node) {
+
+    if (!node.nodes) return;
+
+    var _this = this;
+    node.nodes.forEach(function checkStates(node) {
+      node.nodeId = _this.props.nodes.length;
+      _this.props.nodes.push(node);
+      _this.setNodeId(node);
+    });
+  },
+
+  render: function() {
+    this.treeData = this.props.treeData;
+    this.setNodeId({ nodes: this.treeData });
+
+    var children = [];
+    if (this.treeData) {
+      var _this = this;
+      this.treeData.forEach(function (node) {
+        children.push(React.createElement(TreeNode, {node: node, 
+                                level: 1, 
+                                visible: true, 
+                                options: _this.props}));
+      });
+    }
+
+    return (
+      <div id="treeview" clasName="treeview">
+        <ul className="list-group">
+          { children }
+        </ul>
+      </div>
+    )
+  }
+});
+
+var TreeNode = React.createClass({
+  displayName: "TreeNode",
+  getInitialState: function() {
+    var node = this.props.node;
+
+    return {
+      expanded: (node.state && node.state.hasOwnProperty('expanded')) ?
+                  node.state.expanded :
+                    (this.props.level < this.props.options.levels) ?
+                      true :
+                      false,
+      selected: (node.state && node.state.hasOwnProperty('selected')) ? 
+                  node.state.selected :
+                  false
+    }
+  },
+
+  toggleExpanded: function(id, event) {
+    this.setState({ expanded: !this.state.expanded });
+    event.stopPropagation();
+  },
+
+  toggleSelected: function(id, event) {
+    this.setState({ selected: !this.state.selected });
+    event.stopPropagation();
+  },
+
+  render: function() {
+
+    var node = this.props.node;
+    var options = this.props.options;
+
+    var style;
+    if (!this.props.visible) {
+
+      style = { 
+        display: 'none' 
+      };
+    }
+    else {
+
+      if (options.highlightSelected && this.state.selected) {
+        style = {
+          color: options.selectedColor,
+          backgroundColor: options.selectedBackColor
+        };
+      }
+      else {
+        style = {
+          color: node.color || options.color,
+          backgroundColor: node.backColor || options.backColor
+        };
+      }
+
+      if (!options.showBorder) {
+        style.border = 'none';
+      }
+      else if (options.borderColor) {
+        style.border = '1px solid ' + options.borderColor;
+      }
+    } 
+
+    var indents = [];
+    for (var i = 0; i < this.props.level-1; i++) {
+      indents.push(React.createElement("span", {className: "indent"}));
+    }
+
+    var expandCollapseIcon;
+    if (node.nodes) {
+      if (!this.state.expanded) {
+        expandCollapseIcon = (
+          React.createElement("span", {className: options.expandIcon, 
+                onClick: this.toggleExpanded.bind(this, node.nodeId)}
+          )
+        );
+      }
+      else {
+        expandCollapseIcon = (
+          React.createElement("span", {className: options.collapseIcon, 
+                onClick: this.toggleExpanded.bind(this, node.nodeId)}
+          )
+        );
+      }
+    }
+    else {
+      expandCollapseIcon = (
+        React.createElement("span", {className: options.emptyIcon})
+      );
+    }
+
+    var nodeIcon = (
+      React.createElement("span", {className: "icon"}, 
+        React.createElement("i", {className: node.icon || options.nodeIcon})
+      )
+    );
+
+    var nodeText;
+    if (options.enableLinks) {
+      nodeText = (
+        React.createElement("a", {href: node.href/*style="color:inherit;"*/}, 
+          node.text
+        )
+      );
+    }
+    else {
+      nodeText = (
+        React.createElement("span", {className: "text"}, node.text)
+      );
+    }
+
+    var badges;
+    if (options.showTags && node.tags) {
+      badges = node.tags.map(function (tag) {
+        return (
+          React.createElement("span", {className: "badge"}, tag)
+        );
+      });
+    }
+
+    var children = [];
+    if (node.nodes) {
+      var _this = this;
+      node.nodes.forEach(function (node) {
+        children.push(React.createElement(TreeNode, {node: node, 
+                                level: _this.props.level+1, 
+                                visible: _this.state.expanded && _this.props.visible, 
+                                options: options}));
+      });
+    }
+
+    return (
+      React.createElement("li", {className: "list-group-item", 
+          style: style, 
+          onClick: this.toggleSelected.bind(this, node.nodeId), 
+          key: node.nodeId}, 
+        indents, 
+        expandCollapseIcon, 
+        nodeIcon, 
+        nodeText, 
+        badges, 
+        children
+      )
+    );
+  }
+});
+
 /*** Utility functions ***/
 // Extract just the text inside a node when there might be additional attributes (in that case the text content is inside "$")
 function getNodeText(nodeElement)
@@ -167,6 +436,15 @@ function getNodeText(nodeElement)
     if(typeof nodeElement==="string" || nodeElement instanceof String)
         return nodeElement;
     return nodeElement.$
+}
+
+// Extract just the title of a "Section" node.
+function getSectionTitle(nodeElement)
+{
+    if(!nodeElement)
+        return null;
+    if (nodeElement.title !== null)
+        return nodeElement.title;
 }
 
 //Obtain all text from an unformated node
@@ -268,3 +546,4 @@ function buildTelecom(telecomNode)
 }
 
 ReactDOM.render(<XMLForm/>, document.getElementById("modal-container"));
+ReactDOM.render(<TreeView treeData={menuData}/>, document.getElementById("tree_menu"));
