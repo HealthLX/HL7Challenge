@@ -8,22 +8,12 @@
 <link href="assets/bootstrap/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 
-<!-- MetisMenu CSS -->
-<link href="assets/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-
-<!-- Timeline CSS
-    <link href="../dist/css/timeline.css" rel="stylesheet">
-	-->
-<!-- Morris Charts CSS
-    <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
-	-->
-<!-- Custom Fonts -->
-
 <!-- Custom styles for alternate template -->
 <link href="assets/css/style.css" rel="stylesheet">
 <link href="assets/css/style-responsive.css" rel="stylesheet">
 <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="assets/css/hl7renderer.css" />
+<link rel="stylesheet" href="assets/css/treeview.css" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react-dom.js"></script>
@@ -64,64 +54,20 @@
             <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
-                        <li>
-                            <a href="index.html">Main Information</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Health Status<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Health Status #1</a>
-                                </li>
-                                <li>
-                                    <a href="#">Health Status #2</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Concerns<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li><a href="#">Concern #1</a></li>
-		                        <li><a href="#">Concern #2</a></li>
-	                        </ul>
-	                    </li>
-                        <li>
-                            <a href="buttons.html">CDA Info<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                          <li>
-                              <a href="#">Allergies</a>
-                          </li>
-                          <li>
-                              <a href="#">Goals</a>
-                          </li>
-                         </ul>
-                        </li>
-                    </ul>
+                <div id="main_menu" class="sidebar-nav navbar-collapse">
+                    <script src="/main.js"></script>
                 </div>
+                <div id="tree_menu" class="sidebar-nav navbar-collapse">
+                    
+                </div>
+
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->
+            <!--<script type="text/babel" src="scripts/TreeView.js"></script> -->
         </nav>
 
         <div id="page-wrapper">
-			<!-- <script type="text/babel" src="scripts/example.js"></script>
-            <div id="content" class="row"></div>
-			<hr> -->
-
 			<div id="patientDetails" class="row"></div>
             <div id="panels" class="row"></div>
 
@@ -496,15 +442,6 @@
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
-
-	<!-- Metis Menu Plugin JavaScript -->
-	<script src="assets/metisMenu/dist/metisMenu.min.js"></script>
-
-	<!-- Morris Charts JavaScript
-	    <script src="../bower_components/raphael/raphael-min.js"></script>
-	    <script src="../bower_components/morrisjs/morris.min.js"></script>
-	    <script src="../js/morris-data.js"></script>
-		-->
 	<!-- Custom Theme JavaScript -->
 	<script src="assets/js/hl7renderer.js"></script>
 	<script type="text/javascript">
