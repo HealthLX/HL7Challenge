@@ -51,11 +51,95 @@ var PanelBox=React.createClass(
             //Allergies
             case "48765-2":
               panel = (<Allergies title={component.title} data={component.data}/>);
-            break;
+              break;
             //Medications
             case "10160-0":
               panel = (<Allergies title={component.title} data={component.data}/>);
-            break;
+              break;
+            //Immunizations
+            case "11369-6":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Encounters
+            /*case "46240-8":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Plan of care
+            case "18776-5":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Problem list
+            case "11450-4":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Procedures
+            case "47519-4":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Results
+            case "30954-2":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Social History
+            case "29762-2":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Vital Signs
+            case "8716-3":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Health Concerns Section
+            case "75310-3":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Goals Section
+            case "61146-7":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Interventions Section
+            case "62387-6":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Health Status Evaluations/Outcomes Section
+            case "11383-7":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Advance Directives
+            case "42348-3":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Family History
+            case "10157-6":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Functional Status
+            case "47420-5":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Medical Equipment
+            case "46264-8":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Insurance Providers
+            case "48768-6":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Reason For Referral
+            case "42349-1":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Reason For Visit
+            case "29299-5":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Instructions
+            case "69730-0":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Default
+            case default:
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;*/
           }
 
            return(panel);
@@ -234,27 +318,13 @@ class XMLForm extends React.Component
 
                     allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData});
 
-                    /*switch(section.code.code)
-                    {
-                        // Allergies
-                        case "48765-2":
-                            // let tableData=getNodeTableData(section.text.table);
-                            allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData});
-                            break;
-                        case "10160-0":
-                            allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData});
-                            /*iterate(section.text, medicationsArr);
+                    /*iterate(section.text, medicationsArr);
                             console.log(searchString("table", section.text));
                             console.log(medicationsArr);
 
                             for(var j = 0; j < medicationsArr.length; j++){
                                 console.log(medicationsArr[j]);
-                            }*
-                            
-                            //ReactDOM.render(<Allergies title={sectionTitle} data={tableData}/>, document.getElementById("medications"));
-                            //ReactDOM.render(<Allergies title={sectionTitle} data={tableData}/>, document.getElementById("medications"));
-                            break;
-                    }*/
+                            }*/
                 }
 
                 $("#myModal").modal("toggle");
