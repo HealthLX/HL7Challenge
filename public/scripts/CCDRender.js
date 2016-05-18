@@ -47,12 +47,18 @@ var PanelBox=React.createClass(
         {
           var panel;
 
-          if(component.type === "48765-2")
+          switch(component.type){
+            //Allergies
+            case "48765-2":
               panel = (<Allergies title={component.title} data={component.data}/>);
-          else
+            break;
+            //Medications
+            case "10160-0":
               panel = (<Allergies title={component.title} data={component.data}/>);
+            break;
+          }
 
-          return(panel);
+           return(panel);
 
         });
 
