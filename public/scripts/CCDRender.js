@@ -117,17 +117,17 @@ class Allergies extends React.Component
 
             for(var i=0; i<headers.length; i++)
                 elements[r].push(
-                    <dl className="dl-horizontal">
+                    <dl key={r+""+i} className="dl-horizontal">
                         <dt><span className="label label-default">{headers[i]}</span></dt>
                         <dd className="text-left">{rows[r][i]}</dd>
                     </dl>
                 );
         }
 
-        var listItems=(elements.map(function(element)
+        var listItems=(elements.map(function(element, index)
         {
             return(
-                <div style={{paddingBottom: "5px"}}>
+                <div key={index} style={{paddingBottom: "5px"}}>
                     {element}
                 </div>
             );
@@ -251,7 +251,7 @@ class XMLForm extends React.Component
                   message = $.parseJSON(err.responseText).errorMessage;
                 else if(err.statusText != null)
                   message = err.statusText;
-                
+
                 if(err.status == 0)
                   message = "Service Unavailable";
 
@@ -652,7 +652,7 @@ function buildTelecom(telecomNode)
         {
             var value=telecomNode[i].value;
             contact.push(
-                <div>
+                <div key={i}>
                     <a href={value}>{value}</a>
                 </div>
             );
@@ -661,7 +661,7 @@ function buildTelecom(telecomNode)
     }
 
     return(
-        <div>
+        <div key="0">
             <a href={telecomNode.value}>{telecomNode.value}</a>
         </div>
     );
