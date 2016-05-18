@@ -86,7 +86,7 @@ class PatientDetails extends React.Component
             <div className="col-lg-4 col-md-4 col-sm-4 mb">
                 <div className="white-panel pn">
                     <div className="white-header">
-                        <h4>{name}</h4>
+                        <h4><span className="fa fa-heartbeat fa-lg"></span> {name}</h4>
                     </div>
                     <h6>Birthdate</h6>
                     <p>{dob}</p>
