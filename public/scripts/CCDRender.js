@@ -117,24 +117,22 @@ class Allergies extends React.Component
 
             for(var i=0; i<headers.length; i++)
                 elements[r].push(
-                    // <div className="list-group-item">
-                    //     <p className="list-group-item-text">
-                    <p>
+                    <div className="row">
+                        <div className="col-md-5 text-right">
                             <span className="label label-primary">{headers[i]}</span>
+                        </div>
+                        <div className="col-md-7 text-left">
                             {rows[r][i]}
-                    </p>
-                    //     </p>
-                    // </div>
+                        </div>
+                    </div>
                 );
         }
 
         var listItems=(elements.map(function(element)
         {
             return(
-                <div className="list-group-item">
-                    <div className="list-group-item-text">
-                        {element}
-                    </div>
+                <div style={{paddingBottom: "5px"}}>
+                    {element}
                 </div>
             );
         }));
@@ -145,9 +143,8 @@ class Allergies extends React.Component
                     <div className="white-header">
                         <h4>{this.props.title}</h4>
                     </div>
-                    <div className="list-group">
-                        {listItems}
-                    </div>
+                    <span className="pn-bg fa fa-heartbeat fa-5x"></span>
+                    {listItems}
                 </div>
             </div>
         );
@@ -203,14 +200,13 @@ class XMLForm extends React.Component
                 {
                     let section=components[i].section;
                     let sectionTitle=section.title;
-
-                    let tableData=getNodeTableData(section.text.table);
                     console.log("displaying section: "+sectionTitle);
 
                     switch(section.code.code)
                     {
                         // Allergies
                         case "48765-2":
+                            let tableData=getNodeTableData(section.text.table);
                             ReactDOM.render(<Allergies title={sectionTitle} data={tableData}/>, document.getElementById("allergies"));
                             break;
                         case "10160-0":
@@ -230,17 +226,17 @@ class XMLForm extends React.Component
                 $("#myModal").modal("toggle");
 
                 /* Added by VV to get the sections, for build the menu. */
-            
+
                 var title = null;
                 var titles=[];
                 for(var i = 0; i < components.length; i++){
-                    
+
                     title = getSectionTitle(components[i].section)
                     if (title!=null) {
                         titles.push({"text": title, "code": components[i].section.code.code});
-                    }   
+                    }
                 }
-                
+
                 var originalData = [];
                 originalData.push({text: 'Main Information',icon: 'glyphicon glyphicon-signal'});
                 originalData.push({text: 'Health Status',icon: 'glyphicon glyphicon-scale'});
@@ -333,9 +329,9 @@ var TreeView = React.createClass(
     if (this.treeData) {
       var _this = this;
       this.treeData.forEach(function (node) {
-        children.push(React.createElement(TreeNode, {node: node, 
-                                level: 1, 
-                                visible: true, 
+        children.push(React.createElement(TreeNode, {node: node,
+                                level: 1,
+                                visible: true,
                                 options: _this.props}));
       });
     }
@@ -361,7 +357,7 @@ var TreeNode = React.createClass({
                     (this.props.level < this.props.options.levels) ?
                       true :
                       false,
-      selected: (node.state && node.state.hasOwnProperty('selected')) ? 
+      selected: (node.state && node.state.hasOwnProperty('selected')) ?
                   node.state.selected :
                   false
     }
@@ -385,8 +381,8 @@ var TreeNode = React.createClass({
     var style;
     if (!this.props.visible) {
 
-      style = { 
-        display: 'none' 
+      style = {
+        display: 'none'
       };
     }
     else {
@@ -410,7 +406,7 @@ var TreeNode = React.createClass({
       else if (options.borderColor) {
         style.border = '1px solid ' + options.borderColor;
       }
-    } 
+    }
 
     var indents = [];
     for (var i = 0; i < this.props.level-1; i++) {
@@ -421,14 +417,14 @@ var TreeNode = React.createClass({
     if (node.nodes) {
       if (!this.state.expanded) {
         expandCollapseIcon = (
-          React.createElement("span", {className: options.expandIcon, 
+          React.createElement("span", {className: options.expandIcon,
                 onClick: this.toggleExpanded.bind(this, node.nodeId)}
           )
         );
       }
       else {
         expandCollapseIcon = (
-          React.createElement("span", {className: options.collapseIcon, 
+          React.createElement("span", {className: options.collapseIcon,
                 onClick: this.toggleExpanded.bind(this, node.nodeId)}
           )
         );
@@ -441,7 +437,7 @@ var TreeNode = React.createClass({
     }
 
     var nodeIcon = (
-      React.createElement("span", {className: "icon"}, 
+      React.createElement("span", {className: "icon"},
         React.createElement("i", {className: node.icon || options.nodeIcon})
       )
     );
@@ -449,7 +445,7 @@ var TreeNode = React.createClass({
     var nodeText;
     if (options.enableLinks) {
       nodeText = (
-        React.createElement("a", {href: node.href/*style="color:inherit;"*/}, 
+        React.createElement("a", {href: node.href/*style="color:inherit;"*/},
           node.text
         )
       );
@@ -473,23 +469,23 @@ var TreeNode = React.createClass({
     if (node.nodes) {
       var _this = this;
       node.nodes.forEach(function (node) {
-        children.push(React.createElement(TreeNode, {node: node, 
-                                level: _this.props.level+1, 
-                                visible: _this.state.expanded && _this.props.visible, 
+        children.push(React.createElement(TreeNode, {node: node,
+                                level: _this.props.level+1,
+                                visible: _this.state.expanded && _this.props.visible,
                                 options: options}));
       });
     }
 
     return (
-      React.createElement("li", {className: "list-group-item", 
-          style: style, 
-          onClick: this.toggleSelected.bind(this, node.nodeId), 
-          key: node.nodeId}, 
-        indents, 
-        expandCollapseIcon, 
-        nodeIcon, 
-        nodeText, 
-        badges, 
+      React.createElement("li", {className: "list-group-item",
+          style: style,
+          onClick: this.toggleSelected.bind(this, node.nodeId),
+          key: node.nodeId},
+        indents,
+        expandCollapseIcon,
+        nodeIcon,
+        nodeText,
+        badges,
         children
       )
     );
@@ -534,7 +530,7 @@ function iterate(obj, jsonArr) {
     }
 }
 
-/* Convert the date to Human Readable String (HRS) */ 
+/* Convert the date to Human Readable String (HRS) */
 function convertDateToHRS(dateStr) {
   // Receive a HL7 format date [YYYYMMDDHHMM+/-ZZZZ] and convert it to local date object.
  }
@@ -572,15 +568,10 @@ function getNodeTableData(tableNode)
 
     for(var r=0; r<tableNode.tbody.tr.length; r++)
     {
-
+        tableData.rows[r]=[];
         if(tableNode.tbody.tr[r].td)
             for(var c=0; c<tableNode.tbody.tr[r].td.length; c++)
-            {
-                if(!tableData.rows[r])
-                    tableData.rows[r]=[];
-
                 tableData.rows[r].push(getNodeText(tableNode.tbody.tr[r].td[c]));
-            }
     }
 
     debug2=tableData;
