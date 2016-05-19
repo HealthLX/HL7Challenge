@@ -50,17 +50,16 @@ var PanelBox=React.createClass(
           switch(component.type){
             //Allergies
             case "48765-2":
-              panel = (<Allergies title={component.title} data={component.data}/>);
-              break;
+                panel = (<Allergies title={component.title} data={component.data}/>);
+                break;
             //Medications
             case "10160-0":
-                debug2=component.data;
-              panel = (<Allergies title={component.title} data={component.data}/>);
-              break;
+                panel = (<Allergies title={component.title} data={component.data}/>);
+                break;
             //Immunizations
             case "11369-6":
-              panel = (<Allergies title={component.title} data={component.data}/>);
-              break;
+                panel = (<Allergies title={component.title} data={component.data}/>);
+                break;
             //Encounters
             /*case "46240-8":
               panel = (<Allergies title={component.title} data={component.data}/>);
@@ -307,25 +306,38 @@ class XMLForm extends React.Component
                 var patientRole=data.ClinicalDocument.recordTarget.patientRole;
                 var allComponents = new Array();
 
+                var otherText = new Array();
+
                 for(let i=0; i<components.length; i++)
                 {
                     let section=components[i].section;
                     let sectionTitle=section.title;
+                    let sectionText=section.text;
+                    let tableData=[];
+
                     console.log("displaying section: "+sectionTitle);
 
-                    var tableData;
                     if(section.code.code !== "18776-5" && section.code.code !== "75310-3" && section.code.code !== "62387-6")
-                      tableData=getNodeTableData(section.text.table);
+                    {
+                        if(!Array.isArray(sectionText))
+                            sectionText=[sectionText];
+                        for(let j=0; j<sectionText.length; j++)
+                        {
+                            if(searchString("table", sectionText[j]))
+                                tableData.push(getNodeTableData(sectionText[j]));
+                            else // print/save texts recursively
+                            {
+                                iterate(section.text, otherText);
+                                for(var k = 0; k < otherText.length; k++)
+                                    console.log(otherText[j]);
+                            }
+                        }
+                    }
 
                     allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData});
 
-                    /*iterate(section.text, medicationsArr);
-                            console.log(searchString("table", section.text));
-                            console.log(medicationsArr);
-
-                            for(var j = 0; j < medicationsArr.length; j++){
-                                console.log(medicationsArr[j]);
-                            }*/
+                    /*console.log(searchString("table", section.text));
+                    console.log(medicationsArr);*/
                 }
 
                 $("#myModal").modal("toggle");
@@ -668,6 +680,8 @@ function searchString(str, obj) {
 
 function getNodeTableData(tableNode)
 {
+    debug2 = tableNode;
+
     if(!tableNode)
         return null;
 
@@ -691,6 +705,10 @@ function getNodeTableData(tableNode)
         if(tableNode.tbody.tr[r].td && tableNode.tbody.tr[r].td.length)
         {
             tableData.rows.push([]);
+
+            if(!Array.isArray(tableNode.tbody.tr[r].td))
+                tableNode.tbody.tr[r].td=[tableNode.tbody.tr[r].td];
+
             for(var c=0; c<tableNode.tbody.tr[r].td.length; c++)
                 tableData.rows[tableData.rows.length-1].push(getNodeText(tableNode.tbody.tr[r].td[c]));
         }
