@@ -60,12 +60,12 @@ var PanelBox=React.createClass(
             case "11369-6":
                 panel = (<Allergies title={component.title} data={component.data}/>);
                 break;
-            //Encounters
-            /*case "46240-8":
-              panel = (<Allergies title={component.title} data={component.data}/>);
-              break;
             //Plan of care
             case "18776-5":
+                panel = (<Allergies title={component.title} data={component.data}/>);
+                break;
+            //Encounters
+            /*case "46240-8":
               panel = (<Allergies title={component.title} data={component.data}/>);
               break;
             //Problem list
@@ -329,17 +329,23 @@ class XMLForm extends React.Component
 
                     console.log("displaying section: "+sectionTitle);
 
-                    if(section.code.code !== "18776-5" && section.code.code !== "75310-3" && section.code.code !== "62387-6")
+                    if(section.code.code !== "75310-3" && section.code.code !== "62387-6")
                     {
                         for(var item in sectionText)
                         {
                             if(item=="table")
-                                tableData.push(getNodeTableData(sectionText[item]));
+                            {
+                                var tables=sectionText[item];
+                                if(!Array.isArray(tables))
+                                    tables=[tables];
+                                for(var numTable=0; numTable<tables.length; numTable++)
+                                    tableData.push(getNodeTableData(tables[numTable]));
+                            }
                             else // print/save texts recursively
                             {
                                 iterate(sectionText[item], otherText);
                                 for(var k=0; k<otherText.length; k++)
-                                    console.log(otherText[k]);
+                                    ;;// console.log(otherText[k]);
                             }
                         }
                     }
