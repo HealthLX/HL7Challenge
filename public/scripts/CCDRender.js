@@ -220,33 +220,45 @@ class Allergies extends React.Component
         if(!this.props.data)
             return;
 
-        var elements=[];
-        var rows=this.props.data.rows;
-        var headers=this.props.data.headers;
+        var tables=[];
 
-        for(var r=0; r<rows.length; r++)
+        for(var tableNum=0; tableNum<this.props.data.length; tableNum++)
         {
-            if(!elements[r])
-                elements[r]=[];
+            var table=this.props.data[tableNum];
+            var elements=[];
+            var rows=table.rows;
+            var headers=table.headers;
 
-            for(var i=0; i<headers.length; i++)
-                elements[r].push(
-                    <dl key={r+""+i} className="dl-horizontal">
-                        <dt><span className="label label-default">{headers[i]}</span></dt>
-                        <dd className="text-left">{rows[r][i]}</dd>
-                    </dl>
+            for(var r=0; r<rows.length; r++)
+            {
+                if(!elements[r])
+                    elements[r]=[];
+
+                for(var i=0; i<headers.length; i++)
+                    elements[r].push(
+                        <dl key={r+""+i} className="dl-horizontal">
+                            <dt><span className="label label-default">{headers[i]}</span></dt>
+                            <dd className="text-left">{rows[r][i]}</dd>
+                        </dl>
+                    );
+            }
+
+            var listItems=(elements.map(function(element, index)
+            {
+                return(
+                    <div key={index}>
+                        {element}
+                        <hr/>
+                    </div>
                 );
-        }
+            }));
 
-        var listItems=(elements.map(function(element, index)
-        {
-            return(
-                <div key={index}>
-                    {element}
-                    <hr/>
+            tables.push(
+                <div key={tableNum}>
+                    {listItems}
                 </div>
             );
-        }));
+        }
 
         return(
             <div className="col-lg-4 col-md-4 col-sm-4 mb">
@@ -255,7 +267,7 @@ class Allergies extends React.Component
                         <h4>{this.props.title}</h4>
                     </div>
                     <span className="pn-bg fa fa-heartbeat fa-5x"></span>
-                    {listItems}
+                    {tables}
                 </div>
             </div>
         );
@@ -319,17 +331,15 @@ class XMLForm extends React.Component
 
                     if(section.code.code !== "18776-5" && section.code.code !== "75310-3" && section.code.code !== "62387-6")
                     {
-                        if(!Array.isArray(sectionText))
-                            sectionText=[sectionText];
-                        for(let j=0; j<sectionText.length; j++)
+                        for(var item in sectionText)
                         {
-                            if(searchString("table", sectionText[j]))
-                                tableData.push(getNodeTableData(sectionText[j]));
+                            if(item=="table")
+                                tableData.push(getNodeTableData(sectionText[item]));
                             else // print/save texts recursively
                             {
-                                iterate(section.text, otherText);
-                                for(var k = 0; k < otherText.length; k++)
-                                    console.log(otherText[j]);
+                                iterate(sectionText[item], otherText);
+                                for(var k=0; k<otherText.length; k++)
+                                    console.log(otherText[k]);
                             }
                         }
                     }
