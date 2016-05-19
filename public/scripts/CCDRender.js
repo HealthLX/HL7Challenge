@@ -314,7 +314,7 @@ class XMLForm extends React.Component
                     console.log("displaying section: "+sectionTitle);
 
                     var tableData;
-                    if(section.code.code !== "18776-5")
+                    if(section.code.code !== "18776-5" && section.code.code !== "75310-3" && section.code.code !== "62387-6")
                       tableData=getNodeTableData(section.text.table);
 
                     allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData});
