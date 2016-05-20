@@ -32,6 +32,17 @@ body {
     height: auto;
 }
 
+dl
+{
+    margin-bottom: 0;
+}
+
+hr
+{
+    margin: 5px 20px;
+    border-color: lightgrey;
+}
+
 .navbar-heading {
 	position: fixed;
 	width: 100%;
@@ -367,4 +378,11 @@ table.dataTable thead .sorting:after {
 
 .panel-yellow a:hover {
     color: #df8a13;
+}
+
+.alerts-container{
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    z-index: 5000;
 }
