@@ -130,7 +130,7 @@ var PanelBox=React.createClass(
                 break;
             //Medications
             case "10160-0":
-                panel = (<Allergies key={index} title={component.title} data={component.data}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data}/>);
                 break;
             //Immunizations
             case "11369-6":
@@ -356,6 +356,7 @@ class CollapsiblePanel extends React.Component
 
         var tables=[];
         var collapsePanelHeading = [];
+        var titlePanel = this.props.title;
         for(var tableNum=0; tableNum<this.props.data.length; tableNum++)
         {
             var table=this.props.data[tableNum];
@@ -377,7 +378,7 @@ class CollapsiblePanel extends React.Component
                            listText.push(<p key={r+""+i+""+t}>{text[t].text}</p>);
 
                     if (i===0) {
-                      collapsePanelHeading.push(listText);
+                      collapsePanelHeading.push(text[0].text);
                     }
                     elements[r].push(
                         <dl key={r+""+i} className="dl-horizontal">
@@ -388,11 +389,14 @@ class CollapsiblePanel extends React.Component
                 }
             }
 
-            console.log("Headings: " + collapsePanelHeading);
             var listItems=(elements.map(function(element, index)
             {
-                var indexRef = "#collapse"+index;
-                var indexRefNo = "collapse"+index;
+                var finalStr = collapsePanelHeading[index].replace(/ |\u002E/g,"_");
+                var where = finalStr.indexOf("/");
+                if (where > 0)
+                  finalStr = finalStr.substring(0,where);
+                var indexRef = "#"+finalStr+index;
+                var indexRefNo = finalStr+index;
 
                 return(
                       <span>
