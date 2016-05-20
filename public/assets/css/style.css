@@ -1005,12 +1005,23 @@ PANELS CONFIGURATIONS
 	padding: 3px;
 	margin-bottom: 15px;
 }
+
+.grey-panel .grey-header-no-margin {
+    background: #ccd1d9;
+    padding: 3px;
+    margin-bottom: 5px;
+}
+
 .grey-panel h5 {
 	font-weight: 200;
 	margin-top: 10px;
 }
 .grey-panel p {
 	margin-left: 5px;
+}
+
+.grey-panel .white-back {
+    background-color: #fff;
 }
 /* Specific Conf for Donut Charts*/
 .donut-chart p {
@@ -2264,4 +2275,8 @@ label {
 #patientDetails p {
     padding-bottom: 20px;
     border-bottom: 1px solid #cdcdcd;
+}
+
+.panel-title a:hover {
+    font-weight: bold;
 }

@@ -386,3 +386,7 @@ table.dataTable thead .sorting:after {
     right: 20px;
     z-index: 5000;
 }
+
+#panel-white {
+    background: #fff;
+}

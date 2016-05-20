@@ -130,7 +130,7 @@ var PanelBox=React.createClass(
                 break;
             //Medications
             case "10160-0":
-                panel = (<Allergies title={component.title} data={component.data}/>);
+                panel = (<CollapsiblePanel title={component.title} data={component.data}/>);
                 break;
             //Immunizations
             case "11369-6":
@@ -327,6 +327,87 @@ class Allergies extends React.Component
     }
 }
 
+class CollapsiblePanel extends React.Component
+{
+    render()
+    {
+        if(!this.props.data)
+            return;
+
+        var tables=[];
+        var collapsePanelHeading = [];
+        for(var tableNum=0; tableNum<this.props.data.length; tableNum++)
+        {
+            var table=this.props.data[tableNum];
+            var elements=[];
+            var rows=table.rows;
+            var headers=table.headers;
+
+            for(var r=0; r<rows.length; r++)
+            {
+                if(!elements[r])
+                    elements[r]=[];
+
+                for(var i=0; i<headers.length; i++) {
+                    if (i===0) {
+                      collapsePanelHeading.push(rows[r][i]);
+                    }
+                    elements[r].push(
+                        <dl key={r+""+i} className="dl-horizontal">
+                            <dt><span className="label label-default">{headers[i]}</span></dt>
+                            <dd className="text-left">{rows[r][i]}</dd>
+                        </dl>
+                    );
+                }
+            }
+
+            console.log("Headings: " + JSON.stringify(collapsePanelHeading));
+            var listItems=(elements.map(function(element, index)
+            {
+                var indexRef = "#collapse"+index;
+                var indexRefNo = "collapse"+index;
+
+                return(
+                      <span>
+                      <div className="panel-heading grey-header-no-margin">
+                        <h4 className="panel-title">
+                          <a href={indexRef} data-parent="accordion" data-toggle="collapse">{collapsePanelHeading[index]}
+                          </a>
+                        </h4>
+                      </div>
+                      <div id={indexRefNo} className="panel-collapse collapse white-back" key={index}>
+                          {element}
+                          <hr/>
+                      </div>
+                      </span>
+                );
+            }));
+
+            tables.push(
+                <div className="panel-default" key={tableNum}>
+                    {listItems}
+                </div>
+            );
+        }
+
+        return(
+            <div className="col-lg-4 col-md-4 col-sm-4 mb">
+                <div className="grey-panel">
+                  <div className="grey-header"><h4>{this.props.title}</h4>
+                  </div>
+                  <span className="pn-bg fa fa-heartbeat fa-5x"></span>
+                  <div className="panel-body">
+                    <div id="accordion" className="panel-group">
+                      {tables}
+                    </div>
+                  </div>
+                </div>
+            </div>
+        );
+    }
+}
+
+
 class XMLForm extends React.Component
 {
     render()
@@ -381,7 +462,6 @@ class XMLForm extends React.Component
 
                     var tableData = [];
                     //let tableData=getNodeTableData(section.text.table);
-                    console.log("displaying section: "+JSON.stringify(tableData));
                     if(section.code.code !== "75310-3" && section.code.code !== "62387-6")
                     {
                         for(var item in sectionText)
@@ -933,7 +1013,6 @@ function buildAddress(addressNode)
     state=getNodeText(addressNode.state);
     zip=getNodeText(addressNode.postalCode);
     var address = street + ", " + city + ", " + state + ". " + zip;
-    console.log(address);
     return address;
 }
 
@@ -954,7 +1033,6 @@ function buildTelecom(telecomNode)
                 {value}
             );
         }
-        console.log(JSON.stringify(contact));
         return contact;
     }
 
