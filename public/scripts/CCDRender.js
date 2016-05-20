@@ -89,7 +89,7 @@ var menuData =  [
   }
 ];
 
-var Panel=React.createClass(
+/*var Panel=React.createClass(
 {
     render: function()
     {
@@ -113,32 +113,32 @@ var Panel=React.createClass(
             </div>
         );
     }
-});
+});*/
 
 var PanelBox=React.createClass(
 {
     render: function()
     {
-        var nodes = this.props.data.map(function(component)
+        var nodes = this.props.data.map(function(component, index)
         {
           var panel;
 
           switch(component.type){
             //Allergies
             case "48765-2":
-                panel = (<Allergies title={component.title} data={component.data}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data}/>);
                 break;
             //Medications
             case "10160-0":
-                panel = (<CollapsiblePanel title={component.title} data={component.data}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data}/>);
                 break;
             //Immunizations
             case "11369-6":
-                panel = (<Allergies title={component.title} data={component.data}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data}/>);
                 break;
             //Plan of care
             case "18776-5":
-                panel = (<Allergies title={component.title} data={component.data}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data}/>);
                 break;
             //Encounters
             /*case "46240-8":
@@ -282,18 +282,38 @@ class Allergies extends React.Component
             var rows=table.rows;
             var headers=table.headers;
 
+            debugvar = table;
             for(var r=0; r<rows.length; r++)
             {
                 if(!elements[r])
                     elements[r]=[];
 
                 for(var i=0; i<headers.length; i++)
-                    elements[r].push(
-                        <dl key={r+""+i} className="dl-horizontal">
-                            <dt><span className="label label-default">{headers[i]}</span></dt>
-                            <dd className="text-left">{rows[r][i]}</dd>
-                        </dl>
-                    );
+                {
+                    let text = rows[r][i];
+                    var listText = [];
+
+                    //Less rows than headers *CHECK*
+                    if(text)
+                        for(var t=0; t<text.length; t++)
+                           listText.push(<p key={r+""+i+""+t}>{text[t].text}</p>);
+                    else
+                        break;
+
+                    if(text.length == 1)
+                        elements[r].push(
+                            <dl key={r+""+i} className="dl-horizontal">
+                                <dt><span className="label label-default">{headers[i]}</span></dt>
+                                <dd className="text-left">{listText}</dd>
+                            </dl>
+                        );
+                    else
+                        elements[r].push(
+                            <dl key={r+""+i} className="dl-horizontal">
+                                {listText}
+                            </dl>
+                        );
+                }
             }
 
             var listItems=(elements.map(function(element, index)
@@ -349,19 +369,26 @@ class CollapsiblePanel extends React.Component
                     elements[r]=[];
 
                 for(var i=0; i<headers.length; i++) {
+                    let text = rows[r][i];
+                    var listText = [];
+
+                    if(text)
+                        for(var t=0; t<text.length; t++)
+                           listText.push(<p key={r+""+i+""+t}>{text[t].text}</p>);
+
                     if (i===0) {
-                      collapsePanelHeading.push(rows[r][i]);
+                      collapsePanelHeading.push(listText);
                     }
                     elements[r].push(
                         <dl key={r+""+i} className="dl-horizontal">
                             <dt><span className="label label-default">{headers[i]}</span></dt>
-                            <dd className="text-left">{rows[r][i]}</dd>
+                            <dd className="text-left">{listText}</dd>
                         </dl>
                     );
                 }
             }
 
-            console.log("Headings: " + JSON.stringify(collapsePanelHeading));
+            console.log("Headings: " + collapsePanelHeading);
             var listItems=(elements.map(function(element, index)
             {
                 var indexRef = "#collapse"+index;
@@ -446,7 +473,6 @@ class XMLForm extends React.Component
             data: new FormData(event.target),
             success: function(data)
             {
-                debugvar=data;
                 var components = data.ClinicalDocument.component.structuredBody.component;
                 var title = data.ClinicalDocument.title;
                 var patientRole=data.ClinicalDocument.recordTarget.patientRole;
@@ -459,11 +485,10 @@ class XMLForm extends React.Component
                     let section=components[i].section;
                     let sectionTitle=section.title;
                     let sectionText=section.text;
+                    let tableData=[];
 
-                    var tableData = [];
-                    //let tableData=getNodeTableData(section.text.table);
-                    if(section.code.code !== "75310-3" && section.code.code !== "62387-6")
-                    {
+                    console.log("displaying section: "+sectionTitle);
+
                         for(var item in sectionText)
                         {
                             if(item=="table")
@@ -481,12 +506,8 @@ class XMLForm extends React.Component
                                     ;;// console.log(otherText[k]);
                             }
                         }
-                    }
 
                     allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData});
-
-                    /*console.log(searchString("table", section.text));
-                    console.log(medicationsArr);*/
                 }
 
                 $("#myModal").modal("toggle");
@@ -508,7 +529,7 @@ class XMLForm extends React.Component
                 originalData.push({text: 'Health Status',icon: 'glyphicon glyphicon-scale'});
                 originalData.push({text: 'CCDA Info',icon: 'glyphicon glyphicon-list-alt', nodes: titles});
 
-                ReactDOM.render(<Panel data={components}/>, document.getElementById("panels"));
+                //ReactDOM.render(<Panel data={components}/>, document.getElementById("panels"));
                 ReactDOM.render(<PanelBox data={allComponents}/>, document.getElementById("panels"));
                 ReactDOM.render(<PatientDetails patientRole={patientRole}/>, document.getElementById("patientDetails"));
                 ReactDOM.render(<TreeView treeData={originalData}/>, document.getElementById("tree_menu"));
@@ -803,10 +824,13 @@ function iterate(obj, jsonArr) {
             iterate(elem, jsonArr); // call recursively
         }
         else{
-            var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing/;
+            var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan/;
 
             if(!patt.test(key.toString())){
-                jsonArr.push({"key":key.toString(),"text":elem});
+                if(elem == undefined)
+                    jsonArr.push({"key":key.toString(),"text":null});
+                else
+                    jsonArr.push({"key":key.toString(),"text":elem});
             }
         }
     }
@@ -952,7 +976,7 @@ function getNodeTableData(tableNode)
        tableNode.tbody.tr=[tableNode.tbody.tr];
 
     for(var r=0; r<tableNode.tbody.tr.length; r++)
-        if(tableNode.tbody.tr[r].td && tableNode.tbody.tr[r].td.length)
+        if(tableNode.tbody.tr[r].td)
         {
             tableData.rows.push([]);
 
@@ -960,13 +984,25 @@ function getNodeTableData(tableNode)
                 tableNode.tbody.tr[r].td=[tableNode.tbody.tr[r].td];
 
             for(var c=0; c<tableNode.tbody.tr[r].td.length; c++)
-                tableData.rows[tableData.rows.length-1].push(getNodeText(tableNode.tbody.tr[r].td[c]));
+            {
+                var jsonArr = new Array();
+
+                if(typeof tableNode.tbody.tr[r].td[c] == "string")
+                {
+                    jsonArr.push({"key": "string", "text": getNodeText(tableNode.tbody.tr[r].td[c])});
+                }
+                else
+                    iterate(tableNode.tbody.tr[r].td[c], jsonArr);
+
+                tableData.rows[tableData.rows.length-1].push(jsonArr);
+            } 
         }
 
     debug2=tableData;
     return tableData;
 }
 
+/* Contact information */
 function buildName(nameNode)
 {
     if(!nameNode)
@@ -1016,7 +1052,6 @@ function buildAddress(addressNode)
     return address;
 }
 
-/* Contact information */
 function buildTelecom(telecomNode)
 {
     if(!telecomNode)
