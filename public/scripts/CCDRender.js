@@ -115,6 +115,120 @@ var Panel=React.createClass(
     }
 });
 
+var PanelBox=React.createClass(
+{
+    render: function()
+    {
+        var nodes = this.props.data.map(function(component)
+        {
+          var panel;
+
+          switch(component.type){
+            //Allergies
+            case "48765-2":
+                panel = (<Allergies title={component.title} data={component.data}/>);
+                break;
+            //Medications
+            case "10160-0":
+                panel = (<Allergies title={component.title} data={component.data}/>);
+                break;
+            //Immunizations
+            case "11369-6":
+                panel = (<Allergies title={component.title} data={component.data}/>);
+                break;
+            //Plan of care
+            case "18776-5":
+                panel = (<Allergies title={component.title} data={component.data}/>);
+                break;
+            //Encounters
+            /*case "46240-8":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Problem list
+            case "11450-4":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Procedures
+            case "47519-4":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Results
+            case "30954-2":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Social History
+            case "29762-2":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Vital Signs
+            case "8716-3":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Health Concerns Section
+            case "75310-3":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Goals Section
+            case "61146-7":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Interventions Section
+            case "62387-6":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Health Status Evaluations/Outcomes Section
+            case "11383-7":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Advance Directives
+            case "42348-3":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Family History
+            case "10157-6":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Functional Status
+            case "47420-5":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Medical Equipment
+            case "46264-8":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Insurance Providers
+            case "48768-6":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Reason For Referral
+            case "42349-1":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Reason For Visit
+            case "29299-5":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Instructions
+            case "69730-0":
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;
+            //Default
+            case default:
+              panel = (<Allergies title={component.title} data={component.data}/>);
+              break;*/
+          }
+
+           return(panel);
+
+        });
+
+        return(
+            <div>
+                {nodes}
+            </div>
+        );
+    }
+});
 
 class PatientDetails extends React.Component
 {
@@ -159,48 +273,54 @@ class Allergies extends React.Component
         if(!this.props.data)
             return;
 
-        var elements=[];
-        var rows=this.props.data.rows;
-        var headers=this.props.data.headers;
+        var tables=[];
 
-        for(var r=0; r<rows.length; r++)
+        for(var tableNum=0; tableNum<this.props.data.length; tableNum++)
         {
-            if(!elements[r])
-                elements[r]=[];
+            var table=this.props.data[tableNum];
+            var elements=[];
+            var rows=table.rows;
+            var headers=table.headers;
 
-            for(var i=0; i<headers.length; i++)
-                elements[r].push(
-                    // <div className="list-group-item">
-                    //     <p className="list-group-item-text">
-                    <p>
-                            <span className="label label-primary">{headers[i]}</span>
-                            {rows[r][i]}
-                    </p>
-                    //     </p>
-                    // </div>
-                );
-        }
+            for(var r=0; r<rows.length; r++)
+            {
+                if(!elements[r])
+                    elements[r]=[];
 
-        var listItems=(elements.map(function(element)
-        {
-            return(
-                <div className="list-group-item">
-                    <div className="list-group-item-text">
+                for(var i=0; i<headers.length; i++)
+                    elements[r].push(
+                        <dl key={r+""+i} className="dl-horizontal">
+                            <dt><span className="label label-default">{headers[i]}</span></dt>
+                            <dd className="text-left">{rows[r][i]}</dd>
+                        </dl>
+                    );
+            }
+
+            var listItems=(elements.map(function(element, index)
+            {
+                return(
+                    <div key={index}>
                         {element}
+                        <hr/>
                     </div>
+                );
+            }));
+
+            tables.push(
+                <div key={tableNum}>
+                    {listItems}
                 </div>
             );
-        }));
+        }
 
         return(
             <div className="col-lg-4 col-md-4 col-sm-4 mb">
-                <div className="white-panel pn">
-                    <div className="white-header">
+                <div className="grey-panel pn">
+                    <div className="grey-header">
                         <h4>{this.props.title}</h4>
                     </div>
-                    <div className="list-group">
-                        {listItems}
-                    </div>
+                    <span className="pn-bg fa fa-heartbeat fa-5x"></span>
+                    {tables}
                 </div>
             </div>
         );
@@ -249,35 +369,44 @@ class XMLForm extends React.Component
                 var components = data.ClinicalDocument.component.structuredBody.component;
                 var title = data.ClinicalDocument.title;
                 var patientRole=data.ClinicalDocument.recordTarget.patientRole;
-                var medicationsTitle = "";
-                var medicationsArr = new Array();
+                var allComponents = new Array();
+
+                var otherText = new Array();
 
                 for(let i=0; i<components.length; i++)
                 {
                     let section=components[i].section;
                     let sectionTitle=section.title;
+                    let sectionText=section.text;
 
-                    let tableData=getNodeTableData(section.text.table);
-                    //console.log("displaying section: "+sectionTitle);
-
-                    switch(section.code.code)
+                    var tableData = [];
+                    //let tableData=getNodeTableData(section.text.table);
+                    console.log("displaying section: "+JSON.stringify(tableData));
+                    if(section.code.code !== "75310-3" && section.code.code !== "62387-6")
                     {
-                        // Allergies
-                        case "48765-2":
-                            ReactDOM.render(<Allergies title={sectionTitle} data={tableData}/>, document.getElementById("allergies"));
-                            break;
-                        case "10160-0":
-                            /*iterate(section.text, medicationsArr);
-                            console.log(searchString("table", section.text));
-                            console.log(medicationsArr);
-
-                            for(var j = 0; j < medicationsArr.length; j++){
-                                console.log(medicationsArr[j]);
-                            }*/
-
-                            //ReactDOM.render(<Allergies title={sectionTitle} data={tableData}/>, document.getElementById("medications"));
-                            break;
+                        for(var item in sectionText)
+                        {
+                            if(item=="table")
+                            {
+                                var tables=sectionText[item];
+                                if(!Array.isArray(tables))
+                                    tables=[tables];
+                                for(var numTable=0; numTable<tables.length; numTable++)
+                                    tableData.push(getNodeTableData(tables[numTable]));
+                            }
+                            else // print/save texts recursively
+                            {
+                                iterate(sectionText[item], otherText);
+                                for(var k=0; k<otherText.length; k++)
+                                    ;;// console.log(otherText[k]);
+                            }
+                        }
                     }
+
+                    allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData});
+
+                    /*console.log(searchString("table", section.text));
+                    console.log(medicationsArr);*/
                 }
 
                 $("#myModal").modal("toggle");
@@ -300,12 +429,23 @@ class XMLForm extends React.Component
                 originalData.push({text: 'CCDA Info',icon: 'glyphicon glyphicon-list-alt', nodes: titles});
 
                 ReactDOM.render(<Panel data={components}/>, document.getElementById("panels"));
+                ReactDOM.render(<PanelBox data={allComponents}/>, document.getElementById("panels"));
                 ReactDOM.render(<PatientDetails patientRole={patientRole}/>, document.getElementById("patientDetails"));
                 ReactDOM.render(<TreeView treeData={originalData}/>, document.getElementById("tree_menu"));
             },
             error: function(err)
             {
-                console.log("error: "+err);
+               var message = "";
+
+                if(err.responseText != null)
+                  message = $.parseJSON(err.responseText).errorMessage;
+                else if(err.statusText != null)
+                  message = err.statusText;
+
+                if(err.status == 0)
+                  message = "Service Unavailable";
+
+                showAlert("danger", "Error: "+message);
             },
             processData: false,
             contentType: false
@@ -732,17 +872,16 @@ function getNodeTableData(tableNode)
        tableNode.tbody.tr=[tableNode.tbody.tr];
 
     for(var r=0; r<tableNode.tbody.tr.length; r++)
-    {
+        if(tableNode.tbody.tr[r].td && tableNode.tbody.tr[r].td.length)
+        {
+            tableData.rows.push([]);
 
-        if(tableNode.tbody.tr[r].td)
+            if(!Array.isArray(tableNode.tbody.tr[r].td))
+                tableNode.tbody.tr[r].td=[tableNode.tbody.tr[r].td];
+
             for(var c=0; c<tableNode.tbody.tr[r].td.length; c++)
-            {
-                if(!tableData.rows[r])
-                    tableData.rows[r]=[];
-
-                tableData.rows[r].push(getNodeText(tableNode.tbody.tr[r].td[c]));
-            }
-    }
+                tableData.rows[tableData.rows.length-1].push(getNodeText(tableNode.tbody.tr[r].td[c]));
+        }
 
     debug2=tableData;
     return tableData;
