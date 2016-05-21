@@ -527,8 +527,8 @@ class XMLForm extends React.Component
 
                     console.log("displaying section: "+sectionTitle);
 
-                    if(section.code.code == "30954-2")
-                    {
+                    /*if(section.code.code == "30954-2")
+                    {*/
                         if(typeof sectionText == "string")
                             otherText.push({"key": "string", "text": sectionText});
                         else
@@ -554,7 +554,7 @@ class XMLForm extends React.Component
                                 }
                             }
                         debugvar=tableData;
-                    }
+                    //}
 
                     allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData, "otherText": otherText});
                 }
