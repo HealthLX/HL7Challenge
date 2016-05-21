@@ -527,8 +527,8 @@ class XMLForm extends React.Component
 
                     console.log("displaying section: "+sectionTitle);
 
-                    // if(section.code.code == "47519-4")
-                    // {
+                    if(section.code.code == "30954-2")
+                    {
                         if(typeof sectionText == "string")
                             otherText.push({"key": "string", "text": sectionText});
                         else
@@ -553,7 +553,8 @@ class XMLForm extends React.Component
                                         console.log("other text: "+otherText[k]);
                                 }
                             }
-                    // }
+                        debugvar=tableData;
+                    }
 
                     allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData, "otherText": otherText});
                 }
@@ -1125,6 +1126,23 @@ function buildTelecom(telecomNode)
 
     return telecomNode.value;
 }
+
+//Alerts function
+ function showAlert(alertType, message)
+ {
+   var alert=$("<div/>").addClass("alert alert-dismissable alert-"+alertType)
+   var closeBtn=$("<a/>").attr("href", "#").addClass("close").attr("data-dismiss", "alert").html("&times;");
+ 
+   alert.html(closeBtn);
+   alert.append(message);
+ 
+   $("#alerts").append(alert);
+ 
+   alert.fadeTo(2000, 500).slideUp(1500, function()
+   {
+     alert.alert("close");
+   });
+ }
 
 ReactDOM.render(<XMLForm/>, document.getElementById("modal-container"));
 ReactDOM.render(<TreeView treeData={menuData}/>, document.getElementById("tree_menu"));
