@@ -424,14 +424,12 @@ var Allergies=React.createClass(
             <div className="col-lg-4 col-md-4 col-sm-4 mb" style={{display: this.state.display}}>
                 <div className="grey-panel pn">
                     <div className="grey-header">
-                        <div className="row">
-                            <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <h4>{this.props.title}</h4>
-                            </div>
-                            <div className="col-sm-6 col-xs-6 goright">
-                                <a href="#" onClick={this.onClick}><i className="fa fa-trash-o fa-2x"></i></a>
-                            </div>
-                        </div>
+                        <h4>
+                            <a href="#" className="pull-right" onClick={this.onClick}>
+                                <i className="fa fa-trash-o fa-lg"></i>
+                            </a>
+                            {this.props.title}
+                        </h4>
                     </div>
                     <span className={"pn-bg fa "+this.props.iconClass+" fa-5x"}></span>
                     {tables}
