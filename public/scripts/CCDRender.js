@@ -123,64 +123,126 @@ var PanelBox=React.createClass(
         var nodes = this.props.data.map(function(component, index)
         {
           var panel;
+          // font awesome default icon class for panel
+          var iconClass="fa-heart-o";
 
           // Create panels according to their LOINC code
           switch(component.type)
           {
-            /* CollapsiblePanel cases */
             //Allergies
             case "48765-2":
+                iconClass="fa-info-circle";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} iconClass={iconClass}/>);
+                break;
             //Medications
             case "10160-0":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data}/>);
+                iconClass="fa-asterisk";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} iconClass={iconClass}/>);
                 break;
-
-            /* Allergies panels cases */
             //Immunizations
             case "11369-6":
+                iconClass="fa-medkit";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Plan of care
             case "18776-5":
+                iconClass="fa-plus-square";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Encounters
             case "46240-8":
+                iconClass="fa-hospital-o";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Problem list
             case "11450-4":
+                iconClass="fa-exclamation-triangle";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Procedures
             case "47519-4":
+                iconClass="fa-bed";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Results
             case "30954-2":
+                iconClass="fa-file-text-o";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Social History
             case "29762-2":
+                iconClass="fa-user-plus";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Vital Signs
             case "8716-3":
+                iconClass="fa-heartbeat";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Health Concerns Section
             case "75310-3":
+                iconClass="fa-ambulance";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Goals Section
             case "61146-7":
+                iconClass="fa-list-ul";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Interventions Section
             case "62387-6":
+                iconClass="fa-user-md";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Health Status Evaluations/Outcomes Section
             case "11383-7":
+                iconClass="fa-heart";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Advance Directives
             case "42348-3":
+                iconClass="fa-bolt";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Family History
             case "10157-6":
+                iconClass="fa-users";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Functional Status
             case "47420-5":
+                iconClass="fa-check-square-o";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Medical Equipment
             case "46264-8":
+                iconClass="fa-stethoscope";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Insurance Providers
             case "48768-6":
+                iconClass="fa-shield";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Reason For Referral
             case "42349-1":
+                iconClass="fa-question-circle-o";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Reason For Visit
             case "29299-5":
+                iconClass="fa-question-circle-o";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;
             //Instructions
             case "69730-0":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-list-alt";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Default
             default:
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                // iconClass="fa-";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             }
             return(panel);
@@ -371,7 +433,7 @@ var Allergies=React.createClass(
                             </div>
                         </div>
                     </div>
-                    <span className="pn-bg fa fa-heartbeat fa-5x"></span>
+                    <span className={"pn-bg fa "+this.props.iconClass+" fa-5x"}></span>
                     {tables}
                 </div>
             </div>
@@ -474,7 +536,7 @@ var CollapsiblePanel=React.createClass(
                         </div>
                     </div>
                   </div>
-                  <span className="pn-bg fa fa-heartbeat fa-5x"></span>
+                  <span className={"pn-bg fa "+this.props.iconClass+" fa-5x"}></span>
                   <div className="panel-body">
                     <div id="accordion" className="panel-group">
                       {tables}
