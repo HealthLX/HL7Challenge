@@ -397,8 +397,16 @@ var Allergies=React.createClass(
     }
 });
 
-class CollapsiblePanel extends React.Component
+var CollapsiblePanel=React.createClass(
 {
+    getInitialState() {
+        return {data: [], display: 'block', title: ''};
+    },
+
+    onClick(){
+        this.setState({ display: 'none' });
+    },
+
     render()
     {
         if(!this.props.data)
@@ -472,9 +480,17 @@ class CollapsiblePanel extends React.Component
         }
 
         return(
-            <div className="col-lg-4 col-md-4 col-sm-4 mb">
+            <div className="col-lg-4 col-md-4 col-sm-4 mb" style={{display: this.state.display}}>
                 <div className="grey-panel">
-                  <div className="grey-header"><h4>{this.props.title}</h4>
+                  <div className="grey-header">
+                    <div className="row">
+                        <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <h4>{this.props.title}</h4>
+                        </div>
+                        <div className="col-sm-6 col-xs-6 goright">
+                            <a href="#" onClick={this.onClick}><i className="fa fa-trash-o fa-2x"></i></a>
+                        </div>
+                    </div>
                   </div>
                   <span className="pn-bg fa fa-heartbeat fa-5x"></span>
                   <div className="panel-body">
@@ -486,7 +502,7 @@ class CollapsiblePanel extends React.Component
             </div>
         );
     }
-}
+});
 
 
 class XMLForm extends React.Component
