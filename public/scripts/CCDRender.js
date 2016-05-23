@@ -279,11 +279,11 @@ class PatientDetails extends React.Component
                           <b>{patientMap.maritalStatus}</b> <b>{patientMap.gender}</b> who speaks <b>{patientMap.language}</b>.
                         </p>
                         <dl>
-                            <li><dt>Day of Birth: </dt><dd>{patientMap.dob}</dd></li>
-                            <li><dt>Address: </dt><dd>{patientMap.address}</dd></li>
-                            <li><dt>Religion: </dt><dd>{patientMap.religion}</dd></li>
-                            <li><dt>Phone: </dt><dd>{patientMap.contact}</dd></li>
-                            <li><dt>Guardian: </dt><dd>{patientMap.guardianName}</dd></li>
+                            <li><dt><span className="fa fa-birthday-cake"></span> Day of Birth: </dt><dd>{patientMap.dob}</dd></li>
+                            <li><dt><span className="fa fa-map-marker"></span> Address: </dt><dd>{patientMap.address}</dd></li>
+                            <li><dt><span className="fa fa-book"></span> Religion: </dt><dd>{patientMap.religion}</dd></li>
+                            <li><dt><span className="fa fa-phone"></span> Phone: </dt><dd>{patientMap.contact}</dd></li>
+                            <li><dt><span className="fa fa-user"></span> Guardian: </dt><dd>{patientMap.guardianName}</dd></li>
                         </dl>
                       </div>
                   </div>
