@@ -130,7 +130,6 @@ var PanelBox=React.createClass(
                 break;
             //Immunizations
             case "11369-6":
-<<<<<<< HEAD
                 panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Plan of care
