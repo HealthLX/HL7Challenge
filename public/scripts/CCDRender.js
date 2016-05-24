@@ -121,7 +121,7 @@ var PanelBox=React.createClass(
             //Allergies
             case "48765-2":
                 iconClass="fa-info-circle";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} iconClass={iconClass}/>);
                 break;
             //Medications
             case "10160-0":
@@ -131,106 +131,106 @@ var PanelBox=React.createClass(
             //Immunizations
             case "11369-6":
                 iconClass="fa-medkit";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Plan of care
             case "18776-5":
                 iconClass="fa-plus-square";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Encounters
             case "46240-8":
                 iconClass="fa-hospital-o";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Problem list
             case "11450-4":
                 iconClass="fa-exclamation-triangle";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Procedures
             case "47519-4":
                 iconClass="fa-bed";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Results
             case "30954-2":
                 iconClass="fa-file-text-o";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Social History
             case "29762-2":
                 iconClass="fa-user-plus";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Vital Signs
             case "8716-3":
                 iconClass="fa-heartbeat";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Health Concerns Section
             case "75310-3":
                 iconClass="fa-ambulance";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Goals Section
             case "61146-7":
                 iconClass="fa-list-ul";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Interventions Section
             case "62387-6":
                 iconClass="fa-user-md";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Health Status Evaluations/Outcomes Section
             case "11383-7":
                 iconClass="fa-heart";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Advance Directives
             case "42348-3":
                 iconClass="fa-bolt";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Family History
             case "10157-6":
                 iconClass="fa-users";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Functional Status
             case "47420-5":
                 iconClass="fa-check-square-o";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Medical Equipment
             case "46264-8":
                 iconClass="fa-stethoscope";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Insurance Providers
             case "48768-6":
                 iconClass="fa-shield";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Reason For Referral
             case "42349-1":
                 iconClass="fa-question-circle-o";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Reason For Visit
             case "29299-5":
                 iconClass="fa-question-circle-o";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Instructions
             case "69730-0":
                 iconClass="fa-list-alt";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Default
             default:
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             }
             return(panel);
@@ -289,8 +289,11 @@ var Allergies=React.createClass(
         return {data: [], display: 'block', otherData: [], title: ''};
     },
 
-    onClick() {
-        this.setState({ display: 'none' });
+    onClick()
+    {
+        // this.setState({ display: 'none' });
+        var titleRef=this.props.title.replace(/,|:| |\u002E/g,"_");
+        $("#"+titleRef).hide(750);
     },
 
     render()
@@ -311,11 +314,9 @@ var Allergies=React.createClass(
             var rows=table.rows;
             var headers=table.headers;
 
+            //handle tables with spans differently
             if(table.hasSpans)
             {
-                //handle tables with spans differently
-                console.log("table "+this.props.title+" has spans");
-
                 var tblHeader = [];
 
                 for(var i=0; i<headers.length; i++)
