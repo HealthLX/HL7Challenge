@@ -137,7 +137,7 @@ var PanelBox=React.createClass(
             //Medications
             case "10160-0":
                 iconClass="fa-asterisk";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Immunizations
             case "11369-6":
@@ -327,58 +327,123 @@ var Allergies=React.createClass(
             {
                 console.log("table "+this.props.title+" has spans");
                 /* TODO: handle tables with spans differently? */
-            }
 
-            for(var r=0; r<rows.length; r++)
-            {
-                if(!elements[r])
-                    elements[r]=[];
+                var tblHeader = [];
 
                 for(var i=0; i<headers.length; i++)
                 {
-                    let text = rows[r][i];
-                    var listText = [];
+                    if(!tblHeader[i])
+                        tblHeader[i]=[];
 
-                    //Less rows than headers *CHECK*
-                    if(text)
+                    tblHeader[i].push(
+                        <th key={i} style={{colspan: headers[i].colspan, rowspan: headers[i].rowspan}}>
+                            {headers[i].text}
+                        </th>
+                    );
+                }
+
+                var rowBody=[];
+
+                for(var r=0; r<rows.length; r++)
+                {
+                    elements = [];
+
+                    for(var i=0; i<rows[r].length; i++)
+                    {
+                        if(!elements[i])
+                            elements[i]=[];
+
+                        let text = rows[r][i];
+                        var listText = [];
+
                         for(var t=0; t<text.length; t++)
                            listText.push(<p key={r+""+i+""+t}>{text[t].text}</p>);
-                    else
-                        break;
 
-                    if(rows[r].length > 1)
-                        elements[r].push(
-                            <dl key={r+""+i} className="dl-horizontal">
-                                <dt><span className="label label-default">{headers[i].text}</span></dt>
-                                <dd className="text-left">{listText}</dd>
-                            </dl>
-                        );
-                    else
-                        elements[r].push(
-                            <dl key={r+""+i} className="dl-horizontal">
+                        elements[i].push(
+                            <td  key={r+""+i} style={{colspan: text.colspan, rowspan: text.rowspan}}>
                                 {listText}
-                            </dl>
+                            </td>
                         );
-                }
-            }
+                    }
 
-            // html structure for each row of data
-            var listItems=(elements.map(function(element, index)
-            {
-                return(
-                    <div key={index}>
-                        {element}
-                        <hr/>
+                    rowBody.push(
+                        <tr key={r}>
+                            {elements}
+                        </tr>
+                    );
+                }
+
+
+                // html wrapper for the table data
+                tables.push(
+                    <div key={tableNum}>
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    {tblHeader}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {rowBody}
+                            </tbody>
+                        </table>
                     </div>
                 );
-            }));
 
-            // html wrapper for the table data
-            tables.push(
-                <div key={tableNum}>
-                    {listItems}
-                </div>
-            );
+            }
+            else
+            {
+                for(var r=0; r<rows.length; r++)
+                {
+                    if(!elements[r])
+                        elements[r]=[];
+
+                    for(var i=0; i<headers.length; i++)
+                    {
+                        let text = rows[r][i];
+                        var listText = [];
+
+                        //Less rows than headers *CHECK*
+                        if(text)
+                            for(var t=0; t<text.length; t++)
+                               listText.push(<p key={r+""+i+""+t}>{text[t].text}</p>);
+                        else
+                            break;
+
+                        if(rows[r].length > 1)
+                            elements[r].push(
+                                <dl key={r+""+i} className="dl-horizontal">
+                                    <dt><span className="label label-default">{headers[i].text}</span></dt>
+                                    <dd className="text-left">{listText}</dd>
+                                </dl>
+                            );
+                        else
+                            elements[r].push(
+                                <dl key={r+""+i} className="dl-horizontal">
+                                    {listText}
+                                </dl>
+                            );
+                    }
+                }
+
+                // html structure for each row of data
+                var listItems=(elements.map(function(element, index)
+                {
+                    return(
+                        <div key={index}>
+                            {element}
+                            <hr/>
+                        </div>
+                    );
+                }));
+
+                // html wrapper for the table data
+                tables.push(
+                    <div key={tableNum}>
+                        {listItems}
+                    </div>
+                );
+            }
         }
 
         // Process for non tables information
@@ -593,8 +658,6 @@ class XMLForm extends React.Component
                 var patientRole=data.ClinicalDocument.recordTarget.patientRole;
                 var allComponents = new Array();
 
-                debugvar=data;
-
                 // components contains the sections to display as panels
                 for(let i=0; i<components.length; i++)
                 {
@@ -608,8 +671,8 @@ class XMLForm extends React.Component
 
                     console.log("displaying section: "+sectionTitle);
 
-                    /*if(section.code.code == "30954-2")
-                    {*/
+                    if(section.code.code == "10160-0")
+                    {
                         // if the section only contains a string
                         if(typeof sectionText == "string")
                             otherText.push({"key": "string", "text": sectionText});
@@ -637,9 +700,9 @@ class XMLForm extends React.Component
                                         console.log("other text: "+otherText[k]);
                                 }
                             }
-                        debug2=tableData;
-                    //}
 
+                        debug2 = tableData;
+                    }
                     allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData, "otherText": otherText});
                 }
 
@@ -1090,13 +1153,13 @@ function searchString(str, obj) {
     return false;
 }
 
-function buildTableCellObject(dataNode)
+function buildTableCellObject(dataNode, txtObject)
 {
     return (
     {
-        text: getNodeText(dataNode),
-        colspan: dataNode.colspan,
-        rowspan: dataNode.rowspan
+        text: (txtObject == null ? getNodeText(dataNode) : txtObject),
+        colspan: (dataNode.colspan == undefined ? null : dataNode.colspan),
+        rowspan: (dataNode.rowspan == undefined ? null : dataNode.rowspan)
     });
 }
 
@@ -1149,13 +1212,16 @@ function getNodeTableData(tableNode)
             for(var c=0; c<tableNode.tbody.tr[r].td.length; c++)
             {
                 var jsonArr = new Array();
+                var txtArr = new Array();
 
                 if(typeof tableNode.tbody.tr[r].td[c] == "string")
-                    jsonArr.push({"key": "string", "text": getNodeText(tableNode.tbody.tr[r].td[c])});
+                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].td[c], getNodeText(tableNode.tbody.tr[r].td[c])));
                 else // Cell contains something other than a string
                 {
                     // extract contents recursively
-                    iterate(tableNode.tbody.tr[r].td[c], jsonArr);
+                    iterate(tableNode.tbody.tr[r].td[c], txtArr);
+
+                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].td[c], txtArr));
                     // check for colspan/rowspan
                     if(tableNode.tbody.tr[r].td[c].rowspan || tableNode.tbody.tr[r].td[c].colspan)
                         tableData.hasSpans=true;
