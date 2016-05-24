@@ -27,4 +27,14 @@ $(function() {
     if (element.is('li')) {
         element.addClass('active');
     }
+
+    
 });
+
+function goToByScroll(id){
+          // Reove "link" from the ID
+          // Scroll
+        $('html,body').animate({
+            scrollTop: $(id).offset().top},
+            'slow');
+    }
