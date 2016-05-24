@@ -289,11 +289,16 @@ var Allergies=React.createClass(
         return {data: [], display: 'block', otherData: [], title: ''};
     },
 
-    onClick()
+    onClick(e)
     {
         // this.setState({ display: 'none' });
         var titleRef=this.props.title.replace(/,|:| |\u002E/g,"_");
-        $("#"+titleRef).hide(750);
+        $("#"+titleRef).hide(750, function()
+        {
+            // animation completed. update the layout of the panels
+            $("#panels").masonry("layout");
+        });
+        e.preventDefault();
     },
 
     render()
@@ -476,7 +481,7 @@ var Allergies=React.createClass(
         // Panel html structure
         var titleRef = this.props.title.replace(/,|:| |\u002E/g,"_");
         return(
-            <div id={titleRef} className="col-lg-4 col-md-4 col-sm-4 mb" style={{display: this.state.display}}>
+            <div id={titleRef} className="grid-item col-lg-4 col-md-4 col-sm-4 mb" style={{display: this.state.display}}>
                 <div className="grey-panel pn">
                     <div className="grey-header">
                         <h4>
@@ -578,7 +583,7 @@ var CollapsiblePanel=React.createClass(
 
         var titleRef = this.props.title.replace(/,|:| |\u002E/g,"_");
         return(
-            <div id={titleRef} className="col-lg-4 col-md-4 col-sm-4 mb" style={{display: this.state.display}}>
+            <div id={titleRef} className="grid-item col-lg-4 col-md-4 col-sm-4 mb" style={{display: this.state.display}}>
                 <div className="grey-panel">
                   <div className="grey-header">
                     <div className="row">
@@ -720,6 +725,8 @@ class XMLForm extends React.Component
                 ReactDOM.render(<PanelBox data={allComponents}/>, document.getElementById("panels"));
                 ReactDOM.render(<PatientDetails patientRole={patientRole}/>, document.getElementById("patientDetails"));
                 ReactDOM.render(<TreeView treeData={originalData} enableLinks={true}/>, document.getElementById("tree_menu"));
+                // Use masonry for the layout of the panels
+                $("#panels").masonry({itemSelector: ".grid-item"});
             },
             // Web service call error
             error: function(err)

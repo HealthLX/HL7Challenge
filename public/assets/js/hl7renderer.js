@@ -27,15 +27,16 @@ $(function() {
     if (element.is('li')) {
         element.addClass('active');
     }
-
-    
 });
 
-function goToByScroll(id){
-        if ($(id).css('display') == 'none' ) {
-            $(id).show(750);
-        }
-        $('html,body').animate({
-            scrollTop: $(id).offset().top},
-            'slow');
-    }
+function goToByScroll(id)
+{
+    if ($(id).css("display")=="none")
+        $(id).show(750, function()
+        {
+            // animation completed. update the layout of the panels
+            $("#panels").masonry("layout");
+        });
+
+    $("html,body").animate({scrollTop: $(id).offset().top}, "slow");
+}
