@@ -130,87 +130,107 @@ var PanelBox=React.createClass(
                 break;
             //Immunizations
             case "11369-6":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-medkit";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Plan of care
             case "18776-5":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-plus-square";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Encounters
             case "46240-8":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-hospital-o";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Problem list
             case "11450-4":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} />);
+                iconClass="fa-exclamation-triangle";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Procedures
             case "47519-4":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-bed";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Results
             case "30954-2":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-file-text-o";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Social History
             case "29762-2":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-user-plus";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Vital Signs
             case "8716-3":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-heartbeat";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Health Concerns Section
             case "75310-3":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-ambulance";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Goals Section
             case "61146-7":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-list-ul";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Interventions Section
             case "62387-6":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-user-md";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Health Status Evaluations/Outcomes Section
             case "11383-7":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-heart";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Advance Directives
             case "42348-3":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-bolt";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Family History
             case "10157-6":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-users";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Functional Status
             case "47420-5":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-check-square-o";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Medical Equipment
             case "46264-8":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-stethoscope";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Insurance Providers
             case "48768-6":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-shield";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Reason For Referral
             case "42349-1":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-question-circle-o";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Reason For Visit
             case "29299-5":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-question-circle-o";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Instructions
             case "69730-0":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                iconClass="fa-list-alt";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Default
             default:
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             }
             return(panel);
