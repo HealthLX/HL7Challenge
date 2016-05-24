@@ -75,18 +75,7 @@ var languages639_2 = [
 {'code':'vol','value':'Volapük'}, {'code':'wln','value':'Walloon'}, {'code':'cym','value':'Welsh'}, {'code':'wol','value':'Wolof'}, {'code':'fry','value':'Western Frisian'},
 {'code':'xho','value':'Xhosa'}, {'code':'yid','value':'Yiddish'}, {'code':'yor','value':'Yoruba'}, {'code':'zha','value':'Zhuang, Chuang'}, {'code':'zul','value':'Zulu'}];
 var menuData =  [
-  {
-    text: 'Main Information',
-    icon: 'glyphicon glyphicon-signal'
-  },
-  {
-    text: 'Health Status',
-    icon: 'glyphicon glyphicon-scale'
-  },
-  {
-    text: 'CCDA Information',
-    icon: 'glyphicon glyphicon-list-alt'
-  }
+  
 ];
 
 /*var Panel=React.createClass(
@@ -134,87 +123,87 @@ var PanelBox=React.createClass(
                 break;
             //Immunizations
             case "11369-6":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Plan of care
             case "18776-5":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Encounters
             case "46240-8":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Problem list
             case "11450-4":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} />);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} />);
                 break;
             //Procedures
             case "47519-4":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Results
             case "30954-2":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Social History
             case "29762-2":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Vital Signs
             case "8716-3":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Health Concerns Section
             case "75310-3":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Goals Section
             case "61146-7":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Interventions Section
             case "62387-6":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Health Status Evaluations/Outcomes Section
             case "11383-7":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Advance Directives
             case "42348-3":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Family History
             case "10157-6":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Functional Status
             case "47420-5":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Medical Equipment
             case "46264-8":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Insurance Providers
             case "48768-6":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Reason For Referral
             case "42349-1":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Reason For Visit
             case "29299-5":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Instructions
             case "69730-0":
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Default
             default:
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
           }
 
@@ -254,8 +243,8 @@ class PatientDetails extends React.Component
                         <dl>
                             <li><dt>Day of Birth: </dt><dd>{patientMap.dob}</dd></li>
                             <li><dt>Address: </dt><dd>{patientMap.address}</dd></li>   
-                            <li><dt>Religion: </dt><dd>{patientMap.religion}</dd></li>   
-                            <li><dt>Phone: </dt><dd>{patientMap.contact}</dd></li>
+                            <li><dt>Religion: </dt><dd>{patientMap.religion}</dd></li>
+                            <li><dt>Contact: </dt><dd>{patientMap.contact}</dd></li>
                             <li><dt>Guardian: </dt><dd>{patientMap.guardianName}</dd></li>                   
                         </dl>
                       </div>
@@ -368,9 +357,10 @@ class Allergies extends React.Component
             );
         }
 
+        var titleRef = this.props.title.replace(/,|:| |\u002E/g,"_");
         return(
-            <div className="col-lg-4 col-md-4 col-sm-4 mb">
-                <div className="grey-panel pn">
+            <div id={titleRef} className="col-lg-4 col-md-4 col-sm-4 mb">
+                <div  className="grey-panel pn">
                     <div className="grey-header">
                         <h4>{this.props.title}</h4>
                     </div>
@@ -413,7 +403,7 @@ class CollapsiblePanel extends React.Component
                            listText.push(<p key={r+""+i+""+t}>{text[t].text}</p>);
 
                     if (i===0) {
-                      collapsePanelHeading.push(text[0].text);
+                      collapsePanelHeading.push(text[0].text.toUpperCase());
                     }
                     elements[r].push(
                         <dl key={r+""+i} className="dl-horizontal">
@@ -426,7 +416,7 @@ class CollapsiblePanel extends React.Component
 
             var listItems=(elements.map(function(element, index)
             {
-                var finalStr = collapsePanelHeading[index].replace(/ |\u002E/g,"_");
+                var finalStr = collapsePanelHeading[index].replace(/,|:| |\u002E/g,"_");
                 var where = finalStr.indexOf("/");
                 if (where > 0)
                   finalStr = finalStr.substring(0,where);
@@ -456,8 +446,9 @@ class CollapsiblePanel extends React.Component
             );
         }
 
+        var titleRef = this.props.title.replace(/,|:| |\u002E/g,"_");
         return(
-            <div className="col-lg-4 col-md-4 col-sm-4 mb">
+            <div id={titleRef} className="col-lg-4 col-md-4 col-sm-4 mb">
                 <div className="grey-panel">
                   <div className="grey-header"><h4>{this.props.title}</h4>
                   </div>
@@ -525,8 +516,6 @@ class XMLForm extends React.Component
                     let tableData=[];
                     let otherText=[];
 
-                    console.log("displaying section: "+sectionTitle);
-
                     /*if(section.code.code == "30954-2")
                     {*/
                         if(typeof sectionText == "string")
@@ -549,8 +538,8 @@ class XMLForm extends React.Component
                                     else
                                         iterate(sectionText[item], otherText);
 
-                                    for(var k=0; k<otherText.length; k++)
-                                        console.log("other text: "+otherText[k]);
+                                    for(var k=0; k<otherText.length; k++);
+                                        // console.log("other text: "+otherText[k]);
                                 }
                             }
                         debugvar=tableData;
@@ -565,23 +554,26 @@ class XMLForm extends React.Component
             
                 var title = null;
                 var titles=[];
+                var titleRef;
                 for(var i = 0; i < components.length; i++){
                     
                     title = getSectionTitle(components[i].section)
                     if (title!=null) {
-                        titles.push({"text": title, "code": components[i].section.code.code});
+                        titleRef = "#" + title.replace(/,|:| |\u002E/g,"_");
+                        titleRef = "javascript:goToByScroll('" + titleRef + "');";
+                        titles.push({"text": title, href:titleRef , "code": components[i].section.code.code});
                     }   
                 }
                 
                 var originalData = [];
-                originalData.push({text: 'Main Information',icon: 'glyphicon glyphicon-signal'});
-                originalData.push({text: 'Health Status',icon: 'glyphicon glyphicon-scale'});
+                originalData.push({text: 'Main Information', href: '#patientDetails', icon: 'glyphicon glyphicon-signal'});
+                originalData.push({text: 'Health Status',href: '#healthStatus', icon: 'glyphicon glyphicon-scale'});
                 originalData.push({text: 'CCDA Info',icon: 'glyphicon glyphicon-list-alt', nodes: titles});
 
                 //ReactDOM.render(<Panel data={components}/>, document.getElementById("panels"));
                 ReactDOM.render(<PanelBox data={allComponents}/>, document.getElementById("panels"));
                 ReactDOM.render(<PatientDetails patientRole={patientRole}/>, document.getElementById("patientDetails"));
-                ReactDOM.render(<TreeView treeData={originalData}/>, document.getElementById("tree_menu"));
+                ReactDOM.render(<TreeView treeData={originalData} enableLinks={true}/>, document.getElementById("tree_menu"));
             },
             error: function(err)
             {
@@ -647,7 +639,7 @@ var TreeView = React.createClass(
       selectedBackColor: '#428bca',
 
       enableLinks: false,
-      highlightSelected: true,
+      highlightSelected: false,
       showBorder: true,
       showTags: false,
 
@@ -791,7 +783,7 @@ var TreeNode = React.createClass({
     var nodeText;
     if (options.enableLinks) {
       nodeText = (
-        React.createElement("a", {href: node.href/*style="color:inherit;"*/}, 
+        React.createElement("a", {href: node.href}, 
           node.text
         )
       );
@@ -817,7 +809,7 @@ var TreeNode = React.createClass({
       node.nodes.forEach(function (node) {
         children.push(React.createElement(TreeNode, {node: node, 
                                 level: _this.props.level+1, 
-                                visible: _this.state.expanded && _this.props.visible, 
+                                visible: _this.state.expanded && _this.props.visible,
                                 options: options}));
       });
     }
@@ -888,8 +880,10 @@ function iterate(obj, jsonArr) {
 /*VV, Get the gender out of the genderCode */
 function getGender(patientObj) {
   var gender;
+  //console.log("for Gender:" +  JSON.stringify(patientObj));
   if (patientObj.administrativeGenderCode) {
-    if (searchString("displayName", patientObj.administrativeGenderCode)) {
+    //if (searchString("displayName", patientObj.administrativeGenderCode)) {
+    if (patientObj.administrativeGenderCode.displayName) {
       gender = patientObj.administrativeGenderCode.displayName;
     } else if (patientObj.administrativeGenderCode.code) {
       gender = patientObj.administrativeGenderCode.code=="F"?"Female":"Male";
@@ -900,19 +894,24 @@ function getGender(patientObj) {
 
 /*VV, Get the Race out of the RaceCode */
 function getRace(patientObj) {
-  var race;
-  if (patientObj.raceCode && patientObj.raceCode.length==1) {
-    if (searchString("displayName", patientObj.raceCode)) {
+  var race = "";
+
+  if (patientObj.raceCode && !Array.isArray(patientObj.raceCode)) {
+    //if (searchString("displayName", patientObj.raceCode)) {
+    if (patientObj.raceCode.displayName) {
       race = patientObj.raceCode.displayName;
-    } else race = "Unkown race";
+    }
   } else if (patientObj.raceCode && patientObj.raceCode.length>1) {
     race = "Unkown race";
-    if (searchString("displayName", patientObj.raceCode[0])) {
+    //if (searchString("displayName", patientObj.raceCode[0])) {
+    if (patientObj.raceCode[0].displayName) {
         race = patientObj.raceCode[0].displayName;
     }
     for (var i=1; i<patientObj.raceCode.length;i++) {
-      if (searchString("displayName", patientObj.raceCode[i])) {
-        race += " [" + patientObj.raceCode[i].displayName + "]";
+      //if (searchString("displayName", patientObj.raceCode[i])) {
+        if (patientObj.raceCode[i].displayName) {
+            console.log(patientObj.raceCode[i].displayName);
+            race += " [" + patientObj.raceCode[i].displayName + "]";
       }
     }
   }
@@ -964,6 +963,14 @@ function getPatientDetails(patientRole) {
   var guardian=patientRole.patient.guardian;
   var address=buildAddress(patientRole.addr);
   var contact=buildTelecom(patientRole.telecom);
+  var lastContact = "";
+  if (Array.isArray(contact)) {
+    contact.forEach(function(cntc) {
+        lastContact += cntc.value + " ";
+    })
+  } else {
+    lastContact = contact;
+  }
   var guardianName;
   var gender = getGender(patientRole.patient);
   var religion = getReligion(patientRole.patient);
@@ -975,13 +982,21 @@ function getPatientDetails(patientRole) {
       var guardianEntity=guardian.guardianPerson ? guardian.guardianPerson : guardian.guardianOrganization;
       guardianName=buildName(guardianEntity.name);
   }
+  var fName = "";
+  if(Array.isArray(patientRole.patient.name.given))
+    {
+        for(var i=0; i<patientRole.patient.name.given; i++)
+            fName+=getNodeText(patientRole.patient.name.given[i])+" ";
+    }
+    else
+        fName=getNodeText(patientRole.patient.name.given);
   var patientMap = {
-    "firstName":patientRole.patient.name.given,
+    "firstName":fName,
     "name":name,
     "dob":dob,
     "guardian":guardian!=undefined?guardian:"---",
     "address":address,
-    "contact":contact!=undefined?contact:"UNKNOWN",
+    "contact":lastContact!=undefined?lastContact:"UNKNOWN",
     "gender":gender,
     "race":race,
     "religion":religion,
@@ -989,6 +1004,7 @@ function getPatientDetails(patientRole) {
     "guardianName":guardianName!=undefined?guardianName:"---",
     "language":language,
     "age":age};
+    console.log(patientMap);
   return patientMap;
 }
 
@@ -1112,14 +1128,14 @@ function buildTelecom(telecomNode)
 
     if(Array.isArray(telecomNode))
     {
-        var contact=[];
-
+        var contact = [];
+        while (contact.length > 0) {
+            contact.pop();
+        } 
         for(var i=0; i<telecomNode.length; i++)
         {
             var value=telecomNode[i].value;
-            contact.push(
-                {value}
-            );
+            contact.push({value});
         }
         return contact;
     }
