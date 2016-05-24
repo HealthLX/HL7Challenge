@@ -104,6 +104,7 @@ var menuData =  [
     }
 });*/
 
+/* Container of panels */
 var PanelBox=React.createClass(
 {
     render: function()
@@ -111,18 +112,25 @@ var PanelBox=React.createClass(
         var nodes = this.props.data.map(function(component, index)
         {
           var panel;
+          // font awesome default icon class for panel
+          var iconClass="fa-heart-o";
 
-          switch(component.type){
+          // Create panels according to their LOINC code
+          switch(component.type)
+          {
             //Allergies
             case "48765-2":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data}/>);
+                iconClass="fa-info-circle";
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} iconClass={iconClass}/>);
                 break;
             //Medications
             case "10160-0":
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data}/>);
+                iconClass="fa-asterisk";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Immunizations
             case "11369-6":
+<<<<<<< HEAD
                 panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
             //Plan of care
@@ -205,10 +213,8 @@ var PanelBox=React.createClass(
             default:
                 panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText}/>);
                 break;
-          }
-
-           return(panel);
-
+            }
+            return(panel);
         });
 
         return(
@@ -219,12 +225,13 @@ var PanelBox=React.createClass(
     }
 });
 
+/* Panel containing the main information of the patient */
 class PatientDetails extends React.Component
 {
     render()
-    {    
+    {
         var patientRole=this.props.patientRole;
-        var patientMap = getPatientDetails(patientRole); 
+        var patientMap = getPatientDetails(patientRole);
         var iconGender = (patientMap.gender==="Female" || patientMap.gender==="F")?"assets/img/woman.png":"assets/img/man.jpg";
         return(
             <div>
@@ -238,14 +245,14 @@ class PatientDetails extends React.Component
                         <p>
                           <img src={iconGender} className="img-circle" width="80" />
                           <b>{patientMap.firstName}</b> is a {patientMap.age} year old <b>{patientMap.race}</b>&nbsp;
-                          <b>{patientMap.maritalStatus}</b>  <b>{patientMap.gender}</b>, which speaks <b>{patientMap.language}</b>. 
-                        </p>                      
+                          <b>{patientMap.maritalStatus}</b> <b>{patientMap.gender}</b> who speaks <b>{patientMap.language}</b>.
+                        </p>
                         <dl>
-                            <li><dt>Day of Birth: </dt><dd>{patientMap.dob}</dd></li>
-                            <li><dt>Address: </dt><dd>{patientMap.address}</dd></li>   
-                            <li><dt>Religion: </dt><dd>{patientMap.religion}</dd></li>
-                            <li><dt>Contact: </dt><dd>{patientMap.contact}</dd></li>
-                            <li><dt>Guardian: </dt><dd>{patientMap.guardianName}</dd></li>                   
+                            <li><dt><span className="fa fa-birthday-cake"></span> Day of Birth: </dt><dd>{patientMap.dob}</dd></li>
+                            <li><dt><span className="fa fa-map-marker"></span> Address: </dt><dd>{patientMap.address}</dd></li>
+                            <li><dt><span className="fa fa-book"></span> Religion: </dt><dd>{patientMap.religion}</dd></li>
+                            <li><dt><span className="fa fa-phone"></span> Phone: </dt><dd>{patientMap.contact}</dd></li>
+                            <li><dt><span className="fa fa-user"></span> Guardian: </dt><dd>{patientMap.guardianName}</dd></li>
                         </dl>
                       </div>
                   </div>
@@ -255,77 +262,164 @@ class PatientDetails extends React.Component
     }
 }
 
-class Allergies extends React.Component
+/* Generic Panel to display information of a specific CCD section */
+// TODO: rename Allergies to something more generalized
+var Allergies=React.createClass(
 {
+    getInitialState() {
+        return {data: [], display: 'block', otherData: [], title: ''};
+    },
+
+    onClick(){
+        this.setState({ display: 'none' });
+    },
+
     render()
     {
-        if(!this.props.data)
+        // If no data (tables) nor otherText(non-tables), there's nothing to show for this table
+        if(!this.props.data && !this.props.otherText)
             return;
 
+        // Sections might contain more than one table
         var tables=[];
 
+        // Process for tables information
         for(var tableNum=0; tableNum<this.props.data.length; tableNum++)
         {
-            var table=this.props.data[tableNum];
+            // variable to contain the html rows of data to render
             var elements=[];
+            var table=this.props.data[tableNum];
             var rows=table.rows;
             var headers=table.headers;
 
-            for(var r=0; r<rows.length; r++)
+            if(table.hasSpans)
             {
-                if(!elements[r])
-                    elements[r]=[];
+                //handle tables with spans differently
+                console.log("table "+this.props.title+" has spans");
+
+                var tblHeader = [];
 
                 for(var i=0; i<headers.length; i++)
                 {
-                    let text = rows[r][i];
-                    var listText = [];
+                    if(!tblHeader[i])
+                        tblHeader[i]=[];
 
-                    //Less rows than headers *CHECK*
-                    if(text)
+                    tblHeader[i].push(
+                        <th key={i} colSpan={headers[i].colspan} rowSpan={headers[i].rowspan}>
+                            {headers[i].text}
+                        </th>
+                    );
+                }
+
+                var rowBody=[];
+
+                for(var r=0; r<rows.length; r++)
+                {
+                    elements = [];
+
+                    for(var i=0; i<rows[r].length; i++)
+                    {
+                        if(!elements[i])
+                            elements[i]=[];
+
+                        let text = rows[r][i];
+                        var listText = [];
+
                         for(var t=0; t<text.length; t++)
                            listText.push(<p key={r+""+i+""+t}>{text[t].text}</p>);
-                    else
-                        break;
 
-
-                    if(rows[r].length > 1)
-                        elements[r].push(
-                            <dl key={r+""+i} className="dl-horizontal">
-                                <dt><span className="label label-default">{headers[i]}</span></dt>
-                                <dd className="text-left">{listText}</dd>
-                            </dl>
-                        );
-                    else
-                        elements[r].push(
-                            <dl key={r+""+i} className="dl-horizontal">
+                        elements[i].push(
+                            <td  key={r+""+i} colSpan={text[0].colspan} rowSpan={text[0].rowspan}>
                                 {listText}
-                            </dl>
+                            </td>
                         );
-                }
-            }
+                    }
 
-            var listItems=(elements.map(function(element, index)
-            {
-                return(
-                    <div key={index}>
-                        {element}
-                        <hr/>
+                    rowBody.push(
+                        <tr key={r}>
+                            {elements}
+                        </tr>
+                    );
+                }
+
+
+                // html wrapper for the table data
+                tables.push(
+                    <div key={tableNum}>
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    {tblHeader}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {rowBody}
+                            </tbody>
+                        </table>
                     </div>
                 );
-            }));
 
-            tables.push(
-                <div key={tableNum}>
-                    {listItems}
-                </div>
-            );
+            }
+            else
+            {
+                for(var r=0; r<rows.length; r++)
+                {
+                    if(!elements[r])
+                        elements[r]=[];
+
+                    for(var i=0; i<headers.length; i++)
+                    {
+                        let text = rows[r][i];
+                        var listText = [];
+
+                        //Less rows than headers *CHECK*
+                        if(text)
+                            for(var t=0; t<text.length; t++)
+                               listText.push(<p key={r+""+i+""+t}>{text[t].text}</p>);
+                        else
+                            break;
+
+                        if(rows[r].length > 1)
+                            elements[r].push(
+                                <dl key={r+""+i} className="dl-horizontal">
+                                    <dt><span className="label label-default">{headers[i].text}</span></dt>
+                                    <dd className="text-left">{listText}</dd>
+                                </dl>
+                            );
+                        else
+                            elements[r].push(
+                                <dl key={r+""+i} className="dl-horizontal">
+                                    {listText}
+                                </dl>
+                            );
+                    }
+                }
+
+                // html structure for each row of data
+                var listItems=(elements.map(function(element, index)
+                {
+                    return(
+                        <div key={index}>
+                            {element}
+                            <hr/>
+                        </div>
+                    );
+                }));
+
+                // html wrapper for the table data
+                tables.push(
+                    <div key={tableNum}>
+                        {listItems}
+                    </div>
+                );
+            }
         }
 
+        // Process for non tables information
         if(this.props.otherText)
         {
-            debug2 = this.props;
-            elements=new Array();
+            // array of items to be rendered
+            var elements=new Array();
 
             for(var j=0; j<this.props.otherText.length; j++)
             {
@@ -337,9 +431,9 @@ class Allergies extends React.Component
                             {this.props.otherText[j].text}
                         </dl>
                     );
-
             }
 
+            // html structure for each row of data
             var listItems=(elements.map(function(element, index)
             {
                 return(
@@ -350,30 +444,44 @@ class Allergies extends React.Component
                 );
             }));
 
+            // html wrapper for the list of data
             tables.push(
                 <div key={tableNum+1}>
                     {listItems}
                 </div>
             );
         }
-
+        // Panel html structure
         var titleRef = this.props.title.replace(/,|:| |\u002E/g,"_");
         return(
-            <div id={titleRef} className="col-lg-4 col-md-4 col-sm-4 mb">
-                <div  className="grey-panel pn">
+            <div id={titleRef} className="col-lg-4 col-md-4 col-sm-4 mb" style={{display: this.state.display}}>
+                <div className="grey-panel pn">
                     <div className="grey-header">
-                        <h4>{this.props.title}</h4>
+                        <h4>
+                            <a href="#" className="pull-right" onClick={this.onClick}>
+                                <i className="fa fa-trash-o fa-lg"></i>
+                            </a>
+                            {this.props.title}
+                        </h4>
                     </div>
-                    <span className="pn-bg fa fa-heartbeat fa-5x"></span>
+                    <span className={"pn-bg fa "+this.props.iconClass+" fa-5x"}></span>
                     {tables}
                 </div>
             </div>
         );
     }
-}
+});
 
-class CollapsiblePanel extends React.Component
+var CollapsiblePanel=React.createClass(
 {
+    getInitialState() {
+        return {data: [], display: 'block', title: ''};
+    },
+
+    onClick(){
+        this.setState({ display: 'none' });
+    },
+
     render()
     {
         if(!this.props.data)
@@ -407,7 +515,7 @@ class CollapsiblePanel extends React.Component
                     }
                     elements[r].push(
                         <dl key={r+""+i} className="dl-horizontal">
-                            <dt><span className="label label-default">{headers[i]}</span></dt>
+                            <dt><span className="label label-default">{headers[i].text}</span></dt>
                             <dd className="text-left">{listText}</dd>
                         </dl>
                     );
@@ -448,11 +556,19 @@ class CollapsiblePanel extends React.Component
 
         var titleRef = this.props.title.replace(/,|:| |\u002E/g,"_");
         return(
-            <div id={titleRef} className="col-lg-4 col-md-4 col-sm-4 mb">
+            <div id={titleRef} className="col-lg-4 col-md-4 col-sm-4 mb" style={{display: this.state.display}}>
                 <div className="grey-panel">
-                  <div className="grey-header"><h4>{this.props.title}</h4>
+                  <div className="grey-header">
+                    <div className="row">
+                        <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <h4>{this.props.title}</h4>
+                        </div>
+                        <div className="col-sm-6 col-xs-6 goright">
+                            <a href="#" onClick={this.onClick}><i className="fa fa-trash-o fa-2x"></i></a>
+                        </div>
+                    </div>
                   </div>
-                  <span className="pn-bg fa fa-heartbeat fa-5x"></span>
+                  <span className={"pn-bg fa "+this.props.iconClass+" fa-5x"}></span>
                   <div className="panel-body">
                     <div id="accordion" className="panel-group">
                       {tables}
@@ -462,9 +578,9 @@ class CollapsiblePanel extends React.Component
             </div>
         );
     }
-}
+});
 
-
+/* CCDA XML File Upload form. Main step */
 class XMLForm extends React.Component
 {
     render()
@@ -496,36 +612,46 @@ class XMLForm extends React.Component
         event.preventDefault();
         // this.setState({ type: 'info', message: 'Sending...' }, this.sendFormData);
 
+        // Calls web service that receives the XML file and returns it converted to JSON
         $.ajax(
         {
             url: $(event.target).prop("action"),
             type: "POST",
             data: new FormData(event.target),
+            // JSON data received from the service
             success: function(data)
             {
+                // Extract needed parts of the document to process them
                 var components = data.ClinicalDocument.component.structuredBody.component;
                 var title = data.ClinicalDocument.title;
                 var patientRole=data.ClinicalDocument.recordTarget.patientRole;
                 var allComponents = new Array();
 
+                // components contains the sections to display as panels
                 for(let i=0; i<components.length; i++)
                 {
                     let section=components[i].section;
                     let sectionTitle=section.title;
                     let sectionText=section.text;
+                    // tables found inside a section
                     let tableData=[];
+                    // other strings found inside a section
                     let otherText=[];
+                    console.log("displaying section: "+sectionTitle);
 
-                    /*if(section.code.code == "30954-2")
-                    {*/
+                    //if(section.code.code == "10160-0")
+                    //{
+                        // if the section only contains a string
                         if(typeof sectionText == "string")
                             otherText.push({"key": "string", "text": sectionText});
                         else
                             for(var item in sectionText)
                             {
+                                // extract tables information
                                 if(item=="table")
                                 {
                                     var tables=sectionText[item];
+                                    // if only one table is found make it an array to be able to use the loop in the next step
                                     if(!Array.isArray(tables))
                                         tables=[tables];
                                     for(var numTable=0; numTable<tables.length; numTable++)
@@ -542,39 +668,38 @@ class XMLForm extends React.Component
                                         // console.log("other text: "+otherText[k]);
                                 }
                             }
-                        debugvar=tableData;
                     //}
-
                     allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData, "otherText": otherText});
                 }
 
+                // Close modal window with the upload form when the service call has finished
                 $("#myModal").modal("toggle");
 
                 /* Added by VV to get the sections, for build the menu. */
-            
                 var title = null;
                 var titles=[];
                 var titleRef;
                 for(var i = 0; i < components.length; i++){
-                    
                     title = getSectionTitle(components[i].section)
                     if (title!=null) {
                         titleRef = "#" + title.replace(/,|:| |\u002E/g,"_");
                         titleRef = "javascript:goToByScroll('" + titleRef + "');";
-                        titles.push({"text": title, href:titleRef , "code": components[i].section.code.code});
-                    }   
+                        titles.push({"text": title, href:titleRef ,"code": components[i].section.code.code});
+                    }
                 }
-                
+
                 var originalData = [];
                 originalData.push({text: 'Main Information', href: '#patientDetails', icon: 'glyphicon glyphicon-signal'});
                 originalData.push({text: 'Health Status',href: '#healthStatus', icon: 'glyphicon glyphicon-scale'});
                 originalData.push({text: 'CCDA Info',icon: 'glyphicon glyphicon-list-alt', nodes: titles});
 
+                // Render components
                 //ReactDOM.render(<Panel data={components}/>, document.getElementById("panels"));
                 ReactDOM.render(<PanelBox data={allComponents}/>, document.getElementById("panels"));
                 ReactDOM.render(<PatientDetails patientRole={patientRole}/>, document.getElementById("patientDetails"));
                 ReactDOM.render(<TreeView treeData={originalData} enableLinks={true}/>, document.getElementById("tree_menu"));
             },
+            // Web service call error
             error: function(err)
             {
                var message = "";
@@ -584,9 +709,11 @@ class XMLForm extends React.Component
                 else if(err.statusText != null)
                   message = err.statusText;
 
+                // service is not active or unreachable
                 if(err.status == 0)
                   message = "Service Unavailable";
 
+                // show error message to the user
                 showAlert("danger", "Error: "+message);
             },
             processData: false,
@@ -597,7 +724,7 @@ class XMLForm extends React.Component
 
 /* Classes created by VV to create handle the menu. */
 var TreeView = React.createClass(
-  {
+{
   displayName: "TreeView",
   propTypes: {
     levels: React.PropTypes.number,
@@ -667,9 +794,9 @@ var TreeView = React.createClass(
     if (this.treeData) {
       var _this = this;
       this.treeData.forEach(function (node) {
-        children.push(React.createElement(TreeNode, {node: node, 
-                                level: 1, 
-                                visible: true, 
+        children.push(React.createElement(TreeNode, {node: node,
+                                level: 1,
+                                visible: true,
                                 options: _this.props}));
       });
     }
@@ -695,7 +822,7 @@ var TreeNode = React.createClass({
                     (this.props.level < this.props.options.levels) ?
                       true :
                       false,
-      selected: (node.state && node.state.hasOwnProperty('selected')) ? 
+      selected: (node.state && node.state.hasOwnProperty('selected')) ?
                   node.state.selected :
                   false
     }
@@ -718,9 +845,8 @@ var TreeNode = React.createClass({
 
     var style;
     if (!this.props.visible) {
-
-      style = { 
-        display: 'none' 
+      style = {
+        display: 'none'
       };
     }
     else {
@@ -744,7 +870,7 @@ var TreeNode = React.createClass({
       else if (options.borderColor) {
         style.border = '1px solid ' + options.borderColor;
       }
-    } 
+    }
 
     var indents = [];
     for (var i = 0; i < this.props.level-1; i++) {
@@ -755,14 +881,14 @@ var TreeNode = React.createClass({
     if (node.nodes) {
       if (!this.state.expanded) {
         expandCollapseIcon = (
-          React.createElement("span", {className: options.expandIcon, 
+          React.createElement("span", {className: options.expandIcon,
                 onClick: this.toggleExpanded.bind(this, node.nodeId)}
           )
         );
       }
       else {
         expandCollapseIcon = (
-          React.createElement("span", {className: options.collapseIcon, 
+          React.createElement("span", {className: options.collapseIcon,
                 onClick: this.toggleExpanded.bind(this, node.nodeId)}
           )
         );
@@ -775,7 +901,7 @@ var TreeNode = React.createClass({
     }
 
     var nodeIcon = (
-      React.createElement("span", {className: "icon"}, 
+      React.createElement("span", {className: "icon"},
         React.createElement("i", {className: node.icon || options.nodeIcon})
       )
     );
@@ -807,23 +933,23 @@ var TreeNode = React.createClass({
     if (node.nodes) {
       var _this = this;
       node.nodes.forEach(function (node) {
-        children.push(React.createElement(TreeNode, {node: node, 
-                                level: _this.props.level+1, 
+        children.push(React.createElement(TreeNode, {node: node,
+                                level: _this.props.level+1,
                                 visible: _this.state.expanded && _this.props.visible,
                                 options: options}));
       });
     }
 
     return (
-      React.createElement("li", {className: "list-group-item", 
-          style: style, 
-          onClick: this.toggleSelected.bind(this, node.nodeId), 
-          key: node.nodeId}, 
-        indents, 
-        expandCollapseIcon, 
-        nodeIcon, 
-        nodeText, 
-        badges, 
+      React.createElement("li", {className: "list-group-item",
+          style: style,
+          onClick: this.toggleSelected.bind(this, node.nodeId),
+          key: node.nodeId},
+        indents,
+        expandCollapseIcon,
+        nodeIcon,
+        nodeText,
+        badges,
         children
       )
     );
@@ -832,18 +958,15 @@ var TreeNode = React.createClass({
 
 /*** Utility functions ***/
 
-/* Extract just the text inside a node when there might be additional attributes 
-(in that case the text content is inside "$")
-*/
-
+/* Extract just the text inside a node when there might be additional attributes
+(in that case the text content is inside "$") */
 function getNodeText(nodeElement)
 {
     if(!nodeElement)
         return null;
-    if(typeof nodeElement==="string" || nodeElement instanceof String)
+    if(typeof nodeElement==="string" || nodeElement instanceof String
+    || typeof nodeElement==="number" || nodeElement instanceof Number)
         return nodeElement;
-    if(typeof nodeElement==="number" || nodeElement instanceof Number)
-      return nodeElement;
     return nodeElement.$
 }
 
@@ -948,14 +1071,15 @@ function getLanguage(patientObj) {
   if (patientObj.languageCommunication && patientObj.languageCommunication.languageCode) {
     languageCode = patientObj.languageCommunication.languageCode.code;
   } else return "?";
-  
+
   language = languageCode.length==2?languages639_1.filter(function(obj) { return obj.code.toLowerCase() === languageCode.toLowerCase() }):languages639_2.filter(function(obj) { return obj.code.toLowerCase() === languageCode.toLowerCase() });
 
   return language.length>0?language[0].value:"?";
 }
 
-
-function getPatientDetails(patientRole) {
+/* Extract the patient details form the patientRole section of the document */
+function getPatientDetails(patientRole)
+{
   //console.log("getPatientDetails: " + JSON.stringify(patientRole));
   var patientName=patientRole.patient.name;
   var name=buildName(patientName);
@@ -1008,7 +1132,7 @@ function getPatientDetails(patientRole) {
   return patientMap;
 }
 
-
+// Check recursively if a node contains a string
 function searchString(str, obj) {
     for(var key in obj) {
         if(key.toString() === str)
@@ -1016,21 +1140,31 @@ function searchString(str, obj) {
 
         var elem = obj[key];
 
-        if(typeof elem === "object") {
+        if(typeof elem === "object")
             searchString(elem); // call recursively
-        }
     }
-
     return false;
 }
 
+function buildTableCellObject(dataNode, txtObject)
+{
+    return (
+    {
+        text: (txtObject == null ? getNodeText(dataNode) : txtObject),
+        colspan: (dataNode.colspan == undefined ? null : dataNode.colspan),
+        rowspan: (dataNode.rowspan == undefined ? null : dataNode.rowspan)
+    });
+}
+
+/* Parse table information to a JS object */
 function getNodeTableData(tableNode)
 {
     if(!tableNode)
         return null;
 
-    var tableData={headers:[], rows:[]}
+    var tableData={headers:[], rows:[], hasSpans:false};
 
+    // Save table header cells contents to tableData
     if(tableNode.thead)
     {
         //When more than 1 header exists *CHECK*
@@ -1038,40 +1172,62 @@ function getNodeTableData(tableNode)
             tableNode.thead.tr = [tableNode.thead.tr];
 
         for(var j=0; j<tableNode.thead.tr.length; j++)
+        {
+            if(!Array.isArray(tableNode.thead.tr[j].th))
+                tableNode.thead.tr[j].th=[tableNode.thead.tr[j].th];
+
             for(var i=0; i<tableNode.thead.tr[j].th.length; i++)
-                tableData.headers.push(getNodeText(tableNode.thead.tr[j].th[i]));
+            {
+                tableData.headers.push(buildTableCellObject(tableNode.thead.tr[j].th[i]));
+                // check for colspan/rowspan
+                if(tableNode.thead.tr[j].th[i].rowspan || tableNode.thead.tr[j].th[i].colspan)
+                    tableData.hasSpans=true;
+            }
+        }
     }
     else
         tableData.headers.push(new Array());
 
+    // if table only has one row, make it an arraw to access it in the loop below
     if(!Array.isArray(tableNode.tbody.tr))
        tableNode.tbody.tr=[tableNode.tbody.tr];
 
+    // Save table body cells contents to tableData
     for(var r=0; r<tableNode.tbody.tr.length; r++)
         if(tableNode.tbody.tr[r].td)
         {
             tableData.rows.push([]);
 
+            // if only one column found, make it an array
             if(!Array.isArray(tableNode.tbody.tr[r].td))
                 tableNode.tbody.tr[r].td=[tableNode.tbody.tr[r].td];
 
             for(var c=0; c<tableNode.tbody.tr[r].td.length; c++)
             {
                 var jsonArr = new Array();
+                var txtArr = new Array();
 
                 if(typeof tableNode.tbody.tr[r].td[c] == "string")
-                    jsonArr.push({"key": "string", "text": getNodeText(tableNode.tbody.tr[r].td[c])});
-                else
-                    iterate(tableNode.tbody.tr[r].td[c], jsonArr);
+                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].td[c], getNodeText(tableNode.tbody.tr[r].td[c])));
+                else // Cell contains something other than a string
+                {
+                    // extract contents recursively
+                    iterate(tableNode.tbody.tr[r].td[c], txtArr);
+
+                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].td[c], txtArr.text));
+                    // check for colspan/rowspan
+                    if(tableNode.tbody.tr[r].td[c].rowspan || tableNode.tbody.tr[r].td[c].colspan)
+                        tableData.hasSpans=true;
+                }
 
                 tableData.rows[tableData.rows.length-1].push(jsonArr);
-            } 
+            }
         }
 
     return tableData;
 }
 
-/* Contact information */
+/* Merge the elements of a person's name to make if readable */
 function buildName(nameNode)
 {
     if(!nameNode)
@@ -1102,6 +1258,7 @@ function buildName(nameNode)
     return name;
 }
 
+/* Merge the elements of an address to make if readable */
 function buildAddress(addressNode)
 {
     if(!addressNode)
@@ -1121,6 +1278,7 @@ function buildAddress(addressNode)
     return address;
 }
 
+/* extract contact methods from the telecom node */
 function buildTelecom(telecomNode)
 {
     if(!telecomNode)
@@ -1148,12 +1306,12 @@ function buildTelecom(telecomNode)
  {
    var alert=$("<div/>").addClass("alert alert-dismissable alert-"+alertType)
    var closeBtn=$("<a/>").attr("href", "#").addClass("close").attr("data-dismiss", "alert").html("&times;");
- 
+
    alert.html(closeBtn);
    alert.append(message);
- 
+
    $("#alerts").append(alert);
- 
+
    alert.fadeTo(2000, 500).slideUp(1500, function()
    {
      alert.alert("close");
