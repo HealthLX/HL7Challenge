@@ -121,7 +121,7 @@ var PanelBox=React.createClass(
             //Allergies
             case "48765-2":
                 iconClass="fa-info-circle";
-                panel = (<Allergies key={index} title={component.title} data={component.data} iconClass={iconClass}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} iconClass={iconClass}/>);
                 break;
             //Medications
             case "10160-0":
@@ -164,10 +164,10 @@ var PanelBox=React.createClass(
                 panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Vital Signs
-            case "8716-3":
+            /*case "8716-3":
                 iconClass="fa-heartbeat";
                 panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
-                break;
+                break;*/
             //Health Concerns Section
             case "75310-3":
                 iconClass="fa-ambulance";
@@ -229,9 +229,10 @@ var PanelBox=React.createClass(
                 panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Default
-            default:
+            /*default:
+                // iconClass="fa-";
                 panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
-                break;
+                break;*/
             }
             return(panel);
         });
@@ -347,14 +348,17 @@ var Allergies=React.createClass(
                         if(!elements[i])
                             elements[i]=[];
 
-                        let text = rows[r][i];
+                        let text = rows[r][i][0];
                         var listText = [];
 
-                        for(var t=0; t<text.length; t++)
-                           listText.push(<p key={r+""+i+""+t}>{text[t].text}</p>);
+                        if(!Array.isArray(text.text))
+                                text.text = [text.text];
+
+                        for(var t=0; t<text.text.length; t++)
+                           listText.push(<p key={r+""+i+""+t}>{text.text[t].text}</p>);
 
                         elements[i].push(
-                            <td  key={r+""+i} colSpan={text[0].colspan} rowSpan={text[0].rowspan}>
+                            <td  key={r+""+i} colSpan={text.colspan} rowSpan={text.rowspan}>
                                 {listText}
                             </td>
                         );
@@ -389,6 +393,8 @@ var Allergies=React.createClass(
             }
             else
             {
+                debugvar = rows;
+                debug2 = headers;
                 for(var r=0; r<rows.length; r++)
                 {
                     if(!elements[r])
@@ -396,13 +402,19 @@ var Allergies=React.createClass(
 
                     for(var i=0; i<headers.length; i++)
                     {
-                        let text = rows[r][i];
+                        console.log("r: "+r+" i: "+i);
+                        let text = rows[r][i][0];
                         var listText = [];
 
                         //Less rows than headers *CHECK*
                         if(text)
-                            for(var t=0; t<text.length; t++)
-                               listText.push(<p key={r+""+i+""+t}>{text[t].text}</p>);
+                        {
+                            if(!Array.isArray(text.text))
+                                text.text = [text.text];
+
+                            for(var t=0; t<text.text.length; t++)
+                               listText.push(<p key={r+""+i+""+t}>{text.text[t].text}</p>);
+                        }
                         else
                             break;
 
@@ -530,15 +542,20 @@ var CollapsiblePanel=React.createClass(
                     elements[r]=[];
 
                 for(var i=0; i<headers.length; i++) {
-                    let text = rows[r][i];
+                    let text = rows[r][i][0];
                     var listText = [];
 
                     if(text)
-                        for(var t=0; t<text.length; t++)
-                           listText.push(<p key={r+""+i+""+t}>{text[t].text}</p>);
+                    {
+                        if(!Array.isArray(text.text))
+                            text.text = [text.text];
+
+                        for(var t=0; t<text.text.length; t++)
+                           listText.push(<p key={r+""+i+""+t}>{text.text[t].text}</p>);
+                    }
 
                     if (i===0 && text) {
-                        collapsePanelHeading.push(text[0].text.toUpperCase());
+                        collapsePanelHeading.push(text.text[0].text.toUpperCase());
                     }
                     elements[r].push(
                         <dl key={r+""+i} className="dl-horizontal">
@@ -666,8 +683,8 @@ class XMLForm extends React.Component
                     let otherText=[];
                     //console.log("displaying section: "+sectionTitle);
 
-                    //if(section.code.code == "10160-0")
-                    //{
+                    // if(section.code.code == "8716-3")
+                    // {
                         // if the section only contains a string
                         if(typeof sectionText == "string")
                             otherText.push({"key": "string", "text": sectionText});
@@ -692,10 +709,10 @@ class XMLForm extends React.Component
                                         iterate(sectionText[item], otherText);
 
                                     for(var k=0; k<otherText.length; k++);
-                                        // console.log("other text: "+otherText[k]);
+                                        //console.log("other text: "+otherText[k]);
                                 }
                             }
-                    //}
+                    // }
                     allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData, "otherText": otherText});
                 }
 
@@ -1017,7 +1034,7 @@ function iterate(obj, jsonArr) {
             iterate(elem, jsonArr); // call recursively
         }
         else{
-            var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan/;
+            var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan|href/;
 
             if(!patt.test(key.toString())){
                 if(elem == undefined)
@@ -1235,17 +1252,19 @@ function getNodeTableData(tableNode)
                 var txtArr = new Array();
 
                 if(typeof tableNode.tbody.tr[r].td[c] == "string")
-                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].td[c], getNodeText(tableNode.tbody.tr[r].td[c])));
+                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].td[c], {"key":"string", "text":getNodeText(tableNode.tbody.tr[r].td[c])} ));
                 else // Cell contains something other than a string
                 {
                     // extract contents recursively
                     iterate(tableNode.tbody.tr[r].td[c], txtArr);
 
-                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].td[c], txtArr.text));
+                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].td[c], txtArr));
                     // check for colspan/rowspan
                     if(tableNode.tbody.tr[r].td[c].rowspan || tableNode.tbody.tr[r].td[c].colspan)
                         tableData.hasSpans=true;
+
                 }
+
 
                 tableData.rows[tableData.rows.length-1].push(jsonArr);
             }
