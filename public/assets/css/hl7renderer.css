@@ -108,7 +108,7 @@ hr
 
 .sidebar {
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
 
 }
 
@@ -160,6 +160,8 @@ hr
         position: absolute;
         width: 250px;
         margin-top: 65px;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
     .navbar-top-links .dropdown-messages,
@@ -389,4 +391,8 @@ table.dataTable thead .sorting:after {
 
 #panel-white {
     background: #fff;
+}
+
+.carousel-inner .item img {
+    margin: auto;
 }
