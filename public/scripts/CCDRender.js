@@ -75,7 +75,7 @@ var languages639_2 = [
 {'code':'vol','value':'Volapük'}, {'code':'wln','value':'Walloon'}, {'code':'cym','value':'Welsh'}, {'code':'wol','value':'Wolof'}, {'code':'fry','value':'Western Frisian'},
 {'code':'xho','value':'Xhosa'}, {'code':'yid','value':'Yiddish'}, {'code':'yor','value':'Yoruba'}, {'code':'zha','value':'Zhuang, Chuang'}, {'code':'zul','value':'Zulu'}];
 var menuData =  [
-  
+
 ];
 
 /*var Panel=React.createClass(
@@ -341,23 +341,25 @@ var Allergies=React.createClass(
                     );
                 }
 
-
                 // html wrapper for the table data
                 tables.push(
-                    <div key={tableNum}>
-                        <table className="table">
-                            <thead>
-                                <tr>
-                                    {tblHeader}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {rowBody}
-                            </tbody>
-                        </table>
+                    <div className="row" key={tableNum}>
+                        <div className="col-sm-12">
+                            <div className="table-responsive">
+                                <table className="table table-wrap table-bordered table-striped table-hover table-condensed">
+                                    <thead>
+                                        <tr>
+                                            {tblHeader}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {rowBody}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 );
-
             }
             else
             {
@@ -908,7 +910,7 @@ var TreeNode = React.createClass({
     var nodeText;
     if (options.enableLinks) {
       nodeText = (
-        React.createElement("a", {href: node.href}, 
+        React.createElement("a", {href: node.href},
           node.text
         )
       );
@@ -1286,7 +1288,7 @@ function buildTelecom(telecomNode)
         var contact = [];
         while (contact.length > 0) {
             contact.pop();
-        } 
+        }
         for(var i=0; i<telecomNode.length; i++)
         {
             var value=telecomNode[i].value;

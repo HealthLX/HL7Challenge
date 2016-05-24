@@ -32,6 +32,16 @@ body {
     height: auto;
 }
 
+.table
+{
+    table-layout: fixed;
+}
+
+.table-wrap
+{
+    word-wrap: break-word;
+}
+
 dl
 {
     margin-bottom: 0;
