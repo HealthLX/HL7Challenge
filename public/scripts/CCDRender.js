@@ -373,7 +373,7 @@ var Allergies=React.createClass(
                     );
                 }
 
-
+                debug2=rowBody;
                 // html wrapper for the table data
                 tables.push(
                     <div key={tableNum}>
@@ -1221,7 +1221,7 @@ function getNodeTableData(tableNode)
                     // extract contents recursively
                     iterate(tableNode.tbody.tr[r].td[c], txtArr);
 
-                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].td[c], txtArr));
+                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].td[c], txtArr.text));
                     // check for colspan/rowspan
                     if(tableNode.tbody.tr[r].td[c].rowspan || tableNode.tbody.tr[r].td[c].colspan)
                         tableData.hasSpans=true;
