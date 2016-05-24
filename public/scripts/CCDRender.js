@@ -310,6 +310,7 @@ var Allergies=React.createClass(
 
         // Sections might contain more than one table
         var tables=[];
+        var panelSizeClasses="col-lg-3 col-md-4 col-sm-12";
 
         // Process for tables information
         for(var tableNum=0; tableNum<this.props.data.length; tableNum++)
@@ -324,6 +325,7 @@ var Allergies=React.createClass(
             if(table.hasSpans)
             {
                 var tblHeader = [];
+                panelSizeClasses="col-lg-6 col-md-8 col-sm-12";
 
                 for(var i=0; i<headers.length; i++)
                 {
@@ -493,7 +495,7 @@ var Allergies=React.createClass(
         // Panel html structure
         var titleRef = this.props.title.replace(/,|:| |\u002E/g,"_");
         return(
-            <div id={titleRef} className="grid-item col-lg-4 col-md-4 col-sm-4 mb" style={{display: this.state.display}}>
+            <div id={titleRef} className={"grid-item mb "+panelSizeClasses} style={{display: this.state.display}}>
                 <div className="grey-panel pn">
                     <div className="grey-header">
                         <h4>
@@ -600,11 +602,11 @@ var CollapsiblePanel=React.createClass(
 
         var titleRef = this.props.title.replace(/,|:| |\u002E/g,"_");
         return(
-            <div id={titleRef} className="grid-item col-lg-4 col-md-4 col-sm-4 mb" style={{display: this.state.display}}>
+            <div id={titleRef} className="grid-item col-lg-3 col-md-4 col-sm-12 mb" style={{display: this.state.display}}>
                 <div className="grey-panel">
                   <div className="grey-header">
                     <div className="row">
-                        <div className="col-lg-10 col-md-10 col-sm-6 col-xs-10">
+                        <div className="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                             <h4>{this.props.title}</h4>
                         </div>
                         <div className="col-sm-2 col-xs-2 goright">

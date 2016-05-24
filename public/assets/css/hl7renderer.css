@@ -47,6 +47,26 @@ dl
     margin-bottom: 0;
 }
 
+.dl-horizontal dt
+{
+    width: 33%;
+    /*font-weight: 800;*/
+    /*white-space: normal;*/
+}
+
+.dl-horizontal dd
+{
+    margin-left: 33%;
+}
+
+.dl-horizontal dt .label
+{
+    text-align: right;
+    white-space: normal;
+    display: inline-block;
+    padding: .2em .6em;
+}
+
 hr
 {
     margin: 5px 20px;
