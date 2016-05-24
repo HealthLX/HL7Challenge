@@ -32,8 +32,9 @@ $(function() {
 });
 
 function goToByScroll(id){
-          // Reove "link" from the ID
-          // Scroll
+        if ($(id).css('display') == 'none' ) {
+            $(id).show(750);
+        }
         $('html,body').animate({
             scrollTop: $(id).offset().top},
             'slow');

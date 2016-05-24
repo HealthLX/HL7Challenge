@@ -269,7 +269,7 @@ var Allergies=React.createClass(
         return {data: [], display: 'block', otherData: [], title: ''};
     },
 
-    onClick(){
+    onClick() {
         this.setState({ display: 'none' });
     },
 
@@ -478,7 +478,7 @@ var CollapsiblePanel=React.createClass(
     },
 
     onClick(){
-        this.setState({ display: 'none' });
+        this.setState({ display: 'none'});
     },
 
     render()
@@ -509,8 +509,8 @@ var CollapsiblePanel=React.createClass(
                         for(var t=0; t<text.length; t++)
                            listText.push(<p key={r+""+i+""+t}>{text[t].text}</p>);
 
-                    if (i===0) {
-                      collapsePanelHeading.push(text[0].text.toUpperCase());
+                    if (i===0 && text) {
+                        collapsePanelHeading.push(text[0].text.toUpperCase());
                     }
                     elements[r].push(
                         <dl key={r+""+i} className="dl-horizontal">
@@ -559,10 +559,10 @@ var CollapsiblePanel=React.createClass(
                 <div className="grey-panel">
                   <div className="grey-header">
                     <div className="row">
-                        <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div className="col-lg-10 col-md-10 col-sm-6 col-xs-10">
                             <h4>{this.props.title}</h4>
                         </div>
-                        <div className="col-sm-6 col-xs-6 goright">
+                        <div className="col-sm-2 col-xs-2 goright">
                             <a href="#" onClick={this.onClick}><i className="fa fa-trash-o fa-2x"></i></a>
                         </div>
                     </div>
@@ -636,7 +636,7 @@ class XMLForm extends React.Component
                     let tableData=[];
                     // other strings found inside a section
                     let otherText=[];
-                    console.log("displaying section: "+sectionTitle);
+                    //console.log("displaying section: "+sectionTitle);
 
                     //if(section.code.code == "10160-0")
                     //{
@@ -1032,7 +1032,6 @@ function getRace(patientObj) {
     for (var i=1; i<patientObj.raceCode.length;i++) {
       //if (searchString("displayName", patientObj.raceCode[i])) {
         if (patientObj.raceCode[i].displayName) {
-            console.log(patientObj.raceCode[i].displayName);
             race += " [" + patientObj.raceCode[i].displayName + "]";
       }
     }
@@ -1127,7 +1126,6 @@ function getPatientDetails(patientRole)
     "guardianName":guardianName!=undefined?guardianName:"---",
     "language":language,
     "age":age};
-    console.log(patientMap);
   return patientMap;
 }
 
