@@ -312,6 +312,8 @@ var Allergies=React.createClass(
         var tables=[];
         var panelSizeClasses="col-lg-3 col-md-4 col-sm-12";
 
+
+
         // Process for tables information
         for(var tableNum=0; tableNum<this.props.data.length; tableNum++)
         {
@@ -395,8 +397,6 @@ var Allergies=React.createClass(
             }
             else
             {
-                debugvar = rows;
-                debug2 = headers;
                 for(var r=0; r<rows.length; r++)
                 {
                     if(!elements[r])
@@ -685,7 +685,7 @@ class XMLForm extends React.Component
                     let otherText=[];
                     //console.log("displaying section: "+sectionTitle);
 
-                    // if(section.code.code == "8716-3")
+                    // if(section.code.code == "10157-6")
                     // {
                         // if the section only contains a string
                         if(typeof sectionText == "string")
@@ -1253,7 +1253,7 @@ function getNodeTableData(tableNode)
                 var jsonArr = new Array();
                 var txtArr = new Array();
 
-                if(typeof tableNode.tbody.tr[r].td[c] == "string")
+                if(typeof tableNode.tbody.tr[r].td[c] === "string" || typeof tableNode.tbody.tr[r].td[c] === "number")
                     jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].td[c], {"key":"string", "text":getNodeText(tableNode.tbody.tr[r].td[c])} ));
                 else // Cell contains something other than a string
                 {
@@ -1266,7 +1266,6 @@ function getNodeTableData(tableNode)
                         tableData.hasSpans=true;
 
                 }
-
 
                 tableData.rows[tableData.rows.length-1].push(jsonArr);
             }
