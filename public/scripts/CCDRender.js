@@ -325,8 +325,8 @@ var Allergies=React.createClass(
 
             if(table.hasSpans)
             {
+                //handle tables with spans differently
                 console.log("table "+this.props.title+" has spans");
-                /* TODO: handle tables with spans differently? */
 
                 var tblHeader = [];
 
@@ -336,7 +336,7 @@ var Allergies=React.createClass(
                         tblHeader[i]=[];
 
                     tblHeader[i].push(
-                        <th key={i} style={{colspan: headers[i].colspan, rowspan: headers[i].rowspan}}>
+                        <th key={i} colSpan={headers[i].colspan} rowSpan={headers[i].rowspan}>
                             {headers[i].text}
                         </th>
                     );
@@ -360,7 +360,7 @@ var Allergies=React.createClass(
                            listText.push(<p key={r+""+i+""+t}>{text[t].text}</p>);
 
                         elements[i].push(
-                            <td  key={r+""+i} style={{colspan: text.colspan, rowspan: text.rowspan}}>
+                            <td  key={r+""+i} colSpan={text[0].colspan} rowSpan={text[0].rowspan}>
                                 {listText}
                             </td>
                         );
@@ -373,7 +373,7 @@ var Allergies=React.createClass(
                     );
                 }
 
-                debug2=rowBody;
+
                 // html wrapper for the table data
                 tables.push(
                     <div key={tableNum}>
@@ -449,7 +449,6 @@ var Allergies=React.createClass(
         // Process for non tables information
         if(this.props.otherText)
         {
-            // debug2 = this.props;
             // array of items to be rendered
             var elements=new Array();
 
@@ -671,8 +670,8 @@ class XMLForm extends React.Component
 
                     console.log("displaying section: "+sectionTitle);
 
-                    if(section.code.code == "10160-0")
-                    {
+                    //if(section.code.code == "10160-0")
+                    //{
                         // if the section only contains a string
                         if(typeof sectionText == "string")
                             otherText.push({"key": "string", "text": sectionText});
@@ -700,9 +699,7 @@ class XMLForm extends React.Component
                                         console.log("other text: "+otherText[k]);
                                 }
                             }
-
-                        debug2 = tableData;
-                    }
+                    //}
                     allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData, "otherText": otherText});
                 }
 
