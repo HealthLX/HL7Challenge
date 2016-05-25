@@ -31,11 +31,14 @@ $(function() {
 
 function goToByScroll(id)
 {
-    if ($(id).css("display")=="none")
-        $(id).addClass("grid-item").show(0, function()
+    $(id).addClass("grid-item").show(0, function()
+    {
+        // animation completed. update the layout of the panels
+        $("#panels").masonry("reloadItems").masonry();
+        var scrollPosition=$(id).offset().top+$(".navbar-static-top").height();
+        $("body").animate({scrollTop: ($(id).offset().top-$(".navbar-static-top").height())}, "slow", function()
         {
-            // animation completed. update the layout of the panels
-            $("#panels").masonry("reloadItems").masonry();
-            $("html,body").animate({scrollTop: $(id).offset().top}, "slow");
+            $(id+" .pn").effect("bounce", {distance: 20, times:4}, 1000);
         });
+    });
 }

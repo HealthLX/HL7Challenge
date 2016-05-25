@@ -112,117 +112,117 @@ var PanelBox=React.createClass(
             //Allergies
             case "48765-2":
                 iconClass="fa-info-circle";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} iconClass={iconClass}/>);
+                panel = (<CollapsiblePanel key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} iconClass={iconClass}/>);
                 break;
             //Medications
             case "10160-0":
                 iconClass="fa-asterisk";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Immunizations
             case "11369-6":
                 iconClass="fa-medkit";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Plan of care
             case "18776-5":
                 iconClass="fa-plus-square";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Encounters
             case "46240-8":
                 iconClass="fa-hospital-o";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Problem list
             case "11450-4":
                 iconClass="fa-exclamation-triangle";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Procedures
             case "47519-4":
                 iconClass="fa-bed";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Results
             case "30954-2":
                 iconClass="fa-file-text-o";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Social History
             case "29762-2":
                 iconClass="fa-user-plus";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Vital Signs
             case "8716-3":
                 iconClass="fa-heartbeat";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Health Concerns Section
             case "75310-3":
                 iconClass="fa-ambulance";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Goals Section
             case "61146-7":
                 iconClass="fa-list-ul";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Interventions Section
             case "62387-6":
                 iconClass="fa-user-md";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Health Status Evaluations/Outcomes Section
             case "11383-7":
                 iconClass="fa-heart";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Advance Directives
             case "42348-3":
                 iconClass="fa-bolt";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Family History
             case "10157-6":
                 iconClass="fa-users";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Functional Status
             case "47420-5":
                 iconClass="fa-check-square-o";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Medical Equipment
             case "46264-8":
                 iconClass="fa-stethoscope";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Insurance Providers
             case "48768-6":
                 iconClass="fa-shield";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Reason For Referral
             case "42349-1":
                 iconClass="fa-question-circle-o";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Reason For Visit
             case "29299-5":
                 iconClass="fa-question-circle-o";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Instructions
             case "69730-0":
                 iconClass="fa-list-alt";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Default
             default:
                 // iconClass="fa-";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             }
             return(panel);
@@ -283,7 +283,8 @@ var Allergies=React.createClass(
 
     onClick(e)
     {
-        var titleRef=this.props.title.replace(/,|:| |\u002E/g,"_");
+        var titleRef=this.props.id;
+
         $("#"+titleRef).hide("fast", function()
         {
             // animation completed. update the layout of the panels
@@ -318,7 +319,7 @@ var Allergies=React.createClass(
                 var tblCaption;
                 var tblHeader = [];
                 var tblBody=[];
-                
+
                 panelSizeClasses="col-lg-6 col-md-8 col-sm-12";
 
                 if(table.caption != null)
@@ -511,7 +512,7 @@ var Allergies=React.createClass(
             );
         }
         // Panel html structure
-        var titleRef = this.props.title.replace(/,|:| |\u002E/g,"_");
+        var titleRef=this.props.id;
         return(
             <div id={titleRef} className={"grid-item section-panel mb "+panelSizeClasses} style={{display: this.state.display}}>
                 <div className="grey-panel pn">
@@ -539,7 +540,7 @@ var CollapsiblePanel=React.createClass(
 
     onClick(e)
     {
-        var titleRef=this.props.title.replace(/,|:| |\u002E/g,"_");
+        var titleRef=this.props.id;
         $("#"+titleRef).hide("fast", function()
         {
             // animation completed. update the layout of the panels
@@ -629,10 +630,10 @@ var CollapsiblePanel=React.createClass(
             );
         }
 
-        var titleRef = this.props.title.replace(/,|:| |\u002E/g,"_");
+        var titleRef = this.props.id;
         return(
             <div id={titleRef} className="grid-item section-panel col-lg-3 col-md-4 col-sm-12 mb" style={{display: this.state.display}}>
-                <div className="grey-panel">
+                <div className="grey-panel pn">
                   <div className="grey-header">
                     <div className="row">
                         <div className="col-lg-10 col-md-10 col-sm-10 col-xs-10">
@@ -701,6 +702,7 @@ class XMLForm extends React.Component
                 var title = data.ClinicalDocument.title;
                 var patientRole=data.ClinicalDocument.recordTarget.patientRole;
                 var allComponents = new Array();
+                var titles=[];
 
                 // components contains the sections to display as panels
                 for(let i=0; i<components.length; i++)
@@ -742,24 +744,16 @@ class XMLForm extends React.Component
                             }
                     // }
 
+                    /* Added by VV to get the sections, for build the menu. */
+                    var titleRef="javascript:goToByScroll('#panel-"+components[i].section.code.code+"-"+i+"');";
+                    titles.push({"text": sectionTitle, href: titleRef, "code": components[i].section.code.code});
+                    /* * */
+
                     allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData, "otherText": otherText});
                 }
 
                 // Close modal window with the upload form when the service call has finished
                 $("#myModal").modal("toggle");
-
-                /* Added by VV to get the sections, for build the menu. */
-                var title = null;
-                var titles=[];
-                var titleRef;
-                for(var i = 0; i < components.length; i++){
-                    title = getSectionTitle(components[i].section)
-                    if (title!=null) {
-                        titleRef = "#" + title.replace(/,|:| |\u002E/g,"_");
-                        titleRef = "javascript:goToByScroll('" + titleRef + "');";
-                        titles.push({"text": title, href:titleRef ,"code": components[i].section.code.code});
-                    }
-                }
 
                 var originalData = [];
                 originalData.push({text: 'Main Information', href: '#patientDetails', icon: 'glyphicon glyphicon-signal'});
