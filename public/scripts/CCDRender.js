@@ -341,10 +341,14 @@ var Allergies=React.createClass(
             var headers=table.headers;
 
             //handle tables with spans differently
-            if(table.hasSpans)
+            if(table.hasSpans || table.caption != null)
             {
                 var tblHeader = [];
+                var tblCaption;
                 panelSizeClasses="col-lg-6 col-md-8 col-sm-12";
+
+                if(table.caption != null)
+                    tblCaption = (<caption className="text-center">{table.caption}</caption>);
 
                 for(var i=0; i<headers.length; i++)
                 {
@@ -398,6 +402,7 @@ var Allergies=React.createClass(
                         <div className="col-sm-12">
                             <div className="table-responsive">
                                 <table className="table table-wrap table-bordered table-striped table-hover table-condensed">
+                                    {tblCaption}
                                     <thead>
                                         <tr>
                                             {tblHeader}
@@ -421,7 +426,6 @@ var Allergies=React.createClass(
 
                     for(var i=0; i<headers.length; i++)
                     {
-                        console.log("r: "+r+" i: "+i);
                         let text = rows[r][i][0];
                         var listText = [];
 
@@ -1231,7 +1235,11 @@ function getNodeTableData(tableNode)
     if(!tableNode)
         return null;
 
-    var tableData={headers:[], rows:[], hasSpans:false};
+    var tableData={headers:[], rows:[], hasSpans:false, caption:null};
+
+    //Look for caption tag before the table tag
+    if(searchString("caption", tableNode))
+        tableData.caption = tableNode.caption;
 
     // Save table header cells contents to tableData
     if(tableNode.thead)
@@ -1261,7 +1269,7 @@ function getNodeTableData(tableNode)
     if(!Array.isArray(tableNode.tbody.tr))
        tableNode.tbody.tr=[tableNode.tbody.tr];
 
-    // Save table body cells contents to tableData
+    // Save table body cells contents to tableDat
     for(var r=0; r<tableNode.tbody.tr.length; r++)
         if(tableNode.tbody.tr[r].td)
         {
