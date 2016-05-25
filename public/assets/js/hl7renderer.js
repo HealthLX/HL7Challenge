@@ -31,11 +31,33 @@ $(function() {
 
 function goToByScroll(id)
 {
-    if ($(id).css("display")=="none")
-        $(id).addClass("grid-item").show(0, function()
+    $(id).addClass("grid-item").show(0, function()
+    {
+        // animation completed. update the layout of the panels
+        $("#panels").masonry("reloadItems").masonry();
+        var scrollPosition=$(id).offset().top+$(".navbar-static-top").height();
+        $("body").animate({scrollTop: ($(id).offset().top-$(".navbar-static-top").height())}, "slow", function()
         {
-            // animation completed. update the layout of the panels
-            $("#panels").masonry("reloadItems").masonry();
+            var originalColor=$(id+" .pn-bg").css("color");
+            var originalBgColor=$(id+" .mint-header").css("background-color");
+
+            $(id+" .pn").effect("bounce", {distance: 20, times:4}, 1000);
+
+            $(id+" .pn-bg").animate(
+            {
+                color: 'rgb(141, 208, 182)'
+            }, 1000, function ()
+            {
+                $(this).animate({ color: originalColor });
+            });
+
+            $(id+" .mint-header").animate(
+            {
+                backgroundColor: 'white'
+            }, 1000, function ()
+            {
+                $(this).animate({ backgroundColor: originalBgColor });
+            });
         });
-    $("html,body").animate({scrollTop: $(id).offset().top-65}, "slow");
+    });
 }
