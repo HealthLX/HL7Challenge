@@ -107,6 +107,23 @@ var menuData =  [
 /* Container of panels */
 var PanelBox=React.createClass(
 {
+    // first time load finished
+    componentDidMount: function()
+    {
+        console.log("componentDidMount");
+        // Use masonry for the layout of the panels
+        $("#panels").masonry({itemSelector: ".grid-item"});
+    },
+
+    // update finished
+    componentDidUpdate: function(prevProps, prevState)
+    {
+        console.log("componentDidUpdate");
+        // Mark all panels as visible in case some were hidden previously
+        $(".section-panel").addClass("grid-item").show(0);
+        $("#panels").masonry("reloadItems").masonry();
+    },
+
     render: function()
     {
         var nodes = this.props.data.map(function(component, index)
@@ -131,107 +148,108 @@ var PanelBox=React.createClass(
             //Immunizations
             case "11369-6":
                 iconClass="fa-medkit";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Plan of care
             case "18776-5":
                 iconClass="fa-plus-square";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Encounters
             case "46240-8":
                 iconClass="fa-hospital-o";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Problem list
             case "11450-4":
                 iconClass="fa-exclamation-triangle";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Procedures
             case "47519-4":
                 iconClass="fa-bed";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Results
             case "30954-2":
                 iconClass="fa-file-text-o";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Social History
             case "29762-2":
                 iconClass="fa-user-plus";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Vital Signs
-            case "8716-3":
+            /*case "8716-3":
                 iconClass="fa-heartbeat";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
-                break;
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;*/
             //Health Concerns Section
             case "75310-3":
                 iconClass="fa-ambulance";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Goals Section
             case "61146-7":
                 iconClass="fa-list-ul";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Interventions Section
             case "62387-6":
                 iconClass="fa-user-md";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Health Status Evaluations/Outcomes Section
             case "11383-7":
                 iconClass="fa-heart";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Advance Directives
             case "42348-3":
                 iconClass="fa-bolt";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Family History
             case "10157-6":
                 iconClass="fa-users";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Functional Status
             case "47420-5":
                 iconClass="fa-check-square-o";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Medical Equipment
             case "46264-8":
                 iconClass="fa-stethoscope";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Insurance Providers
             case "48768-6":
                 iconClass="fa-shield";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Reason For Referral
             case "42349-1":
                 iconClass="fa-question-circle-o";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Reason For Visit
             case "29299-5":
                 iconClass="fa-question-circle-o";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Instructions
             case "69730-0":
                 iconClass="fa-list-alt";
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Default
-            default:
-                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
-                break;
+            /*default:
+                // iconClass="fa-";
+                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                break;*/
             }
             return(panel);
         });
@@ -289,8 +307,16 @@ var Allergies=React.createClass(
         return {data: [], display: 'block', otherData: [], title: ''};
     },
 
-    onClick() {
-        this.setState({ display: 'none' });
+    onClick(e)
+    {
+        var titleRef=this.props.title.replace(/,|:| |\u002E/g,"_");
+        $("#"+titleRef).hide("fast", function()
+        {
+            // animation completed. update the layout of the panels
+            $("#"+titleRef).removeClass("grid-item");
+            $("#panels").masonry("reloadItems").masonry();
+        });
+        e.preventDefault();
     },
 
     render()
@@ -301,6 +327,9 @@ var Allergies=React.createClass(
 
         // Sections might contain more than one table
         var tables=[];
+        var panelSizeClasses="col-lg-3 col-md-4 col-sm-12";
+
+
 
         // Process for tables information
         for(var tableNum=0; tableNum<this.props.data.length; tableNum++)
@@ -311,26 +340,44 @@ var Allergies=React.createClass(
             var rows=table.rows;
             var headers=table.headers;
 
-            if(table.hasSpans)
+            //handle tables with spans differently
+            if(table.hasSpans || table.caption != null)
             {
-                //handle tables with spans differently
-                console.log("table "+this.props.title+" has spans");
-
+                var tblCaption;
                 var tblHeader = [];
+                var tblBody=[];
+                
+                panelSizeClasses="col-lg-6 col-md-8 col-sm-12";
 
-                for(var i=0; i<headers.length; i++)
+                if(table.caption != null)
+                    tblCaption = (<caption className="text-center">{table.caption}</caption>);
+
+                for(var r=0; r<headers.length; r++)
                 {
-                    if(!tblHeader[i])
-                        tblHeader[i]=[];
+                    elements = [];
 
-                    tblHeader[i].push(
-                        <th key={i} colSpan={headers[i].colspan} rowSpan={headers[i].rowspan}>
-                            {headers[i].text}
-                        </th>
+                    for(var i=0; i<headers[r].length; i++)
+                    {
+
+                        if(!elements[i])
+                            elements[i]=[];
+
+                        elements[i].push(
+                                <th key={i} colSpan={headers[r][i].colspan} rowSpan={headers[r][i].rowspan}>
+                                    {headers[r][i].text}
+                                </th>
+                            );
+
+                    }
+
+                    tblHeader.push(
+                        <tr key={r}>
+                            {elements}
+                        </tr>
                     );
                 }
 
-                var rowBody=[];
+                elements = [];
 
                 for(var r=0; r<rows.length; r++)
                 {
@@ -341,20 +388,23 @@ var Allergies=React.createClass(
                         if(!elements[i])
                             elements[i]=[];
 
-                        let text = rows[r][i];
+                        let text = rows[r][i][0];
                         var listText = [];
 
-                        for(var t=0; t<text.length; t++)
-                           listText.push(<p key={r+""+i+""+t}>{text[t].text}</p>);
+                        if(!Array.isArray(text.text))
+                                text.text = [text.text];
+
+                        for(var t=0; t<text.text.length; t++)
+                           listText.push(<p key={r+""+i+""+t}>{text.text[t].text}</p>);
 
                         elements[i].push(
-                            <td  key={r+""+i} colSpan={text[0].colspan} rowSpan={text[0].rowspan}>
+                            <td  key={r+""+i} colSpan={text.colspan} rowSpan={text.rowspan}>
                                 {listText}
                             </td>
                         );
                     }
 
-                    rowBody.push(
+                    tblBody.push(
                         <tr key={r}>
                             {elements}
                         </tr>
@@ -367,13 +417,12 @@ var Allergies=React.createClass(
                         <div className="col-sm-12">
                             <div className="table-responsive">
                                 <table className="table table-wrap table-bordered table-striped table-hover table-condensed">
+                                    {tblCaption}
                                     <thead>
-                                        <tr>
-                                            {tblHeader}
-                                        </tr>
+                                        {tblHeader}
                                     </thead>
                                     <tbody>
-                                        {rowBody}
+                                        {tblBody}
                                     </tbody>
                                 </table>
                             </div>
@@ -388,22 +437,27 @@ var Allergies=React.createClass(
                     if(!elements[r])
                         elements[r]=[];
 
-                    for(var i=0; i<headers.length; i++)
+                    for(var i=0; i<headers[0].length; i++)
                     {
-                        let text = rows[r][i];
+                        let text = rows[r][i][0];
                         var listText = [];
 
                         //Less rows than headers *CHECK*
                         if(text)
-                            for(var t=0; t<text.length; t++)
-                               listText.push(<p key={r+""+i+""+t}>{text[t].text}</p>);
+                        {
+                            if(!Array.isArray(text.text))
+                                text.text = [text.text];
+
+                            for(var t=0; t<text.text.length; t++)
+                               listText.push(<p key={r+""+i+""+t}>{text.text[t].text}</p>);
+                        }
                         else
                             break;
 
                         if(rows[r].length > 1)
                             elements[r].push(
                                 <dl key={r+""+i} className="dl-horizontal">
-                                    <dt><span className="label label-default">{headers[i].text}</span></dt>
+                                    <dt><span className="label label-default">{headers[0][i].text}</span></dt>
                                     <dd className="text-left">{listText}</dd>
                                 </dl>
                             );
@@ -475,7 +529,7 @@ var Allergies=React.createClass(
         // Panel html structure
         var titleRef = this.props.title.replace(/,|:| |\u002E/g,"_");
         return(
-            <div id={titleRef} className="col-lg-4 col-md-4 col-sm-4 mb" style={{display: this.state.display}}>
+            <div id={titleRef} className={"grid-item section-panel mb "+panelSizeClasses} style={{display: this.state.display}}>
                 <div className="grey-panel pn">
                     <div className="grey-header">
                         <h4>
@@ -499,8 +553,16 @@ var CollapsiblePanel=React.createClass(
         return {data: [], display: 'block', title: ''};
     },
 
-    onClick(){
-        this.setState({ display: 'none'});
+    onClick(e)
+    {
+        var titleRef=this.props.title.replace(/,|:| |\u002E/g,"_");
+        $("#"+titleRef).hide("fast", function()
+        {
+            // animation completed. update the layout of the panels
+            $("#"+titleRef).removeClass("grid-item");
+            $("#panels").masonry("reloadItems").masonry();
+        });
+        e.preventDefault();
     },
 
     render()
@@ -523,20 +585,25 @@ var CollapsiblePanel=React.createClass(
                 if(!elements[r])
                     elements[r]=[];
 
-                for(var i=0; i<headers.length; i++) {
-                    let text = rows[r][i];
+                for(var i=0; i<headers[0].length; i++) {
+                    let text = rows[r][i][0];
                     var listText = [];
 
                     if(text)
-                        for(var t=0; t<text.length; t++)
-                           listText.push(<p key={r+""+i+""+t}>{text[t].text}</p>);
+                    {
+                        if(!Array.isArray(text.text))
+                            text.text = [text.text];
+
+                        for(var t=0; t<text.text.length; t++)
+                           listText.push(<p key={r+""+i+""+t}>{text.text[t].text}</p>);
+                    }
 
                     if (i===0 && text) {
-                        collapsePanelHeading.push(text[0].text.toUpperCase());
+                        collapsePanelHeading.push(text.text[0].text.toUpperCase());
                     }
                     elements[r].push(
                         <dl key={r+""+i} className="dl-horizontal">
-                            <dt><span className="label label-default">{headers[i].text}</span></dt>
+                            <dt><span className="label label-default">{headers[0][i].text}</span></dt>
                             <dd className="text-left">{listText}</dd>
                         </dl>
                     );
@@ -577,11 +644,11 @@ var CollapsiblePanel=React.createClass(
 
         var titleRef = this.props.title.replace(/,|:| |\u002E/g,"_");
         return(
-            <div id={titleRef} className="col-lg-4 col-md-4 col-sm-4 mb" style={{display: this.state.display}}>
+            <div id={titleRef} className="grid-item section-panel col-lg-3 col-md-4 col-sm-12 mb" style={{display: this.state.display}}>
                 <div className="grey-panel">
                   <div className="grey-header">
                     <div className="row">
-                        <div className="col-lg-10 col-md-10 col-sm-6 col-xs-10">
+                        <div className="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                             <h4>{this.props.title}</h4>
                         </div>
                         <div className="col-sm-2 col-xs-2 goright">
@@ -686,10 +753,11 @@ class XMLForm extends React.Component
                                         iterate(sectionText[item], otherText);
 
                                     for(var k=0; k<otherText.length; k++);
-                                        // console.log("other text: "+otherText[k]);
+                                        //console.log("other text: "+otherText[k]);
                                 }
                             }
                     //}
+
                     allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData, "otherText": otherText});
                 }
 
@@ -1009,7 +1077,7 @@ function iterate(obj, jsonArr) {
             iterate(elem, jsonArr); // call recursively
         }
         else{
-            var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan/;
+            var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan|href/;
 
             if(!patt.test(key.toString())){
                 if(elem == undefined)
@@ -1181,23 +1249,31 @@ function getNodeTableData(tableNode)
     if(!tableNode)
         return null;
 
-    var tableData={headers:[], rows:[], hasSpans:false};
+    var tableData={headers:[], rows:[], hasSpans:false, caption:null};
+
+    //Look for caption tag before the table tag
+    if(searchString("caption", tableNode))
+        tableData.caption = tableNode.caption;
 
     // Save table header cells contents to tableData
     if(tableNode.thead)
     {
-        //When more than 1 header exists *CHECK*
+        //When more than 1 header exist
         if(!Array.isArray(tableNode.thead.tr))
             tableNode.thead.tr = [tableNode.thead.tr];
+        else
+            tableData.hasSpans=true;
 
         for(var j=0; j<tableNode.thead.tr.length; j++)
         {
+            tableData.headers.push(new Array());
+
             if(!Array.isArray(tableNode.thead.tr[j].th))
                 tableNode.thead.tr[j].th=[tableNode.thead.tr[j].th];
 
             for(var i=0; i<tableNode.thead.tr[j].th.length; i++)
             {
-                tableData.headers.push(buildTableCellObject(tableNode.thead.tr[j].th[i]));
+                tableData.headers[tableData.headers.length-1].push(buildTableCellObject(tableNode.thead.tr[j].th[i]));
                 // check for colspan/rowspan
                 if(tableNode.thead.tr[j].th[i].rowspan || tableNode.thead.tr[j].th[i].colspan)
                     tableData.hasSpans=true;
@@ -1217,6 +1293,27 @@ function getNodeTableData(tableNode)
         {
             tableData.rows.push([]);
 
+            //if headers are found inside rows
+            if(tableNode.tbody.tr[r].th)
+            {
+                var jsonArr = new Array();
+                var txtArr = new Array();
+
+                if(typeof tableNode.tbody.tr[r].th === "string" || typeof tableNode.tbody.tr[r].th === "number")
+                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].th, {"key":"string", "text":getNodeText(tableNode.tbody.tr[r].th)} ));
+                else // Cell contains something other than a string
+                {
+                    // extract contents recursively
+                    iterate(tableNode.tbody.tr[r].th, txtArr);
+                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].th, txtArr));
+
+                    // check for colspan/rowspan
+                    if(tableNode.tbody.tr[r].th.rowspan || tableNode.tbody.tr[r].th.colspan)
+                        tableData.hasSpans=true;
+                }
+                tableData.rows[0].push(jsonArr);
+            }
+
             // if only one column found, make it an array
             if(!Array.isArray(tableNode.tbody.tr[r].td))
                 tableNode.tbody.tr[r].td=[tableNode.tbody.tr[r].td];
@@ -1226,22 +1323,23 @@ function getNodeTableData(tableNode)
                 var jsonArr = new Array();
                 var txtArr = new Array();
 
-                if(typeof tableNode.tbody.tr[r].td[c] == "string")
-                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].td[c], getNodeText(tableNode.tbody.tr[r].td[c])));
+                if(typeof tableNode.tbody.tr[r].td[c] === "string" || typeof tableNode.tbody.tr[r].td[c] === "number")
+                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].td[c], {"key":"string", "text":getNodeText(tableNode.tbody.tr[r].td[c])} ));
                 else // Cell contains something other than a string
                 {
                     // extract contents recursively
                     iterate(tableNode.tbody.tr[r].td[c], txtArr);
-
-                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].td[c], txtArr.text));
+                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].td[c], txtArr));
                     // check for colspan/rowspan
                     if(tableNode.tbody.tr[r].td[c].rowspan || tableNode.tbody.tr[r].td[c].colspan)
                         tableData.hasSpans=true;
                 }
-
                 tableData.rows[tableData.rows.length-1].push(jsonArr);
             }
         }
+
+    debug2=tableNode;
+    debugvar=tableData;
 
     return tableData;
 }
