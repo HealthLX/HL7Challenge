@@ -1,4 +1,4 @@
-var languages639_1 = [
+var languages639_1= [
 {'code':'ab','value':'Abkhaz'}, {'code':'aa','value':'Afar'}, {'code':'af','value':'Afrikaans'}, {'code':'ak','value':'Akan'}, {'code':'sq','value':'Albanian'},
 {'code':'am','value':'Amharic'}, {'code':'ar','value':'Arabic'}, {'code':'an','value':'Aragonese'}, {'code':'hy','value':'Armenian'}, {'code':'as','value':'Assamese'},
 {'code':'av','value':'Avaric'}, {'code':'ae','value':'Avestan'}, {'code':'ay','value':'Aymara'}, {'code':'az','value':'Azerbaijani'}, {'code':'bm','value':'Bambara'},
