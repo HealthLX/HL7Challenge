@@ -343,26 +343,41 @@ var Allergies=React.createClass(
             //handle tables with spans differently
             if(table.hasSpans || table.caption != null)
             {
-                var tblHeader = [];
                 var tblCaption;
+                var tblHeader = [];
+                var tblBody=[];
+                
                 panelSizeClasses="col-lg-6 col-md-8 col-sm-12";
 
                 if(table.caption != null)
                     tblCaption = (<caption className="text-center">{table.caption}</caption>);
 
-                for(var i=0; i<headers.length; i++)
+                for(var r=0; r<headers.length; r++)
                 {
-                    if(!tblHeader[i])
-                        tblHeader[i]=[];
+                    elements = [];
 
-                    tblHeader[i].push(
-                        <th key={i} colSpan={headers[i].colspan} rowSpan={headers[i].rowspan}>
-                            {headers[i].text}
-                        </th>
+                    for(var i=0; i<headers[r].length; i++)
+                    {
+
+                        if(!elements[i])
+                            elements[i]=[];
+
+                        elements[i].push(
+                                <th key={i} colSpan={headers[r][i].colspan} rowSpan={headers[r][i].rowspan}>
+                                    {headers[r][i].text}
+                                </th>
+                            );
+
+                    }
+
+                    tblHeader.push(
+                        <tr key={r}>
+                            {elements}
+                        </tr>
                     );
                 }
 
-                var rowBody=[];
+                elements = [];
 
                 for(var r=0; r<rows.length; r++)
                 {
@@ -389,7 +404,7 @@ var Allergies=React.createClass(
                         );
                     }
 
-                    rowBody.push(
+                    tblBody.push(
                         <tr key={r}>
                             {elements}
                         </tr>
@@ -404,12 +419,10 @@ var Allergies=React.createClass(
                                 <table className="table table-wrap table-bordered table-striped table-hover table-condensed">
                                     {tblCaption}
                                     <thead>
-                                        <tr>
-                                            {tblHeader}
-                                        </tr>
+                                        {tblHeader}
                                     </thead>
                                     <tbody>
-                                        {rowBody}
+                                        {tblBody}
                                     </tbody>
                                 </table>
                             </div>
@@ -424,7 +437,7 @@ var Allergies=React.createClass(
                     if(!elements[r])
                         elements[r]=[];
 
-                    for(var i=0; i<headers.length; i++)
+                    for(var i=0; i<headers[0].length; i++)
                     {
                         let text = rows[r][i][0];
                         var listText = [];
@@ -444,7 +457,7 @@ var Allergies=React.createClass(
                         if(rows[r].length > 1)
                             elements[r].push(
                                 <dl key={r+""+i} className="dl-horizontal">
-                                    <dt><span className="label label-default">{headers[i].text}</span></dt>
+                                    <dt><span className="label label-default">{headers[0][i].text}</span></dt>
                                     <dd className="text-left">{listText}</dd>
                                 </dl>
                             );
@@ -572,7 +585,7 @@ var CollapsiblePanel=React.createClass(
                 if(!elements[r])
                     elements[r]=[];
 
-                for(var i=0; i<headers.length; i++) {
+                for(var i=0; i<headers[0].length; i++) {
                     let text = rows[r][i][0];
                     var listText = [];
 
@@ -590,7 +603,7 @@ var CollapsiblePanel=React.createClass(
                     }
                     elements[r].push(
                         <dl key={r+""+i} className="dl-horizontal">
-                            <dt><span className="label label-default">{headers[i].text}</span></dt>
+                            <dt><span className="label label-default">{headers[0][i].text}</span></dt>
                             <dd className="text-left">{listText}</dd>
                         </dl>
                     );
@@ -1244,18 +1257,22 @@ function getNodeTableData(tableNode)
     // Save table header cells contents to tableData
     if(tableNode.thead)
     {
-        //When more than 1 header exists *CHECK*
+        //When more than 1 header exist
         if(!Array.isArray(tableNode.thead.tr))
             tableNode.thead.tr = [tableNode.thead.tr];
+        else
+            tableData.hasSpans=true;
 
         for(var j=0; j<tableNode.thead.tr.length; j++)
         {
+            tableData.headers.push(new Array());
+
             if(!Array.isArray(tableNode.thead.tr[j].th))
                 tableNode.thead.tr[j].th=[tableNode.thead.tr[j].th];
 
             for(var i=0; i<tableNode.thead.tr[j].th.length; i++)
             {
-                tableData.headers.push(buildTableCellObject(tableNode.thead.tr[j].th[i]));
+                tableData.headers[tableData.headers.length-1].push(buildTableCellObject(tableNode.thead.tr[j].th[i]));
                 // check for colspan/rowspan
                 if(tableNode.thead.tr[j].th[i].rowspan || tableNode.thead.tr[j].th[i].colspan)
                     tableData.hasSpans=true;
