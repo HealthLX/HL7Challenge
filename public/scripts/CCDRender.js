@@ -754,18 +754,6 @@ class XMLForm extends React.Component
                 // Close modal window with the upload form when the service call has finished
                 $("#myModal").modal("toggle");
 
-                /* Added by VV to get the sections, for build the menu. */
-                var title = null;
-                var titles=[];
-                var titleRef;
-                for(var i = 0; i < components.length; i++){
-                    title = getSectionTitle(components[i].section)
-                    if (title!=null) {
-                        titleRef = "#" + title.replace(/,|:| |\u0028|\u0029|\u002E/g,"_");
-                        titleRef = "javascript:goToByScroll('" + titleRef + "');";
-                        titles.push({"text": title, href:titleRef ,"code": components[i].section.code.code});
-                    }
-                }
                 var originalData = [];
                 originalData.push({text: 'Main Information', href: "javascript:goToByScroll('#patientDetails');", icon: 'glyphicon glyphicon-signal'});
                 originalData.push({text: 'Health Status',href: "javascript:goToByScroll('#healthStatus');", icon: 'glyphicon glyphicon-scale'});
