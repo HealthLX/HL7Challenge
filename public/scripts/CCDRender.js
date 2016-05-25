@@ -367,10 +367,8 @@ var Allergies=React.createClass(
                                 text.text = [text.text];
 
                         for(var t=0; t<text.text.length; t++)
-                        {
                             if(text.text[t].text != "")
-                            listText.push(<p key={r+""+i+""+t}>{text.text[t].text}</p>);
-                        }
+                                listText.push(<p key={r+""+i+""+t}>{text.text[t].text}</p>);
 
 
                         if(text.isTh)
@@ -415,7 +413,6 @@ var Allergies=React.createClass(
             }
             else
             {
-                debugvar=headers;
                 for(var r=0; r<rows.length; r++)
                 {
                     if(!elements[r])
@@ -717,7 +714,7 @@ class XMLForm extends React.Component
                     let otherText=[];
                     //console.log("displaying section: "+sectionTitle);
 
-                    // if(section.code.code == "30954-2")
+                    // if(section.code.code == "8716-3")
                     // {
                         // if the section only contains a string
                         if(typeof sectionText == "string")
@@ -1286,8 +1283,6 @@ function getNodeTableData(tableNode)
                 if(tableNode.thead.tr[j].th[i].rowspan || tableNode.thead.tr[j].th[i].colspan)
                     tableData.hasSpans=true;
             }
-
-            tableData.isTh = true;
         }
     }
     else
@@ -1309,6 +1304,8 @@ function getNodeTableData(tableNode)
             {
                 var jsonArr = getTextObject(tableNode.tbody.tr[r].th, tableData, true);
                 tableData.rows[r].push(jsonArr);
+
+                tableData.hasSpans=true;
             }
 
             if(tableNode.tbody.tr[r].td)
