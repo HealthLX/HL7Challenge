@@ -5,4 +5,4 @@ var HL7RendererApp = require('./components/HL7RendererApp');
 
 var mountNode = document.getElementById('main_menu');
 
-ReactDOM.render(<HL7RendererApp content={content}/>, mountNode);
+ReactDOM.render(<HL7RendererApp />, mountNode);

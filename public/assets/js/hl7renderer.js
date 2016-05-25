@@ -36,6 +36,6 @@ function goToByScroll(id)
         {
             // animation completed. update the layout of the panels
             $("#panels").masonry("reloadItems").masonry();
-            $("html,body").animate({scrollTop: $(id).offset().top}, "slow");
         });
+    $("html,body").animate({scrollTop: $(id).offset().top-65}, "slow");
 }
