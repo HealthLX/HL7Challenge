@@ -39,7 +39,7 @@ function goToByScroll(id)
         $("body").animate({scrollTop: ($(id).offset().top-$(".navbar-static-top").height())}, "slow", function()
         {
             var originalColor=$(id+" .pn-bg").css("color");
-            var originalBgColor=$(id+" .grey-header").css("background-color");
+            var originalBgColor=$(id+" .mint-header").css("background-color");
 
             $(id+" .pn").effect("bounce", {distance: 20, times:4}, 1000);
 
@@ -51,9 +51,9 @@ function goToByScroll(id)
                 $(this).animate({ color: originalColor });
             });
 
-            $(id+" .grey-header").animate(
+            $(id+" .mint-header").animate(
             {
-                backgroundColor: 'rgb(141, 208, 182)'
+                backgroundColor: 'white'
             }, 1000, function ()
             {
                 $(this).animate({ backgroundColor: originalBgColor });

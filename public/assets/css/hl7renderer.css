@@ -32,6 +32,26 @@ body {
     height: auto;
 }
 
+.mint-panel
+{
+    text-align: center;
+    background-color: rgb(245, 246, 247);
+}
+
+.mint-panel .mint-header
+{
+    background-color: rgb(141, 208, 182);
+    padding: 3px;
+    margin-bottom: 15px;
+}
+
+.mint-panel .mint-header-no-margin
+{
+    background: rgb(141, 208, 182);
+    padding: 3px;
+    margin-bottom: 5px;
+}
+
 .table
 {
     table-layout: fixed;
@@ -70,7 +90,7 @@ dl
 hr
 {
     margin: 5px 20px;
-    border-color: lightgrey;
+    border-color: rgb(141, 208, 182);
 }
 
 .navbar-heading {

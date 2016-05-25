@@ -515,8 +515,8 @@ var Allergies=React.createClass(
         var titleRef=this.props.id;
         return(
             <div id={titleRef} className={"grid-item section-panel mb "+panelSizeClasses} style={{display: this.state.display}}>
-                <div className="grey-panel pn">
-                    <div className="grey-header">
+                <div className="mint-panel pn">
+                    <div className="mint-header">
                         <h4>
                             <a href="#" className="pull-right" onClick={this.onClick}>
                                 <i className="fa fa-trash-o fa-lg"></i>
@@ -609,7 +609,7 @@ var CollapsiblePanel=React.createClass(
 
                 return(
                       <span>
-                      <div className="panel-heading grey-header-no-margin">
+                      <div className="panel-heading mint-header-no-margin">
                         <h4 className="panel-title">
                           <a href={indexRef} data-parent="accordion" data-toggle="collapse">{collapsePanelHeading[index]}
                           </a>
@@ -633,8 +633,8 @@ var CollapsiblePanel=React.createClass(
         var titleRef = this.props.id;
         return(
             <div id={titleRef} className="grid-item section-panel col-lg-3 col-md-4 col-sm-12 mb" style={{display: this.state.display}}>
-                <div className="grey-panel pn">
-                  <div className="grey-header">
+                <div className="mint-panel pn">
+                  <div className="mint-header">
                     <div className="row">
                         <div className="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                             <h4>{this.props.title}</h4>
