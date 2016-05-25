@@ -36,7 +36,7 @@ function goToByScroll(id)
         // animation completed. update the layout of the panels
         $("#panels").masonry("reloadItems").masonry();
         var scrollPosition=$(id).offset().top+$(".navbar-static-top").height();
-        $("body").animate({scrollTop: ($(id).offset().top-$(".navbar-static-top").height())}, "slow", function()
+        $("body").animate({scrollTop: ($(id).offset().top-$(".navbar-static-top").height())}, "fast", function()
         {
             var originalColor=$(id+" .pn-bg").css("color");
             var originalBgColor=$(id+" .mint-header").css("background-color");

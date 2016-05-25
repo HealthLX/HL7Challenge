@@ -52,6 +52,11 @@ body {
     margin-bottom: 5px;
 }
 
+.mint-panel p
+{
+	margin-left: 5px;
+}
+
 .table
 {
     table-layout: fixed;
