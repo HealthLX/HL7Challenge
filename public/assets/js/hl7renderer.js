@@ -36,6 +36,6 @@ function goToByScroll(id){
             $(id).show(750);
         }
         $('html,body').animate({
-            scrollTop: $(id).offset().top},
+            scrollTop: $(id).offset().top-65},
             'slow');
     }
