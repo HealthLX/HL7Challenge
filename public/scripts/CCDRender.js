@@ -78,32 +78,6 @@ var menuData =  [
 
 ];
 
-/*var Panel=React.createClass(
-{
-    render: function()
-    {
-        var titleNodes = this.props.data.map(function(component)
-        {
-            return (
-                <div className="col-md-4 col-sm-4 mb">
-                    <div className="darkblue-panel pn">
-                            <div className="darkblue-header">
-                                <h5>{component.section.title}</h5>
-                            </div>
-                            <p className="user">{component.section.code.code}</p>
-                    </div>
-                </div>
-            );
-        });
-
-        return(
-            <div>
-                {titleNodes}
-            </div>
-        );
-    }
-});*/
-
 /* Container of panels */
 var PanelBox=React.createClass(
 {
@@ -181,10 +155,10 @@ var PanelBox=React.createClass(
                 panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Vital Signs
-            /*case "8716-3":
+            case "8716-3":
                 iconClass="fa-heartbeat";
                 panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
-                break;*/
+                break;
             //Health Concerns Section
             case "75310-3":
                 iconClass="fa-ambulance";
@@ -246,10 +220,10 @@ var PanelBox=React.createClass(
                 panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Default
-            /*default:
+            default:
                 // iconClass="fa-";
                 panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
-                break;*/
+                break;
             }
             return(panel);
         });
@@ -329,8 +303,6 @@ var Allergies=React.createClass(
         var tables=[];
         var panelSizeClasses="col-lg-3 col-md-4 col-sm-12";
 
-
-
         // Process for tables information
         for(var tableNum=0; tableNum<this.props.data.length; tableNum++)
         {
@@ -395,13 +367,24 @@ var Allergies=React.createClass(
                                 text.text = [text.text];
 
                         for(var t=0; t<text.text.length; t++)
-                           listText.push(<p key={r+""+i+""+t}>{text.text[t].text}</p>);
+                        {
+                            if(text.text[t].text != "")
+                            listText.push(<p key={r+""+i+""+t}>{text.text[t].text}</p>);
+                        }
 
-                        elements[i].push(
-                            <td  key={r+""+i} colSpan={text.colspan} rowSpan={text.rowspan}>
-                                {listText}
-                            </td>
-                        );
+
+                        if(text.isTh)
+                            elements[i].push(
+                                <th  key={r+""+i} colSpan={text.colspan} rowSpan={text.rowspan}>
+                                    {listText}
+                                </th>
+                            );
+                        else
+                            elements[i].push(
+                                <td  key={r+""+i} colSpan={text.colspan} rowSpan={text.rowspan}>
+                                    {listText}
+                                </td>
+                            );
                     }
 
                     tblBody.push(
@@ -432,6 +415,7 @@ var Allergies=React.createClass(
             }
             else
             {
+                debugvar=headers;
                 for(var r=0; r<rows.length; r++)
                 {
                     if(!elements[r])
@@ -449,7 +433,10 @@ var Allergies=React.createClass(
                                 text.text = [text.text];
 
                             for(var t=0; t<text.text.length; t++)
-                               listText.push(<p key={r+""+i+""+t}>{text.text[t].text}</p>);
+                            {
+                                if(text.text[t].text != "")
+                                   listText.push(<p key={r+""+i+""+t}>{text.text[t].text}</p>);
+                            }
                         }
                         else
                             break;
@@ -595,7 +582,10 @@ var CollapsiblePanel=React.createClass(
                             text.text = [text.text];
 
                         for(var t=0; t<text.text.length; t++)
-                           listText.push(<p key={r+""+i+""+t}>{text.text[t].text}</p>);
+                        {
+                            if(text.text[t].text != "")
+                                listText.push(<p key={r+""+i+""+t}>{text.text[t].text}</p>);
+                        }
                     }
 
                     if (i===0 && text) {
@@ -727,8 +717,8 @@ class XMLForm extends React.Component
                     let otherText=[];
                     //console.log("displaying section: "+sectionTitle);
 
-                    //if(section.code.code == "10160-0")
-                    //{
+                    // if(section.code.code == "30954-2")
+                    // {
                         // if the section only contains a string
                         if(typeof sectionText == "string")
                             otherText.push({"key": "string", "text": sectionText});
@@ -751,12 +741,9 @@ class XMLForm extends React.Component
                                         otherText.push({"key": "string", "text": getNodeText(sectionText[item])});
                                     else
                                         iterate(sectionText[item], otherText);
-
-                                    for(var k=0; k<otherText.length; k++);
-                                        //console.log("other text: "+otherText[k]);
                                 }
                             }
-                    //}
+                    // }
 
                     allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData, "otherText": otherText});
                 }
@@ -783,7 +770,6 @@ class XMLForm extends React.Component
                 originalData.push({text: 'CCDA Info',icon: 'glyphicon glyphicon-list-alt', nodes: titles});
 
                 // Render components
-                //ReactDOM.render(<Panel data={components}/>, document.getElementById("panels"));
                 ReactDOM.render(<PanelBox data={allComponents}/>, document.getElementById("panels"));
                 ReactDOM.render(<PatientDetails patientRole={patientRole}/>, document.getElementById("patientDetails"));
                 ReactDOM.render(<TreeView treeData={originalData} enableLinks={true}/>, document.getElementById("tree_menu"));
@@ -1059,6 +1045,27 @@ function getNodeText(nodeElement)
     return nodeElement.$
 }
 
+/*Extract the text object or string from a node */
+function getTextObject(nodeElement, tableData, hasTh)
+{
+    var jsonArr = new Array();
+    var txtArr = new Array();
+
+    if(typeof nodeElement === "string" || typeof nodeElement === "number")
+        jsonArr.push(buildTableCellObject(nodeElement, {"key":"string", "text":getNodeText(nodeElement)} ));
+    else // Cell contains something other than a string
+    {
+        // extract contents recursively
+        iterate(nodeElement, txtArr);
+        jsonArr.push(buildTableCellObject(nodeElement, txtArr, hasTh));
+        // check for colspan/rowspan
+        if(nodeElement.rowspan || nodeElement.colspan)
+            tableData.hasSpans=true;
+    }
+
+    return jsonArr;
+}
+
 /* Extract just the title of a "Section" node. */
 function getSectionTitle(nodeElement)
 {
@@ -1077,7 +1084,7 @@ function iterate(obj, jsonArr) {
             iterate(elem, jsonArr); // call recursively
         }
         else{
-            var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan|href/;
+            var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan|href|align/;
 
             if(!patt.test(key.toString())){
                 if(elem == undefined)
@@ -1233,13 +1240,14 @@ function searchString(str, obj) {
     return false;
 }
 
-function buildTableCellObject(dataNode, txtObject)
+function buildTableCellObject(dataNode, txtObject, hasTh)
 {
     return (
     {
         text: (txtObject == null ? getNodeText(dataNode) : txtObject),
         colspan: (dataNode.colspan == undefined ? null : dataNode.colspan),
-        rowspan: (dataNode.rowspan == undefined ? null : dataNode.rowspan)
+        rowspan: (dataNode.rowspan == undefined ? null : dataNode.rowspan),
+        isTh: hasTh
     });
 }
 
@@ -1273,11 +1281,13 @@ function getNodeTableData(tableNode)
 
             for(var i=0; i<tableNode.thead.tr[j].th.length; i++)
             {
-                tableData.headers[tableData.headers.length-1].push(buildTableCellObject(tableNode.thead.tr[j].th[i]));
+                tableData.headers[tableData.headers.length-1].push(buildTableCellObject(tableNode.thead.tr[j].th[i], null, true));
                 // check for colspan/rowspan
                 if(tableNode.thead.tr[j].th[i].rowspan || tableNode.thead.tr[j].th[i].colspan)
                     tableData.hasSpans=true;
             }
+
+            tableData.isTh = true;
         }
     }
     else
@@ -1289,57 +1299,32 @@ function getNodeTableData(tableNode)
 
     // Save table body cells contents to tableData
     for(var r=0; r<tableNode.tbody.tr.length; r++)
-        if(tableNode.tbody.tr[r].td)
+    {
+        if(tableNode.tbody.tr[r].th || tableNode.tbody.tr[r].td)
         {
             tableData.rows.push([]);
 
             //if headers are found inside rows
             if(tableNode.tbody.tr[r].th)
             {
-                var jsonArr = new Array();
-                var txtArr = new Array();
-
-                if(typeof tableNode.tbody.tr[r].th === "string" || typeof tableNode.tbody.tr[r].th === "number")
-                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].th, {"key":"string", "text":getNodeText(tableNode.tbody.tr[r].th)} ));
-                else // Cell contains something other than a string
-                {
-                    // extract contents recursively
-                    iterate(tableNode.tbody.tr[r].th, txtArr);
-                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].th, txtArr));
-
-                    // check for colspan/rowspan
-                    if(tableNode.tbody.tr[r].th.rowspan || tableNode.tbody.tr[r].th.colspan)
-                        tableData.hasSpans=true;
-                }
-                tableData.rows[0].push(jsonArr);
+                var jsonArr = getTextObject(tableNode.tbody.tr[r].th, tableData, true);
+                tableData.rows[r].push(jsonArr);
             }
 
-            // if only one column found, make it an array
-            if(!Array.isArray(tableNode.tbody.tr[r].td))
-                tableNode.tbody.tr[r].td=[tableNode.tbody.tr[r].td];
-
-            for(var c=0; c<tableNode.tbody.tr[r].td.length; c++)
+            if(tableNode.tbody.tr[r].td)
             {
-                var jsonArr = new Array();
-                var txtArr = new Array();
+                // if only one column is found, make it an array
+                if(!Array.isArray(tableNode.tbody.tr[r].td))
+                    tableNode.tbody.tr[r].td=[tableNode.tbody.tr[r].td];
 
-                if(typeof tableNode.tbody.tr[r].td[c] === "string" || typeof tableNode.tbody.tr[r].td[c] === "number")
-                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].td[c], {"key":"string", "text":getNodeText(tableNode.tbody.tr[r].td[c])} ));
-                else // Cell contains something other than a string
+                for(var c=0; c<tableNode.tbody.tr[r].td.length; c++)
                 {
-                    // extract contents recursively
-                    iterate(tableNode.tbody.tr[r].td[c], txtArr);
-                    jsonArr.push(buildTableCellObject(tableNode.tbody.tr[r].td[c], txtArr));
-                    // check for colspan/rowspan
-                    if(tableNode.tbody.tr[r].td[c].rowspan || tableNode.tbody.tr[r].td[c].colspan)
-                        tableData.hasSpans=true;
+                    var jsonArr = getTextObject(tableNode.tbody.tr[r].td[c], tableData, false);
+                    tableData.rows[tableData.rows.length-1].push(jsonArr);
                 }
-                tableData.rows[tableData.rows.length-1].push(jsonArr);
             }
         }
-
-    debug2=tableNode;
-    debugvar=tableData;
+    }
 
     return tableData;
 }
