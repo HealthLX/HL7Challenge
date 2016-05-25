@@ -27,15 +27,15 @@ $(function() {
     if (element.is('li')) {
         element.addClass('active');
     }
-
-    
 });
 
-function goToByScroll(id){
-        if ($(id).css('display') == 'none' ) {
-            $(id).show(750);
-        }
-        $('html,body').animate({
-            scrollTop: $(id).offset().top-65},
-            'slow');
-    }
+function goToByScroll(id)
+{
+    if ($(id).css("display")=="none")
+        $(id).addClass("grid-item").show(0, function()
+        {
+            // animation completed. update the layout of the panels
+            $("#panels").masonry("reloadItems").masonry();
+            $("html,body").animate({scrollTop: $(id).offset().top}, "slow");
+        });
+}
