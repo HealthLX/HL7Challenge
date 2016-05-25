@@ -32,11 +32,10 @@ $(function() {
 function goToByScroll(id)
 {
     if ($(id).css("display")=="none")
-        $(id).show(750, function()
+        $(id).addClass("grid-item").show(0, function()
         {
             // animation completed. update the layout of the panels
-            $("#panels").masonry("layout");
+            $("#panels").masonry("reloadItems").masonry();
+            $("html,body").animate({scrollTop: $(id).offset().top}, "slow");
         });
-
-    $("html,body").animate({scrollTop: $(id).offset().top}, "slow");
 }

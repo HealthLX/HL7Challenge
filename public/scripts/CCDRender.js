@@ -107,6 +107,23 @@ var menuData =  [
 /* Container of panels */
 var PanelBox=React.createClass(
 {
+    // first time load finished
+    componentDidMount: function()
+    {
+        console.log("componentDidMount");
+        // Use masonry for the layout of the panels
+        $("#panels").masonry({itemSelector: ".grid-item"});
+    },
+
+    // update finished
+    componentDidUpdate: function(prevProps, prevState)
+    {
+        console.log("componentDidUpdate");
+        // Mark all panels as visible in case some were hidden previously
+        $(".section-panel").addClass("grid-item").show(0);
+        $("#panels").masonry("reloadItems").masonry();
+    },
+
     render: function()
     {
         var nodes = this.props.data.map(function(component, index)
@@ -292,12 +309,12 @@ var Allergies=React.createClass(
 
     onClick(e)
     {
-        // this.setState({ display: 'none' });
         var titleRef=this.props.title.replace(/,|:| |\u002E/g,"_");
-        $("#"+titleRef).hide(750, function()
+        $("#"+titleRef).hide("fast", function()
         {
             // animation completed. update the layout of the panels
-            $("#panels").masonry("layout");
+            $("#"+titleRef).removeClass("grid-item");
+            $("#panels").masonry("reloadItems").masonry();
         });
         e.preventDefault();
     },
@@ -495,7 +512,7 @@ var Allergies=React.createClass(
         // Panel html structure
         var titleRef = this.props.title.replace(/,|:| |\u002E/g,"_");
         return(
-            <div id={titleRef} className={"grid-item mb "+panelSizeClasses} style={{display: this.state.display}}>
+            <div id={titleRef} className={"grid-item section-panel mb "+panelSizeClasses} style={{display: this.state.display}}>
                 <div className="grey-panel pn">
                     <div className="grey-header">
                         <h4>
@@ -519,8 +536,16 @@ var CollapsiblePanel=React.createClass(
         return {data: [], display: 'block', title: ''};
     },
 
-    onClick(){
-        this.setState({ display: 'none'});
+    onClick(e)
+    {
+        var titleRef=this.props.title.replace(/,|:| |\u002E/g,"_");
+        $("#"+titleRef).hide("fast", function()
+        {
+            // animation completed. update the layout of the panels
+            $("#"+titleRef).removeClass("grid-item");
+            $("#panels").masonry("reloadItems").masonry();
+        });
+        e.preventDefault();
     },
 
     render()
@@ -602,7 +627,7 @@ var CollapsiblePanel=React.createClass(
 
         var titleRef = this.props.title.replace(/,|:| |\u002E/g,"_");
         return(
-            <div id={titleRef} className="grid-item col-lg-3 col-md-4 col-sm-12 mb" style={{display: this.state.display}}>
+            <div id={titleRef} className="grid-item section-panel col-lg-3 col-md-4 col-sm-12 mb" style={{display: this.state.display}}>
                 <div className="grey-panel">
                   <div className="grey-header">
                     <div className="row">
@@ -744,8 +769,6 @@ class XMLForm extends React.Component
                 ReactDOM.render(<PanelBox data={allComponents}/>, document.getElementById("panels"));
                 ReactDOM.render(<PatientDetails patientRole={patientRole}/>, document.getElementById("patientDetails"));
                 ReactDOM.render(<TreeView treeData={originalData} enableLinks={true}/>, document.getElementById("tree_menu"));
-                // Use masonry for the layout of the panels
-                $("#panels").masonry({itemSelector: ".grid-item"});
             },
             // Web service call error
             error: function(err)
