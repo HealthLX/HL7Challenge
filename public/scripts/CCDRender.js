@@ -163,12 +163,12 @@ var PanelBox=React.createClass(
             //Problem list
             case "11450-4":
                 iconClass="fa-exclamation-triangle";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Procedures
             case "47519-4":
                 iconClass="fa-bed";
-                panel = (<Allergies key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<CollapsiblePanel key={index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
                 break;
             //Results
             case "30954-2":
@@ -309,7 +309,7 @@ var Allergies=React.createClass(
 
     onClick(e)
     {
-        var titleRef=this.props.title.replace(/,|:| |\u002E/g,"_");
+        var titleRef=this.props.title.replace(/,|:| |\u0028|\u0029|\u002E/g,"_");
         $("#"+titleRef).hide("fast", function()
         {
             // animation completed. update the layout of the panels
@@ -527,7 +527,7 @@ var Allergies=React.createClass(
             );
         }
         // Panel html structure
-        var titleRef = this.props.title.replace(/,|:| |\u002E/g,"_");
+        var titleRef = this.props.title.replace(/,|:| |\u0028|\u0029|\u002E/g,"_");
         return(
             <div id={titleRef} className={"grid-item section-panel mb "+panelSizeClasses} style={{display: this.state.display}}>
                 <div className="grey-panel pn">
@@ -555,7 +555,7 @@ var CollapsiblePanel=React.createClass(
 
     onClick(e)
     {
-        var titleRef=this.props.title.replace(/,|:| |\u002E/g,"_");
+        var titleRef=this.props.title.replace(/,|:| |\u0028|\u0029|\u002E/g,"_");
         $("#"+titleRef).hide("fast", function()
         {
             // animation completed. update the layout of the panels
@@ -612,7 +612,7 @@ var CollapsiblePanel=React.createClass(
 
             var listItems=(elements.map(function(element, index)
             {
-                var finalStr = collapsePanelHeading[index].replace(/,|:| |\u002E/g,"_");
+                var finalStr = collapsePanelHeading[index].replace(/,|:| |\u0028|\u0029|\u002E/g,"_");
                 var where = finalStr.indexOf("/");
                 if (where > 0)
                   finalStr = finalStr.substring(0,where);
@@ -620,14 +620,14 @@ var CollapsiblePanel=React.createClass(
                 var indexRefNo = finalStr+index;
 
                 return(
-                      <span>
+                      <span key={index}>
                       <div className="panel-heading grey-header-no-margin">
                         <h4 className="panel-title">
                           <a href={indexRef} data-parent="accordion" data-toggle="collapse">{collapsePanelHeading[index]}
                           </a>
                         </h4>
                       </div>
-                      <div id={indexRefNo} className="panel-collapse collapse white-back" key={index}>
+                      <div id={indexRefNo} className="panel-collapse collapse white-back">
                           {element}
                           <hr/>
                       </div>
@@ -636,13 +636,13 @@ var CollapsiblePanel=React.createClass(
             }));
 
             tables.push(
-                <div className="panel-default" key={tableNum}>
+                <div key={tableNum} className="panel-default">
                     {listItems}
                 </div>
             );
         }
 
-        var titleRef = this.props.title.replace(/,|:| |\u002E/g,"_");
+        var titleRef = this.props.title.replace(/,|:| |\u0028|\u0029|\u002E/g,"_");
         return(
             <div id={titleRef} className="grid-item section-panel col-lg-3 col-md-4 col-sm-12 mb" style={{display: this.state.display}}>
                 <div className="grey-panel">
@@ -771,15 +771,15 @@ class XMLForm extends React.Component
                 for(var i = 0; i < components.length; i++){
                     title = getSectionTitle(components[i].section)
                     if (title!=null) {
-                        titleRef = "#" + title.replace(/,|:| |\u002E/g,"_");
+                        titleRef = "#" + title.replace(/,|:| |\u0028|\u0029|\u002E/g,"_");
                         titleRef = "javascript:goToByScroll('" + titleRef + "');";
                         titles.push({"text": title, href:titleRef ,"code": components[i].section.code.code});
                     }
                 }
 
                 var originalData = [];
-                originalData.push({text: 'Main Information', href: '#patientDetails', icon: 'glyphicon glyphicon-signal'});
-                originalData.push({text: 'Health Status',href: '#healthStatus', icon: 'glyphicon glyphicon-scale'});
+                originalData.push({text: 'Main Information', href: "javascript:goToByScroll('#patientDetails');", icon: 'glyphicon glyphicon-signal'});
+                originalData.push({text: 'Health Status',href: "javascript:goToByScroll('#healthStatus');", icon: 'glyphicon glyphicon-scale'});
                 originalData.push({text: 'CCDA Info',icon: 'glyphicon glyphicon-list-alt', nodes: titles});
 
                 // Render components
@@ -882,17 +882,17 @@ var TreeView = React.createClass(
     var children = [];
     if (this.treeData) {
       var _this = this;
+      var nodeIdKey = "IntTreeNode";
       this.treeData.forEach(function (node) {
-        children.push(React.createElement(TreeNode, {node: node,
+        children.push(React.createElement(TreeNode, {node: node, key: nodeIdKey+""+node.nodeId, 
                                 level: 1,
                                 visible: true,
                                 options: _this.props}));
       });
     }
-
     return (
       <div id="treeview" clasName="treeview">
-        <ul className="list-group">
+        <ul className="list-group" key="treeviewKey">
           { children }
         </ul>
       </div>
@@ -904,7 +904,7 @@ var TreeNode = React.createClass({
   displayName: "TreeNode",
   getInitialState: function() {
     var node = this.props.node;
-
+    var key = this.props.keyId;
     return {
       expanded: (node.state && node.state.hasOwnProperty('expanded')) ?
                   node.state.expanded :
@@ -931,7 +931,7 @@ var TreeNode = React.createClass({
 
     var node = this.props.node;
     var options = this.props.options;
-
+    var keyCounter = 0;
     var style;
     if (!this.props.visible) {
       style = {
@@ -963,7 +963,7 @@ var TreeNode = React.createClass({
 
     var indents = [];
     for (var i = 0; i < this.props.level-1; i++) {
-      indents.push(React.createElement("span", {className: "indent"}));
+      indents.push(React.createElement("span", {key: "span"+i, className: "indent"}));
     }
 
     var expandCollapseIcon;
@@ -1021,19 +1021,21 @@ var TreeNode = React.createClass({
     var children = [];
     if (node.nodes) {
       var _this = this;
+      var nodeIdKey = "TreeNode";
       node.nodes.forEach(function (node) {
-        children.push(React.createElement(TreeNode, {node: node,
+        children.push(React.createElement(TreeNode, {node: node, key: nodeIdKey+""+node.nodeId, 
                                 level: _this.props.level+1,
                                 visible: _this.state.expanded && _this.props.visible,
                                 options: options}));
       });
     }
 
+    var keyLI = "li"+node.nodeId;
     return (
-      React.createElement("li", {className: "list-group-item",
+      React.createElement("li", {key: {keyLI}, className: "list-group-item",  
           style: style,
-          onClick: this.toggleSelected.bind(this, node.nodeId),
-          key: node.nodeId},
+          onClick: this.toggleSelected.bind(this, node.nodeId)
+          },
         indents,
         expandCollapseIcon,
         nodeIcon,
