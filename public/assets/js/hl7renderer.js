@@ -38,7 +38,26 @@ function goToByScroll(id)
         var scrollPosition=$(id).offset().top+$(".navbar-static-top").height();
         $("body").animate({scrollTop: ($(id).offset().top-$(".navbar-static-top").height())}, "slow", function()
         {
+            var originalColor=$(id+" .pn-bg").css("color");
+            var originalBgColor=$(id+" .grey-header").css("background-color");
+
             $(id+" .pn").effect("bounce", {distance: 20, times:4}, 1000);
+
+            $(id+" .pn-bg").animate(
+            {
+                color: 'rgb(141, 208, 182)'
+            }, 1000, function ()
+            {
+                $(this).animate({ color: originalColor });
+            });
+
+            $(id+" .grey-header").animate(
+            {
+                backgroundColor: 'rgb(141, 208, 182)'
+            }, 1000, function ()
+            {
+                $(this).animate({ backgroundColor: originalBgColor });
+            });
         });
     });
 }
