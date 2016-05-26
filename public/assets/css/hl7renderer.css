@@ -27,6 +27,11 @@ body {
     }
 }
 
+.div-center
+{
+    margin: 0 auto;
+}
+
 .pn
 {
     height: auto;
@@ -501,7 +506,6 @@ table.dataTable thead .sorting:after {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8ad0b8', endColorstr='#e3f3ed',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     border: 3px #000 solid;
     border-radius: 25px;
-    width: 50%;
     height: 75%;
     vertical-align: middle;
     margin-top: 50px;

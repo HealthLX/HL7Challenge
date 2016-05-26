@@ -690,7 +690,7 @@ class XMLForm extends React.Component
                 </div>
                 <div className="modal-footer">
                     <button type="button" className="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input type="submit" form="upload-form" className="btn btn-primary" value="Upload"/>
+                    <input type="submit" form="upload-form" className="btn btn-info" value="Upload"/>
                 </div>
             </div>
         );
@@ -767,7 +767,7 @@ class XMLForm extends React.Component
 
                 // Close modal window with the upload form when the service call has finished
                 $("#myModal").modal("toggle");
-                
+
                 showOtherSection();
 
                 var originalData = [];
