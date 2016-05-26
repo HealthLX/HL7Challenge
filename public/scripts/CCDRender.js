@@ -197,8 +197,6 @@ var PanelBox=React.createClass(
                 break;
             }
 
-            debug2=component;
-
             var hasSpans = false;
 
             if(component.otherText.length == 0 && component.data.length > 0)
@@ -327,11 +325,18 @@ var GenericPanel=React.createClass(
                         if(!elements[i])
                             elements[i]=[];
 
-                        elements[i].push(
-                                <th key={i} colSpan={headers[r][i].colspan} rowSpan={headers[r][i].rowspan}>
-                                    {headers[r][i].text}
-                                </th>
-                            );
+                        if(headers[r][i].isTh)
+                            elements[i].push(
+                                    <th key={i} colSpan={headers[r][i].colspan} rowSpan={headers[r][i].rowspan}>
+                                        {headers[r][i].text}
+                                    </th>
+                                );
+                        else
+                            elements[i].push(
+                                    <td key={i} colSpan={headers[r][i].colspan} rowSpan={headers[r][i].rowspan}>
+                                        {headers[r][i].text}
+                                    </td>
+                                );
 
                     }
 
@@ -705,7 +710,6 @@ class XMLForm extends React.Component
             // JSON data received from the service
             success: function(data)
             {
-                debugvar=data;
                 // Extract needed parts of the document to process them
                 var components = data.ClinicalDocument.component.structuredBody.component;
                 var title = data.ClinicalDocument.title;
@@ -1053,13 +1057,15 @@ function getTextObject(nodeElement, tableData, hasTh)
     var jsonArr = new Array();
     var txtArr = new Array();
 
+    var boolTh = hasTh;
+
     if(typeof nodeElement === "string" || typeof nodeElement === "number")
         jsonArr.push(buildTableCellObject(nodeElement, {"key":"string", "text":getNodeText(nodeElement)} ));
     else // Cell contains something other than a string
     {
         // extract contents recursively
         iterate(nodeElement, txtArr);
-        jsonArr.push(buildTableCellObject(nodeElement, txtArr, hasTh));
+        jsonArr.push(buildTableCellObject(nodeElement, txtArr, boolTh));
         // check for colspan/rowspan
         if(nodeElement["@rowspan"] || nodeElement["@colspan"])
             tableData.hasSpans=true;
@@ -1236,10 +1242,10 @@ function buildTableCellObject(dataNode, txtObject, hasTh)
 {
     return (
     {
+        isTh: hasTh,
         text: (txtObject == null ? getNodeText(dataNode) : txtObject),
         colspan: (dataNode["@colspan"] == undefined ? null : dataNode["@colspan"]),
-        rowspan: (dataNode["@rowspan"] == undefined ? null : dataNode["@rowspan"]),
-        isTh: hasTh
+        rowspan: (dataNode["@rowspan"] == undefined ? null : dataNode["@rowspan"])
     });
 }
 
@@ -1255,6 +1261,9 @@ function getNodeTableData(tableNode)
     if(searchString("caption", tableNode))
         tableData.caption = tableNode.caption;
 
+    //Search for <td> inside <thead>
+    var hasSameTd = false;
+
     // Save table header cells contents to tableData
     if(tableNode.thead)
     {
@@ -1264,24 +1273,53 @@ function getNodeTableData(tableNode)
         else
             tableData.hasSpans=true;
 
+
         for(var j=0; j<tableNode.thead.tr.length; j++)
         {
+            if(tableNode.thead.tr[j].td)
+                if(tableNode.thead.tr[j].th.length == tableNode.thead.tr[j].td.length)
+                    hasSameTd = true;
+
             tableData.headers.push(new Array());
 
             if(!Array.isArray(tableNode.thead.tr[j].th))
                 tableNode.thead.tr[j].th=[tableNode.thead.tr[j].th];
 
+            if(tableNode.thead.tr[j].td)
+                if(!Array.isArray(tableNode.thead.tr[j].td))
+                    tableNode.thead.tr[j].td=[tableNode.thead.tr[j].td];
+
             for(var i=0; i<tableNode.thead.tr[j].th.length; i++)
             {
                 tableData.headers[tableData.headers.length-1].push(buildTableCellObject(tableNode.thead.tr[j].th[i], null, true));
+
+                if(hasSameTd)
+                    tableData.headers[tableData.headers.length-1].push(buildTableCellObject(tableNode.thead.tr[j].td[i], null, false));
+
                 // check for colspan/rowspan
                 if(tableNode.thead.tr[j].th[i]["@rowspan"] || tableNode.thead.tr[j].th[i]["@colspan"])
                     tableData.hasSpans=true;
             }
+
+            if(!hasSameTd && tableNode.thead.tr[j].td)
+            {
+                for(var i=0; i<tableNode.thead.tr[j].td.length; i++)
+                {
+                    tableData.headers[tableData.headers.length-1].push(buildTableCellObject(tableNode.thead.tr[j].td[i], null, false));
+
+                    // check for colspan/rowspan
+                    if(tableNode.thead.tr[j].td[i].rowspan || tableNode.thead.tr[j].td[i].colspan)
+                        tableData.hasSpans=true;
+                }
+            }
+
+            hasSameTd = false;
         }
     }
     else
         tableData.headers.push(new Array());
+
+    hasSameTd = false;
 
     // if table only has one row, make it an arraw to access it in the loop below
     if(!Array.isArray(tableNode.tbody.tr))
@@ -1297,10 +1335,19 @@ function getNodeTableData(tableNode)
             //if headers are found inside rows
             if(tableNode.tbody.tr[r].th)
             {
-                var jsonArr = getTextObject(tableNode.tbody.tr[r].th, tableData, true);
-                tableData.rows[r].push(jsonArr);
+                if(tableNode.tbody.tr[r].td && tableNode.tbody.tr[r].th.length == tableNode.tbody.tr[r].td.length)
+                {
+                    hasSameTd = true;
+                    tableData.hasSpans=true;
+                }
+                else
+                {
+                    var jsonArr = new Array();
+                    var jsonArr = getTextObject(tableNode.tbody.tr[r].th, tableData, true);
+                    tableData.rows[r].push(jsonArr);
 
-                tableData.hasSpans=true;
+                    tableData.hasSpans=true;
+                }
             }
 
             if(tableNode.tbody.tr[r].td)
@@ -1311,11 +1358,21 @@ function getNodeTableData(tableNode)
 
                 for(var c=0; c<tableNode.tbody.tr[r].td.length; c++)
                 {
-                    var jsonArr = getTextObject(tableNode.tbody.tr[r].td[c], tableData, false);
+                    if(hasSameTd)
+                    {
+                        var jsonArr = new Array();
+                        jsonArr = getTextObject(tableNode.tbody.tr[r].th[c], tableData, true);
+                        tableData.rows[tableData.rows.length-1].push(jsonArr);
+                    }
+
+                    var jsonArr = new Array();
+                    jsonArr = getTextObject(tableNode.tbody.tr[r].td[c], tableData, false);
                     tableData.rows[tableData.rows.length-1].push(jsonArr);
                 }
             }
         }
+
+        hasSameTd = false;
     }
 
     return tableData;
