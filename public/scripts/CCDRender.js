@@ -247,7 +247,7 @@ class PatientDetails extends React.Component
                             <h1 className="go-left">{patientMap.name} (<span className="mint-color">{patientMap.age}</span>)</h1>
                             <p className="patientData">
                                 <b className="mint-color">{patientMap.firstName}</b> is a&nbsp;
-                                <span className="mint-color">{patientMap.maritalStatus}</span>&nbsp; 
+                                <span className="mint-color">{patientMap.maritalStatus}</span>&nbsp;
                                 <span className="mint-color">{patientMap.race}</span>&nbsp;
                                 <span className="mint-color">{patientMap.gender}</span>&nbsp;
                                 who is <span className="mint-color">{patientMap.religion}</span>&nbsp;
@@ -1027,7 +1027,7 @@ var TreeNode = React.createClass({
         nodeIcon,
         nodeText,
         badges,
-        <ul>children</ul>
+        <ul>{children}</ul>
       )
     );
   }
