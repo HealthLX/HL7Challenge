@@ -7,3 +7,7 @@ RESTService/Runtime_ESBSE/container/data/tmp/*
 RESTService/Runtime_ESBSE/container/data/cache/*
 RESTService/Runtime_ESBSE/container/data/port
 RESTService/Runtime_ESBSE/container/instances/instance.properties
+
+RESTService/Runtime_ESBSE/container/data/port
+
+RESTService/Runtime_ESBSE/container/instances/instance.properties
