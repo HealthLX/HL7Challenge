@@ -133,6 +133,11 @@ hr
     border-color: rgb(141, 208, 182);
 }
 
+.list-group ul
+{
+    padding: 0;
+}
+
 .navbar-heading {
 	position: fixed;
 	width: 100%;
