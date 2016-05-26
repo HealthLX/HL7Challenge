@@ -3,7 +3,11 @@
 app.sublime-workspace
 
 RESTService/Runtime_ESBSE/container/log/*
-RESTService/Runtime_ESBSE/container/data/tmp/*
-RESTService/Runtime_ESBSE/container/data/cache/*
-RESTService/Runtime_ESBSE/container/data/port
+RESTService/Runtime_ESBSE/container/data/*
+RESTService/Runtime_ESBSE/container/etc/jetty.xml
+RESTService/Runtime_ESBSE/container/etc/keystores/clientKeystore.properties
+RESTService/Runtime_ESBSE/container/etc/org.talend.esb.auxiliary.storage.client.rest.cfg
+RESTService/Runtime_ESBSE/container/etc/org.talend.esb.job*
+RESTService/Runtime_ESBSE/container/etc/org.talend.esb.locator.server.cfg
 RESTService/Runtime_ESBSE/container/instances/instance.properties
+RESTService/Runtime_ESBSE/container/lock
