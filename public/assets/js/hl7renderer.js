@@ -67,7 +67,7 @@ function goToByScroll(id)
 function showOtherSection() {
     console.log("Hiding");
     // Hide the initial Panel and show the one with data.
-    $('i_container').slideToggle();
+    $('#i_container').slideToggle();
     console.log("Showing");
-    $('container').show();
+    $('#container').slideToggle();
 }

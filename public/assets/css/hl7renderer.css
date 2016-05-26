@@ -57,6 +57,7 @@ body {
 {
     background-color: #8ad0b8;
     color: #000;
+    height: 600px;
 }
 
 .mint-panel .mint-header-no-margin
@@ -502,5 +503,11 @@ table.dataTable thead .sorting:after {
     border-radius: 25px;
     width: 50%;
     height: 75%;
+    vertical-align: middle;
+    margin-top: 50px;
+    padding: 60px;
+}
+
+.middle {
     vertical-align: middle;
 }
