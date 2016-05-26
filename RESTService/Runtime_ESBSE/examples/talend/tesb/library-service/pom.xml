@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Copyright (c) 2014 Talend Inc. - www.talend.com
+ All rights reserved.
+
+ This program and the accompanying materials are made available
+ under the terms of the Apache License v2.0
+ which accompanies this distribution, and is available at
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ -->
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.talend.esb.examples</groupId>
+    <artifactId>library-service</artifactId>
+    <version>6.1.1</version>
+    <name>Talend ESB Runtime Examples :: Library-Service</name>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.talend.esb.examples</groupId>
+        <artifactId>talend-esb-examples</artifactId>
+        <version>6.1.1</version>
+    </parent>
+
+    <properties>
+        <use.service.registry>false</use.service.registry>
+
+        <cxf.version>3.1.4</cxf.version>
+        <cxf.xjc.version>3.0.3</cxf.xjc.version>
+        <camel.version>2.15.4</camel.version>
+        <spring.version>3.2.14.RELEASE</spring.version>
+        <karaf.version>4.0.3</karaf.version>
+        <activemq.version>5.11.3</activemq.version>
+        <osgi.version>4.2.0</osgi.version>
+        <eclipse.osgi.version>3.8.0.v20120529-1548</eclipse.osgi.version>
+        <zookeeper.version>3.3.6</zookeeper.version>
+        <derby.version>10.8.1.2</derby.version>
+        <servlet.api.version>2.5</servlet.api.version>
+        <aries.version>1.0.0</aries.version>
+        <jetty.version>9.2.7.v20150116</jetty.version>
+
+        <!-- Test dependencies -->
+        <junit.version>4.11</junit.version>
+
+        <!-- Log dependencies -->
+        <log4j.version>1.2.17</log4j.version>
+        <slf4j.version>1.7.5</slf4j.version>
+    </properties>
+
+    <modules>
+        <module>common</module>
+        <module>client</module>
+        <module>service</module>
+        <module>war</module>
+        <module>features</module>
+    </modules>
+
+     <profiles>
+        <profile>
+            <id>service-registry</id>
+            <properties>
+                <use.service.registry>true</use.service.registry>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.talend.esb.registry</groupId>
+                    <artifactId>registry-wsdl-client</artifactId>
+                    <version>${project.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.talend.esb.registry</groupId>
+                    <artifactId>registry-policy-client</artifactId>
+                    <version>${project.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+</project>

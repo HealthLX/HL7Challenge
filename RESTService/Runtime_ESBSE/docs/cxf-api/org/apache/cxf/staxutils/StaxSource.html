@@ -1,0 +1,611 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>StaxSource (Apache CXF JavaDoc 3.1.4 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="StaxSource (Apache CXF JavaDoc 3.1.4 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/StaxSource.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../org/apache/cxf/staxutils/PropertiesExpandingStreamReader.html" title="class in org.apache.cxf.staxutils"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../org/apache/cxf/staxutils/StaxStreamFilter.html" title="class in org.apache.cxf.staxutils"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/cxf/staxutils/StaxSource.html" target="_top">Frames</a></li>
+<li><a href="StaxSource.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#fields_inherited_from_class_javax.xml.transform.sax.SAXSource">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">org.apache.cxf.staxutils</div>
+<h2 title="Class StaxSource" class="title">Class StaxSource</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/transform/sax/SAXSource.html?is-external=true" title="class or interface in javax.xml.transform.sax">javax.xml.transform.sax.SAXSource</a></li>
+<li>
+<ul class="inheritance">
+<li>org.apache.cxf.staxutils.StaxSource</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/transform/Source.html?is-external=true" title="class or interface in javax.xml.transform">Source</a>, <a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true" title="class or interface in org.xml.sax">XMLReader</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public class <span class="strong">StaxSource</span>
+extends <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/transform/sax/SAXSource.html?is-external=true" title="class or interface in javax.xml.transform.sax">SAXSource</a>
+implements <a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true" title="class or interface in org.xml.sax">XMLReader</a></pre>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<ul class="blockList">
+<li class="blockList"><a name="fields_inherited_from_class_javax.xml.transform.sax.SAXSource">
+<!--   -->
+</a>
+<h3>Fields inherited from class&nbsp;javax.xml.transform.sax.<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/transform/sax/SAXSource.html?is-external=true" title="class or interface in javax.xml.transform.sax">SAXSource</a></h3>
+<code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/transform/sax/SAXSource.html?is-external=true#FEATURE" title="class or interface in javax.xml.transform.sax">FEATURE</a></code></li>
+</ul>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#StaxSource(javax.xml.stream.XMLStreamReader)">StaxSource</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamReader.html?is-external=true" title="class or interface in javax.xml.stream">XMLStreamReader</a>&nbsp;streamReader)</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/Attributes.html?is-external=true" title="class or interface in org.xml.sax">Attributes</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#getAttributes()">getAttributes</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/ContentHandler.html?is-external=true" title="class or interface in org.xml.sax">ContentHandler</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#getContentHandler()">getContentHandler</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/DTDHandler.html?is-external=true" title="class or interface in org.xml.sax">DTDHandler</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#getDTDHandler()">getDTDHandler</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/EntityResolver.html?is-external=true" title="class or interface in org.xml.sax">EntityResolver</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#getEntityResolver()">getEntityResolver</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/ErrorHandler.html?is-external=true" title="class or interface in org.xml.sax">ErrorHandler</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#getErrorHandler()">getErrorHandler</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#getFeature(java.lang.String)">getFeature</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#getProperty(java.lang.String)">getProperty</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#getQualifiedName()">getQualifiedName</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true" title="class or interface in org.xml.sax">XMLReader</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#getXMLReader()">getXMLReader</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamReader.html?is-external=true" title="class or interface in javax.xml.stream">XMLStreamReader</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#getXMLStreamReader()">getXMLStreamReader</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#parse()">parse</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#parse(org.xml.sax.InputSource)">parse</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/InputSource.html?is-external=true" title="class or interface in org.xml.sax">InputSource</a>&nbsp;input)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#parse(java.lang.String)">parse</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;systemId)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#setContentHandler(org.xml.sax.ContentHandler)">setContentHandler</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/ContentHandler.html?is-external=true" title="class or interface in org.xml.sax">ContentHandler</a>&nbsp;handler)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#setDTDHandler(org.xml.sax.DTDHandler)">setDTDHandler</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/DTDHandler.html?is-external=true" title="class or interface in org.xml.sax">DTDHandler</a>&nbsp;handler)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#setEntityResolver(org.xml.sax.EntityResolver)">setEntityResolver</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/EntityResolver.html?is-external=true" title="class or interface in org.xml.sax">EntityResolver</a>&nbsp;resolver)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#setErrorHandler(org.xml.sax.ErrorHandler)">setErrorHandler</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/ErrorHandler.html?is-external=true" title="class or interface in org.xml.sax">ErrorHandler</a>&nbsp;handler)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#setFeature(java.lang.String,%20boolean)">setFeature</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+          boolean&nbsp;value)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/StaxSource.html#setProperty(java.lang.String,%20java.lang.Object)">setProperty</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+           <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_javax.xml.transform.sax.SAXSource">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;javax.xml.transform.sax.<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/transform/sax/SAXSource.html?is-external=true" title="class or interface in javax.xml.transform.sax">SAXSource</a></h3>
+<code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/transform/sax/SAXSource.html?is-external=true#getInputSource()" title="class or interface in javax.xml.transform.sax">getInputSource</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/transform/sax/SAXSource.html?is-external=true#getSystemId()" title="class or interface in javax.xml.transform.sax">getSystemId</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/transform/sax/SAXSource.html?is-external=true#setInputSource(org.xml.sax.InputSource)" title="class or interface in javax.xml.transform.sax">setInputSource</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/transform/sax/SAXSource.html?is-external=true#setSystemId(java.lang.String)" title="class or interface in javax.xml.transform.sax">setSystemId</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/transform/sax/SAXSource.html?is-external=true#setXMLReader(org.xml.sax.XMLReader)" title="class or interface in javax.xml.transform.sax">setXMLReader</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/transform/sax/SAXSource.html?is-external=true#sourceToInputSource(javax.xml.transform.Source)" title="class or interface in javax.xml.transform.sax">sourceToInputSource</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long,%20int)" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="StaxSource(javax.xml.stream.XMLStreamReader)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>StaxSource</h4>
+<pre>public&nbsp;StaxSource(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamReader.html?is-external=true" title="class or interface in javax.xml.stream">XMLStreamReader</a>&nbsp;streamReader)</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="getXMLReader()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getXMLReader</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true" title="class or interface in org.xml.sax">XMLReader</a>&nbsp;getXMLReader()</pre>
+<dl>
+<dt><strong>Overrides:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/transform/sax/SAXSource.html?is-external=true#getXMLReader()" title="class or interface in javax.xml.transform.sax">getXMLReader</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/transform/sax/SAXSource.html?is-external=true" title="class or interface in javax.xml.transform.sax">SAXSource</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getXMLStreamReader()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getXMLStreamReader</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamReader.html?is-external=true" title="class or interface in javax.xml.stream">XMLStreamReader</a>&nbsp;getXMLStreamReader()</pre>
+</li>
+</ul>
+<a name="parse()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>parse</h4>
+<pre>protected&nbsp;void&nbsp;parse()
+              throws <a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXException.html?is-external=true" title="class or interface in org.xml.sax">SAXException</a></pre>
+<dl><dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXException.html?is-external=true" title="class or interface in org.xml.sax">SAXException</a></code></dd></dl>
+</li>
+</ul>
+<a name="getQualifiedName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getQualifiedName</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getQualifiedName()</pre>
+</li>
+</ul>
+<a name="getAttributes()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getAttributes</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/Attributes.html?is-external=true" title="class or interface in org.xml.sax">Attributes</a>&nbsp;getAttributes()</pre>
+</li>
+</ul>
+<a name="getFeature(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getFeature</h4>
+<pre>public&nbsp;boolean&nbsp;getFeature(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)
+                   throws <a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXNotRecognizedException.html?is-external=true" title="class or interface in org.xml.sax">SAXNotRecognizedException</a>,
+                          <a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXNotSupportedException.html?is-external=true" title="class or interface in org.xml.sax">SAXNotSupportedException</a></pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true#getFeature(java.lang.String)" title="class or interface in org.xml.sax">getFeature</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true" title="class or interface in org.xml.sax">XMLReader</a></code></dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXNotRecognizedException.html?is-external=true" title="class or interface in org.xml.sax">SAXNotRecognizedException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXNotSupportedException.html?is-external=true" title="class or interface in org.xml.sax">SAXNotSupportedException</a></code></dd></dl>
+</li>
+</ul>
+<a name="setFeature(java.lang.String, boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setFeature</h4>
+<pre>public&nbsp;void&nbsp;setFeature(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+              boolean&nbsp;value)
+                throws <a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXNotRecognizedException.html?is-external=true" title="class or interface in org.xml.sax">SAXNotRecognizedException</a>,
+                       <a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXNotSupportedException.html?is-external=true" title="class or interface in org.xml.sax">SAXNotSupportedException</a></pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true#setFeature(java.lang.String,%20boolean)" title="class or interface in org.xml.sax">setFeature</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true" title="class or interface in org.xml.sax">XMLReader</a></code></dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXNotRecognizedException.html?is-external=true" title="class or interface in org.xml.sax">SAXNotRecognizedException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXNotSupportedException.html?is-external=true" title="class or interface in org.xml.sax">SAXNotSupportedException</a></code></dd></dl>
+</li>
+</ul>
+<a name="getProperty(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getProperty</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;getProperty(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)
+                   throws <a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXNotRecognizedException.html?is-external=true" title="class or interface in org.xml.sax">SAXNotRecognizedException</a>,
+                          <a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXNotSupportedException.html?is-external=true" title="class or interface in org.xml.sax">SAXNotSupportedException</a></pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true#getProperty(java.lang.String)" title="class or interface in org.xml.sax">getProperty</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true" title="class or interface in org.xml.sax">XMLReader</a></code></dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXNotRecognizedException.html?is-external=true" title="class or interface in org.xml.sax">SAXNotRecognizedException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXNotSupportedException.html?is-external=true" title="class or interface in org.xml.sax">SAXNotSupportedException</a></code></dd></dl>
+</li>
+</ul>
+<a name="setProperty(java.lang.String, java.lang.Object)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setProperty</h4>
+<pre>public&nbsp;void&nbsp;setProperty(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+               <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)
+                 throws <a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXNotRecognizedException.html?is-external=true" title="class or interface in org.xml.sax">SAXNotRecognizedException</a>,
+                        <a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXNotSupportedException.html?is-external=true" title="class or interface in org.xml.sax">SAXNotSupportedException</a></pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true#setProperty(java.lang.String,%20java.lang.Object)" title="class or interface in org.xml.sax">setProperty</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true" title="class or interface in org.xml.sax">XMLReader</a></code></dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXNotRecognizedException.html?is-external=true" title="class or interface in org.xml.sax">SAXNotRecognizedException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXNotSupportedException.html?is-external=true" title="class or interface in org.xml.sax">SAXNotSupportedException</a></code></dd></dl>
+</li>
+</ul>
+<a name="setEntityResolver(org.xml.sax.EntityResolver)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setEntityResolver</h4>
+<pre>public&nbsp;void&nbsp;setEntityResolver(<a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/EntityResolver.html?is-external=true" title="class or interface in org.xml.sax">EntityResolver</a>&nbsp;resolver)</pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true#setEntityResolver(org.xml.sax.EntityResolver)" title="class or interface in org.xml.sax">setEntityResolver</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true" title="class or interface in org.xml.sax">XMLReader</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getEntityResolver()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getEntityResolver</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/EntityResolver.html?is-external=true" title="class or interface in org.xml.sax">EntityResolver</a>&nbsp;getEntityResolver()</pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true#getEntityResolver()" title="class or interface in org.xml.sax">getEntityResolver</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true" title="class or interface in org.xml.sax">XMLReader</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setDTDHandler(org.xml.sax.DTDHandler)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setDTDHandler</h4>
+<pre>public&nbsp;void&nbsp;setDTDHandler(<a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/DTDHandler.html?is-external=true" title="class or interface in org.xml.sax">DTDHandler</a>&nbsp;handler)</pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true#setDTDHandler(org.xml.sax.DTDHandler)" title="class or interface in org.xml.sax">setDTDHandler</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true" title="class or interface in org.xml.sax">XMLReader</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getDTDHandler()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDTDHandler</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/DTDHandler.html?is-external=true" title="class or interface in org.xml.sax">DTDHandler</a>&nbsp;getDTDHandler()</pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true#getDTDHandler()" title="class or interface in org.xml.sax">getDTDHandler</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true" title="class or interface in org.xml.sax">XMLReader</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setContentHandler(org.xml.sax.ContentHandler)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setContentHandler</h4>
+<pre>public&nbsp;void&nbsp;setContentHandler(<a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/ContentHandler.html?is-external=true" title="class or interface in org.xml.sax">ContentHandler</a>&nbsp;handler)</pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true#setContentHandler(org.xml.sax.ContentHandler)" title="class or interface in org.xml.sax">setContentHandler</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true" title="class or interface in org.xml.sax">XMLReader</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getContentHandler()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getContentHandler</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/ContentHandler.html?is-external=true" title="class or interface in org.xml.sax">ContentHandler</a>&nbsp;getContentHandler()</pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true#getContentHandler()" title="class or interface in org.xml.sax">getContentHandler</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true" title="class or interface in org.xml.sax">XMLReader</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setErrorHandler(org.xml.sax.ErrorHandler)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setErrorHandler</h4>
+<pre>public&nbsp;void&nbsp;setErrorHandler(<a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/ErrorHandler.html?is-external=true" title="class or interface in org.xml.sax">ErrorHandler</a>&nbsp;handler)</pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true#setErrorHandler(org.xml.sax.ErrorHandler)" title="class or interface in org.xml.sax">setErrorHandler</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true" title="class or interface in org.xml.sax">XMLReader</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getErrorHandler()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getErrorHandler</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/ErrorHandler.html?is-external=true" title="class or interface in org.xml.sax">ErrorHandler</a>&nbsp;getErrorHandler()</pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true#getErrorHandler()" title="class or interface in org.xml.sax">getErrorHandler</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true" title="class or interface in org.xml.sax">XMLReader</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="parse(org.xml.sax.InputSource)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>parse</h4>
+<pre>public&nbsp;void&nbsp;parse(<a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/InputSource.html?is-external=true" title="class or interface in org.xml.sax">InputSource</a>&nbsp;input)
+           throws <a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXException.html?is-external=true" title="class or interface in org.xml.sax">SAXException</a></pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true#parse(org.xml.sax.InputSource)" title="class or interface in org.xml.sax">parse</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true" title="class or interface in org.xml.sax">XMLReader</a></code></dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXException.html?is-external=true" title="class or interface in org.xml.sax">SAXException</a></code></dd></dl>
+</li>
+</ul>
+<a name="parse(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>parse</h4>
+<pre>public&nbsp;void&nbsp;parse(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;systemId)
+           throws <a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXException.html?is-external=true" title="class or interface in org.xml.sax">SAXException</a></pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true#parse(java.lang.String)" title="class or interface in org.xml.sax">parse</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/XMLReader.html?is-external=true" title="class or interface in org.xml.sax">XMLReader</a></code></dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/org/xml/sax/SAXException.html?is-external=true" title="class or interface in org.xml.sax">SAXException</a></code></dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/StaxSource.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../org/apache/cxf/staxutils/PropertiesExpandingStreamReader.html" title="class in org.apache.cxf.staxutils"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../org/apache/cxf/staxutils/StaxStreamFilter.html" title="class in org.apache.cxf.staxutils"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/cxf/staxutils/StaxSource.html" target="_top">Frames</a></li>
+<li><a href="StaxSource.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#fields_inherited_from_class_javax.xml.transform.sax.SAXSource">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Apache CXF</small></p>
+</body>
+</html>

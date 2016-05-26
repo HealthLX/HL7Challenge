@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  #%L
+  Locator Demo Webapp
+  %%
+  Copyright (C) 2011 - 2012 Talend Inc.
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%
+  -->
+
+<!--
+
+ Copyright (c) 2011 Talend Inc. - www.talend.com
+ All rights reserved.
+
+ This program and the accompanying materials are made available
+ under the terms of the Apache License v2.0
+ which accompanies this distribution, and is available at
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:sec="http://cxf.apache.org/configuration/security"
+    xmlns:http="http://cxf.apache.org/transports/http/configuration"    
+    xmlns:httpj="http://cxf.apache.org/transports/http-jetty/configuration"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+       http://cxf.apache.org/configuration/security http://cxf.apache.org/schemas/configuration/security.xsd
+       http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd       
+       http://cxf.apache.org/transports/http-jetty/configuration http://cxf.apache.org/schemas/configuration/http-jetty.xsd">
+ 
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/tesb/locator/beans.xml" />
+
+	<jaxws:endpoint xmlns:tns="http://talend.org/esb/examples/"
+			id="greeter_Https"
+			implementor="demo.service.Greeter_HttpsImpl"
+			serviceName="tns:Greeter_HttpsService"
+			address="/Greeter_HttpsService">
+		<jaxws:properties>
+		    <entry key="org.talend.tesb.endpoint.secured" value="true"/>
+		</jaxws:properties>
+		<jaxws:features>
+			<bean class="org.talend.esb.servicelocator.cxf.LocatorFeature">
+			</bean>
+		</jaxws:features>
+	</jaxws:endpoint>
+	
+ 
+	<jaxws:endpoint xmlns:tns="http://talend.org/esb/examples/"
+			id="greeter"
+			implementor="demo.service.GreeterImpl"
+			serviceName="tns:GreeterService"
+			address="/GreeterService">
+		<jaxws:features>
+			<bean class="org.talend.esb.servicelocator.cxf.LocatorFeature">
+			</bean>
+		</jaxws:features>
+	</jaxws:endpoint>
+	
+
+	
+</beans>

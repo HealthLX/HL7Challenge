@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>ClientFaultConverter (Apache CXF JavaDoc 3.1.4 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="ClientFaultConverter (Apache CXF JavaDoc 3.1.4 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/ClientFaultConverter.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../org/apache/cxf/interceptor/AttachmentOutInterceptor.AttachmentOutEndingInterceptor.html" title="class in org.apache.cxf.interceptor"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../org/apache/cxf/interceptor/ClientOutFaultObserver.html" title="class in org.apache.cxf.interceptor"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/cxf/interceptor/ClientFaultConverter.html" target="_top">Frames</a></li>
+<li><a href="ClientFaultConverter.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">org.apache.cxf.interceptor</div>
+<h2 title="Class ClientFaultConverter" class="title">Class ClientFaultConverter</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html" title="class in org.apache.cxf.phase">org.apache.cxf.phase.AbstractPhaseInterceptor</a>&lt;<a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&gt;</li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html" title="class in org.apache.cxf.interceptor">org.apache.cxf.interceptor.AbstractInDatabindingInterceptor</a></li>
+<li>
+<ul class="inheritance">
+<li>org.apache.cxf.interceptor.ClientFaultConverter</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="../../../../org/apache/cxf/interceptor/Interceptor.html" title="interface in org.apache.cxf.interceptor">Interceptor</a>&lt;<a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&gt;, <a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html" title="interface in org.apache.cxf.phase">PhaseInterceptor</a>&lt;<a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&gt;</dd>
+</dl>
+<hr>
+<br>
+<pre>public class <span class="strong">ClientFaultConverter</span>
+extends <a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html" title="class in org.apache.cxf.interceptor">AbstractInDatabindingInterceptor</a></pre>
+<div class="block">Takes a Fault and converts it to a local exception type if possible.</div>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true" title="class or interface in java.util.regex">Pattern</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/interceptor/ClientFaultConverter.html#CAUSE_SUFFIX_SPLITTER">CAUSE_SUFFIX_SPLITTER</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/interceptor/ClientFaultConverter.html#DISABLE_FAULT_MAPPING">DISABLE_FAULT_MAPPING</a></strong></code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="fields_inherited_from_class_org.apache.cxf.interceptor.AbstractInDatabindingInterceptor">
+<!--   -->
+</a>
+<h3>Fields inherited from class&nbsp;org.apache.cxf.interceptor.<a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html" title="class in org.apache.cxf.interceptor">AbstractInDatabindingInterceptor</a></h3>
+<code><a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html#NO_VALIDATE_PARTS">NO_VALIDATE_PARTS</a></code></li>
+</ul>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/cxf/interceptor/ClientFaultConverter.html#ClientFaultConverter()">ClientFaultConverter</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/cxf/interceptor/ClientFaultConverter.html#ClientFaultConverter(java.lang.String)">ClientFaultConverter</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;phase)</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/interceptor/ClientFaultConverter.html#handleMessage(org.apache.cxf.message.Message)">handleMessage</a></strong>(<a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;msg)</code>
+<div class="block">Intercepts a message.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/interceptor/ClientFaultConverter.html#processFaultDetail(org.apache.cxf.interceptor.Fault,%20org.apache.cxf.message.Message)">processFaultDetail</a></strong>(<a href="../../../../org/apache/cxf/interceptor/Fault.html" title="class in org.apache.cxf.interceptor">Fault</a>&nbsp;fault,
+                  <a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;msg)</code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.cxf.interceptor.AbstractInDatabindingInterceptor">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.cxf.interceptor.<a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html" title="class in org.apache.cxf.interceptor">AbstractInDatabindingInterceptor</a></h3>
+<code><a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html#findMessagePart(org.apache.cxf.message.Exchange,%20java.util.Collection,%20javax.xml.namespace.QName,%20boolean,%20int,%20org.apache.cxf.message.Message)">findMessagePart</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html#getBindingOperationInfo(org.apache.cxf.message.Exchange,%20javax.xml.namespace.QName,%20boolean)">getBindingOperationInfo</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html#getDataReader(org.apache.cxf.message.Message)">getDataReader</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html#getDataReader(org.apache.cxf.message.Message,%20java.lang.Class)">getDataReader</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html#getMessageInfo(org.apache.cxf.message.Message,%20org.apache.cxf.service.model.BindingOperationInfo)">getMessageInfo</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html#getMessageInfo(org.apache.cxf.message.Message,%20org.apache.cxf.service.model.BindingOperationInfo,%20boolean)">getMessageInfo</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html#getNodeDataReader(org.apache.cxf.message.Message)">getNodeDataReader</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html#getXMLStreamReader(org.apache.cxf.message.Message)">getXMLStreamReader</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html#setDataReaderValidation(org.apache.cxf.service.Service,%20org.apache.cxf.message.Message,%20org.apache.cxf.databinding.DataReader)">setDataReaderValidation</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html#setMessage(org.apache.cxf.message.Message,%20org.apache.cxf.service.model.BindingOperationInfo,%20boolean,%20org.apache.cxf.service.model.ServiceInfo,%20org.apache.cxf.service.model.MessageInfo)">setMessage</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html#setOperationSchemaValidation(org.apache.cxf.message.Message)">setOperationSchemaValidation</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html#shouldValidate(org.apache.cxf.message.Message)">shouldValidate</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html#supportsDataReader(org.apache.cxf.message.Message,%20java.lang.Class)">supportsDataReader</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.cxf.phase.AbstractPhaseInterceptor">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.cxf.phase.<a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html" title="class in org.apache.cxf.phase">AbstractPhaseInterceptor</a></h3>
+<code><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#addAfter(java.util.Collection)">addAfter</a>, <a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#addAfter(java.lang.String)">addAfter</a>, <a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#addBefore(java.util.Collection)">addBefore</a>, <a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#addBefore(java.lang.String)">addBefore</a>, <a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#getAdditionalInterceptors()">getAdditionalInterceptors</a>, <a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#getAfter()">getAfter</a>, <a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#getBefore()">getBefore</a>, <a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#getId()">getId</a>, <a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#getPhase()">getPhase</a>, <a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#handleFault(T)">handleFault</a>, <a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#isGET(T)">isGET</a>, <a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#isRequestor(T)">isRequestor</a>, <a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#setAfter(java.util.Collection)">setAfter</a>, <a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#setBefore(java.util.Collection)">setBefore</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long,%20int)" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="DISABLE_FAULT_MAPPING">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DISABLE_FAULT_MAPPING</h4>
+<pre>public static final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> DISABLE_FAULT_MAPPING</pre>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../constant-values.html#org.apache.cxf.interceptor.ClientFaultConverter.DISABLE_FAULT_MAPPING">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="CAUSE_SUFFIX_SPLITTER">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>CAUSE_SUFFIX_SPLITTER</h4>
+<pre>public static final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true" title="class or interface in java.util.regex">Pattern</a> CAUSE_SUFFIX_SPLITTER</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="ClientFaultConverter()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ClientFaultConverter</h4>
+<pre>public&nbsp;ClientFaultConverter()</pre>
+</li>
+</ul>
+<a name="ClientFaultConverter(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>ClientFaultConverter</h4>
+<pre>public&nbsp;ClientFaultConverter(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;phase)</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="handleMessage(org.apache.cxf.message.Message)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>handleMessage</h4>
+<pre>public&nbsp;void&nbsp;handleMessage(<a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;msg)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/interceptor/Interceptor.html#handleMessage(T)">Interceptor</a></code></strong></div>
+<div class="block">Intercepts a message. 
+ Interceptors should NOT invoke handleMessage or handleFault
+ on the next interceptor - the interceptor chain will
+ take care of this.</div>
+</li>
+</ul>
+<a name="processFaultDetail(org.apache.cxf.interceptor.Fault, org.apache.cxf.message.Message)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>processFaultDetail</h4>
+<pre>protected&nbsp;void&nbsp;processFaultDetail(<a href="../../../../org/apache/cxf/interceptor/Fault.html" title="class in org.apache.cxf.interceptor">Fault</a>&nbsp;fault,
+                      <a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;msg)</pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/ClientFaultConverter.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../org/apache/cxf/interceptor/AttachmentOutInterceptor.AttachmentOutEndingInterceptor.html" title="class in org.apache.cxf.interceptor"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../org/apache/cxf/interceptor/ClientOutFaultObserver.html" title="class in org.apache.cxf.interceptor"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/cxf/interceptor/ClientFaultConverter.html" target="_top">Frames</a></li>
+<li><a href="ClientFaultConverter.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Apache CXF</small></p>
+</body>
+</html>

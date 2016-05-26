@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Copyright (c) 2011 Talend Inc. - www.talend.com
+ All rights reserved.
+
+ This program and the accompanying materials are made available
+ under the terms of the Apache License v2.0
+ which accompanies this distribution, and is available at
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ -->
+<xsd:schema elementFormDefault="qualified"
+	targetNamespace="http://talend.org/schemas/esb/locator/rest/2011/11"
+	xmlns="http://talend.org/schemas/esb/locator/rest/2011/11" xmlns:wsa="http://www.w3.org/2005/08/addressing"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:lpx="http://talend.org/schemas/esb/locator/rest/2011/11"
+	xmlns:lpxc="http://talend.org/schemas/esb/locator/2011/11"
+	xmlns:lps="http://www.talend.org/services/esb/locator/rest/v1">
+	<xsd:import namespace="http://talend.org/schemas/esb/locator/2011/11"
+		schemaLocation="locator-common-types.xsd" />
+	<xsd:element name="EndpointReferenceList">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="wsa:EndpointReference" maxOccurs="unbounded" minOccurs="0" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="RegisterEndpointRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="serviceName" type="xsd:string" />
+				<xsd:element name="endpointURL" type="xsd:anyURI" />
+				<xsd:element name="binding" type="lpxc:BindingType" />
+				<xsd:element name="transport" type="lpxc:TransportType" />
+				<xsd:element name="EntryType" type="lpx:EntryType"
+					minOccurs="0" maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="EntryType">
+		<xsd:sequence>
+			<xsd:element name="key" type="xsd:string" minOccurs="1"
+				maxOccurs="1" />
+			<xsd:element name="value" type="xsd:string" minOccurs="1"
+				maxOccurs="unbounded" />
+
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="AssertionType">
+		<xsd:sequence>
+			<xsd:element name="value" type="xsd:string" minOccurs="1"
+				maxOccurs="1" />
+			<xsd:element name="key" type="xsd:string" minOccurs="1"
+				maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

@@ -1,0 +1,1242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>TLSClientParametersType (Apache CXF JavaDoc 3.1.4 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="TLSClientParametersType (Apache CXF JavaDoc 3.1.4 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/TLSClientParametersType.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../../org/apache/cxf/configuration/security/SecureRandomParameters.html" title="class in org.apache.cxf.configuration.security"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../../org/apache/cxf/configuration/security/TLSServerParametersType.html" title="class in org.apache.cxf.configuration.security"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?org/apache/cxf/configuration/security/TLSClientParametersType.html" target="_top">Frames</a></li>
+<li><a href="TLSClientParametersType.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">org.apache.cxf.configuration.security</div>
+<h2 title="Class TLSClientParametersType" class="title">Class TLSClientParametersType</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li>org.apache.cxf.configuration.security.TLSClientParametersType</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>Direct Known Subclasses:</dt>
+<dd><a href="../../../../../org/apache/cxf/configuration/jsse/TLSClientParametersConfig.TLSClientParametersTypeInternal.html" title="class in org.apache.cxf.configuration.jsse">TLSClientParametersConfig.TLSClientParametersTypeInternal</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public class <span class="strong">TLSClientParametersType</span>
+extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
+<div class="block"><p>Java class for TLSClientParametersType complex type.
+ 
+ <p>The following schema fragment specifies the expected content contained within this class.
+ 
+ <pre>
+ &lt;complexType name="TLSClientParametersType"&gt;
+   &lt;complexContent&gt;
+     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+       &lt;all&gt;
+         &lt;element name="keyManagers" type="{http://cxf.apache.org/configuration/security}KeyManagersType" minOccurs="0"/&gt;
+         &lt;element name="trustManagers" type="{http://cxf.apache.org/configuration/security}TrustManagersType" minOccurs="0"/&gt;
+         &lt;element name="cipherSuites" type="{http://cxf.apache.org/configuration/security}CipherSuites" minOccurs="0"/&gt;
+         &lt;element name="cipherSuitesFilter" type="{http://cxf.apache.org/configuration/security}FiltersType" minOccurs="0"/&gt;
+         &lt;element name="secureRandomParameters" type="{http://cxf.apache.org/configuration/security}SecureRandomParameters" minOccurs="0"/&gt;
+         &lt;element name="certConstraints" type="{http://cxf.apache.org/configuration/security}CertificateConstraintsType" minOccurs="0"/&gt;
+         &lt;element name="certAlias" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+       &lt;/all&gt;
+       &lt;attribute name="useHttpsURLConnectionDefaultSslSocketFactory" type="{http://cxf.apache.org/configuration/parameterized-types}ParameterizedBoolean" default="false" /&gt;
+       &lt;attribute name="useHttpsURLConnectionDefaultHostnameVerifier" type="{http://cxf.apache.org/configuration/parameterized-types}ParameterizedBoolean" default="false" /&gt;
+       &lt;attribute name="disableCNCheck" type="{http://cxf.apache.org/configuration/parameterized-types}ParameterizedBoolean" default="false" /&gt;
+       &lt;attribute name="jsseProvider" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+       &lt;attribute name="secureSocketProtocol" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+       &lt;attribute name="sslCacheTimeout" type="{http://www.w3.org/2001/XMLSchema}int" /&gt;
+     &lt;/restriction&gt;
+   &lt;/complexContent&gt;
+ &lt;/complexType&gt;
+ </pre></div>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#certAlias">certAlias</a></strong></code>
+<div class="block">This element contains the Certificate Alias.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../../../../org/apache/cxf/configuration/security/CertificateConstraintsType.html" title="class in org.apache.cxf.configuration.security">CertificateConstraintsType</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#certConstraints">certConstraints</a></strong></code>
+<div class="block">This element contains the Certificate Constraints specification.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../../org/apache/cxf/configuration/security/CipherSuites.html" title="class in org.apache.cxf.configuration.security">CipherSuites</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#cipherSuites">cipherSuites</a></strong></code>
+<div class="block">This element contains the the CipherSuites that will be supported.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../../../../org/apache/cxf/configuration/security/FiltersType.html" title="class in org.apache.cxf.configuration.security">FiltersType</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#cipherSuitesFilter">cipherSuitesFilter</a></strong></code>
+<div class="block">This element contains the filters of the supported CipherSuites
+                 that will be supported and used if available.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#disableCNCheck">disableCNCheck</a></strong></code>
+<div class="block">This attribute specifies if JSSE should omit checking if the
+                 host name specified in the URL matches that of the Common Name
+                 (CN) on the server's certificate.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#jsseProvider">jsseProvider</a></strong></code>
+<div class="block">This attribute contains the JSSE provider name.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../../org/apache/cxf/configuration/security/KeyManagersType.html" title="class in org.apache.cxf.configuration.security">KeyManagersType</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#keyManagers">keyManagers</a></strong></code>
+<div class="block">This element contains the KeyManagers specification.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../../../../org/apache/cxf/configuration/security/SecureRandomParameters.html" title="class in org.apache.cxf.configuration.security">SecureRandomParameters</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#secureRandomParameters">secureRandomParameters</a></strong></code>
+<div class="block">This element contains SecureRandom specification.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#secureSocketProtocol">secureSocketProtocol</a></strong></code>
+<div class="block">This attribute contains the Protocol Name.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#sslCacheTimeout">sslCacheTimeout</a></strong></code>
+<div class="block">This attribute contains the JDK SSL session cache timeout</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../../org/apache/cxf/configuration/security/TrustManagersType.html" title="class in org.apache.cxf.configuration.security">TrustManagersType</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#trustManagers">trustManagers</a></strong></code>
+<div class="block">This element contains the TrustManagers specification.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#useHttpsURLConnectionDefaultHostnameVerifier">useHttpsURLConnectionDefaultHostnameVerifier</a></strong></code>
+<div class="block">This attribute specifies if HttpsURLConnection.defaultHostnameVerifier 
+                 should be used to create https connections.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#useHttpsURLConnectionDefaultSslSocketFactory">useHttpsURLConnectionDefaultSslSocketFactory</a></strong></code>
+<div class="block">This attribute specifies if HttpsURLConnection.defaultSslSocketFactory 
+                 should be used to create https connections.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#TLSClientParametersType()">TLSClientParametersType</a></strong>()</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getCertAlias()">getCertAlias</a></strong>()</code>
+<div class="block">Gets the value of the certAlias property.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/configuration/security/CertificateConstraintsType.html" title="class in org.apache.cxf.configuration.security">CertificateConstraintsType</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getCertConstraints()">getCertConstraints</a></strong>()</code>
+<div class="block">Gets the value of the certConstraints property.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/configuration/security/CipherSuites.html" title="class in org.apache.cxf.configuration.security">CipherSuites</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getCipherSuites()">getCipherSuites</a></strong>()</code>
+<div class="block">Gets the value of the cipherSuites property.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/configuration/security/FiltersType.html" title="class in org.apache.cxf.configuration.security">FiltersType</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getCipherSuitesFilter()">getCipherSuitesFilter</a></strong>()</code>
+<div class="block">Gets the value of the cipherSuitesFilter property.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getJsseProvider()">getJsseProvider</a></strong>()</code>
+<div class="block">Gets the value of the jsseProvider property.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/configuration/security/KeyManagersType.html" title="class in org.apache.cxf.configuration.security">KeyManagersType</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getKeyManagers()">getKeyManagers</a></strong>()</code>
+<div class="block">Gets the value of the keyManagers property.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/configuration/security/SecureRandomParameters.html" title="class in org.apache.cxf.configuration.security">SecureRandomParameters</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getSecureRandomParameters()">getSecureRandomParameters</a></strong>()</code>
+<div class="block">Gets the value of the secureRandomParameters property.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getSecureSocketProtocol()">getSecureSocketProtocol</a></strong>()</code>
+<div class="block">Gets the value of the secureSocketProtocol property.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getSslCacheTimeout()">getSslCacheTimeout</a></strong>()</code>
+<div class="block">Gets the value of the sslCacheTimeout property.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/configuration/security/TrustManagersType.html" title="class in org.apache.cxf.configuration.security">TrustManagersType</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getTrustManagers()">getTrustManagers</a></strong>()</code>
+<div class="block">Gets the value of the trustManagers property.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isDisableCNCheck()">isDisableCNCheck</a></strong>()</code>
+<div class="block">Gets the value of the disableCNCheck property.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isSetCertAlias()">isSetCertAlias</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isSetCertConstraints()">isSetCertConstraints</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isSetCipherSuites()">isSetCipherSuites</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isSetCipherSuitesFilter()">isSetCipherSuitesFilter</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isSetDisableCNCheck()">isSetDisableCNCheck</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isSetJsseProvider()">isSetJsseProvider</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isSetKeyManagers()">isSetKeyManagers</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isSetSecureRandomParameters()">isSetSecureRandomParameters</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isSetSecureSocketProtocol()">isSetSecureSocketProtocol</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isSetSslCacheTimeout()">isSetSslCacheTimeout</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isSetTrustManagers()">isSetTrustManagers</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isSetUseHttpsURLConnectionDefaultHostnameVerifier()">isSetUseHttpsURLConnectionDefaultHostnameVerifier</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isSetUseHttpsURLConnectionDefaultSslSocketFactory()">isSetUseHttpsURLConnectionDefaultSslSocketFactory</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isUseHttpsURLConnectionDefaultHostnameVerifier()">isUseHttpsURLConnectionDefaultHostnameVerifier</a></strong>()</code>
+<div class="block">Gets the value of the useHttpsURLConnectionDefaultHostnameVerifier property.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isUseHttpsURLConnectionDefaultSslSocketFactory()">isUseHttpsURLConnectionDefaultSslSocketFactory</a></strong>()</code>
+<div class="block">Gets the value of the useHttpsURLConnectionDefaultSslSocketFactory property.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#setCertAlias(java.lang.String)">setCertAlias</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;value)</code>
+<div class="block">Sets the value of the certAlias property.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#setCertConstraints(org.apache.cxf.configuration.security.CertificateConstraintsType)">setCertConstraints</a></strong>(<a href="../../../../../org/apache/cxf/configuration/security/CertificateConstraintsType.html" title="class in org.apache.cxf.configuration.security">CertificateConstraintsType</a>&nbsp;value)</code>
+<div class="block">Sets the value of the certConstraints property.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#setCipherSuites(org.apache.cxf.configuration.security.CipherSuites)">setCipherSuites</a></strong>(<a href="../../../../../org/apache/cxf/configuration/security/CipherSuites.html" title="class in org.apache.cxf.configuration.security">CipherSuites</a>&nbsp;value)</code>
+<div class="block">Sets the value of the cipherSuites property.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#setCipherSuitesFilter(org.apache.cxf.configuration.security.FiltersType)">setCipherSuitesFilter</a></strong>(<a href="../../../../../org/apache/cxf/configuration/security/FiltersType.html" title="class in org.apache.cxf.configuration.security">FiltersType</a>&nbsp;value)</code>
+<div class="block">Sets the value of the cipherSuitesFilter property.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#setDisableCNCheck(boolean)">setDisableCNCheck</a></strong>(boolean&nbsp;value)</code>
+<div class="block">Sets the value of the disableCNCheck property.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#setJsseProvider(java.lang.String)">setJsseProvider</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;value)</code>
+<div class="block">Sets the value of the jsseProvider property.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#setKeyManagers(org.apache.cxf.configuration.security.KeyManagersType)">setKeyManagers</a></strong>(<a href="../../../../../org/apache/cxf/configuration/security/KeyManagersType.html" title="class in org.apache.cxf.configuration.security">KeyManagersType</a>&nbsp;value)</code>
+<div class="block">Sets the value of the keyManagers property.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#setSecureRandomParameters(org.apache.cxf.configuration.security.SecureRandomParameters)">setSecureRandomParameters</a></strong>(<a href="../../../../../org/apache/cxf/configuration/security/SecureRandomParameters.html" title="class in org.apache.cxf.configuration.security">SecureRandomParameters</a>&nbsp;value)</code>
+<div class="block">Sets the value of the secureRandomParameters property.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#setSecureSocketProtocol(java.lang.String)">setSecureSocketProtocol</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;value)</code>
+<div class="block">Sets the value of the secureSocketProtocol property.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#setSslCacheTimeout(int)">setSslCacheTimeout</a></strong>(int&nbsp;value)</code>
+<div class="block">Sets the value of the sslCacheTimeout property.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#setTrustManagers(org.apache.cxf.configuration.security.TrustManagersType)">setTrustManagers</a></strong>(<a href="../../../../../org/apache/cxf/configuration/security/TrustManagersType.html" title="class in org.apache.cxf.configuration.security">TrustManagersType</a>&nbsp;value)</code>
+<div class="block">Sets the value of the trustManagers property.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#setUseHttpsURLConnectionDefaultHostnameVerifier(boolean)">setUseHttpsURLConnectionDefaultHostnameVerifier</a></strong>(boolean&nbsp;value)</code>
+<div class="block">Sets the value of the useHttpsURLConnectionDefaultHostnameVerifier property.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#setUseHttpsURLConnectionDefaultSslSocketFactory(boolean)">setUseHttpsURLConnectionDefaultSslSocketFactory</a></strong>(boolean&nbsp;value)</code>
+<div class="block">Sets the value of the useHttpsURLConnectionDefaultSslSocketFactory property.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#unsetDisableCNCheck()">unsetDisableCNCheck</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#unsetSslCacheTimeout()">unsetSslCacheTimeout</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#unsetUseHttpsURLConnectionDefaultHostnameVerifier()">unsetUseHttpsURLConnectionDefaultHostnameVerifier</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#unsetUseHttpsURLConnectionDefaultSslSocketFactory()">unsetUseHttpsURLConnectionDefaultSslSocketFactory</a></strong>()</code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long,%20int)" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="keyManagers">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>keyManagers</h4>
+<pre>protected&nbsp;<a href="../../../../../org/apache/cxf/configuration/security/KeyManagersType.html" title="class in org.apache.cxf.configuration.security">KeyManagersType</a> keyManagers</pre>
+<div class="block">This element contains the KeyManagers specification.</div>
+</li>
+</ul>
+<a name="trustManagers">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>trustManagers</h4>
+<pre>protected&nbsp;<a href="../../../../../org/apache/cxf/configuration/security/TrustManagersType.html" title="class in org.apache.cxf.configuration.security">TrustManagersType</a> trustManagers</pre>
+<div class="block">This element contains the TrustManagers specification.</div>
+</li>
+</ul>
+<a name="cipherSuites">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>cipherSuites</h4>
+<pre>protected&nbsp;<a href="../../../../../org/apache/cxf/configuration/security/CipherSuites.html" title="class in org.apache.cxf.configuration.security">CipherSuites</a> cipherSuites</pre>
+<div class="block">This element contains the the CipherSuites that will be supported.</div>
+</li>
+</ul>
+<a name="cipherSuitesFilter">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>cipherSuitesFilter</h4>
+<pre>protected&nbsp;<a href="../../../../../org/apache/cxf/configuration/security/FiltersType.html" title="class in org.apache.cxf.configuration.security">FiltersType</a> cipherSuitesFilter</pre>
+<div class="block">This element contains the filters of the supported CipherSuites
+                 that will be supported and used if available.</div>
+</li>
+</ul>
+<a name="secureRandomParameters">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>secureRandomParameters</h4>
+<pre>protected&nbsp;<a href="../../../../../org/apache/cxf/configuration/security/SecureRandomParameters.html" title="class in org.apache.cxf.configuration.security">SecureRandomParameters</a> secureRandomParameters</pre>
+<div class="block">This element contains SecureRandom specification.</div>
+</li>
+</ul>
+<a name="certConstraints">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>certConstraints</h4>
+<pre>protected&nbsp;<a href="../../../../../org/apache/cxf/configuration/security/CertificateConstraintsType.html" title="class in org.apache.cxf.configuration.security">CertificateConstraintsType</a> certConstraints</pre>
+<div class="block">This element contains the Certificate Constraints specification.</div>
+</li>
+</ul>
+<a name="certAlias">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>certAlias</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> certAlias</pre>
+<div class="block">This element contains the Certificate Alias.</div>
+</li>
+</ul>
+<a name="useHttpsURLConnectionDefaultSslSocketFactory">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>useHttpsURLConnectionDefaultSslSocketFactory</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a> useHttpsURLConnectionDefaultSslSocketFactory</pre>
+<div class="block">This attribute specifies if HttpsURLConnection.defaultSslSocketFactory 
+                 should be used to create https connections. If 'true', 'jsseProvider', 
+                 'secureSocketProtocol', 'trustManagers', 'keyManagers', 'secureRandom', 
+                 'cipherSuites' and 'cipherSuitesFilter' are ignored. 
+                 Since 2.2.7.</div>
+</li>
+</ul>
+<a name="useHttpsURLConnectionDefaultHostnameVerifier">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>useHttpsURLConnectionDefaultHostnameVerifier</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a> useHttpsURLConnectionDefaultHostnameVerifier</pre>
+<div class="block">This attribute specifies if HttpsURLConnection.defaultHostnameVerifier 
+                 should be used to create https connections. If 'true', 'disableCNCheck'
+                 is ignored.
+                 Since 2.2.7.</div>
+</li>
+</ul>
+<a name="disableCNCheck">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>disableCNCheck</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a> disableCNCheck</pre>
+<div class="block">This attribute specifies if JSSE should omit checking if the
+                 host name specified in the URL matches that of the Common Name
+                 (CN) on the server's certificate.  Default is false; this attribute 
+                 should not be set to true during production use.</div>
+</li>
+</ul>
+<a name="jsseProvider">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>jsseProvider</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> jsseProvider</pre>
+<div class="block">This attribute contains the JSSE provider name.</div>
+</li>
+</ul>
+<a name="secureSocketProtocol">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>secureSocketProtocol</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> secureSocketProtocol</pre>
+<div class="block">This attribute contains the Protocol Name. Most common
+                 example is "SSL", "TLS" or "TLSv1".</div>
+</li>
+</ul>
+<a name="sslCacheTimeout">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>sslCacheTimeout</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a> sslCacheTimeout</pre>
+<div class="block">This attribute contains the JDK SSL session cache timeout</div>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="TLSClientParametersType()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>TLSClientParametersType</h4>
+<pre>public&nbsp;TLSClientParametersType()</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="getKeyManagers()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getKeyManagers</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/configuration/security/KeyManagersType.html" title="class in org.apache.cxf.configuration.security">KeyManagersType</a>&nbsp;getKeyManagers()</pre>
+<div class="block">Gets the value of the keyManagers property.
+ <p>
+ This element contains the KeyManagers specification.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>possible object is
+     <a href="../../../../../org/apache/cxf/configuration/security/KeyManagersType.html" title="class in org.apache.cxf.configuration.security"><code>KeyManagersType</code></a></dd></dl>
+</li>
+</ul>
+<a name="setKeyManagers(org.apache.cxf.configuration.security.KeyManagersType)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setKeyManagers</h4>
+<pre>public&nbsp;void&nbsp;setKeyManagers(<a href="../../../../../org/apache/cxf/configuration/security/KeyManagersType.html" title="class in org.apache.cxf.configuration.security">KeyManagersType</a>&nbsp;value)</pre>
+<div class="block">Sets the value of the keyManagers property.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - allowed object is
+     <a href="../../../../../org/apache/cxf/configuration/security/KeyManagersType.html" title="class in org.apache.cxf.configuration.security"><code>KeyManagersType</code></a></dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getKeyManagers()"><code>getKeyManagers()</code></a></dd></dl>
+</li>
+</ul>
+<a name="isSetKeyManagers()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isSetKeyManagers</h4>
+<pre>public&nbsp;boolean&nbsp;isSetKeyManagers()</pre>
+</li>
+</ul>
+<a name="getTrustManagers()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTrustManagers</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/configuration/security/TrustManagersType.html" title="class in org.apache.cxf.configuration.security">TrustManagersType</a>&nbsp;getTrustManagers()</pre>
+<div class="block">Gets the value of the trustManagers property.
+ <p>
+ This element contains the TrustManagers specification.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>possible object is
+     <a href="../../../../../org/apache/cxf/configuration/security/TrustManagersType.html" title="class in org.apache.cxf.configuration.security"><code>TrustManagersType</code></a></dd></dl>
+</li>
+</ul>
+<a name="setTrustManagers(org.apache.cxf.configuration.security.TrustManagersType)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setTrustManagers</h4>
+<pre>public&nbsp;void&nbsp;setTrustManagers(<a href="../../../../../org/apache/cxf/configuration/security/TrustManagersType.html" title="class in org.apache.cxf.configuration.security">TrustManagersType</a>&nbsp;value)</pre>
+<div class="block">Sets the value of the trustManagers property.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - allowed object is
+     <a href="../../../../../org/apache/cxf/configuration/security/TrustManagersType.html" title="class in org.apache.cxf.configuration.security"><code>TrustManagersType</code></a></dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getTrustManagers()"><code>getTrustManagers()</code></a></dd></dl>
+</li>
+</ul>
+<a name="isSetTrustManagers()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isSetTrustManagers</h4>
+<pre>public&nbsp;boolean&nbsp;isSetTrustManagers()</pre>
+</li>
+</ul>
+<a name="getCipherSuites()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCipherSuites</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/configuration/security/CipherSuites.html" title="class in org.apache.cxf.configuration.security">CipherSuites</a>&nbsp;getCipherSuites()</pre>
+<div class="block">Gets the value of the cipherSuites property.
+ <p>
+ This element contains the the CipherSuites that will be supported.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>possible object is
+     <a href="../../../../../org/apache/cxf/configuration/security/CipherSuites.html" title="class in org.apache.cxf.configuration.security"><code>CipherSuites</code></a></dd></dl>
+</li>
+</ul>
+<a name="setCipherSuites(org.apache.cxf.configuration.security.CipherSuites)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCipherSuites</h4>
+<pre>public&nbsp;void&nbsp;setCipherSuites(<a href="../../../../../org/apache/cxf/configuration/security/CipherSuites.html" title="class in org.apache.cxf.configuration.security">CipherSuites</a>&nbsp;value)</pre>
+<div class="block">Sets the value of the cipherSuites property.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - allowed object is
+     <a href="../../../../../org/apache/cxf/configuration/security/CipherSuites.html" title="class in org.apache.cxf.configuration.security"><code>CipherSuites</code></a></dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getCipherSuites()"><code>getCipherSuites()</code></a></dd></dl>
+</li>
+</ul>
+<a name="isSetCipherSuites()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isSetCipherSuites</h4>
+<pre>public&nbsp;boolean&nbsp;isSetCipherSuites()</pre>
+</li>
+</ul>
+<a name="getCipherSuitesFilter()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCipherSuitesFilter</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/configuration/security/FiltersType.html" title="class in org.apache.cxf.configuration.security">FiltersType</a>&nbsp;getCipherSuitesFilter()</pre>
+<div class="block">Gets the value of the cipherSuitesFilter property.
+ <p>
+ This element contains the filters of the supported CipherSuites
+                 that will be supported and used if available.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>possible object is
+     <a href="../../../../../org/apache/cxf/configuration/security/FiltersType.html" title="class in org.apache.cxf.configuration.security"><code>FiltersType</code></a></dd></dl>
+</li>
+</ul>
+<a name="setCipherSuitesFilter(org.apache.cxf.configuration.security.FiltersType)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCipherSuitesFilter</h4>
+<pre>public&nbsp;void&nbsp;setCipherSuitesFilter(<a href="../../../../../org/apache/cxf/configuration/security/FiltersType.html" title="class in org.apache.cxf.configuration.security">FiltersType</a>&nbsp;value)</pre>
+<div class="block">Sets the value of the cipherSuitesFilter property.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - allowed object is
+     <a href="../../../../../org/apache/cxf/configuration/security/FiltersType.html" title="class in org.apache.cxf.configuration.security"><code>FiltersType</code></a></dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getCipherSuitesFilter()"><code>getCipherSuitesFilter()</code></a></dd></dl>
+</li>
+</ul>
+<a name="isSetCipherSuitesFilter()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isSetCipherSuitesFilter</h4>
+<pre>public&nbsp;boolean&nbsp;isSetCipherSuitesFilter()</pre>
+</li>
+</ul>
+<a name="getSecureRandomParameters()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSecureRandomParameters</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/configuration/security/SecureRandomParameters.html" title="class in org.apache.cxf.configuration.security">SecureRandomParameters</a>&nbsp;getSecureRandomParameters()</pre>
+<div class="block">Gets the value of the secureRandomParameters property.
+ <p>
+ This element contains SecureRandom specification.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>possible object is
+     <a href="../../../../../org/apache/cxf/configuration/security/SecureRandomParameters.html" title="class in org.apache.cxf.configuration.security"><code>SecureRandomParameters</code></a></dd></dl>
+</li>
+</ul>
+<a name="setSecureRandomParameters(org.apache.cxf.configuration.security.SecureRandomParameters)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setSecureRandomParameters</h4>
+<pre>public&nbsp;void&nbsp;setSecureRandomParameters(<a href="../../../../../org/apache/cxf/configuration/security/SecureRandomParameters.html" title="class in org.apache.cxf.configuration.security">SecureRandomParameters</a>&nbsp;value)</pre>
+<div class="block">Sets the value of the secureRandomParameters property.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - allowed object is
+     <a href="../../../../../org/apache/cxf/configuration/security/SecureRandomParameters.html" title="class in org.apache.cxf.configuration.security"><code>SecureRandomParameters</code></a></dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getSecureRandomParameters()"><code>getSecureRandomParameters()</code></a></dd></dl>
+</li>
+</ul>
+<a name="isSetSecureRandomParameters()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isSetSecureRandomParameters</h4>
+<pre>public&nbsp;boolean&nbsp;isSetSecureRandomParameters()</pre>
+</li>
+</ul>
+<a name="getCertConstraints()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCertConstraints</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/configuration/security/CertificateConstraintsType.html" title="class in org.apache.cxf.configuration.security">CertificateConstraintsType</a>&nbsp;getCertConstraints()</pre>
+<div class="block">Gets the value of the certConstraints property.
+ <p>
+ This element contains the Certificate Constraints specification.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>possible object is
+     <a href="../../../../../org/apache/cxf/configuration/security/CertificateConstraintsType.html" title="class in org.apache.cxf.configuration.security"><code>CertificateConstraintsType</code></a></dd></dl>
+</li>
+</ul>
+<a name="setCertConstraints(org.apache.cxf.configuration.security.CertificateConstraintsType)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCertConstraints</h4>
+<pre>public&nbsp;void&nbsp;setCertConstraints(<a href="../../../../../org/apache/cxf/configuration/security/CertificateConstraintsType.html" title="class in org.apache.cxf.configuration.security">CertificateConstraintsType</a>&nbsp;value)</pre>
+<div class="block">Sets the value of the certConstraints property.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - allowed object is
+     <a href="../../../../../org/apache/cxf/configuration/security/CertificateConstraintsType.html" title="class in org.apache.cxf.configuration.security"><code>CertificateConstraintsType</code></a></dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getCertConstraints()"><code>getCertConstraints()</code></a></dd></dl>
+</li>
+</ul>
+<a name="isSetCertConstraints()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isSetCertConstraints</h4>
+<pre>public&nbsp;boolean&nbsp;isSetCertConstraints()</pre>
+</li>
+</ul>
+<a name="getCertAlias()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCertAlias</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getCertAlias()</pre>
+<div class="block">Gets the value of the certAlias property.
+ <p>
+ This element contains the Certificate Alias.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>possible object is
+     <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a></dd></dl>
+</li>
+</ul>
+<a name="setCertAlias(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCertAlias</h4>
+<pre>public&nbsp;void&nbsp;setCertAlias(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;value)</pre>
+<div class="block">Sets the value of the certAlias property.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - allowed object is
+     <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a></dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getCertAlias()"><code>getCertAlias()</code></a></dd></dl>
+</li>
+</ul>
+<a name="isSetCertAlias()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isSetCertAlias</h4>
+<pre>public&nbsp;boolean&nbsp;isSetCertAlias()</pre>
+</li>
+</ul>
+<a name="getJsseProvider()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getJsseProvider</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getJsseProvider()</pre>
+<div class="block">Gets the value of the jsseProvider property.
+ <p>
+ This attribute contains the JSSE provider name.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>possible object is
+     <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a></dd></dl>
+</li>
+</ul>
+<a name="setJsseProvider(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setJsseProvider</h4>
+<pre>public&nbsp;void&nbsp;setJsseProvider(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;value)</pre>
+<div class="block">Sets the value of the jsseProvider property.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - allowed object is
+     <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a></dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getJsseProvider()"><code>getJsseProvider()</code></a></dd></dl>
+</li>
+</ul>
+<a name="isSetJsseProvider()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isSetJsseProvider</h4>
+<pre>public&nbsp;boolean&nbsp;isSetJsseProvider()</pre>
+</li>
+</ul>
+<a name="getSecureSocketProtocol()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSecureSocketProtocol</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getSecureSocketProtocol()</pre>
+<div class="block">Gets the value of the secureSocketProtocol property.
+ <p>
+ This attribute contains the Protocol Name. Most common
+                 example is "SSL", "TLS" or "TLSv1".</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>possible object is
+     <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a></dd></dl>
+</li>
+</ul>
+<a name="setSecureSocketProtocol(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setSecureSocketProtocol</h4>
+<pre>public&nbsp;void&nbsp;setSecureSocketProtocol(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;value)</pre>
+<div class="block">Sets the value of the secureSocketProtocol property.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - allowed object is
+     <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a></dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getSecureSocketProtocol()"><code>getSecureSocketProtocol()</code></a></dd></dl>
+</li>
+</ul>
+<a name="isSetSecureSocketProtocol()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isSetSecureSocketProtocol</h4>
+<pre>public&nbsp;boolean&nbsp;isSetSecureSocketProtocol()</pre>
+</li>
+</ul>
+<a name="getSslCacheTimeout()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSslCacheTimeout</h4>
+<pre>public&nbsp;int&nbsp;getSslCacheTimeout()</pre>
+<div class="block">Gets the value of the sslCacheTimeout property.
+ <p>
+ This attribute contains the JDK SSL session cache timeout</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>possible object is
+     <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang"><code>Integer</code></a></dd></dl>
+</li>
+</ul>
+<a name="setSslCacheTimeout(int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setSslCacheTimeout</h4>
+<pre>public&nbsp;void&nbsp;setSslCacheTimeout(int&nbsp;value)</pre>
+<div class="block">Sets the value of the sslCacheTimeout property.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - allowed object is
+     <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang"><code>Integer</code></a></dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#getSslCacheTimeout()"><code>getSslCacheTimeout()</code></a></dd></dl>
+</li>
+</ul>
+<a name="isSetSslCacheTimeout()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isSetSslCacheTimeout</h4>
+<pre>public&nbsp;boolean&nbsp;isSetSslCacheTimeout()</pre>
+</li>
+</ul>
+<a name="unsetSslCacheTimeout()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>unsetSslCacheTimeout</h4>
+<pre>public&nbsp;void&nbsp;unsetSslCacheTimeout()</pre>
+</li>
+</ul>
+<a name="setUseHttpsURLConnectionDefaultSslSocketFactory(boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setUseHttpsURLConnectionDefaultSslSocketFactory</h4>
+<pre>public&nbsp;void&nbsp;setUseHttpsURLConnectionDefaultSslSocketFactory(boolean&nbsp;value)</pre>
+<div class="block">Sets the value of the useHttpsURLConnectionDefaultSslSocketFactory property.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isUseHttpsURLConnectionDefaultSslSocketFactory()"><code>isUseHttpsURLConnectionDefaultSslSocketFactory()</code></a></dd></dl>
+</li>
+</ul>
+<a name="unsetUseHttpsURLConnectionDefaultSslSocketFactory()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>unsetUseHttpsURLConnectionDefaultSslSocketFactory</h4>
+<pre>public&nbsp;void&nbsp;unsetUseHttpsURLConnectionDefaultSslSocketFactory()</pre>
+</li>
+</ul>
+<a name="isSetUseHttpsURLConnectionDefaultSslSocketFactory()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isSetUseHttpsURLConnectionDefaultSslSocketFactory</h4>
+<pre>public&nbsp;boolean&nbsp;isSetUseHttpsURLConnectionDefaultSslSocketFactory()</pre>
+</li>
+</ul>
+<a name="isUseHttpsURLConnectionDefaultSslSocketFactory()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isUseHttpsURLConnectionDefaultSslSocketFactory</h4>
+<pre>public&nbsp;boolean&nbsp;isUseHttpsURLConnectionDefaultSslSocketFactory()</pre>
+<div class="block">Gets the value of the useHttpsURLConnectionDefaultSslSocketFactory property.
+ <p>
+ This attribute specifies if HttpsURLConnection.defaultSslSocketFactory 
+                 should be used to create https connections. If 'true', 'jsseProvider', 
+                 'secureSocketProtocol', 'trustManagers', 'keyManagers', 'secureRandom', 
+                 'cipherSuites' and 'cipherSuitesFilter' are ignored. 
+                 Since 2.2.7.</div>
+</li>
+</ul>
+<a name="setUseHttpsURLConnectionDefaultHostnameVerifier(boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setUseHttpsURLConnectionDefaultHostnameVerifier</h4>
+<pre>public&nbsp;void&nbsp;setUseHttpsURLConnectionDefaultHostnameVerifier(boolean&nbsp;value)</pre>
+<div class="block">Sets the value of the useHttpsURLConnectionDefaultHostnameVerifier property.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isUseHttpsURLConnectionDefaultHostnameVerifier()"><code>isUseHttpsURLConnectionDefaultHostnameVerifier()</code></a></dd></dl>
+</li>
+</ul>
+<a name="unsetUseHttpsURLConnectionDefaultHostnameVerifier()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>unsetUseHttpsURLConnectionDefaultHostnameVerifier</h4>
+<pre>public&nbsp;void&nbsp;unsetUseHttpsURLConnectionDefaultHostnameVerifier()</pre>
+</li>
+</ul>
+<a name="isSetUseHttpsURLConnectionDefaultHostnameVerifier()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isSetUseHttpsURLConnectionDefaultHostnameVerifier</h4>
+<pre>public&nbsp;boolean&nbsp;isSetUseHttpsURLConnectionDefaultHostnameVerifier()</pre>
+</li>
+</ul>
+<a name="isUseHttpsURLConnectionDefaultHostnameVerifier()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isUseHttpsURLConnectionDefaultHostnameVerifier</h4>
+<pre>public&nbsp;boolean&nbsp;isUseHttpsURLConnectionDefaultHostnameVerifier()</pre>
+<div class="block">Gets the value of the useHttpsURLConnectionDefaultHostnameVerifier property.
+ <p>
+ This attribute specifies if HttpsURLConnection.defaultHostnameVerifier 
+                 should be used to create https connections. If 'true', 'disableCNCheck'
+                 is ignored.
+                 Since 2.2.7.</div>
+</li>
+</ul>
+<a name="setDisableCNCheck(boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setDisableCNCheck</h4>
+<pre>public&nbsp;void&nbsp;setDisableCNCheck(boolean&nbsp;value)</pre>
+<div class="block">Sets the value of the disableCNCheck property.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../org/apache/cxf/configuration/security/TLSClientParametersType.html#isDisableCNCheck()"><code>isDisableCNCheck()</code></a></dd></dl>
+</li>
+</ul>
+<a name="unsetDisableCNCheck()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>unsetDisableCNCheck</h4>
+<pre>public&nbsp;void&nbsp;unsetDisableCNCheck()</pre>
+</li>
+</ul>
+<a name="isSetDisableCNCheck()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isSetDisableCNCheck</h4>
+<pre>public&nbsp;boolean&nbsp;isSetDisableCNCheck()</pre>
+</li>
+</ul>
+<a name="isDisableCNCheck()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>isDisableCNCheck</h4>
+<pre>public&nbsp;boolean&nbsp;isDisableCNCheck()</pre>
+<div class="block">Gets the value of the disableCNCheck property.
+ <p>
+ This attribute specifies if JSSE should omit checking if the
+                 host name specified in the URL matches that of the Common Name
+                 (CN) on the server's certificate.  Default is false; this attribute 
+                 should not be set to true during production use.</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/TLSClientParametersType.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../../org/apache/cxf/configuration/security/SecureRandomParameters.html" title="class in org.apache.cxf.configuration.security"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../../org/apache/cxf/configuration/security/TLSServerParametersType.html" title="class in org.apache.cxf.configuration.security"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?org/apache/cxf/configuration/security/TLSClientParametersType.html" target="_top">Frames</a></li>
+<li><a href="TLSClientParametersType.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Apache CXF</small></p>
+</body>
+</html>

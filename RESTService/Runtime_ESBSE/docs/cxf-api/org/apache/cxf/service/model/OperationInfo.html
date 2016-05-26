@@ -1,0 +1,682 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>OperationInfo (Apache CXF JavaDoc 3.1.4 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="OperationInfo (Apache CXF JavaDoc 3.1.4 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/OperationInfo.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../../org/apache/cxf/service/model/NamedItem.html" title="interface in org.apache.cxf.service.model"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../../org/apache/cxf/service/model/SchemaInfo.html" title="class in org.apache.cxf.service.model"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?org/apache/cxf/service/model/OperationInfo.html" target="_top">Frames</a></li>
+<li><a href="OperationInfo.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">org.apache.cxf.service.model</div>
+<h2 title="Class OperationInfo" class="title">Class OperationInfo</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html" title="class in org.apache.cxf.service.model">org.apache.cxf.service.model.AbstractPropertiesHolder</a></li>
+<li>
+<ul class="inheritance">
+<li>org.apache.cxf.service.model.OperationInfo</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="../../../../../org/apache/cxf/service/model/Extensible.html" title="interface in org.apache.cxf.service.model">Extensible</a>, <a href="../../../../../org/apache/cxf/service/model/NamedItem.html" title="interface in org.apache.cxf.service.model">NamedItem</a></dd>
+</dl>
+<dl>
+<dt>Direct Known Subclasses:</dt>
+<dd><a href="../../../../../org/apache/cxf/service/model/UnwrappedOperationInfo.html" title="class in org.apache.cxf.service.model">UnwrappedOperationInfo</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public class <span class="strong">OperationInfo</span>
+extends <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html" title="class in org.apache.cxf.service.model">AbstractPropertiesHolder</a>
+implements <a href="../../../../../org/apache/cxf/service/model/NamedItem.html" title="interface in org.apache.cxf.service.model">NamedItem</a></pre>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#OperationInfo()">OperationInfo</a></strong>()</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#addFault(org.apache.cxf.service.model.FaultInfo)">addFault</a></strong>(<a href="../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a>&nbsp;fault)</code>
+<div class="block">Adds a fault to this operation.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#addFault(javax.xml.namespace.QName,%20javax.xml.namespace.QName)">addFault</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;name,
+        <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;message)</code>
+<div class="block">Adds an fault to this operation.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/service/model/MessageInfo.html" title="class in org.apache.cxf.service.model">MessageInfo</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#createMessage(javax.xml.namespace.QName,%20org.apache.cxf.service.model.MessageInfo.Type)">createMessage</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;nm,
+             <a href="../../../../../org/apache/cxf/service/model/MessageInfo.Type.html" title="enum in org.apache.cxf.service.model">MessageInfo.Type</a>&nbsp;type)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#equals(java.lang.Object)">equals</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;o)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#getFault(javax.xml.namespace.QName)">getFault</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;name)</code>
+<div class="block">Returns the fault with the given name, if found.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#getFaults()">getFaults</a></strong>()</code>
+<div class="block">Returns all faults for this operation.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/service/model/MessageInfo.html" title="class in org.apache.cxf.service.model">MessageInfo</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#getInput()">getInput</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#getInputName()">getInputName</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/service/model/InterfaceInfo.html" title="class in org.apache.cxf.service.model">InterfaceInfo</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#getInterface()">getInterface</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#getName()">getName</a></strong>()</code>
+<div class="block">Returns the name of the Operation.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/service/model/MessageInfo.html" title="class in org.apache.cxf.service.model">MessageInfo</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#getOutput()">getOutput</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#getOutputName()">getOutputName</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#getParameterOrdering()">getParameterOrdering</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html" title="class in org.apache.cxf.service.model">OperationInfo</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#getUnwrappedOperation()">getUnwrappedOperation</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#hasFaults()">hasFaults</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#hashCode()">hashCode</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#hasInput()">hasInput</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#hasOutput()">hasOutput</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#isOneWay()">isOneWay</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#isUnwrapped()">isUnwrapped</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#isUnwrappedCapable()">isUnwrappedCapable</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#removeFault(javax.xml.namespace.QName)">removeFault</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;name)</code>
+<div class="block">Removes a fault from this operation.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#setInput(java.lang.String,%20org.apache.cxf.service.model.MessageInfo)">setInput</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;nm,
+        <a href="../../../../../org/apache/cxf/service/model/MessageInfo.html" title="class in org.apache.cxf.service.model">MessageInfo</a>&nbsp;in)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#setName(javax.xml.namespace.QName)">setName</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;name)</code>
+<div class="block">Sets the name of the operation.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#setOutput(java.lang.String,%20org.apache.cxf.service.model.MessageInfo)">setOutput</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;nm,
+         <a href="../../../../../org/apache/cxf/service/model/MessageInfo.html" title="class in org.apache.cxf.service.model">MessageInfo</a>&nbsp;out)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#setParameterOrdering(java.util.List)">setParameterOrdering</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;o)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#setUnwrappedOperation(org.apache.cxf.service.model.OperationInfo)">setUnwrappedOperation</a></strong>(<a href="../../../../../org/apache/cxf/service/model/OperationInfo.html" title="class in org.apache.cxf.service.model">OperationInfo</a>&nbsp;op)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/service/model/OperationInfo.html#toString()">toString</a></strong>()</code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.cxf.service.model.AbstractPropertiesHolder">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.cxf.service.model.<a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html" title="class in org.apache.cxf.service.model">AbstractPropertiesHolder</a></h3>
+<code><a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#addExtensionAttribute(javax.xml.namespace.QName,%20java.lang.Object)">addExtensionAttribute</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#addExtensor(java.lang.Object)">addExtensor</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#containsExtensor(java.lang.Object)">containsExtensor</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#equals(java.lang.Object,%20java.lang.Object)">equals</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#getDocumentation()">getDocumentation</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#getExtensionAttribute(javax.xml.namespace.QName)">getExtensionAttribute</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#getExtensionAttributes()">getExtensionAttributes</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#getExtensor(java.lang.Class)">getExtensor</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#getExtensors()">getExtensors</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#getExtensors(java.lang.Class)">getExtensors</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#getProperties()">getProperties</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#getProperty(java.lang.String)">getProperty</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#getProperty(java.lang.String,%20java.lang.Class)">getProperty</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#getTraversedExtensor(T,%20java.lang.Class)">getTraversedExtensor</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#hasProperty(java.lang.String)">hasProperty</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#removeProperty(java.lang.String)">removeProperty</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#setDelegate(org.apache.cxf.service.model.AbstractPropertiesHolder,%20boolean)">setDelegate</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#setDocumentation(java.lang.String)">setDocumentation</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#setExtensionAttributes(java.util.Map)">setExtensionAttributes</a>, <a href="../../../../../org/apache/cxf/service/model/AbstractPropertiesHolder.html#setProperty(java.lang.String,%20java.lang.Object)">setProperty</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long,%20int)" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="OperationInfo()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>OperationInfo</h4>
+<pre>public&nbsp;OperationInfo()</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="getName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getName</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;getName()</pre>
+<div class="block">Returns the name of the Operation.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../../org/apache/cxf/service/model/NamedItem.html#getName()">getName</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/cxf/service/model/NamedItem.html" title="interface in org.apache.cxf.service.model">NamedItem</a></code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>the name of the Operation</dd></dl>
+</li>
+</ul>
+<a name="setName(javax.xml.namespace.QName)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setName</h4>
+<pre>public final&nbsp;void&nbsp;setName(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;name)</pre>
+<div class="block">Sets the name of the operation.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>name</code> - the new name of the operation</dd></dl>
+</li>
+</ul>
+<a name="getInterface()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getInterface</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/service/model/InterfaceInfo.html" title="class in org.apache.cxf.service.model">InterfaceInfo</a>&nbsp;getInterface()</pre>
+</li>
+</ul>
+<a name="createMessage(javax.xml.namespace.QName, org.apache.cxf.service.model.MessageInfo.Type)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createMessage</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/service/model/MessageInfo.html" title="class in org.apache.cxf.service.model">MessageInfo</a>&nbsp;createMessage(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;nm,
+                        <a href="../../../../../org/apache/cxf/service/model/MessageInfo.Type.html" title="enum in org.apache.cxf.service.model">MessageInfo.Type</a>&nbsp;type)</pre>
+</li>
+</ul>
+<a name="getOutput()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getOutput</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/service/model/MessageInfo.html" title="class in org.apache.cxf.service.model">MessageInfo</a>&nbsp;getOutput()</pre>
+</li>
+</ul>
+<a name="getOutputName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getOutputName</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getOutputName()</pre>
+</li>
+</ul>
+<a name="setOutput(java.lang.String, org.apache.cxf.service.model.MessageInfo)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setOutput</h4>
+<pre>public&nbsp;void&nbsp;setOutput(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;nm,
+             <a href="../../../../../org/apache/cxf/service/model/MessageInfo.html" title="class in org.apache.cxf.service.model">MessageInfo</a>&nbsp;out)</pre>
+</li>
+</ul>
+<a name="hasOutput()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>hasOutput</h4>
+<pre>public&nbsp;boolean&nbsp;hasOutput()</pre>
+</li>
+</ul>
+<a name="getInput()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getInput</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/service/model/MessageInfo.html" title="class in org.apache.cxf.service.model">MessageInfo</a>&nbsp;getInput()</pre>
+</li>
+</ul>
+<a name="getInputName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getInputName</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getInputName()</pre>
+</li>
+</ul>
+<a name="setInput(java.lang.String, org.apache.cxf.service.model.MessageInfo)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setInput</h4>
+<pre>public&nbsp;void&nbsp;setInput(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;nm,
+            <a href="../../../../../org/apache/cxf/service/model/MessageInfo.html" title="class in org.apache.cxf.service.model">MessageInfo</a>&nbsp;in)</pre>
+</li>
+</ul>
+<a name="hasInput()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>hasInput</h4>
+<pre>public&nbsp;boolean&nbsp;hasInput()</pre>
+</li>
+</ul>
+<a name="isOneWay()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isOneWay</h4>
+<pre>public&nbsp;boolean&nbsp;isOneWay()</pre>
+</li>
+</ul>
+<a name="isUnwrappedCapable()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isUnwrappedCapable</h4>
+<pre>public&nbsp;boolean&nbsp;isUnwrappedCapable()</pre>
+</li>
+</ul>
+<a name="getUnwrappedOperation()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getUnwrappedOperation</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/service/model/OperationInfo.html" title="class in org.apache.cxf.service.model">OperationInfo</a>&nbsp;getUnwrappedOperation()</pre>
+</li>
+</ul>
+<a name="setUnwrappedOperation(org.apache.cxf.service.model.OperationInfo)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setUnwrappedOperation</h4>
+<pre>public&nbsp;void&nbsp;setUnwrappedOperation(<a href="../../../../../org/apache/cxf/service/model/OperationInfo.html" title="class in org.apache.cxf.service.model">OperationInfo</a>&nbsp;op)</pre>
+</li>
+</ul>
+<a name="isUnwrapped()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isUnwrapped</h4>
+<pre>public&nbsp;boolean&nbsp;isUnwrapped()</pre>
+</li>
+</ul>
+<a name="addFault(javax.xml.namespace.QName, javax.xml.namespace.QName)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addFault</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a>&nbsp;addFault(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;name,
+                 <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;message)</pre>
+<div class="block">Adds an fault to this operation.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>name</code> - the fault name.</dd></dl>
+</li>
+</ul>
+<a name="addFault(org.apache.cxf.service.model.FaultInfo)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addFault</h4>
+<pre>public&nbsp;void&nbsp;addFault(<a href="../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a>&nbsp;fault)</pre>
+<div class="block">Adds a fault to this operation.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>fault</code> - the fault.</dd></dl>
+</li>
+</ul>
+<a name="removeFault(javax.xml.namespace.QName)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>removeFault</h4>
+<pre>public&nbsp;void&nbsp;removeFault(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;name)</pre>
+<div class="block">Removes a fault from this operation.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>name</code> - the qualified fault name.</dd></dl>
+</li>
+</ul>
+<a name="getFault(javax.xml.namespace.QName)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getFault</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a>&nbsp;getFault(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;name)</pre>
+<div class="block">Returns the fault with the given name, if found.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>name</code> - the name.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the fault; or <code>null</code> if not found.</dd></dl>
+</li>
+</ul>
+<a name="hasFaults()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>hasFaults</h4>
+<pre>public&nbsp;boolean&nbsp;hasFaults()</pre>
+</li>
+</ul>
+<a name="getFaults()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getFaults</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a>&gt;&nbsp;getFaults()</pre>
+<div class="block">Returns all faults for this operation.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>all faults.</dd></dl>
+</li>
+</ul>
+<a name="setParameterOrdering(java.util.List)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setParameterOrdering</h4>
+<pre>public&nbsp;void&nbsp;setParameterOrdering(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;o)</pre>
+</li>
+</ul>
+<a name="getParameterOrdering()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getParameterOrdering</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getParameterOrdering()</pre>
+</li>
+</ul>
+<a name="toString()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>toString</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
+<dl>
+<dt><strong>Overrides:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="hashCode()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>hashCode</h4>
+<pre>public&nbsp;int&nbsp;hashCode()</pre>
+<dl>
+<dt><strong>Overrides:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="equals(java.lang.Object)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>equals</h4>
+<pre>public&nbsp;boolean&nbsp;equals(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;o)</pre>
+<dl>
+<dt><strong>Overrides:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/OperationInfo.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../../org/apache/cxf/service/model/NamedItem.html" title="interface in org.apache.cxf.service.model"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../../org/apache/cxf/service/model/SchemaInfo.html" title="class in org.apache.cxf.service.model"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?org/apache/cxf/service/model/OperationInfo.html" target="_top">Frames</a></li>
+<li><a href="OperationInfo.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Apache CXF</small></p>
+</body>
+</html>

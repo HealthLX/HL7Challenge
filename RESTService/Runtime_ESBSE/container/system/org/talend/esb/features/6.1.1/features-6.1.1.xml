@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  #%L
+  TESB :. Features
+  %%
+  Copyright (C) 2011 - 2015 Talend Inc.
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%
+  -->
+<features name="tesb-6.1.1" xmlns="http://karaf.apache.org/xmlns/features/v1.3.0">
+
+  <repository>mvn:org.apache.cxf.karaf/apache-cxf/3.1.4/xml/features</repository>
+  <repository>mvn:org.apache.camel.karaf/apache-camel/2.15.4/xml/features</repository>
+  <repository>mvn:org.apache.activemq/activemq-karaf/5.11.3/xml/features</repository>
+  <repository>mvn:org.talend.esb.auxiliary.storage/auxiliary-storage-features/6.1.1/xml</repository>
+
+  <feature name='tesb-sam-common' version='6.1.1'>
+    <bundle dependency="true">mvn:commons-lang/commons-lang/2.6</bundle>
+    <!-- All those bundles should be optional I think, but the commons-jxpath osgi metadata is not really good -->
+    <bundle dependency="true" start-level="30">mvn:commons-collections/commons-collections/3.2.2</bundle>
+    <bundle dependency="true" start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-beanutils/1.8.3_1</bundle>
+    <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/1.1_4</bundle>
+    <bundle dependency="true">mvn:org.eclipse.jdt.core.compiler/ecj/4.4</bundle>
+    <bundle dependency="true">mvn:org.ops4j.pax.web/pax-web-jsp/4.2.3</bundle>
+    <bundle dependency="true">mvn:commons-jxpath/commons-jxpath/1.3</bundle>
+    <bundle>mvn:org.talend.esb/sam-common/6.1.1</bundle>
+  </feature>
+
+  <feature name='tesb-sam-agent' version='6.1.1'>
+    <configfile finalname="/etc/org.talend.esb.sam.agent.cfg">mvn:org.talend.esb/sam-agent/6.1.1/cfg/org.talend.esb.sam.agent</configfile>
+    <feature version='3.1.4'>cxf</feature>
+    <feature>tesb-sam-common</feature>
+    <bundle>mvn:org.talend.esb/sam-agent/6.1.1</bundle>
+  </feature>
+
+  <feature name='tesb-datasource-derby' version='6.1.1'>
+    <configfile finalname="/etc/org.talend.esb.datasource.derby.cfg">mvn:org.talend.esb/ds-service-derby/6.1.1/cfg/org.talend.esb.datasource.derby</configfile>
+    <feature version="[3.2,4)">spring-jdbc</feature>
+<!--    <bundle>mvn:org.apache.derby/derbyclient/10.8.1.2</bundle> -->
+    <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.derby/10.8.1.2_1</bundle>
+	<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/1.4_3</bundle>
+    <bundle>mvn:org.talend.esb/ds-service-derby/6.1.1</bundle>
+  </feature>
+
+  <!-- H2 JDBC driver should be installed into container before installing H2 DataSource.
+       You will have eventually have to adjust the version.
+           bundle:install mvn:com.h2database/h2/1.3.165
+  -->
+  <feature name='tesb-datasource-h2' version='6.1.1'>
+    <configfile finalname="/etc/org.talend.esb.datasource.h2.cfg">mvn:org.talend.esb/ds-service-h2/6.1.1/cfg/org.talend.esb.datasource.h2</configfile>
+    <feature version="[3.2,4)">spring-jdbc</feature>
+    <bundle>mvn:org.talend.esb/ds-service-h2/6.1.1</bundle>
+  </feature>
+
+  <!-- MySQL JDBC driver should be installed into container before installing MySQL DataSource.
+       You will have eventually have to adjust the version.
+           bundle:install mvn:mysql/mysql-connector-java/5.1.18
+  -->
+  <feature name='tesb-datasource-mysql' version='6.1.1'>
+    <configfile finalname="/etc/org.talend.esb.datasource.mysql.cfg">mvn:org.talend.esb/ds-service-mysql/6.1.1/cfg/org.talend.esb.datasource.mysql</configfile>
+    <feature version="[3.2,4)">spring-jdbc</feature>
+    <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.stax-api-1.0/1.9.0</bundle>
+    <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/1.4_3</bundle>
+    <bundle>mvn:org.talend.esb/ds-service-mysql/6.1.1</bundle>
+  </feature>
+
+  <!-- Oracle JDBC driver should be installed into container before installing Oracle DataSource.
+       You will have eventually have to adjust the path and version. The commands below is for windows and Oracle 11 Express.
+       1st variant. Install the driver via copying driver library into <container.root>/deploy folder.
+       2nd variant. Install the driver directly into container
+           bundle:install wrap:file:C:/oraclexe/app/oracle/product/11.2.0/server/jdbc/lib/ojdbc6.jar\\$Bundle-SymbolicName=oracle.jdbc&Bundle-Version=11.2.0.2&Bundle-Name='JDBC Driver for Oracle'
+       3rd variant. Install Oracle driver into maven repo and than into container.
+         As Oracle does not publish the driver in the maven repo we will first have to install the driver in our local maven repo.
+           mvn install:install-file -Dfile="C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib\ojdbc6.jar" -DgroupId=ojdbc -DartifactId=ojdbc -Dversion=11.2.0.2.0 -Dpackaging=jar
+         Then install the driver from maven repo into container
+           bundle:install wrap:mvn:ojdbc/ojdbc/11.2.0.2.0
+  -->
+  <feature name='tesb-datasource-oracle' version='6.1.1'>
+    <configfile finalname="/etc/org.talend.esb.datasource.oracle.cfg">mvn:org.talend.esb/ds-service-oracle/6.1.1/cfg/org.talend.esb.datasource.oracle</configfile>
+    <feature version="[3.2,4)">spring-jdbc</feature>
+    <bundle>mvn:org.talend.esb/ds-service-oracle/6.1.1</bundle>
+  </feature>
+
+  <!-- PostgreSQL JDBC driver should be installed into container before installing PostgreSQL DataSource.
+       You will have eventually have to adjust the path and version. The commands below is for windows and PostgreSQL.
+       1st variant. Install the driver via copying driver library into <container.root>/deploy folder.
+       2nd variant. Install the driver directly into container
+           bundle:install wrap:file:C:/postgresql.jar
+       3rd variant. Install PostgreSQL driver into maven repo and than into container.
+           bundle:install wrap:mvn:postgresql/postgresql/9.1-901.jdbc4
+  -->
+  <feature name='tesb-datasource-postgresql' version='6.1.1'>
+    <configfile finalname="/etc/org.talend.esb.datasource.postgresql.cfg">mvn:org.talend.esb/ds-service-postgresql/6.1.1/cfg/org.talend.esb.datasource.postgresql</configfile>
+    <feature version="[3.2,4)">spring-jdbc</feature>
+    <bundle>mvn:org.talend.esb/ds-service-postgresql/6.1.1</bundle>
+  </feature>
+
+
+  <!-- DB2 JDBC driver should be installed into container before installing DB2 DataSource.
+       You will have eventually have to adjust the path and version. The command below is for windows and DB2.
+       1st variant. Install the driver via copying driver library into <container.root>/deploy folder.
+       2nd variant. Install the driver directly into container
+           bundle:install wrap:file:C:/IBM/SQLLIB/java/db2jcc.jar\\$Bundle-SymbolicName=com.ibm.db2.jdbc&Bundle-Version=9.7&Bundle-Name='JDBC Driver for IBM DB2'
+       3rd variant. Install DB2 driver into maven repo and than into container.
+         As DB2 does not publish the driver in the maven repo we will first have to install the driver in our local maven repo.
+           mvn install:install-file -Dfile="C:\Program Files (x86)\IBM\SQLLIB\java\db2jcc.jar" -DgroupId=com.ibm.db2.jdbc -DartifactId=db2jcc -Dversion=9.7 -Dpackaging=jar
+         Then install the driver from maven repo into container
+           bundle:install wrap:mvn:com.ibm.db2.jdbc/db2jcc/9.7
+  -->
+  <feature name='tesb-datasource-db2' version='6.1.1'>
+    <configfile finalname="/etc/org.talend.esb.datasource.db2.cfg">mvn:org.talend.esb/ds-service-db2/6.1.1/cfg/org.talend.esb.datasource.db2</configfile>
+    <feature version="[3.2,4)">spring-jdbc</feature>
+	<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/1.4_3</bundle>
+    <bundle>mvn:org.talend.esb/ds-service-db2/6.1.1</bundle>
+  </feature>
+
+  <!-- SQLServer JDBC driver should be installed into container before installing SQLServer DataSource.
+       You will have eventually have to adjust the path and version. The command below is for windows and SQLServer.
+       1st variant. Install the driver via copying driver library into <container.root>/deploy folder.
+       2nd variant. Install the driver directly into container
+           bundle:install wrap:file:C:/SQLServer/jdbc/sqljdbc4-3.0.jar\\$Bundle-SymbolicName=com.microsoft.sqlserver.jdbc&Bundle-Version=3.0&Bundle-Name='JDBC Driver for SQL Server'
+       3rd variant. Install SQLServer driver into maven repo and than into container.
+         As SQLServer does not publish the driver in the maven repo we will first have to install the driver in our local maven repo.
+           mvn install:install-file -Dfile="C:\SQLServer\jdbc\sqljdbc4-3.0.jar" -DgroupId=com.microsoft.sqlserver -DartifactId=sqljdbc4 -Dversion=3.0 -Dpackaging=jar
+         Then install the driver from maven repo into container
+           bundle:install wrap:mvn:com.microsoft.sqlserver/sqljdbc4/3.0
+  -->
+  <feature name='tesb-datasource-sqlserver' version='6.1.1'>
+    <configfile finalname="/etc/org.talend.esb.datasource.sqlserver.cfg">mvn:org.talend.esb/ds-service-sqlserver/6.1.1/cfg/org.talend.esb.datasource.sqlserver</configfile>
+    <feature version="[3.2,4)">spring-jdbc</feature>
+	<bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/1.4_3</bundle>
+    <bundle>mvn:org.talend.esb/ds-service-sqlserver/6.1.1</bundle>
+  </feature>
+
+  <feature name='tesb-sam-service-soap' version='6.1.1'>
+      <feature>tesb-sam-server</feature>
+      <bundle>mvn:org.talend.esb.sam.service/sam-service-common/6.1.1</bundle>
+      <bundle>mvn:org.talend.esb.sam.service/sam-service-soap/6.1.1</bundle>
+  </feature>
+  
+  <feature name='tesb-sam-service-rest' version='6.1.1'>
+      <feature>tesb-sam-server</feature>
+      <feature>cxf-rs-security-xml</feature>
+      <bundle>mvn:org.talend.esb.sam.service/sam-service-common/6.1.1</bundle>
+      <bundle>mvn:org.talend.esb.sam.service/sam-service-rest/6.1.1</bundle>
+  </feature>
+
+  <feature name='tesb-sam-server' version='6.1.1'>
+    <configfile finalname="/etc/org.talend.esb.sam.server.cfg">mvn:org.talend.esb/sam-server/6.1.1/cfg/org.talend.esb.sam.server</configfile>
+    <feature version='3.1.4'>cxf</feature>
+    <feature>tesb-sam-common</feature>
+    <feature version='[3.2,4)'>spring-jdbc</feature>
+    <bundle dependency="true">mvn:commons-pool/commons-pool/1.6</bundle>
+    <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-dbcp/1.4_3</bundle>
+    <bundle dependency="true">mvn:com.google.code.gson/gson/2.3</bundle>
+    <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.oscache/2.4_5</bundle>
+    <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.ibatis-sqlmap/2.3.4.726_4</bundle>
+    <bundle>mvn:org.talend.esb/sam-server/6.1.1</bundle>
+  </feature>
+
+  <feature name='tesb-derby-starter' version='6.1.1'>
+    <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.derby/10.8.1.2_1</bundle>
+<!--     <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.derbynet/${derbynet.bundle.version}</bundle> -->
+    <bundle>mvn:org.talend.esb/derby-starter/6.1.1</bundle>
+  </feature>
+
+  <feature name='tesb-zookeeper' version='6.1.1'>
+    <configfile finalname="/etc/org.talend.esb.locator.server.cfg">mvn:org.talend.esb/org.talend.esb.locator.server/6.1.1/cfg</configfile>
+    <bundle start-level='50'>mvn:org.talend.esb/org.talend.esb.locator.auth/6.1.1</bundle>
+    <bundle start-level='50'>mvn:org.apache.zookeeper/zookeeper/3.4.6</bundle>
+  </feature>
+
+  <feature name='tesb-locator-client' version='6.1.1'>
+    <feature version='3.1.4'>cxf</feature>
+    <feature prerequisite='true'>tesb-zookeeper</feature>
+    <bundle>mvn:org.apache.cxf/cxf-rt-features-clustering/3.1.4</bundle>
+    <bundle start-level='51'>mvn:org.talend.esb/locator/6.1.1</bundle>
+  </feature>
+
+  <feature name='tesb-locator-monitor' version='6.1.1'>
+    <configfile finalname="/etc/org.talend.esb.monitoring.locator.cfg">mvn:org.talend.esb/locator-monitor/6.1.1/cfg/org.talend.esb.monitoring.locator</configfile>
+    <feature>tesb-locator-client</feature>
+    <bundle>mvn:org.talend.esb/locator-monitor/6.1.1</bundle>
+  </feature>
+
+  <feature name='tesb-locator-commands' version='6.1.1'>
+    <feature>tesb-locator-client</feature>
+    <bundle>mvn:org.talend.esb/locator-commands/6.1.1</bundle>
+  </feature>
+
+  <feature name='tesb-zookeeper-server' version='6.1.1'>
+    <feature>tesb-zookeeper</feature>
+    <bundle>mvn:org.talend.esb/org.talend.esb.locator.server/6.1.1</bundle>
+  </feature>
+
+  <feature name='tesb-locator-soap-service' version='6.1.1'>
+    <configfile finalname="/etc/org.talend.esb.locator.token.policy">mvn:org.talend.esb.locator.service/locator-soap-service/6.1.1/policy/org.talend.esb.locator.token</configfile>
+    <configfile finalname="/etc/org.talend.esb.locator.saml.policy">mvn:org.talend.esb.locator.service/locator-soap-service/6.1.1/policy/org.talend.esb.locator.saml</configfile>
+    <configfile finalname="/etc/org.talend.esb.locator.service.cfg">mvn:org.talend.esb.locator.service/locator-soap-service/6.1.1/cfg/org.talend.esb.locator.service</configfile>
+    <feature>tesb-locator-client</feature>
+    <bundle>mvn:org.talend.esb.locator.service/locator-service-common/6.1.1</bundle>
+    <bundle>mvn:org.talend.esb.locator.service/locator-soap-service/6.1.1</bundle>
+  </feature>
+
+  <feature name='tesb-locator-rest-service' version='6.1.1'>
+    <feature>tesb-locator-client</feature>
+    <bundle>mvn:org.talend.esb.locator.service/locator-service-common/6.1.1</bundle>
+    <bundle>mvn:org.talend.esb.locator.service.rest/locator-rest-service/6.1.1</bundle>
+  </feature>
+
+  <feature name="tesb-security-common" version="6.1.1">
+    <feature>cxf-rs-security-xml</feature>
+    <feature>jasypt-encryption</feature>
+    <bundle dependency='true'>mvn:org.bouncycastle/bcprov-jdk15on/1.52</bundle>
+    <bundle start-level='50'>mvn:org.talend.esb/security-common/6.1.1</bundle>
+  </feature>
+
+  <feature name="tesb-encryptor-command" version="6.1.1">
+    <feature>jasypt-encryption</feature>
+    <bundle dependency='true'>mvn:org.bouncycastle/bcprov-jdk15on/1.52</bundle>
+    <bundle start-level='50'>mvn:org.talend.esb/text-encryptor/6.1.1</bundle>
+  </feature>
+
+  <feature name="talend-job-api" version="6.1.1">
+    <bundle>mvn:org.talend.esb.job/org.talend.esb.job.api/6.1.1</bundle>
+  </feature>
+
+  <feature name="talend-job-dependencies" version="6.1.1">
+    <feature version='3.1.4'>cxf</feature>
+    <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.dom4j/1.6.1_5</bundle>
+    <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jaxen/1.1.1_2</bundle>
+  </feature>
+
+  <feature name="talend-job-controller" version="6.1.1">
+    <configfile finalname="/etc/org.talend.esb.job.cfg">mvn:org.talend.esb.job/org.talend.esb.job.controller/6.1.1/cfg/org.talend.esb.job</configfile>
+    <configfile finalname="/etc/org.talend.esb.job.token.policy">mvn:org.talend.esb.job/org.talend.esb.job.controller/6.1.1/policy/org.talend.esb.job.token</configfile>
+    <configfile finalname="/etc/org.talend.esb.job.saml.policy">mvn:org.talend.esb.job/org.talend.esb.job.controller/6.1.1/policy/org.talend.esb.job.saml</configfile>
+    <configfile finalname="/etc/org.talend.esb.job.saml.authz.policy">mvn:org.talend.esb.job/org.talend.esb.job.controller/6.1.1/policy/org.talend.esb.job.saml.authz</configfile>
+    <configfile finalname="/etc/org.talend.esb.job.saml.crypto.policy">mvn:org.talend.esb.job/org.talend.esb.job.controller/6.1.1/policy/org.talend.esb.job.saml.crypto</configfile>
+    <configfile finalname="/etc/org.talend.esb.job.saml.authz.crypto.policy">mvn:org.talend.esb.job/org.talend.esb.job.controller/6.1.1/policy/org.talend.esb.job.saml.authz.crypto</configfile>
+    <configfile finalname="/etc/org.talend.esb.job.service.cfg">mvn:org.talend.esb.job/org.talend.esb.job.controller/6.1.1/cfg/org.talend.esb.job.service</configfile>
+    <configfile finalname="/etc/org.talend.esb.job.client.cfg">mvn:org.talend.esb.job/org.talend.esb.job.controller/6.1.1/cfg/org.talend.esb.job.client</configfile>
+    <configfile finalname="/etc/org.talend.esb.job.client.sts.cfg">mvn:org.talend.esb.job/org.talend.esb.job.controller/6.1.1/cfg/org.talend.esb.job.client.sts</configfile>
+    <configfile finalname="/etc/keystores/clientKeystore.properties">mvn:org.talend.esb.job/org.talend.esb.job.controller/6.1.1/properties/clientKeystore</configfile>
+    <configfile finalname="/etc/keystores/clientstore.jks">mvn:org.talend.esb.job/org.talend.esb.job.controller/6.1.1/jks/clientstore</configfile>
+    <configfile finalname="/etc/keystores/serviceKeystore.properties">mvn:org.talend.esb.job/org.talend.esb.job.controller/6.1.1/properties/serviceKeystore</configfile>
+    <configfile finalname="/etc/keystores/servicestore.jks">mvn:org.talend.esb.job/org.talend.esb.job.controller/6.1.1/jks/servicestore</configfile>
+    <feature version='6.1.1'>talend-job-api</feature>
+    <feature version='6.1.1'>tesb-locator-client</feature>
+    <feature version='6.1.1'>tesb-sam-agent</feature>
+    <feature version='6.1.1'>talend-job-dependencies</feature>
+    <feature version='6.1.1'>tesb-policy-correlationid</feature>
+    <feature version='6.1.1'>tesb-policy-samenable</feature>
+    <feature version='6.1.1'>tesb-policy-compression</feature>
+    <feature version='6.1.1'>tesb-policy-transformation</feature>
+    <feature version='6.1.1'>tesb-policy-validation</feature>
+    <feature version='6.1.1'>tesb-security-common</feature>
+    <bundle>mvn:org.talend.esb.job/org.talend.esb.job.controller/6.1.1</bundle>
+  </feature>
+
+  <feature name="tesb-sts" version="6.1.1">
+    <configfile finalname="/etc/keystores/stsKeystore.properties">mvn:org.talend.esb.sts/org.talend.esb.sts.config/6.1.1/properties/stsKeystore</configfile>
+    <configfile finalname="/etc/keystores/stsstore.jks">mvn:org.talend.esb.sts/org.talend.esb.sts.config/6.1.1/jks/stsstore</configfile>
+    <feature version="3.1.4">cxf-sts</feature>
+    <bundle>mvn:org.talend.esb.sts/org.talend.esb.sts.config/6.1.1</bundle>
+  </feature>
+
+  <feature name="camel-talendjob" version="6.1.1">
+    <feature version="2.15.4">camel-core</feature>
+    <feature version='6.1.1'>talend-job-api</feature>
+    <bundle>mvn:org.talend.camel/camel-talendjob/6.1.1</bundle>
+  </feature>
+
+  <feature name='tesb-jmx-http-agent' version='6.1.1'>
+    <bundle>mvn:org.jolokia/jolokia-osgi/1.3.0</bundle>
+  </feature>
+
+  <feature name='tesb-policy-compression' version='6.1.1'>
+    <feature version='3.1.4'>cxf</feature>
+    <bundle>mvn:org.talend.esb.policies/compression-policy/6.1.1</bundle>
+  </feature>
+
+  <feature name='tesb-policy-correlationid' version='6.1.1'>
+    <feature version='3.1.4'>cxf</feature>
+    <bundle dependency="true" start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-beanutils/1.8.3_1</bundle>
+    <bundle dependency="true">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jdom/1.1_4</bundle>
+    <bundle dependency="true">mvn:org.eclipse.jdt.core.compiler/ecj/4.4</bundle>
+    <bundle dependency="true">mvn:org.ops4j.pax.web/pax-web-jsp/4.2.3</bundle>
+    <bundle dependency="true">mvn:commons-jxpath/commons-jxpath/1.3</bundle>
+    <bundle>mvn:org.talend.esb.policies/correlationid-policy/6.1.1</bundle>
+  </feature>
+
+  <feature name='tesb-policy-transformation' version='6.1.1'>
+    <feature version='3.1.4'>cxf</feature>
+    <bundle>mvn:org.talend.esb.policies/transformation-policy/6.1.1</bundle>
+  </feature>
+
+  <feature name='tesb-policy-validation' version='6.1.1'>
+    <feature version='3.1.4'>cxf</feature>
+    <bundle>mvn:org.talend.esb.policies/validation-policy/6.1.1</bundle>
+  </feature>
+
+  <feature name='tesb-policy-samenable' version='6.1.1'>
+    <feature version='3.1.4'>cxf</feature>
+    <feature version='6.1.1'>tesb-sam-agent</feature>
+    <bundle>mvn:org.talend.esb.policies/samenabling-policy/6.1.1</bundle>
+  </feature>
+
+  <feature name="request-callback" version='6.1.1'>
+    <feature version='3.1.4'>cxf</feature>
+    <feature version='6.1.1'>tesb-aux-common</feature>
+    <feature version='6.1.1'>tesb-aux-client-rest</feature>
+    <bundle>mvn:org.talend.esb.mep/request-callback/6.1.1</bundle>
+  </feature>
+
+  <feature name="transport-jms" version='6.1.1'>
+    <feature version='3.1.4'>cxf</feature>
+    <bundle>mvn:org.talend.esb/transport-jms/6.1.1</bundle>
+  </feature>
+
+  <feature name="talend-sap-hibersap" version='1.2.0'>
+    <bundle dependency="true">mvn:commons-lang/commons-lang/2.6</bundle>
+    <bundle>mvn:org.hibersap/hibersap-core/1.2.0</bundle>
+    <bundle>mvn:org.hibersap/hibersap-jco/1.2.0</bundle>
+  </feature>
+
+</features>

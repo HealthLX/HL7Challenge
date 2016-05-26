@@ -1,0 +1,1003 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>AbstractEndpointFactory (Apache CXF JavaDoc 3.1.4 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="AbstractEndpointFactory (Apache CXF JavaDoc 3.1.4 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/AbstractEndpointFactory.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html" title="class in org.apache.cxf.endpoint"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/cxf/endpoint/AbstractEndpointFactory.html" target="_top">Frames</a></li>
+<li><a href="AbstractEndpointFactory.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">org.apache.cxf.endpoint</div>
+<h2 title="Class AbstractEndpointFactory" class="title">Class AbstractEndpointFactory</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html" title="class in org.apache.cxf.interceptor">org.apache.cxf.interceptor.AbstractBasicInterceptorProvider</a></li>
+<li>
+<ul class="inheritance">
+<li>org.apache.cxf.endpoint.AbstractEndpointFactory</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="../../../../org/apache/cxf/interceptor/InterceptorProvider.html" title="interface in org.apache.cxf.interceptor">InterceptorProvider</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public abstract class <span class="strong">AbstractEndpointFactory</span>
+extends <a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html" title="class in org.apache.cxf.interceptor">AbstractBasicInterceptorProvider</a></pre>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#address">address</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/cxf/binding/BindingConfiguration.html" title="class in org.apache.cxf.binding">BindingConfiguration</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#bindingConfig">bindingConfig</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/cxf/binding/BindingFactory.html" title="interface in org.apache.cxf.binding">BindingFactory</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#bindingFactory">bindingFactory</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#bindingId">bindingId</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#bus">bus</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#conduitSelector">conduitSelector</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/cxf/databinding/DataBinding.html" title="interface in org.apache.cxf.databinding">DataBinding</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#dataBinding">dataBinding</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/cxf/transport/DestinationFactory.html" title="interface in org.apache.cxf.transport">DestinationFactory</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#destinationFactory">destinationFactory</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#endpointName">endpointName</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/cxf/ws/addressing/EndpointReferenceType.html" title="class in org.apache.cxf.ws.addressing">EndpointReferenceType</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#endpointReference">endpointReference</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/cxf/feature/Feature.html" title="interface in org.apache.cxf.feature">Feature</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#features">features</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#properties">properties</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#publishedEndpointUrl">publishedEndpointUrl</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#serviceName">serviceName</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#transportId">transportId</a></strong></code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#AbstractEndpointFactory()">AbstractEndpointFactory</a></strong>()</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected static void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#addToBeans(java.util.Collection,%20java.lang.Object)">addToBeans</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;beans,
+          <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;o)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#checkPrivateEndpoint(org.apache.cxf.endpoint.Endpoint)">checkPrivateEndpoint</a></strong>(<a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;ep)</code>
+<div class="block">Checks if a given endpoint has been marked as private.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected abstract <a href="../../../../org/apache/cxf/service/model/BindingInfo.html" title="class in org.apache.cxf.service.model">BindingInfo</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#createBindingInfo()">createBindingInfo</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected abstract <a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#createEndpoint()">createEndpoint</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#getAddress()">getAddress</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/cxf/binding/BindingConfiguration.html" title="class in org.apache.cxf.binding">BindingConfiguration</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#getBindingConfig()">getBindingConfig</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/cxf/binding/BindingFactory.html" title="interface in org.apache.cxf.binding">BindingFactory</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#getBindingFactory()">getBindingFactory</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#getBindingId()">getBindingId</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#getBus()">getBus</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#getBus(boolean)">getBus</a></strong>(boolean&nbsp;createIfNeeded)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#getConduitSelector()">getConduitSelector</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/cxf/databinding/DataBinding.html" title="interface in org.apache.cxf.databinding">DataBinding</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#getDataBinding()">getDataBinding</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/cxf/transport/DestinationFactory.html" title="interface in org.apache.cxf.transport">DestinationFactory</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#getDestinationFactory()">getDestinationFactory</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#getEndpointName()">getEndpointName</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/cxf/feature/Feature.html" title="interface in org.apache.cxf.feature">Feature</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#getFeatures()">getFeatures</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#getProperties()">getProperties</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#getProperties(boolean)">getProperties</a></strong>(boolean&nbsp;create)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#getPublishedEndpointUrl()">getPublishedEndpointUrl</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#getServiceName()">getServiceName</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#getTransportId()">getTransportId</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#initializeAnnotationInterceptors(org.apache.cxf.interceptor.AnnotationInterceptors,%20org.apache.cxf.endpoint.Endpoint)">initializeAnnotationInterceptors</a></strong>(<a href="../../../../org/apache/cxf/interceptor/AnnotationInterceptors.html" title="class in org.apache.cxf.interceptor">AnnotationInterceptors</a>&nbsp;provider,
+                                <a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;ep)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#initializeAnnotationInterceptors(org.apache.cxf.endpoint.Endpoint,%20java.lang.Class...)">initializeAnnotationInterceptors</a></strong>(<a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;ep,
+                                <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;...&nbsp;cls)</code>
+<div class="block">Add annotationed Interceptors and Features to the Endpoint</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#initializeAnnotationInterceptors(org.apache.cxf.endpoint.Endpoint,%20java.lang.Class)">initializeAnnotationInterceptors</a></strong>(<a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;ep,
+                                <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;cls)</code>
+<div class="block">Add annotated Interceptors and Features to the Endpoint</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#setAddress(java.lang.String)">setAddress</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;address)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#setBindingConfig(org.apache.cxf.binding.BindingConfiguration)">setBindingConfig</a></strong>(<a href="../../../../org/apache/cxf/binding/BindingConfiguration.html" title="class in org.apache.cxf.binding">BindingConfiguration</a>&nbsp;obj)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#setBindingFactory(org.apache.cxf.binding.BindingFactory)">setBindingFactory</a></strong>(<a href="../../../../org/apache/cxf/binding/BindingFactory.html" title="interface in org.apache.cxf.binding">BindingFactory</a>&nbsp;bf)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#setBindingId(java.lang.String)">setBindingId</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;bind)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#setBus(org.apache.cxf.Bus)">setBus</a></strong>(<a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;bus)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#setConduitSelector(org.apache.cxf.endpoint.ConduitSelector)">setConduitSelector</a></strong>(<a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a>&nbsp;selector)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#setDataBinding(org.apache.cxf.databinding.DataBinding)">setDataBinding</a></strong>(<a href="../../../../org/apache/cxf/databinding/DataBinding.html" title="interface in org.apache.cxf.databinding">DataBinding</a>&nbsp;dataBinding)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#setDestinationFactory(org.apache.cxf.transport.DestinationFactory)">setDestinationFactory</a></strong>(<a href="../../../../org/apache/cxf/transport/DestinationFactory.html" title="interface in org.apache.cxf.transport">DestinationFactory</a>&nbsp;destinationFactory)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#setEndpointName(javax.xml.namespace.QName)">setEndpointName</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;endpointName)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#setEndpointReference(org.apache.cxf.ws.addressing.EndpointReferenceType)">setEndpointReference</a></strong>(<a href="../../../../org/apache/cxf/ws/addressing/EndpointReferenceType.html" title="class in org.apache.cxf.ws.addressing">EndpointReferenceType</a>&nbsp;epr)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#setFeatures(java.util.List)">setFeatures</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends <a href="../../../../org/apache/cxf/feature/Feature.html" title="interface in org.apache.cxf.feature">Feature</a>&gt;&nbsp;features2)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#setProperties(java.util.Map)">setProperties</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;properties)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#setPublishedEndpointUrl(java.lang.String)">setPublishedEndpointUrl</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;publishedEndpointUrl)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#setServiceName(javax.xml.namespace.QName)">setServiceName</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;name)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/AbstractEndpointFactory.html#setTransportId(java.lang.String)">setTransportId</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;transportId)</code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.cxf.interceptor.AbstractBasicInterceptorProvider">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.cxf.interceptor.<a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html" title="class in org.apache.cxf.interceptor">AbstractBasicInterceptorProvider</a></h3>
+<code><a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html#getInFaultInterceptors()">getInFaultInterceptors</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html#getInInterceptors()">getInInterceptors</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html#getOutFaultInterceptors()">getOutFaultInterceptors</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html#getOutInterceptors()">getOutInterceptors</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html#setInFaultInterceptors(java.util.List)">setInFaultInterceptors</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html#setInInterceptors(java.util.List)">setInInterceptors</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html#setOutFaultInterceptors(java.util.List)">setOutFaultInterceptors</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html#setOutInterceptors(java.util.List)">setOutInterceptors</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long,%20int)" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="bus">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>bus</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a> bus</pre>
+</li>
+</ul>
+<a name="address">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>address</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> address</pre>
+</li>
+</ul>
+<a name="transportId">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>transportId</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> transportId</pre>
+</li>
+</ul>
+<a name="bindingId">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>bindingId</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> bindingId</pre>
+</li>
+</ul>
+<a name="dataBinding">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>dataBinding</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/cxf/databinding/DataBinding.html" title="interface in org.apache.cxf.databinding">DataBinding</a> dataBinding</pre>
+</li>
+</ul>
+<a name="bindingFactory">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>bindingFactory</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/cxf/binding/BindingFactory.html" title="interface in org.apache.cxf.binding">BindingFactory</a> bindingFactory</pre>
+</li>
+</ul>
+<a name="destinationFactory">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>destinationFactory</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/cxf/transport/DestinationFactory.html" title="interface in org.apache.cxf.transport">DestinationFactory</a> destinationFactory</pre>
+</li>
+</ul>
+<a name="publishedEndpointUrl">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>publishedEndpointUrl</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> publishedEndpointUrl</pre>
+</li>
+</ul>
+<a name="endpointName">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>endpointName</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a> endpointName</pre>
+</li>
+</ul>
+<a name="serviceName">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>serviceName</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a> serviceName</pre>
+</li>
+</ul>
+<a name="properties">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>properties</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt; properties</pre>
+</li>
+</ul>
+<a name="features">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>features</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/cxf/feature/Feature.html" title="interface in org.apache.cxf.feature">Feature</a>&gt; features</pre>
+</li>
+</ul>
+<a name="bindingConfig">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>bindingConfig</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/cxf/binding/BindingConfiguration.html" title="class in org.apache.cxf.binding">BindingConfiguration</a> bindingConfig</pre>
+</li>
+</ul>
+<a name="endpointReference">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>endpointReference</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/cxf/ws/addressing/EndpointReferenceType.html" title="class in org.apache.cxf.ws.addressing">EndpointReferenceType</a> endpointReference</pre>
+</li>
+</ul>
+<a name="conduitSelector">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>conduitSelector</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a> conduitSelector</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="AbstractEndpointFactory()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>AbstractEndpointFactory</h4>
+<pre>public&nbsp;AbstractEndpointFactory()</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="createEndpoint()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createEndpoint</h4>
+<pre>protected abstract&nbsp;<a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;createEndpoint()
+                                    throws <a href="../../../../org/apache/cxf/BusException.html" title="class in org.apache.cxf">BusException</a>,
+                                           <a href="../../../../org/apache/cxf/endpoint/EndpointException.html" title="class in org.apache.cxf.endpoint">EndpointException</a></pre>
+<dl><dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/cxf/BusException.html" title="class in org.apache.cxf">BusException</a></code></dd>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/EndpointException.html" title="class in org.apache.cxf.endpoint">EndpointException</a></code></dd></dl>
+</li>
+</ul>
+<a name="createBindingInfo()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createBindingInfo</h4>
+<pre>protected abstract&nbsp;<a href="../../../../org/apache/cxf/service/model/BindingInfo.html" title="class in org.apache.cxf.service.model">BindingInfo</a>&nbsp;createBindingInfo()</pre>
+</li>
+</ul>
+<a name="getAddress()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getAddress</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getAddress()</pre>
+</li>
+</ul>
+<a name="setAddress(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setAddress</h4>
+<pre>public&nbsp;void&nbsp;setAddress(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;address)</pre>
+</li>
+</ul>
+<a name="getBus()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBus</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;getBus()</pre>
+</li>
+</ul>
+<a name="getBus(boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBus</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;getBus(boolean&nbsp;createIfNeeded)</pre>
+</li>
+</ul>
+<a name="setBus(org.apache.cxf.Bus)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBus</h4>
+<pre>public&nbsp;void&nbsp;setBus(<a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;bus)</pre>
+</li>
+</ul>
+<a name="getTransportId()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTransportId</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getTransportId()</pre>
+</li>
+</ul>
+<a name="setTransportId(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setTransportId</h4>
+<pre>public&nbsp;void&nbsp;setTransportId(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;transportId)</pre>
+</li>
+</ul>
+<a name="setBindingId(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBindingId</h4>
+<pre>public&nbsp;void&nbsp;setBindingId(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;bind)</pre>
+</li>
+</ul>
+<a name="getBindingId()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBindingId</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getBindingId()</pre>
+</li>
+</ul>
+<a name="setBindingConfig(org.apache.cxf.binding.BindingConfiguration)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBindingConfig</h4>
+<pre>public&nbsp;void&nbsp;setBindingConfig(<a href="../../../../org/apache/cxf/binding/BindingConfiguration.html" title="class in org.apache.cxf.binding">BindingConfiguration</a>&nbsp;obj)</pre>
+</li>
+</ul>
+<a name="getBindingConfig()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBindingConfig</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/cxf/binding/BindingConfiguration.html" title="class in org.apache.cxf.binding">BindingConfiguration</a>&nbsp;getBindingConfig()</pre>
+</li>
+</ul>
+<a name="getDestinationFactory()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDestinationFactory</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/cxf/transport/DestinationFactory.html" title="interface in org.apache.cxf.transport">DestinationFactory</a>&nbsp;getDestinationFactory()</pre>
+</li>
+</ul>
+<a name="setDestinationFactory(org.apache.cxf.transport.DestinationFactory)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setDestinationFactory</h4>
+<pre>public&nbsp;void&nbsp;setDestinationFactory(<a href="../../../../org/apache/cxf/transport/DestinationFactory.html" title="interface in org.apache.cxf.transport">DestinationFactory</a>&nbsp;destinationFactory)</pre>
+</li>
+</ul>
+<a name="getPublishedEndpointUrl()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPublishedEndpointUrl</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getPublishedEndpointUrl()</pre>
+</li>
+</ul>
+<a name="setPublishedEndpointUrl(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setPublishedEndpointUrl</h4>
+<pre>public&nbsp;void&nbsp;setPublishedEndpointUrl(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;publishedEndpointUrl)</pre>
+</li>
+</ul>
+<a name="getEndpointName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getEndpointName</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;getEndpointName()</pre>
+</li>
+</ul>
+<a name="setEndpointName(javax.xml.namespace.QName)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setEndpointName</h4>
+<pre>public&nbsp;void&nbsp;setEndpointName(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;endpointName)</pre>
+</li>
+</ul>
+<a name="setServiceName(javax.xml.namespace.QName)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setServiceName</h4>
+<pre>public&nbsp;void&nbsp;setServiceName(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;name)</pre>
+</li>
+</ul>
+<a name="getServiceName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getServiceName</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;getServiceName()</pre>
+</li>
+</ul>
+<a name="setEndpointReference(org.apache.cxf.ws.addressing.EndpointReferenceType)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setEndpointReference</h4>
+<pre>public&nbsp;void&nbsp;setEndpointReference(<a href="../../../../org/apache/cxf/ws/addressing/EndpointReferenceType.html" title="class in org.apache.cxf.ws.addressing">EndpointReferenceType</a>&nbsp;epr)</pre>
+</li>
+</ul>
+<a name="getProperties()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getProperties</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;getProperties()</pre>
+</li>
+</ul>
+<a name="getProperties(boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getProperties</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;getProperties(boolean&nbsp;create)</pre>
+</li>
+</ul>
+<a name="setProperties(java.util.Map)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setProperties</h4>
+<pre>public&nbsp;void&nbsp;setProperties(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;properties)</pre>
+</li>
+</ul>
+<a name="getFeatures()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getFeatures</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/cxf/feature/Feature.html" title="interface in org.apache.cxf.feature">Feature</a>&gt;&nbsp;getFeatures()</pre>
+</li>
+</ul>
+<a name="setFeatures(java.util.List)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setFeatures</h4>
+<pre>public&nbsp;void&nbsp;setFeatures(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends <a href="../../../../org/apache/cxf/feature/Feature.html" title="interface in org.apache.cxf.feature">Feature</a>&gt;&nbsp;features2)</pre>
+</li>
+</ul>
+<a name="getBindingFactory()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBindingFactory</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/cxf/binding/BindingFactory.html" title="interface in org.apache.cxf.binding">BindingFactory</a>&nbsp;getBindingFactory()</pre>
+</li>
+</ul>
+<a name="setBindingFactory(org.apache.cxf.binding.BindingFactory)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBindingFactory</h4>
+<pre>public&nbsp;void&nbsp;setBindingFactory(<a href="../../../../org/apache/cxf/binding/BindingFactory.html" title="interface in org.apache.cxf.binding">BindingFactory</a>&nbsp;bf)</pre>
+</li>
+</ul>
+<a name="getConduitSelector()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getConduitSelector</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a>&nbsp;getConduitSelector()</pre>
+</li>
+</ul>
+<a name="setConduitSelector(org.apache.cxf.endpoint.ConduitSelector)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setConduitSelector</h4>
+<pre>public&nbsp;void&nbsp;setConduitSelector(<a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a>&nbsp;selector)</pre>
+</li>
+</ul>
+<a name="getDataBinding()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDataBinding</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/cxf/databinding/DataBinding.html" title="interface in org.apache.cxf.databinding">DataBinding</a>&nbsp;getDataBinding()</pre>
+</li>
+</ul>
+<a name="setDataBinding(org.apache.cxf.databinding.DataBinding)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setDataBinding</h4>
+<pre>public&nbsp;void&nbsp;setDataBinding(<a href="../../../../org/apache/cxf/databinding/DataBinding.html" title="interface in org.apache.cxf.databinding">DataBinding</a>&nbsp;dataBinding)</pre>
+</li>
+</ul>
+<a name="checkPrivateEndpoint(org.apache.cxf.endpoint.Endpoint)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>checkPrivateEndpoint</h4>
+<pre>protected&nbsp;boolean&nbsp;checkPrivateEndpoint(<a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;ep)</pre>
+<div class="block">Checks if a given endpoint has been marked as private.
+ If yes then its address will be added to a bus list property
+ Note that client factories might also check the endpoint, ex, 
+ if the endpoint if private then it is likely no service contract
+ will be available if requested from the remote address hence it has to
+ be availbale locally or generated from the local source</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>ep</code> - endpoint</dd></dl>
+</li>
+</ul>
+<a name="initializeAnnotationInterceptors(org.apache.cxf.endpoint.Endpoint, java.lang.Class)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>initializeAnnotationInterceptors</h4>
+<pre>protected&nbsp;void&nbsp;initializeAnnotationInterceptors(<a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;ep,
+                                    <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;cls)</pre>
+<div class="block">Add annotated Interceptors and Features to the Endpoint</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>ep</code> - </dd></dl>
+</li>
+</ul>
+<a name="initializeAnnotationInterceptors(org.apache.cxf.endpoint.Endpoint, java.lang.Class...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>initializeAnnotationInterceptors</h4>
+<pre>protected&nbsp;void&nbsp;initializeAnnotationInterceptors(<a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;ep,
+                                    <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;...&nbsp;cls)</pre>
+<div class="block">Add annotationed Interceptors and Features to the Endpoint</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>ep</code> - </dd></dl>
+</li>
+</ul>
+<a name="addToBeans(java.util.Collection, java.lang.Object)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addToBeans</h4>
+<pre>protected static&nbsp;void&nbsp;addToBeans(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;beans,
+              <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;o)</pre>
+</li>
+</ul>
+<a name="initializeAnnotationInterceptors(org.apache.cxf.interceptor.AnnotationInterceptors, org.apache.cxf.endpoint.Endpoint)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>initializeAnnotationInterceptors</h4>
+<pre>protected&nbsp;boolean&nbsp;initializeAnnotationInterceptors(<a href="../../../../org/apache/cxf/interceptor/AnnotationInterceptors.html" title="class in org.apache.cxf.interceptor">AnnotationInterceptors</a>&nbsp;provider,
+                                       <a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;ep)</pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/AbstractEndpointFactory.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html" title="class in org.apache.cxf.endpoint"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/cxf/endpoint/AbstractEndpointFactory.html" target="_top">Frames</a></li>
+<li><a href="AbstractEndpointFactory.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Apache CXF</small></p>
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>PropertiesExpandingStreamReader (Apache CXF JavaDoc 3.1.4 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="PropertiesExpandingStreamReader (Apache CXF JavaDoc 3.1.4 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/PropertiesExpandingStreamReader.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../org/apache/cxf/staxutils/PrettyPrintXMLStreamWriter.html" title="class in org.apache.cxf.staxutils"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../org/apache/cxf/staxutils/StaxSource.html" title="class in org.apache.cxf.staxutils"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/cxf/staxutils/PropertiesExpandingStreamReader.html" target="_top">Frames</a></li>
+<li><a href="PropertiesExpandingStreamReader.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">org.apache.cxf.staxutils</div>
+<h2 title="Class PropertiesExpandingStreamReader" class="title">Class PropertiesExpandingStreamReader</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true" title="class or interface in javax.xml.stream.util">javax.xml.stream.util.StreamReaderDelegate</a></li>
+<li>
+<ul class="inheritance">
+<li>org.apache.cxf.staxutils.PropertiesExpandingStreamReader</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamConstants.html?is-external=true" title="class or interface in javax.xml.stream">XMLStreamConstants</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamReader.html?is-external=true" title="class or interface in javax.xml.stream">XMLStreamReader</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public class <span class="strong">PropertiesExpandingStreamReader</span>
+extends <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true" title="class or interface in javax.xml.stream.util">StreamReaderDelegate</a></pre>
+<div class="block">A StreamReaderDelegate that expands property references in element and attribute values.</div>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/PropertiesExpandingStreamReader.html#DELIMITER">DELIMITER</a></strong></code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="fields_inherited_from_class_javax.xml.stream.XMLStreamConstants">
+<!--   -->
+</a>
+<h3>Fields inherited from interface&nbsp;javax.xml.stream.<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamConstants.html?is-external=true" title="class or interface in javax.xml.stream">XMLStreamConstants</a></h3>
+<code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamConstants.html?is-external=true#ATTRIBUTE" title="class or interface in javax.xml.stream">ATTRIBUTE</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamConstants.html?is-external=true#CDATA" title="class or interface in javax.xml.stream">CDATA</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamConstants.html?is-external=true#CHARACTERS" title="class or interface in javax.xml.stream">CHARACTERS</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamConstants.html?is-external=true#COMMENT" title="class or interface in javax.xml.stream">COMMENT</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamConstants.html?is-external=true#DTD" title="class or interface in javax.xml.stream">DTD</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamConstants.html?is-external=true#END_DOCUMENT" title="class or interface in javax.xml.stream">END_DOCUMENT</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamConstants.html?is-external=true#END_ELEMENT" title="class or interface in javax.xml.stream">END_ELEMENT</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamConstants.html?is-external=true#ENTITY_DECLARATION" title="class or interface in javax.xml.stream">ENTITY_DECLARATION</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamConstants.html?is-external=true#ENTITY_REFERENCE" title="class or interface in javax.xml.stream">ENTITY_REFERENCE</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamConstants.html?is-external=true#NAMESPACE" title="class or interface in javax.xml.stream">NAMESPACE</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamConstants.html?is-external=true#NOTATION_DECLARATION" title="class or interface in javax.xml.stream">NOTATION_DECLARATION</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamConstants.html?is-external=true#PROCESSING_INSTRUCTION" title="class or interface in javax.xml.stream">PROCESSING_INSTRUCTION</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamConstants.html?is-external=true#SPACE" title="class or interface in javax.xml.stream">SPACE</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamConstants.html?is-external=true#START_DOCUMENT" title="class or interface in javax.xml.stream">START_DOCUMENT</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamConstants.html?is-external=true#START_ELEMENT" title="class or interface in javax.xml.stream">START_ELEMENT</a></code></li>
+</ul>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/cxf/staxutils/PropertiesExpandingStreamReader.html#PropertiesExpandingStreamReader(javax.xml.stream.XMLStreamReader,%20java.util.Map)">PropertiesExpandingStreamReader</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamReader.html?is-external=true" title="class or interface in javax.xml.stream">XMLStreamReader</a>&nbsp;reader,
+                               <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;props)</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/PropertiesExpandingStreamReader.html#expandProperty(java.lang.String)">expandProperty</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;value)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/PropertiesExpandingStreamReader.html#getAttributeValue(int)">getAttributeValue</a></strong>(int&nbsp;index)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/PropertiesExpandingStreamReader.html#getAttributeValue(java.lang.String,%20java.lang.String)">getAttributeValue</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespaceURI,
+                 <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;localName)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/PropertiesExpandingStreamReader.html#getElementText()">getElementText</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/staxutils/PropertiesExpandingStreamReader.html#getText()">getText</a></strong>()</code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_javax.xml.stream.util.StreamReaderDelegate">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;javax.xml.stream.util.<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true" title="class or interface in javax.xml.stream.util">StreamReaderDelegate</a></h3>
+<code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#close()" title="class or interface in javax.xml.stream.util">close</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getAttributeCount()" title="class or interface in javax.xml.stream.util">getAttributeCount</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getAttributeLocalName(int)" title="class or interface in javax.xml.stream.util">getAttributeLocalName</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getAttributeName(int)" title="class or interface in javax.xml.stream.util">getAttributeName</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getAttributeNamespace(int)" title="class or interface in javax.xml.stream.util">getAttributeNamespace</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getAttributePrefix(int)" title="class or interface in javax.xml.stream.util">getAttributePrefix</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getAttributeType(int)" title="class or interface in javax.xml.stream.util">getAttributeType</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getCharacterEncodingScheme()" title="class or interface in javax.xml.stream.util">getCharacterEncodingScheme</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getEncoding()" title="class or interface in javax.xml.stream.util">getEncoding</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getEventType()" title="class or interface in javax.xml.stream.util">getEventType</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getLocalName()" title="class or interface in javax.xml.stream.util">getLocalName</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getLocation()" title="class or interface in javax.xml.stream.util">getLocation</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getName()" title="class or interface in javax.xml.stream.util">getName</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getNamespaceContext()" title="class or interface in javax.xml.stream.util">getNamespaceContext</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getNamespaceCount()" title="class or interface in javax.xml.stream.util">getNamespaceCount</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getNamespacePrefix(int)" title="class or interface in javax.xml.stream.util">getNamespacePrefix</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getNamespaceURI()" title="class or interface in javax.xml.stream.util">getNamespaceURI</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getNamespaceURI(int)" title="class or interface in javax.xml.stream.util">getNamespaceURI</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getNamespaceURI(java.lang.String)" title="class or interface in javax.xml.stream.util">getNamespaceURI</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getParent()" title="class or interface in javax.xml.stream.util">getParent</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getPIData()" title="class or interface in javax.xml.stream.util">getPIData</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getPITarget()" title="class or interface in javax.xml.stream.util">getPITarget</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getPrefix()" title="class or interface in javax.xml.stream.util">getPrefix</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getProperty(java.lang.String)" title="class or interface in javax.xml.stream.util">getProperty</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getTextCharacters()" title="class or interface in javax.xml.stream.util">getTextCharacters</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getTextCharacters(int,%20char[],%20int,%20int)" title="class or interface in javax.xml.stream.util">getTextCharacters</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getTextLength()" title="class or interface in javax.xml.stream.util">getTextLength</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getTextStart()" title="class or interface in javax.xml.stream.util">getTextStart</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getVersion()" title="class or interface in javax.xml.stream.util">getVersion</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#hasName()" title="class or interface in javax.xml.stream.util">hasName</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#hasNext()" title="class or interface in javax.xml.stream.util">hasNext</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#hasText()" title="class or interface in javax.xml.stream.util">hasText</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#isAttributeSpecified(int)" title="class or interface in javax.xml.stream.util">isAttributeSpecified</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#isCharacters()" title="class or interface in javax.xml.stream.util">isCharacters</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#isEndElement()" title="class or interface in javax.xml.stream.util">isEndElement</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#isStandalone()" title="class or interface in javax.xml.stream.util">isStandalone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#isStartElement()" title="class or interface in javax.xml.stream.util">isStartElement</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#isWhiteSpace()" title="class or interface in javax.xml.stream.util">isWhiteSpace</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#next()" title="class or interface in javax.xml.stream.util">next</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#nextTag()" title="class or interface in javax.xml.stream.util">nextTag</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#require(int,%20java.lang.String,%20java.lang.String)" title="class or interface in javax.xml.stream.util">require</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#setParent(javax.xml.stream.XMLStreamReader)" title="class or interface in javax.xml.stream.util">setParent</a>, <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#standaloneSet()" title="class or interface in javax.xml.stream.util">standaloneSet</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long,%20int)" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="DELIMITER">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>DELIMITER</h4>
+<pre>public static final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> DELIMITER</pre>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../constant-values.html#org.apache.cxf.staxutils.PropertiesExpandingStreamReader.DELIMITER">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="PropertiesExpandingStreamReader(javax.xml.stream.XMLStreamReader, java.util.Map)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>PropertiesExpandingStreamReader</h4>
+<pre>public&nbsp;PropertiesExpandingStreamReader(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamReader.html?is-external=true" title="class or interface in javax.xml.stream">XMLStreamReader</a>&nbsp;reader,
+                               <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;props)</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="expandProperty(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>expandProperty</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;expandProperty(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;value)</pre>
+</li>
+</ul>
+<a name="getElementText()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getElementText</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getElementText()
+                      throws <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamException.html?is-external=true" title="class or interface in javax.xml.stream">XMLStreamException</a></pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamReader.html?is-external=true#getElementText()" title="class or interface in javax.xml.stream">getElementText</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamReader.html?is-external=true" title="class or interface in javax.xml.stream">XMLStreamReader</a></code></dd>
+<dt><strong>Overrides:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getElementText()" title="class or interface in javax.xml.stream.util">getElementText</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true" title="class or interface in javax.xml.stream.util">StreamReaderDelegate</a></code></dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamException.html?is-external=true" title="class or interface in javax.xml.stream">XMLStreamException</a></code></dd></dl>
+</li>
+</ul>
+<a name="getAttributeValue(java.lang.String, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getAttributeValue</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getAttributeValue(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespaceURI,
+                       <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;localName)</pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamReader.html?is-external=true#getAttributeValue(java.lang.String,%20java.lang.String)" title="class or interface in javax.xml.stream">getAttributeValue</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamReader.html?is-external=true" title="class or interface in javax.xml.stream">XMLStreamReader</a></code></dd>
+<dt><strong>Overrides:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getAttributeValue(java.lang.String,%20java.lang.String)" title="class or interface in javax.xml.stream.util">getAttributeValue</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true" title="class or interface in javax.xml.stream.util">StreamReaderDelegate</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getAttributeValue(int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getAttributeValue</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getAttributeValue(int&nbsp;index)</pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamReader.html?is-external=true#getAttributeValue(int)" title="class or interface in javax.xml.stream">getAttributeValue</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamReader.html?is-external=true" title="class or interface in javax.xml.stream">XMLStreamReader</a></code></dd>
+<dt><strong>Overrides:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getAttributeValue(int)" title="class or interface in javax.xml.stream.util">getAttributeValue</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true" title="class or interface in javax.xml.stream.util">StreamReaderDelegate</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getText()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getText</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getText()</pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamReader.html?is-external=true#getText()" title="class or interface in javax.xml.stream">getText</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/XMLStreamReader.html?is-external=true" title="class or interface in javax.xml.stream">XMLStreamReader</a></code></dd>
+<dt><strong>Overrides:</strong></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true#getText()" title="class or interface in javax.xml.stream.util">getText</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/stream/util/StreamReaderDelegate.html?is-external=true" title="class or interface in javax.xml.stream.util">StreamReaderDelegate</a></code></dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/PropertiesExpandingStreamReader.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../org/apache/cxf/staxutils/PrettyPrintXMLStreamWriter.html" title="class in org.apache.cxf.staxutils"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../org/apache/cxf/staxutils/StaxSource.html" title="class in org.apache.cxf.staxutils"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/cxf/staxutils/PropertiesExpandingStreamReader.html" target="_top">Frames</a></li>
+<li><a href="PropertiesExpandingStreamReader.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Apache CXF</small></p>
+</body>
+</html>

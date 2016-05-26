@@ -1,0 +1,1479 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>ClientImpl (Apache CXF JavaDoc 3.1.4 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="ClientImpl (Apache CXF JavaDoc 3.1.4 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/ClientImpl.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../org/apache/cxf/endpoint/ClientCallback.html" title="class in org.apache.cxf.endpoint"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../org/apache/cxf/endpoint/ClientImpl.EchoContext.html" title="class in org.apache.cxf.endpoint"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/cxf/endpoint/ClientImpl.html" target="_top">Frames</a></li>
+<li><a href="ClientImpl.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li><a href="#nested_class_summary">Nested</a>&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">org.apache.cxf.endpoint</div>
+<h2 title="Class ClientImpl" class="title">Class ClientImpl</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html" title="class in org.apache.cxf.interceptor">org.apache.cxf.interceptor.AbstractBasicInterceptorProvider</a></li>
+<li>
+<ul class="inheritance">
+<li>org.apache.cxf.endpoint.ClientImpl</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a>, <a href="../../../../org/apache/cxf/endpoint/ConduitSelectorHolder.html" title="interface in org.apache.cxf.endpoint">ConduitSelectorHolder</a>, <a href="../../../../org/apache/cxf/endpoint/Retryable.html" title="interface in org.apache.cxf.endpoint">Retryable</a>, <a href="../../../../org/apache/cxf/interceptor/InterceptorProvider.html" title="interface in org.apache.cxf.interceptor">InterceptorProvider</a>, <a href="../../../../org/apache/cxf/transport/MessageObserver.html" title="interface in org.apache.cxf.transport">MessageObserver</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public class <span class="strong">ClientImpl</span>
+extends <a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html" title="class in org.apache.cxf.interceptor">AbstractBasicInterceptorProvider</a>
+implements <a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a>, <a href="../../../../org/apache/cxf/endpoint/Retryable.html" title="interface in org.apache.cxf.endpoint">Retryable</a>, <a href="../../../../org/apache/cxf/transport/MessageObserver.html" title="interface in org.apache.cxf.transport">MessageObserver</a></pre>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="nested_class_summary">
+<!--   -->
+</a>
+<h3>Nested Class Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Nested Class Summary table, listing nested classes, and an explanation">
+<caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.EchoContext.html" title="class in org.apache.cxf.endpoint">ClientImpl.EchoContext</a></strong></code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#bus">bus</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#conduitSelector">conduitSelector</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#currentRequestContext">currentRequestContext</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Executor.html?is-external=true" title="class or interface in java.util.concurrent">Executor</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#executor">executor</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#FINISHED">FINISHED</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/cxf/phase/PhaseChainCache.html" title="class in org.apache.cxf.phase">PhaseChainCache</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#inboundChainCache">inboundChainCache</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/cxf/phase/PhaseChainCache.html" title="class in org.apache.cxf.phase">PhaseChainCache</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#outboundChainCache">outboundChainCache</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/cxf/interceptor/ClientOutFaultObserver.html" title="class in org.apache.cxf.interceptor">ClientOutFaultObserver</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#outFaultObserver">outFaultObserver</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html?is-external=true" title="class or interface in java.lang">Thread</a>,<a href="../../../../org/apache/cxf/endpoint/ClientImpl.EchoContext.html" title="class in org.apache.cxf.endpoint">ClientImpl.EchoContext</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#requestContext">requestContext</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html?is-external=true" title="class or interface in java.lang">Thread</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#responseContext">responseContext</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#SYNC_TIMEOUT">SYNC_TIMEOUT</a></strong></code>
+<div class="block">When a synchronous request/response invoke is done using an asynchronous transport mechanism,
+ this is the timeout used for waiting for the response.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected int</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#synchronousTimeout">synchronousTimeout</a></strong></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#THREAD_LOCAL_REQUEST_CONTEXT">THREAD_LOCAL_REQUEST_CONTEXT</a></strong></code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="fields_inherited_from_class_org.apache.cxf.endpoint.Client">
+<!--   -->
+</a>
+<h3>Fields inherited from interface&nbsp;org.apache.cxf.endpoint.<a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></h3>
+<code><a href="../../../../org/apache/cxf/endpoint/Client.html#KEEP_CONDUIT_ALIVE">KEEP_CONDUIT_ALIVE</a>, <a href="../../../../org/apache/cxf/endpoint/Client.html#REQUEST_CONTEXT">REQUEST_CONTEXT</a>, <a href="../../../../org/apache/cxf/endpoint/Client.html#RESPONSE_CONTEXT">RESPONSE_CONTEXT</a></code></li>
+</ul>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#ClientImpl(org.apache.cxf.Bus,%20org.apache.cxf.endpoint.Endpoint)">ClientImpl</a></strong>(<a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;b,
+          <a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;e)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#ClientImpl(org.apache.cxf.Bus,%20org.apache.cxf.endpoint.Endpoint,%20org.apache.cxf.transport.Conduit)">ClientImpl</a></strong>(<a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;b,
+          <a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;e,
+          <a href="../../../../org/apache/cxf/transport/Conduit.html" title="interface in org.apache.cxf.transport">Conduit</a>&nbsp;c)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#ClientImpl(org.apache.cxf.Bus,%20org.apache.cxf.endpoint.Endpoint,%20org.apache.cxf.endpoint.ConduitSelector)">ClientImpl</a></strong>(<a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;b,
+          <a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;e,
+          <a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a>&nbsp;sc)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#ClientImpl(org.apache.cxf.Bus,%20org.apache.cxf.service.Service,%20javax.xml.namespace.QName,%20org.apache.cxf.endpoint.EndpointImplFactory)">ClientImpl</a></strong>(<a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;bus,
+          <a href="../../../../org/apache/cxf/service/Service.html" title="interface in org.apache.cxf.service">Service</a>&nbsp;svc,
+          <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;port,
+          <a href="../../../../org/apache/cxf/endpoint/EndpointImplFactory.html" title="interface in org.apache.cxf.endpoint">EndpointImplFactory</a>&nbsp;endpointImplFactory)</code>
+<div class="block">Create a Client that uses a specific EndpointImpl.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#destroy()">destroy</a></strong>()</code>
+<div class="block">Indicates that the client is no longer needed and that any resources it holds
+ can now be freed.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#getBus()">getBus</a></strong>()</code>
+<div class="block">Retrieves the Bus that was used to create the Client</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/cxf/transport/Conduit.html" title="interface in org.apache.cxf.transport">Conduit</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#getConduit()">getConduit</a></strong>()</code>
+<div class="block">Get the Conduit that messages for this client will be sent on.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#getConduitSelector()">getConduitSelector</a></strong>()</code>
+<div class="block">Get the ConduitSelector responsible for retreiving the Conduit.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#getConduitSelector(org.apache.cxf.endpoint.ConduitSelector)">getConduitSelector</a></strong>(<a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a>&nbsp;override)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#getEndpoint()">getEndpoint</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#getException(org.apache.cxf.message.Exchange)">getException</a></strong>(<a href="../../../../org/apache/cxf/message/Exchange.html" title="interface in org.apache.cxf.message">Exchange</a>&nbsp;exchange)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#getRequestContext()">getRequestContext</a></strong>()</code>
+<div class="block">Gets the request context used for future invocations</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#getResponseContext()">getResponseContext</a></strong>()</code>
+<div class="block">Gets the response context from the last invocation on this thread</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#getSynchronousTimeout()">getSynchronousTimeout</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#invoke(org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object...)">invoke</a></strong>(<a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;oi,
+      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)</code>
+<div class="block">Invokes an operation synchronously</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#invoke(org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object[],%20org.apache.cxf.message.Exchange)">invoke</a></strong>(<a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;oi,
+      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;params,
+      <a href="../../../../org/apache/cxf/message/Exchange.html" title="interface in org.apache.cxf.message">Exchange</a>&nbsp;exchange)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#invoke(org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object[],%20java.util.Map)">invoke</a></strong>(<a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;oi,
+      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;params,
+      <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;context)</code>
+<div class="block">Invokes an operation synchronously</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#invoke(org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object[],%20java.util.Map,%20org.apache.cxf.message.Exchange)">invoke</a></strong>(<a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;oi,
+      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;params,
+      <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;context,
+      <a href="../../../../org/apache/cxf/message/Exchange.html" title="interface in org.apache.cxf.message">Exchange</a>&nbsp;exchange)</code>
+<div class="block">Invokes an operation synchronously</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#invoke(org.apache.cxf.endpoint.ClientCallback,%20org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object...)">invoke</a></strong>(<a href="../../../../org/apache/cxf/endpoint/ClientCallback.html" title="class in org.apache.cxf.endpoint">ClientCallback</a>&nbsp;callback,
+      <a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;oi,
+      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)</code>
+<div class="block">Invokes an operation asynchronously</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#invoke(org.apache.cxf.endpoint.ClientCallback,%20org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object[],%20org.apache.cxf.message.Exchange)">invoke</a></strong>(<a href="../../../../org/apache/cxf/endpoint/ClientCallback.html" title="class in org.apache.cxf.endpoint">ClientCallback</a>&nbsp;callback,
+      <a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;oi,
+      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;params,
+      <a href="../../../../org/apache/cxf/message/Exchange.html" title="interface in org.apache.cxf.message">Exchange</a>&nbsp;exchange)</code>
+<div class="block">Invokes an operation asynchronously</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#invoke(org.apache.cxf.endpoint.ClientCallback,%20org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object[],%20java.util.Map)">invoke</a></strong>(<a href="../../../../org/apache/cxf/endpoint/ClientCallback.html" title="class in org.apache.cxf.endpoint">ClientCallback</a>&nbsp;callback,
+      <a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;oi,
+      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;params,
+      <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;context)</code>
+<div class="block">Invokes an operation asynchronously</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#invoke(org.apache.cxf.endpoint.ClientCallback,%20org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object[],%20java.util.Map,%20org.apache.cxf.message.Exchange)">invoke</a></strong>(<a href="../../../../org/apache/cxf/endpoint/ClientCallback.html" title="class in org.apache.cxf.endpoint">ClientCallback</a>&nbsp;callback,
+      <a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;oi,
+      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;params,
+      <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;context,
+      <a href="../../../../org/apache/cxf/message/Exchange.html" title="interface in org.apache.cxf.message">Exchange</a>&nbsp;exchange)</code>
+<div class="block">Invokes an operation asynchronously</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#invoke(org.apache.cxf.endpoint.ClientCallback,%20javax.xml.namespace.QName,%20java.lang.Object...)">invoke</a></strong>(<a href="../../../../org/apache/cxf/endpoint/ClientCallback.html" title="class in org.apache.cxf.endpoint">ClientCallback</a>&nbsp;callback,
+      <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;operationName,
+      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)</code>
+<div class="block">Invokes an operation asynchronously</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#invoke(org.apache.cxf.endpoint.ClientCallback,%20java.lang.String,%20java.lang.Object...)">invoke</a></strong>(<a href="../../../../org/apache/cxf/endpoint/ClientCallback.html" title="class in org.apache.cxf.endpoint">ClientCallback</a>&nbsp;callback,
+      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;operationName,
+      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)</code>
+<div class="block">Invokes an operation asynchronously</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#invoke(javax.xml.namespace.QName,%20java.lang.Object...)">invoke</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;operationName,
+      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)</code>
+<div class="block">Invokes an operation synchronously</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#invoke(java.lang.String,%20java.lang.Object...)">invoke</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;operationName,
+      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)</code>
+<div class="block">Invokes an operation synchronously</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#invokeWrapped(org.apache.cxf.endpoint.ClientCallback,%20javax.xml.namespace.QName,%20java.lang.Object...)">invokeWrapped</a></strong>(<a href="../../../../org/apache/cxf/endpoint/ClientCallback.html" title="class in org.apache.cxf.endpoint">ClientCallback</a>&nbsp;callback,
+             <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;operationName,
+             <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)</code>
+<div class="block">Invokes an operation asynchronously</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#invokeWrapped(org.apache.cxf.endpoint.ClientCallback,%20java.lang.String,%20java.lang.Object...)">invokeWrapped</a></strong>(<a href="../../../../org/apache/cxf/endpoint/ClientCallback.html" title="class in org.apache.cxf.endpoint">ClientCallback</a>&nbsp;callback,
+             <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;operationName,
+             <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)</code>
+<div class="block">Invokes an operation asynchronously</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#invokeWrapped(javax.xml.namespace.QName,%20java.lang.Object...)">invokeWrapped</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;operationName,
+             <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)</code>
+<div class="block">Invokes an operation synchronously</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#invokeWrapped(java.lang.String,%20java.lang.Object...)">invokeWrapped</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;operationName,
+             <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)</code>
+<div class="block">Invokes an operation synchronously</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#isThreadLocalRequestContext()">isThreadLocalRequestContext</a></strong>()</code>
+<div class="block">Checks if the Request context is thread local or global.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#modifyChain(org.apache.cxf.interceptor.InterceptorChain,%20org.apache.cxf.message.Message,%20boolean)">modifyChain</a></strong>(<a href="../../../../org/apache/cxf/interceptor/InterceptorChain.html" title="interface in org.apache.cxf.interceptor">InterceptorChain</a>&nbsp;chain,
+           <a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;ctx,
+           boolean&nbsp;in)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#onMessage(org.apache.cxf.message.Message)">onMessage</a></strong>(<a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;message)</code>
+<div class="block">Called for an incoming message, i.e.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#prepareConduitSelector(org.apache.cxf.message.Message)">prepareConduitSelector</a></strong>(<a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;message)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#processResult(org.apache.cxf.message.Message,%20org.apache.cxf.message.Exchange,%20org.apache.cxf.service.model.BindingOperationInfo,%20java.util.Map)">processResult</a></strong>(<a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;message,
+             <a href="../../../../org/apache/cxf/message/Exchange.html" title="interface in org.apache.cxf.message">Exchange</a>&nbsp;exchange,
+             <a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;oi,
+             <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;resContext)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#setConduitSelector(org.apache.cxf.endpoint.ConduitSelector)">setConduitSelector</a></strong>(<a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a>&nbsp;selector)</code>
+<div class="block">Set the ConduitSelector responsible for retreiving the Conduit.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#setContext(java.util.Map,%20org.apache.cxf.message.Message)">setContext</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;ctx,
+          <a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;message)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#setEndpoint(org.apache.cxf.endpoint.Endpoint)">setEndpoint</a></strong>(<a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;e)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#setExchangeProperties(org.apache.cxf.message.Exchange,%20org.apache.cxf.endpoint.Endpoint,%20org.apache.cxf.service.model.BindingOperationInfo)">setExchangeProperties</a></strong>(<a href="../../../../org/apache/cxf/message/Exchange.html" title="interface in org.apache.cxf.message">Exchange</a>&nbsp;exchange,
+                     <a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;endpoint,
+                     <a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;boi)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#setExecutor(java.util.concurrent.Executor)">setExecutor</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Executor.html?is-external=true" title="class or interface in java.util.concurrent">Executor</a>&nbsp;executor)</code>
+<div class="block">Sets the executor which is used to process Asynchronous responses.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#setOutMessageProperties(org.apache.cxf.message.Message,%20org.apache.cxf.service.model.BindingOperationInfo)">setOutMessageProperties</a></strong>(<a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;message,
+                       <a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;boi)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#setParameters(java.lang.Object[],%20org.apache.cxf.message.Message)">setParameters</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;params,
+             <a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;message)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#setSynchronousTimeout(int)">setSynchronousTimeout</a></strong>(int&nbsp;synchronousTimeout)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#setThreadLocalRequestContext(boolean)">setThreadLocalRequestContext</a></strong>(boolean&nbsp;b)</code>
+<div class="block">Sets whether the request context is thread local or global to this client.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/cxf/phase/PhaseInterceptorChain.html" title="class in org.apache.cxf.phase">PhaseInterceptorChain</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#setupInterceptorChain(org.apache.cxf.endpoint.Endpoint)">setupInterceptorChain</a></strong>(<a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;endpoint)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/ClientImpl.html#waitResponse(org.apache.cxf.message.Exchange)">waitResponse</a></strong>(<a href="../../../../org/apache/cxf/message/Exchange.html" title="interface in org.apache.cxf.message">Exchange</a>&nbsp;exchange)</code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.cxf.interceptor.AbstractBasicInterceptorProvider">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.cxf.interceptor.<a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html" title="class in org.apache.cxf.interceptor">AbstractBasicInterceptorProvider</a></h3>
+<code><a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html#getInFaultInterceptors()">getInFaultInterceptors</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html#getInInterceptors()">getInInterceptors</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html#getOutFaultInterceptors()">getOutFaultInterceptors</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html#getOutInterceptors()">getOutInterceptors</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html#setInFaultInterceptors(java.util.List)">setInFaultInterceptors</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html#setInInterceptors(java.util.List)">setInInterceptors</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html#setOutFaultInterceptors(java.util.List)">setOutFaultInterceptors</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractBasicInterceptorProvider.html#setOutInterceptors(java.util.List)">setOutInterceptors</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long,%20int)" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.cxf.interceptor.InterceptorProvider">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;org.apache.cxf.interceptor.<a href="../../../../org/apache/cxf/interceptor/InterceptorProvider.html" title="interface in org.apache.cxf.interceptor">InterceptorProvider</a></h3>
+<code><a href="../../../../org/apache/cxf/interceptor/InterceptorProvider.html#getInFaultInterceptors()">getInFaultInterceptors</a>, <a href="../../../../org/apache/cxf/interceptor/InterceptorProvider.html#getInInterceptors()">getInInterceptors</a>, <a href="../../../../org/apache/cxf/interceptor/InterceptorProvider.html#getOutFaultInterceptors()">getOutFaultInterceptors</a>, <a href="../../../../org/apache/cxf/interceptor/InterceptorProvider.html#getOutInterceptors()">getOutInterceptors</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="THREAD_LOCAL_REQUEST_CONTEXT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>THREAD_LOCAL_REQUEST_CONTEXT</h4>
+<pre>public static final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> THREAD_LOCAL_REQUEST_CONTEXT</pre>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../constant-values.html#org.apache.cxf.endpoint.ClientImpl.THREAD_LOCAL_REQUEST_CONTEXT">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="SYNC_TIMEOUT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SYNC_TIMEOUT</h4>
+<pre>public static final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> SYNC_TIMEOUT</pre>
+<div class="block">When a synchronous request/response invoke is done using an asynchronous transport mechanism,
+ this is the timeout used for waiting for the response.  Default is 60 seconds.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../constant-values.html#org.apache.cxf.endpoint.ClientImpl.SYNC_TIMEOUT">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="FINISHED">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>FINISHED</h4>
+<pre>public static final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> FINISHED</pre>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../constant-values.html#org.apache.cxf.endpoint.ClientImpl.FINISHED">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="bus">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>bus</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a> bus</pre>
+</li>
+</ul>
+<a name="conduitSelector">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>conduitSelector</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a> conduitSelector</pre>
+</li>
+</ul>
+<a name="outFaultObserver">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>outFaultObserver</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/cxf/interceptor/ClientOutFaultObserver.html" title="class in org.apache.cxf.interceptor">ClientOutFaultObserver</a> outFaultObserver</pre>
+</li>
+</ul>
+<a name="synchronousTimeout">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>synchronousTimeout</h4>
+<pre>protected&nbsp;int synchronousTimeout</pre>
+</li>
+</ul>
+<a name="outboundChainCache">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>outboundChainCache</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/cxf/phase/PhaseChainCache.html" title="class in org.apache.cxf.phase">PhaseChainCache</a> outboundChainCache</pre>
+</li>
+</ul>
+<a name="inboundChainCache">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>inboundChainCache</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/cxf/phase/PhaseChainCache.html" title="class in org.apache.cxf.phase">PhaseChainCache</a> inboundChainCache</pre>
+</li>
+</ul>
+<a name="currentRequestContext">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>currentRequestContext</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt; currentRequestContext</pre>
+</li>
+</ul>
+<a name="requestContext">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>requestContext</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html?is-external=true" title="class or interface in java.lang">Thread</a>,<a href="../../../../org/apache/cxf/endpoint/ClientImpl.EchoContext.html" title="class in org.apache.cxf.endpoint">ClientImpl.EchoContext</a>&gt; requestContext</pre>
+</li>
+</ul>
+<a name="responseContext">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>responseContext</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html?is-external=true" title="class or interface in java.lang">Thread</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&gt; responseContext</pre>
+</li>
+</ul>
+<a name="executor">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>executor</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Executor.html?is-external=true" title="class or interface in java.util.concurrent">Executor</a> executor</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="ClientImpl(org.apache.cxf.Bus, org.apache.cxf.endpoint.Endpoint)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ClientImpl</h4>
+<pre>public&nbsp;ClientImpl(<a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;b,
+          <a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;e)</pre>
+</li>
+</ul>
+<a name="ClientImpl(org.apache.cxf.Bus, org.apache.cxf.endpoint.Endpoint, org.apache.cxf.transport.Conduit)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ClientImpl</h4>
+<pre>public&nbsp;ClientImpl(<a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;b,
+          <a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;e,
+          <a href="../../../../org/apache/cxf/transport/Conduit.html" title="interface in org.apache.cxf.transport">Conduit</a>&nbsp;c)</pre>
+</li>
+</ul>
+<a name="ClientImpl(org.apache.cxf.Bus, org.apache.cxf.endpoint.Endpoint, org.apache.cxf.endpoint.ConduitSelector)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ClientImpl</h4>
+<pre>public&nbsp;ClientImpl(<a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;b,
+          <a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;e,
+          <a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a>&nbsp;sc)</pre>
+</li>
+</ul>
+<a name="ClientImpl(org.apache.cxf.Bus, org.apache.cxf.service.Service, javax.xml.namespace.QName, org.apache.cxf.endpoint.EndpointImplFactory)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>ClientImpl</h4>
+<pre>public&nbsp;ClientImpl(<a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;bus,
+          <a href="../../../../org/apache/cxf/service/Service.html" title="interface in org.apache.cxf.service">Service</a>&nbsp;svc,
+          <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;port,
+          <a href="../../../../org/apache/cxf/endpoint/EndpointImplFactory.html" title="interface in org.apache.cxf.endpoint">EndpointImplFactory</a>&nbsp;endpointImplFactory)</pre>
+<div class="block">Create a Client that uses a specific EndpointImpl.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>bus</code> - </dd><dd><code>svc</code> - </dd><dd><code>port</code> - </dd><dd><code>endpointImplFactory</code> - </dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="getBus()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBus</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;getBus()</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#getBus()">Client</a></code></strong></div>
+<div class="block">Retrieves the Bus that was used to create the Client</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#getBus()">getBus</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>the Bus</dd></dl>
+</li>
+</ul>
+<a name="destroy()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>destroy</h4>
+<pre>public&nbsp;void&nbsp;destroy()</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#destroy()">Client</a></code></strong></div>
+<div class="block">Indicates that the client is no longer needed and that any resources it holds
+ can now be freed.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#destroy()">destroy</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getEndpoint()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getEndpoint</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;getEndpoint()</pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#getEndpoint()">getEndpoint</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getRequestContext()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRequestContext</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;getRequestContext()</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#getRequestContext()">Client</a></code></strong></div>
+<div class="block">Gets the request context used for future invocations</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#getRequestContext()">getRequestContext</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>context The context</dd></dl>
+</li>
+</ul>
+<a name="getResponseContext()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getResponseContext</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;getResponseContext()</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#getResponseContext()">Client</a></code></strong></div>
+<div class="block">Gets the response context from the last invocation on this thread</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#getResponseContext()">getResponseContext</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>context The context</dd></dl>
+</li>
+</ul>
+<a name="isThreadLocalRequestContext()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isThreadLocalRequestContext</h4>
+<pre>public&nbsp;boolean&nbsp;isThreadLocalRequestContext()</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#isThreadLocalRequestContext()">Client</a></code></strong></div>
+<div class="block">Checks if the Request context is thread local or global.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#isThreadLocalRequestContext()">isThreadLocalRequestContext</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>true if the request context is a thread local</dd></dl>
+</li>
+</ul>
+<a name="setThreadLocalRequestContext(boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setThreadLocalRequestContext</h4>
+<pre>public&nbsp;void&nbsp;setThreadLocalRequestContext(boolean&nbsp;b)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#setThreadLocalRequestContext(boolean)">Client</a></code></strong></div>
+<div class="block">Sets whether the request context is thread local or global to this client.  By 
+ default, the request context is "global" in that any values set in the context
+ are seen by all threads using this client.  If set to true, the context is changed 
+ to be a ThreadLocal and values set are not seen by other threads.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#setThreadLocalRequestContext(boolean)">setThreadLocalRequestContext</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="invoke(org.apache.cxf.service.model.BindingOperationInfo, java.lang.Object...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>invoke</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;invoke(<a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;oi,
+              <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)
+                throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object...)">Client</a></code></strong></div>
+<div class="block">Invokes an operation synchronously</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object...)">invoke</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>oi</code> - The operation to be invoked</dd><dd><code>params</code> - The params that matches the parts of the input message of the operation</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The return values that matche the parts of the output message of the operation</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd></dl>
+</li>
+</ul>
+<a name="invoke(java.lang.String, java.lang.Object...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>invoke</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;invoke(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;operationName,
+              <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)
+                throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(java.lang.String,%20java.lang.Object...)">Client</a></code></strong></div>
+<div class="block">Invokes an operation synchronously</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(java.lang.String,%20java.lang.Object...)">invoke</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>operationName</code> - The name of the operation to be invoked. The service namespace will be used
+ when looking up the BindingOperationInfo.</dd><dd><code>params</code> - The params that matches the parts of the input message of the operation.  If the 
+ BindingOperationInfo supports unwrapping, it assumes the params are in the "unwrapped" form.  If 
+ params are in the wrapped form, use invokeWrapped</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The return values that matche the parts of the output message of the operation</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd></dl>
+</li>
+</ul>
+<a name="invoke(javax.xml.namespace.QName, java.lang.Object...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>invoke</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;invoke(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;operationName,
+              <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)
+                throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(javax.xml.namespace.QName,%20java.lang.Object...)">Client</a></code></strong></div>
+<div class="block">Invokes an operation synchronously</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(javax.xml.namespace.QName,%20java.lang.Object...)">invoke</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>operationName</code> - The name of the operation to be invoked</dd><dd><code>params</code> - The params that matches the parts of the input message of the operation.  If the 
+ BindingOperationInfo supports unwrapping, it assumes the params are in the "unwrapped" form.  If 
+ params are in the wrapped form, use invokeWrapped</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The return values that matche the parts of the output message of the operation</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd></dl>
+</li>
+</ul>
+<a name="invokeWrapped(java.lang.String, java.lang.Object...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>invokeWrapped</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;invokeWrapped(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;operationName,
+                     <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)
+                       throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#invokeWrapped(java.lang.String,%20java.lang.Object...)">Client</a></code></strong></div>
+<div class="block">Invokes an operation synchronously</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#invokeWrapped(java.lang.String,%20java.lang.Object...)">invokeWrapped</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>operationName</code> - The name of the operation to be invoked. The service namespace will be used
+ when looking up the BindingOperationInfo.</dd><dd><code>params</code> - The params that matches the parts of the input message of the operation</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The return values that matche the parts of the output message of the operation</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd></dl>
+</li>
+</ul>
+<a name="invokeWrapped(javax.xml.namespace.QName, java.lang.Object...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>invokeWrapped</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;invokeWrapped(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;operationName,
+                     <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)
+                       throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#invokeWrapped(javax.xml.namespace.QName,%20java.lang.Object...)">Client</a></code></strong></div>
+<div class="block">Invokes an operation synchronously</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#invokeWrapped(javax.xml.namespace.QName,%20java.lang.Object...)">invokeWrapped</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>operationName</code> - The name of the operation to be invoked</dd><dd><code>params</code> - The params that matches the parts of the input message of the operation</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The return values that matche the parts of the output message of the operation</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd></dl>
+</li>
+</ul>
+<a name="invoke(org.apache.cxf.service.model.BindingOperationInfo, java.lang.Object[], org.apache.cxf.message.Exchange)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>invoke</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;invoke(<a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;oi,
+              <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;params,
+              <a href="../../../../org/apache/cxf/message/Exchange.html" title="interface in org.apache.cxf.message">Exchange</a>&nbsp;exchange)
+                throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<dl><dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd></dl>
+</li>
+</ul>
+<a name="invoke(org.apache.cxf.service.model.BindingOperationInfo, java.lang.Object[], java.util.Map)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>invoke</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;invoke(<a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;oi,
+              <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;params,
+              <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;context)
+                throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object[],%20java.util.Map)">Client</a></code></strong></div>
+<div class="block">Invokes an operation synchronously</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object[],%20java.util.Map)">invoke</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>oi</code> - The operation to be invoked</dd><dd><code>params</code> - The params that matches the parts of the input message of the operation</dd><dd><code>context</code> - Optional (can be null) contextual information for the invocation</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The return values that matche the parts of the output message of the operation</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd></dl>
+</li>
+</ul>
+<a name="invoke(org.apache.cxf.endpoint.ClientCallback, java.lang.String, java.lang.Object...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>invoke</h4>
+<pre>public&nbsp;void&nbsp;invoke(<a href="../../../../org/apache/cxf/endpoint/ClientCallback.html" title="class in org.apache.cxf.endpoint">ClientCallback</a>&nbsp;callback,
+          <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;operationName,
+          <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)
+            throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(org.apache.cxf.endpoint.ClientCallback,%20java.lang.String,%20java.lang.Object...)">Client</a></code></strong></div>
+<div class="block">Invokes an operation asynchronously</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(org.apache.cxf.endpoint.ClientCallback,%20java.lang.String,%20java.lang.Object...)">invoke</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>callback</code> - The callback that is called when the response is ready</dd><dd><code>operationName</code> - The name of the operation to be invoked. The service namespace will be used
+ when looking up the BindingOperationInfo.</dd><dd><code>params</code> - The params that matches the parts of the input message of the operation.  If the 
+ BindingOperationInfo supports unwrapping, it assumes the params are in the "unwrapped" form.  If 
+ params are in the wrapped form, use invokeWrapped</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd></dl>
+</li>
+</ul>
+<a name="invoke(org.apache.cxf.endpoint.ClientCallback, javax.xml.namespace.QName, java.lang.Object...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>invoke</h4>
+<pre>public&nbsp;void&nbsp;invoke(<a href="../../../../org/apache/cxf/endpoint/ClientCallback.html" title="class in org.apache.cxf.endpoint">ClientCallback</a>&nbsp;callback,
+          <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;operationName,
+          <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)
+            throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(org.apache.cxf.endpoint.ClientCallback,%20javax.xml.namespace.QName,%20java.lang.Object...)">Client</a></code></strong></div>
+<div class="block">Invokes an operation asynchronously</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(org.apache.cxf.endpoint.ClientCallback,%20javax.xml.namespace.QName,%20java.lang.Object...)">invoke</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>callback</code> - The callback that is called when the response is ready</dd><dd><code>operationName</code> - The name of the operation to be invoked</dd><dd><code>params</code> - The params that matches the parts of the input message of the operation.  If the 
+ BindingOperationInfo supports unwrapping, it assumes the params are in the "unwrapped" form.  If 
+ params are in the wrapped form, use invokeWrapped</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd></dl>
+</li>
+</ul>
+<a name="invokeWrapped(org.apache.cxf.endpoint.ClientCallback, java.lang.String, java.lang.Object...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>invokeWrapped</h4>
+<pre>public&nbsp;void&nbsp;invokeWrapped(<a href="../../../../org/apache/cxf/endpoint/ClientCallback.html" title="class in org.apache.cxf.endpoint">ClientCallback</a>&nbsp;callback,
+                 <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;operationName,
+                 <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)
+                   throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#invokeWrapped(org.apache.cxf.endpoint.ClientCallback,%20java.lang.String,%20java.lang.Object...)">Client</a></code></strong></div>
+<div class="block">Invokes an operation asynchronously</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#invokeWrapped(org.apache.cxf.endpoint.ClientCallback,%20java.lang.String,%20java.lang.Object...)">invokeWrapped</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>callback</code> - The callback that is called when the response is ready</dd><dd><code>operationName</code> - The name of the operation to be invoked. The service namespace will be used
+ when looking up the BindingOperationInfo.</dd><dd><code>params</code> - The params that matches the parts of the input message of the operation</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd></dl>
+</li>
+</ul>
+<a name="invokeWrapped(org.apache.cxf.endpoint.ClientCallback, javax.xml.namespace.QName, java.lang.Object...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>invokeWrapped</h4>
+<pre>public&nbsp;void&nbsp;invokeWrapped(<a href="../../../../org/apache/cxf/endpoint/ClientCallback.html" title="class in org.apache.cxf.endpoint">ClientCallback</a>&nbsp;callback,
+                 <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;operationName,
+                 <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)
+                   throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#invokeWrapped(org.apache.cxf.endpoint.ClientCallback,%20javax.xml.namespace.QName,%20java.lang.Object...)">Client</a></code></strong></div>
+<div class="block">Invokes an operation asynchronously</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#invokeWrapped(org.apache.cxf.endpoint.ClientCallback,%20javax.xml.namespace.QName,%20java.lang.Object...)">invokeWrapped</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>callback</code> - The callback that is called when the response is ready</dd><dd><code>operationName</code> - The name of the operation to be invoked</dd><dd><code>params</code> - The params that matches the parts of the input message of the operation</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd></dl>
+</li>
+</ul>
+<a name="invoke(org.apache.cxf.endpoint.ClientCallback, org.apache.cxf.service.model.BindingOperationInfo, java.lang.Object...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>invoke</h4>
+<pre>public&nbsp;void&nbsp;invoke(<a href="../../../../org/apache/cxf/endpoint/ClientCallback.html" title="class in org.apache.cxf.endpoint">ClientCallback</a>&nbsp;callback,
+          <a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;oi,
+          <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;params)
+            throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(org.apache.cxf.endpoint.ClientCallback,%20org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object...)">Client</a></code></strong></div>
+<div class="block">Invokes an operation asynchronously</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(org.apache.cxf.endpoint.ClientCallback,%20org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object...)">invoke</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>callback</code> - The callback that is called when the response is ready</dd><dd><code>oi</code> - The operation to be invoked</dd><dd><code>params</code> - The params that matches the parts of the input message of the operation</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd></dl>
+</li>
+</ul>
+<a name="invoke(org.apache.cxf.endpoint.ClientCallback, org.apache.cxf.service.model.BindingOperationInfo, java.lang.Object[], java.util.Map)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>invoke</h4>
+<pre>public&nbsp;void&nbsp;invoke(<a href="../../../../org/apache/cxf/endpoint/ClientCallback.html" title="class in org.apache.cxf.endpoint">ClientCallback</a>&nbsp;callback,
+          <a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;oi,
+          <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;params,
+          <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;context)
+            throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(org.apache.cxf.endpoint.ClientCallback,%20org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object[],%20java.util.Map)">Client</a></code></strong></div>
+<div class="block">Invokes an operation asynchronously</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(org.apache.cxf.endpoint.ClientCallback,%20org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object[],%20java.util.Map)">invoke</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>callback</code> - The callback that is called when the response is ready</dd><dd><code>oi</code> - The operation to be invoked</dd><dd><code>params</code> - The params that matches the parts of the input message of the operation</dd><dd><code>context</code> - contextual information for the invocation</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd></dl>
+</li>
+</ul>
+<a name="invoke(org.apache.cxf.endpoint.ClientCallback, org.apache.cxf.service.model.BindingOperationInfo, java.lang.Object[], org.apache.cxf.message.Exchange)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>invoke</h4>
+<pre>public&nbsp;void&nbsp;invoke(<a href="../../../../org/apache/cxf/endpoint/ClientCallback.html" title="class in org.apache.cxf.endpoint">ClientCallback</a>&nbsp;callback,
+          <a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;oi,
+          <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;params,
+          <a href="../../../../org/apache/cxf/message/Exchange.html" title="interface in org.apache.cxf.message">Exchange</a>&nbsp;exchange)
+            throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(org.apache.cxf.endpoint.ClientCallback,%20org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object[],%20org.apache.cxf.message.Exchange)">Client</a></code></strong></div>
+<div class="block">Invokes an operation asynchronously</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(org.apache.cxf.endpoint.ClientCallback,%20org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object[],%20org.apache.cxf.message.Exchange)">invoke</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>callback</code> - The callback that is called when the response is ready</dd><dd><code>oi</code> - The operation to be invoked</dd><dd><code>params</code> - The params that matches the parts of the input message of the operation</dd><dd><code>exchange</code> - The Exchange to be used for the invocation</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd></dl>
+</li>
+</ul>
+<a name="invoke(org.apache.cxf.endpoint.ClientCallback, org.apache.cxf.service.model.BindingOperationInfo, java.lang.Object[], java.util.Map, org.apache.cxf.message.Exchange)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>invoke</h4>
+<pre>public&nbsp;void&nbsp;invoke(<a href="../../../../org/apache/cxf/endpoint/ClientCallback.html" title="class in org.apache.cxf.endpoint">ClientCallback</a>&nbsp;callback,
+          <a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;oi,
+          <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;params,
+          <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;context,
+          <a href="../../../../org/apache/cxf/message/Exchange.html" title="interface in org.apache.cxf.message">Exchange</a>&nbsp;exchange)
+            throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(org.apache.cxf.endpoint.ClientCallback,%20org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object[],%20java.util.Map,%20org.apache.cxf.message.Exchange)">Client</a></code></strong></div>
+<div class="block">Invokes an operation asynchronously</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(org.apache.cxf.endpoint.ClientCallback,%20org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object[],%20java.util.Map,%20org.apache.cxf.message.Exchange)">invoke</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>callback</code> - The callback that is called when the response is ready</dd><dd><code>oi</code> - The operation to be invoked</dd><dd><code>params</code> - The params that matches the parts of the input message of the operation</dd><dd><code>context</code> - Optional (can be null) contextual information for the invocation</dd><dd><code>exchange</code> - Optional (can be null) The Exchange to be used for the invocation</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd></dl>
+</li>
+</ul>
+<a name="invoke(org.apache.cxf.service.model.BindingOperationInfo, java.lang.Object[], java.util.Map, org.apache.cxf.message.Exchange)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>invoke</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;invoke(<a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;oi,
+              <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;params,
+              <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;context,
+              <a href="../../../../org/apache/cxf/message/Exchange.html" title="interface in org.apache.cxf.message">Exchange</a>&nbsp;exchange)
+                throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object[],%20java.util.Map,%20org.apache.cxf.message.Exchange)">Client</a></code></strong></div>
+<div class="block">Invokes an operation synchronously</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#invoke(org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object[],%20java.util.Map,%20org.apache.cxf.message.Exchange)">invoke</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Retryable.html#invoke(org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Object[],%20java.util.Map,%20org.apache.cxf.message.Exchange)">invoke</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Retryable.html" title="interface in org.apache.cxf.endpoint">Retryable</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>oi</code> - The operation to be invoked</dd><dd><code>params</code> - The params that matches the parts of the input message of the operation</dd><dd><code>context</code> - Optional (can be null) contextual information for the invocation</dd><dd><code>exchange</code> - The Exchange to be used for the invocation</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The return values that matche the parts of the output message of the operation</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd></dl>
+</li>
+</ul>
+<a name="processResult(org.apache.cxf.message.Message, org.apache.cxf.message.Exchange, org.apache.cxf.service.model.BindingOperationInfo, java.util.Map)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>processResult</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;processResult(<a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;message,
+                     <a href="../../../../org/apache/cxf/message/Exchange.html" title="interface in org.apache.cxf.message">Exchange</a>&nbsp;exchange,
+                     <a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;oi,
+                     <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;resContext)
+                          throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<dl><dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd></dl>
+</li>
+</ul>
+<a name="getException(org.apache.cxf.message.Exchange)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getException</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a>&nbsp;getException(<a href="../../../../org/apache/cxf/message/Exchange.html" title="interface in org.apache.cxf.message">Exchange</a>&nbsp;exchange)</pre>
+</li>
+</ul>
+<a name="setContext(java.util.Map, org.apache.cxf.message.Message)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setContext</h4>
+<pre>protected&nbsp;void&nbsp;setContext(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;ctx,
+              <a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;message)</pre>
+</li>
+</ul>
+<a name="waitResponse(org.apache.cxf.message.Exchange)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>waitResponse</h4>
+<pre>protected&nbsp;void&nbsp;waitResponse(<a href="../../../../org/apache/cxf/message/Exchange.html" title="interface in org.apache.cxf.message">Exchange</a>&nbsp;exchange)
+                     throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<dl><dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd></dl>
+</li>
+</ul>
+<a name="setParameters(java.lang.Object[], org.apache.cxf.message.Message)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setParameters</h4>
+<pre>protected&nbsp;void&nbsp;setParameters(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;params,
+                 <a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;message)</pre>
+</li>
+</ul>
+<a name="onMessage(org.apache.cxf.message.Message)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onMessage</h4>
+<pre>public&nbsp;void&nbsp;onMessage(<a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;message)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/transport/MessageObserver.html#onMessage(org.apache.cxf.message.Message)">MessageObserver</a></code></strong></div>
+<div class="block">Called for an incoming message, i.e. where the content format(s)
+ is/are source(s).</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/transport/MessageObserver.html#onMessage(org.apache.cxf.message.Message)">onMessage</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/transport/MessageObserver.html" title="interface in org.apache.cxf.transport">MessageObserver</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getConduit()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getConduit</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/cxf/transport/Conduit.html" title="interface in org.apache.cxf.transport">Conduit</a>&nbsp;getConduit()</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#getConduit()">Client</a></code></strong></div>
+<div class="block">Get the Conduit that messages for this client will be sent on.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#getConduit()">getConduit</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>Conduit</dd></dl>
+</li>
+</ul>
+<a name="prepareConduitSelector(org.apache.cxf.message.Message)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>prepareConduitSelector</h4>
+<pre>protected&nbsp;void&nbsp;prepareConduitSelector(<a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;message)</pre>
+</li>
+</ul>
+<a name="setOutMessageProperties(org.apache.cxf.message.Message, org.apache.cxf.service.model.BindingOperationInfo)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setOutMessageProperties</h4>
+<pre>protected&nbsp;void&nbsp;setOutMessageProperties(<a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;message,
+                           <a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;boi)</pre>
+</li>
+</ul>
+<a name="setExchangeProperties(org.apache.cxf.message.Exchange, org.apache.cxf.endpoint.Endpoint, org.apache.cxf.service.model.BindingOperationInfo)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setExchangeProperties</h4>
+<pre>protected&nbsp;void&nbsp;setExchangeProperties(<a href="../../../../org/apache/cxf/message/Exchange.html" title="interface in org.apache.cxf.message">Exchange</a>&nbsp;exchange,
+                         <a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;endpoint,
+                         <a href="../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;boi)</pre>
+</li>
+</ul>
+<a name="setupInterceptorChain(org.apache.cxf.endpoint.Endpoint)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setupInterceptorChain</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/cxf/phase/PhaseInterceptorChain.html" title="class in org.apache.cxf.phase">PhaseInterceptorChain</a>&nbsp;setupInterceptorChain(<a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;endpoint)</pre>
+</li>
+</ul>
+<a name="modifyChain(org.apache.cxf.interceptor.InterceptorChain, org.apache.cxf.message.Message, boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>modifyChain</h4>
+<pre>protected&nbsp;void&nbsp;modifyChain(<a href="../../../../org/apache/cxf/interceptor/InterceptorChain.html" title="interface in org.apache.cxf.interceptor">InterceptorChain</a>&nbsp;chain,
+               <a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;ctx,
+               boolean&nbsp;in)</pre>
+</li>
+</ul>
+<a name="setEndpoint(org.apache.cxf.endpoint.Endpoint)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setEndpoint</h4>
+<pre>protected&nbsp;void&nbsp;setEndpoint(<a href="../../../../org/apache/cxf/endpoint/Endpoint.html" title="interface in org.apache.cxf.endpoint">Endpoint</a>&nbsp;e)</pre>
+</li>
+</ul>
+<a name="getSynchronousTimeout()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSynchronousTimeout</h4>
+<pre>public&nbsp;int&nbsp;getSynchronousTimeout()</pre>
+</li>
+</ul>
+<a name="setSynchronousTimeout(int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setSynchronousTimeout</h4>
+<pre>public&nbsp;void&nbsp;setSynchronousTimeout(int&nbsp;synchronousTimeout)</pre>
+</li>
+</ul>
+<a name="getConduitSelector()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getConduitSelector</h4>
+<pre>public final&nbsp;<a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a>&nbsp;getConduitSelector()</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#getConduitSelector()">Client</a></code></strong></div>
+<div class="block">Get the ConduitSelector responsible for retreiving the Conduit.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#getConduitSelector()">getConduitSelector</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/ConduitSelectorHolder.html#getConduitSelector()">getConduitSelector</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/ConduitSelectorHolder.html" title="interface in org.apache.cxf.endpoint">ConduitSelectorHolder</a></code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>the current ConduitSelector</dd></dl>
+</li>
+</ul>
+<a name="getConduitSelector(org.apache.cxf.endpoint.ConduitSelector)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getConduitSelector</h4>
+<pre>protected final&nbsp;<a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a>&nbsp;getConduitSelector(<a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a>&nbsp;override)</pre>
+</li>
+</ul>
+<a name="setConduitSelector(org.apache.cxf.endpoint.ConduitSelector)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setConduitSelector</h4>
+<pre>public final&nbsp;void&nbsp;setConduitSelector(<a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a>&nbsp;selector)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#setConduitSelector(org.apache.cxf.endpoint.ConduitSelector)">Client</a></code></strong></div>
+<div class="block">Set the ConduitSelector responsible for retreiving the Conduit.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#setConduitSelector(org.apache.cxf.endpoint.ConduitSelector)">setConduitSelector</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/ConduitSelectorHolder.html#setConduitSelector(org.apache.cxf.endpoint.ConduitSelector)">setConduitSelector</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/ConduitSelectorHolder.html" title="interface in org.apache.cxf.endpoint">ConduitSelectorHolder</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>selector</code> - the ConduitSelector to use</dd></dl>
+</li>
+</ul>
+<a name="setExecutor(java.util.concurrent.Executor)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>setExecutor</h4>
+<pre>public&nbsp;void&nbsp;setExecutor(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Executor.html?is-external=true" title="class or interface in java.util.concurrent">Executor</a>&nbsp;executor)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html#setExecutor(java.util.concurrent.Executor)">Client</a></code></strong></div>
+<div class="block">Sets the executor which is used to process Asynchronous responses.  The default
+ is to use the threads provided by the transport.  (example: the JMS listener threads)</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/Client.html#setExecutor(java.util.concurrent.Executor)">setExecutor</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/Client.html" title="interface in org.apache.cxf.endpoint">Client</a></code></dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/ClientImpl.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../org/apache/cxf/endpoint/ClientCallback.html" title="class in org.apache.cxf.endpoint"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../org/apache/cxf/endpoint/ClientImpl.EchoContext.html" title="class in org.apache.cxf.endpoint"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/cxf/endpoint/ClientImpl.html" target="_top">Frames</a></li>
+<li><a href="ClientImpl.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li><a href="#nested_class_summary">Nested</a>&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Apache CXF</small></p>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Copyright (c) 2011 Talend Inc. - www.talend.com
+ All rights reserved.
+
+ This program and the accompanying materials are made available
+ under the terms of the Apache License v2.0
+ which accompanies this distribution, and is available at
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.talend.esb.examples</groupId>
+    <artifactId>sam-examples</artifactId>
+    <name>Talend ESB Runtime Examples :: SAM Example</name>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.talend.esb.examples</groupId>
+        <artifactId>talend-esb-examples</artifactId>
+        <version>6.1.1</version>
+    </parent>
+  
+    <modules>
+        <module>sam-example-client</module>
+        <module>sam-example-service</module>
+        <module>sam-example-service2</module>
+        <module>sam-example-osgi</module>
+        <module>sam-server-jetty</module>
+    </modules>
+
+</project>

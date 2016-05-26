@@ -1,0 +1,627 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>AbstractPhaseInterceptor (Apache CXF JavaDoc 3.1.4 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="AbstractPhaseInterceptor (Apache CXF JavaDoc 3.1.4 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/AbstractPhaseInterceptor.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev Class</li>
+<li><a href="../../../../org/apache/cxf/phase/Phase.html" title="class in org.apache.cxf.phase"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/cxf/phase/AbstractPhaseInterceptor.html" target="_top">Frames</a></li>
+<li><a href="AbstractPhaseInterceptor.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">org.apache.cxf.phase</div>
+<h2 title="Class AbstractPhaseInterceptor" class="title">Class AbstractPhaseInterceptor&lt;T extends <a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&gt;</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li>org.apache.cxf.phase.AbstractPhaseInterceptor&lt;T&gt;</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="../../../../org/apache/cxf/interceptor/Interceptor.html" title="interface in org.apache.cxf.interceptor">Interceptor</a>&lt;T&gt;, <a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html" title="interface in org.apache.cxf.phase">PhaseInterceptor</a>&lt;T&gt;</dd>
+</dl>
+<dl>
+<dt>Direct Known Subclasses:</dt>
+<dd><a href="../../../../org/apache/cxf/interceptor/security/AbstractAuthorizingInInterceptor.html" title="class in org.apache.cxf.interceptor.security">AbstractAuthorizingInInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractInDatabindingInterceptor.html" title="class in org.apache.cxf.interceptor">AbstractInDatabindingInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractLoggingInterceptor.html" title="class in org.apache.cxf.interceptor">AbstractLoggingInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/AbstractOutDatabindingInterceptor.html" title="class in org.apache.cxf.interceptor">AbstractOutDatabindingInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/security/AbstractSecurityContextInInterceptor.html" title="class in org.apache.cxf.interceptor.security">AbstractSecurityContextInInterceptor</a>, <a href="../../../../org/apache/cxf/validation/AbstractValidationInterceptor.html" title="class in org.apache.cxf.validation">AbstractValidationInterceptor</a>, <a href="../../../../org/apache/cxf/feature/transform/AbstractXSLTInterceptor.html" title="class in org.apache.cxf.feature.transform">AbstractXSLTInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/AttachmentInInterceptor.html" title="class in org.apache.cxf.interceptor">AttachmentInInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/AttachmentOutInterceptor.html" title="class in org.apache.cxf.interceptor">AttachmentOutInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/AttachmentOutInterceptor.AttachmentOutEndingInterceptor.html" title="class in org.apache.cxf.interceptor">AttachmentOutInterceptor.AttachmentOutEndingInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/security/DelegatingAuthenticationInterceptor.html" title="class in org.apache.cxf.interceptor.security">DelegatingAuthenticationInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/security/DepthRestrictingStreamInterceptor.html" title="class in org.apache.cxf.interceptor.security">DepthRestrictingStreamInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/FaultOutInterceptor.html" title="class in org.apache.cxf.interceptor">FaultOutInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/FIStaxInInterceptor.html" title="class in org.apache.cxf.interceptor">FIStaxInInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/FIStaxOutInterceptor.html" title="class in org.apache.cxf.interceptor">FIStaxOutInterceptor</a>, <a href="../../../../org/apache/cxf/transport/common/gzip/GZIPInInterceptor.html" title="class in org.apache.cxf.transport.common.gzip">GZIPInInterceptor</a>, <a href="../../../../org/apache/cxf/transport/common/gzip/GZIPOutInterceptor.html" title="class in org.apache.cxf.transport.common.gzip">GZIPOutInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/security/JAASLoginInterceptor.html" title="class in org.apache.cxf.interceptor.security">JAASLoginInterceptor</a>, <a href="../../../../org/apache/cxf/ws/addressing/MAPAggregator.html" title="class in org.apache.cxf.ws.addressing">MAPAggregator</a>, <a href="../../../../org/apache/cxf/interceptor/MessageSenderInterceptor.html" title="class in org.apache.cxf.interceptor">MessageSenderInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/MessageSenderInterceptor.MessageSenderEndingInterceptor.html" title="class in org.apache.cxf.interceptor">MessageSenderInterceptor.MessageSenderEndingInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/OneWayProcessorInterceptor.html" title="class in org.apache.cxf.interceptor">OneWayProcessorInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/OutgoingChainInterceptor.html" title="class in org.apache.cxf.interceptor">OutgoingChainInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/ServiceInvokerInterceptor.html" title="class in org.apache.cxf.interceptor">ServiceInvokerInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/StaxInEndingInterceptor.html" title="class in org.apache.cxf.interceptor">StaxInEndingInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/StaxInInterceptor.html" title="class in org.apache.cxf.interceptor">StaxInInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/StaxOutEndingInterceptor.html" title="class in org.apache.cxf.interceptor">StaxOutEndingInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/StaxOutInterceptor.html" title="class in org.apache.cxf.interceptor">StaxOutInterceptor</a>, <a href="../../../../org/apache/cxf/staxutils/validation/StaxSchemaValidationInInterceptor.html" title="class in org.apache.cxf.staxutils.validation">StaxSchemaValidationInInterceptor</a>, <a href="../../../../org/apache/cxf/staxutils/validation/StaxSchemaValidationOutInterceptor.html" title="class in org.apache.cxf.staxutils.validation">StaxSchemaValidationOutInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/transform/TransformInInterceptor.html" title="class in org.apache.cxf.interceptor.transform">TransformInInterceptor</a>, <a href="../../../../org/apache/cxf/interceptor/transform/TransformOutInterceptor.html" title="class in org.apache.cxf.interceptor.transform">TransformOutInterceptor</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public abstract class <span class="strong">AbstractPhaseInterceptor&lt;T extends <a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&gt;</span>
+extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+implements <a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html" title="interface in org.apache.cxf.phase">PhaseInterceptor</a>&lt;T&gt;</pre>
+<div class="block">Provides a starting point implementation for a interceptors that 
+ participate in phased message processing. Developers should extend from 
+ this class when implementing custom interceptors.
+ Developers need to provide an implementation for handleMessage() and 
+ can override the handleFault() implementation. They should not override
+ the other methods.</div>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#AbstractPhaseInterceptor(java.lang.String)">AbstractPhaseInterceptor</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;phase)</code>
+<div class="block">Instantiates the interceptor to live in a specified phase.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#AbstractPhaseInterceptor(java.lang.String,%20boolean)">AbstractPhaseInterceptor</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;phase,
+                        boolean&nbsp;uniqueId)</code>
+<div class="block">Instantiates the interceptor and specifies if it gets a system 
+ determined unique id.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#AbstractPhaseInterceptor(java.lang.String,%20java.lang.String)">AbstractPhaseInterceptor</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;i,
+                        <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;p)</code>
+<div class="block">Instantiates the interceptor with a specified id.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#AbstractPhaseInterceptor(java.lang.String,%20java.lang.String,%20boolean)">AbstractPhaseInterceptor</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;i,
+                        <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;p,
+                        boolean&nbsp;uniqueId)</code>
+<div class="block">Instantiates the interceptor with a specified id or with a system 
+ determined unique id.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#addAfter(java.util.Collection)">addAfter</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;i)</code>
+<div class="block">Specifies that the current interceptor needs to be added to the 
+ interceptor chain after the specified collection of interceptors.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#addAfter(java.lang.String)">addAfter</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;i)</code>
+<div class="block">Specifies that the current interceptor needs to be added to the 
+ interceptor chain after the specified interceptor.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#addBefore(java.util.Collection)">addBefore</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;i)</code>
+<div class="block">Specifies that the current interceptor needs to be added to the 
+ interceptor chain before the specified collection of interceptors.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#addBefore(java.lang.String)">addBefore</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;i)</code>
+<div class="block">Specifies that the current interceptor needs to be added to the 
+ interceptor chain before the specified interceptor.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html" title="interface in org.apache.cxf.phase">PhaseInterceptor</a>&lt;? extends <a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&gt;&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#getAdditionalInterceptors()">getAdditionalInterceptors</a></strong>()</code>
+<div class="block">Returns a collection of Interceptors that should be added to the chain 
+ whenever this interceptor is added.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#getAfter()">getAfter</a></strong>()</code>
+<div class="block">Returns a set containing the IDs of the interceptors that should be 
+ executed before this interceptor.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#getBefore()">getBefore</a></strong>()</code>
+<div class="block">Returns a set containing the IDs of the interceptors that should be 
+ executed after this interceptor.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#getId()">getId</a></strong>()</code>
+<div class="block">Returns the ID of this interceptor.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#getPhase()">getPhase</a></strong>()</code>
+<div class="block">Returns the phase in which this interceptor is excecuted.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#handleFault(T)">handleFault</a></strong>(<a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html" title="type parameter in AbstractPhaseInterceptor">T</a>&nbsp;message)</code>
+<div class="block">Called for all interceptors (in reverse order) on which handleMessage
+ had been successfully invoked, when normal execution of the chain was
+ aborted for some reason.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#isGET(T)">isGET</a></strong>(<a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html" title="type parameter in AbstractPhaseInterceptor">T</a>&nbsp;message)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#isRequestor(T)">isRequestor</a></strong>(<a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html" title="type parameter in AbstractPhaseInterceptor">T</a>&nbsp;message)</code>
+<div class="block">Determine if current messaging role is that of requestor.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#setAfter(java.util.Collection)">setAfter</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;i)</code>
+<div class="block">Specifies that the current interceptor needs to be added to the 
+ interceptor chain after the specified collection of interceptors.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html#setBefore(java.util.Collection)">setBefore</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;i)</code>
+<div class="block">Specifies that the current interceptor needs to be added to the 
+ interceptor chain before the specified collection of interceptors.</div>
+</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long,%20int)" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.cxf.interceptor.Interceptor">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;org.apache.cxf.interceptor.<a href="../../../../org/apache/cxf/interceptor/Interceptor.html" title="interface in org.apache.cxf.interceptor">Interceptor</a></h3>
+<code><a href="../../../../org/apache/cxf/interceptor/Interceptor.html#handleMessage(T)">handleMessage</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="AbstractPhaseInterceptor(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>AbstractPhaseInterceptor</h4>
+<pre>public&nbsp;AbstractPhaseInterceptor(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;phase)</pre>
+<div class="block">Instantiates the interceptor to live in a specified phase. The 
+ interceptor's id will be set to the name of the implementing class.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>phase</code> - the interceptor's phase</dd></dl>
+</li>
+</ul>
+<a name="AbstractPhaseInterceptor(java.lang.String, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>AbstractPhaseInterceptor</h4>
+<pre>public&nbsp;AbstractPhaseInterceptor(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;i,
+                        <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;p)</pre>
+<div class="block">Instantiates the interceptor with a specified id.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>i</code> - the interceptor's id</dd><dd><code>p</code> - the interceptor's phase</dd></dl>
+</li>
+</ul>
+<a name="AbstractPhaseInterceptor(java.lang.String, boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>AbstractPhaseInterceptor</h4>
+<pre>public&nbsp;AbstractPhaseInterceptor(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;phase,
+                        boolean&nbsp;uniqueId)</pre>
+<div class="block">Instantiates the interceptor and specifies if it gets a system 
+ determined unique id. If <code>uniqueId</code> is set to true the 
+ interceptor's id will be determined by the runtime. If 
+ <code>uniqueId</code> is set to false, the implementing class' name 
+ is used as the id.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>phase</code> - the interceptor's phase</dd><dd><code>uniqueId</code> - true to have a unique ID generated</dd></dl>
+</li>
+</ul>
+<a name="AbstractPhaseInterceptor(java.lang.String, java.lang.String, boolean)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>AbstractPhaseInterceptor</h4>
+<pre>public&nbsp;AbstractPhaseInterceptor(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;i,
+                        <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;p,
+                        boolean&nbsp;uniqueId)</pre>
+<div class="block">Instantiates the interceptor with a specified id or with a system 
+ determined unique id. The specified id will be used unless 
+ <code>uniqueId</code> is set to true.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>i</code> - the interceptor's id</dd><dd><code>p</code> - the interceptor's phase</dd><dd><code>uniqueId</code> - </dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="setBefore(java.util.Collection)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setBefore</h4>
+<pre>public&nbsp;void&nbsp;setBefore(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;i)</pre>
+<div class="block">Specifies that the current interceptor needs to be added to the 
+ interceptor chain before the specified collection of interceptors. 
+ This method replaces any existing list with the provided list.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>i</code> - a collection of interceptor ids</dd></dl>
+</li>
+</ul>
+<a name="setAfter(java.util.Collection)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setAfter</h4>
+<pre>public&nbsp;void&nbsp;setAfter(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;i)</pre>
+<div class="block">Specifies that the current interceptor needs to be added to the 
+ interceptor chain after the specified collection of interceptors.
+ This method replaces any existing list with the provided list.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>i</code> - a collection of interceptor ids</dd></dl>
+</li>
+</ul>
+<a name="addBefore(java.util.Collection)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addBefore</h4>
+<pre>public&nbsp;void&nbsp;addBefore(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;i)</pre>
+<div class="block">Specifies that the current interceptor needs to be added to the 
+ interceptor chain before the specified collection of interceptors.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>i</code> - a collection of interceptor ids</dd></dl>
+</li>
+</ul>
+<a name="addAfter(java.util.Collection)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addAfter</h4>
+<pre>public&nbsp;void&nbsp;addAfter(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;i)</pre>
+<div class="block">Specifies that the current interceptor needs to be added to the 
+ interceptor chain after the specified collection of interceptors.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>i</code> - a collection of interceptor ids</dd></dl>
+</li>
+</ul>
+<a name="addBefore(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addBefore</h4>
+<pre>public&nbsp;void&nbsp;addBefore(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;i)</pre>
+<div class="block">Specifies that the current interceptor needs to be added to the 
+ interceptor chain before the specified interceptor.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>i</code> - an interceptor id</dd></dl>
+</li>
+</ul>
+<a name="addAfter(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addAfter</h4>
+<pre>public&nbsp;void&nbsp;addAfter(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;i)</pre>
+<div class="block">Specifies that the current interceptor needs to be added to the 
+ interceptor chain after the specified interceptor.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>i</code> - an interceptor id</dd></dl>
+</li>
+</ul>
+<a name="getAfter()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getAfter</h4>
+<pre>public final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getAfter()</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html#getAfter()">PhaseInterceptor</a></code></strong></div>
+<div class="block">Returns a set containing the IDs of the interceptors that should be 
+ executed before this interceptor. This interceptor will be placed 
+ in the chain after the interceptors in the set.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html#getAfter()">getAfter</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html" title="interface in org.apache.cxf.phase">PhaseInterceptor</a>&lt;<a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html" title="type parameter in AbstractPhaseInterceptor">T</a> extends <a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&gt;</code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>the IDs of the interceptors</dd></dl>
+</li>
+</ul>
+<a name="getBefore()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBefore</h4>
+<pre>public final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getBefore()</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html#getBefore()">PhaseInterceptor</a></code></strong></div>
+<div class="block">Returns a set containing the IDs of the interceptors that should be 
+ executed after this interceptor. This interceptor will be placed in 
+ the inteceptor chain before the interceptors in the set.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html#getBefore()">getBefore</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html" title="interface in org.apache.cxf.phase">PhaseInterceptor</a>&lt;<a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html" title="type parameter in AbstractPhaseInterceptor">T</a> extends <a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&gt;</code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>the ids of the interceptors</dd></dl>
+</li>
+</ul>
+<a name="getAdditionalInterceptors()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getAdditionalInterceptors</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html" title="interface in org.apache.cxf.phase">PhaseInterceptor</a>&lt;? extends <a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&gt;&gt;&nbsp;getAdditionalInterceptors()</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html#getAdditionalInterceptors()">PhaseInterceptor</a></code></strong></div>
+<div class="block">Returns a collection of Interceptors that should be added to the chain 
+ whenever this interceptor is added.   May return null.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html#getAdditionalInterceptors()">getAdditionalInterceptors</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html" title="interface in org.apache.cxf.phase">PhaseInterceptor</a>&lt;<a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html" title="type parameter in AbstractPhaseInterceptor">T</a> extends <a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&gt;</code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>the collection of interceptors</dd></dl>
+</li>
+</ul>
+<a name="getId()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getId</h4>
+<pre>public final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getId()</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html#getId()">PhaseInterceptor</a></code></strong></div>
+<div class="block">Returns the ID of this interceptor.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html#getId()">getId</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html" title="interface in org.apache.cxf.phase">PhaseInterceptor</a>&lt;<a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html" title="type parameter in AbstractPhaseInterceptor">T</a> extends <a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&gt;</code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>the ID</dd></dl>
+</li>
+</ul>
+<a name="getPhase()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPhase</h4>
+<pre>public final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getPhase()</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html#getPhase()">PhaseInterceptor</a></code></strong></div>
+<div class="block">Returns the phase in which this interceptor is excecuted.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html#getPhase()">getPhase</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/phase/PhaseInterceptor.html" title="interface in org.apache.cxf.phase">PhaseInterceptor</a>&lt;<a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html" title="type parameter in AbstractPhaseInterceptor">T</a> extends <a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&gt;</code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>the phase</dd></dl>
+</li>
+</ul>
+<a name="handleFault(org.apache.cxf.message.Message)">
+<!--   -->
+</a><a name="handleFault(T)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>handleFault</h4>
+<pre>public&nbsp;void&nbsp;handleFault(<a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html" title="type parameter in AbstractPhaseInterceptor">T</a>&nbsp;message)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/cxf/interceptor/Interceptor.html#handleFault(T)">Interceptor</a></code></strong></div>
+<div class="block">Called for all interceptors (in reverse order) on which handleMessage
+ had been successfully invoked, when normal execution of the chain was
+ aborted for some reason.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/interceptor/Interceptor.html#handleFault(T)">handleFault</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/cxf/interceptor/Interceptor.html" title="interface in org.apache.cxf.interceptor">Interceptor</a>&lt;<a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html" title="type parameter in AbstractPhaseInterceptor">T</a> extends <a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="isGET(org.apache.cxf.message.Message)">
+<!--   -->
+</a><a name="isGET(T)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isGET</h4>
+<pre>public&nbsp;boolean&nbsp;isGET(<a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html" title="type parameter in AbstractPhaseInterceptor">T</a>&nbsp;message)</pre>
+</li>
+</ul>
+<a name="isRequestor(org.apache.cxf.message.Message)">
+<!--   -->
+</a><a name="isRequestor(T)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>isRequestor</h4>
+<pre>protected&nbsp;boolean&nbsp;isRequestor(<a href="../../../../org/apache/cxf/phase/AbstractPhaseInterceptor.html" title="type parameter in AbstractPhaseInterceptor">T</a>&nbsp;message)</pre>
+<div class="block">Determine if current messaging role is that of requestor.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - the current Message</dd>
+<dt><span class="strong">Returns:</span></dt><dd>true if the current messaging role is that of requestor</dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/AbstractPhaseInterceptor.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev Class</li>
+<li><a href="../../../../org/apache/cxf/phase/Phase.html" title="class in org.apache.cxf.phase"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/cxf/phase/AbstractPhaseInterceptor.html" target="_top">Frames</a></li>
+<li><a href="AbstractPhaseInterceptor.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Apache CXF</small></p>
+</body>
+</html>

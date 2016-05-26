@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>Uses of Class org.apache.cxf.service.model.FaultInfo (Apache CXF JavaDoc 3.1.4 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="Uses of Class org.apache.cxf.service.model.FaultInfo (Apache CXF JavaDoc 3.1.4 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../../overview-summary.html">Overview</a></li>
+<li><a href="../package-summary.html">Package</a></li>
+<li><a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">Class</a></li>
+<li class="navBarCell1Rev">Use</li>
+<li><a href="../../../../../../overview-tree.html">Tree</a></li>
+<li><a href="../../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev</li>
+<li>Next</li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../../index.html?org/apache/cxf/service/model/class-use/FaultInfo.html" target="_top">Frames</a></li>
+<li><a href="FaultInfo.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<div class="header">
+<h2 title="Uses of Class org.apache.cxf.service.model.FaultInfo" class="title">Uses of Class<br>org.apache.cxf.service.model.FaultInfo</h2>
+</div>
+<div class="classUseContainer">
+<ul class="blockList">
+<li class="blockList">
+<table border="0" cellpadding="3" cellspacing="0" summary="Use table, listing packages, and an explanation">
+<caption><span>Packages that use <a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Package</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><a href="#org.apache.cxf.interceptor">org.apache.cxf.interceptor</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.cxf.service">org.apache.cxf.service</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#org.apache.cxf.service.model">org.apache.cxf.service.model</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList">
+<ul class="blockList">
+<li class="blockList"><a name="org.apache.cxf.interceptor">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a> in <a href="../../../../../../org/apache/cxf/interceptor/package-summary.html">org.apache.cxf.interceptor</a></h3>
+<table border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../../org/apache/cxf/interceptor/package-summary.html">org.apache.cxf.interceptor</a> that return <a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a></code></td>
+<td class="colLast"><span class="strong">FaultOutInterceptor.</span><code><strong><a href="../../../../../../org/apache/cxf/interceptor/FaultOutInterceptor.html#getFaultForClass(org.apache.cxf.service.model.BindingOperationInfo,%20java.lang.Class)">getFaultForClass</a></strong>(<a href="../../../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;op,
+                <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;class1)</code>
+<div class="block">Find the correct Fault part for a particular exception.</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../../org/apache/cxf/interceptor/package-summary.html">org.apache.cxf.interceptor</a> with parameters of type <a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></td>
+<td class="colLast"><span class="strong">FaultOutInterceptor.</span><code><strong><a href="../../../../../../org/apache/cxf/interceptor/FaultOutInterceptor.html#getFaultBean(java.lang.Throwable,%20org.apache.cxf.service.model.FaultInfo,%20org.apache.cxf.message.Message)">getFaultBean</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang">Throwable</a>&nbsp;cause,
+            <a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a>&nbsp;faultPart,
+            <a href="../../../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;message)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.cxf.service">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a> in <a href="../../../../../../org/apache/cxf/service/package-summary.html">org.apache.cxf.service</a></h3>
+<table border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../../org/apache/cxf/service/package-summary.html">org.apache.cxf.service</a> with parameters of type <a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="strong">ServiceModelVisitor.</span><code><strong><a href="../../../../../../org/apache/cxf/service/ServiceModelVisitor.html#begin(org.apache.cxf.service.model.FaultInfo)">begin</a></strong>(<a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a>&nbsp;fault)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="strong">ServiceModelVisitor.</span><code><strong><a href="../../../../../../org/apache/cxf/service/ServiceModelVisitor.html#end(org.apache.cxf.service.model.FaultInfo)">end</a></strong>(<a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a>&nbsp;fault)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.cxf.service.model">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a> in <a href="../../../../../../org/apache/cxf/service/model/package-summary.html">org.apache.cxf.service.model</a></h3>
+<table border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../../org/apache/cxf/service/model/package-summary.html">org.apache.cxf.service.model</a> that return <a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a></code></td>
+<td class="colLast"><span class="strong">OperationInfo.</span><code><strong><a href="../../../../../../org/apache/cxf/service/model/OperationInfo.html#addFault(javax.xml.namespace.QName,%20javax.xml.namespace.QName)">addFault</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;name,
+        <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;message)</code>
+<div class="block">Adds an fault to this operation.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a></code></td>
+<td class="colLast"><span class="strong">UnwrappedOperationInfo.</span><code><strong><a href="../../../../../../org/apache/cxf/service/model/UnwrappedOperationInfo.html#addFault(javax.xml.namespace.QName,%20javax.xml.namespace.QName)">addFault</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;name,
+        <a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;message)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a></code></td>
+<td class="colLast"><span class="strong">OperationInfo.</span><code><strong><a href="../../../../../../org/apache/cxf/service/model/OperationInfo.html#getFault(javax.xml.namespace.QName)">getFault</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;name)</code>
+<div class="block">Returns the fault with the given name, if found.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a></code></td>
+<td class="colLast"><span class="strong">UnwrappedOperationInfo.</span><code><strong><a href="../../../../../../org/apache/cxf/service/model/UnwrappedOperationInfo.html#getFault(javax.xml.namespace.QName)">getFault</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/javax/xml/namespace/QName.html?is-external=true" title="class or interface in javax.xml.namespace">QName</a>&nbsp;name)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a></code></td>
+<td class="colLast"><span class="strong">BindingFaultInfo.</span><code><strong><a href="../../../../../../org/apache/cxf/service/model/BindingFaultInfo.html#getFaultInfo()">getFaultInfo</a></strong>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../../org/apache/cxf/service/model/package-summary.html">org.apache.cxf.service.model</a> that return types with arguments of type <a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a>&gt;</code></td>
+<td class="colLast"><span class="strong">OperationInfo.</span><code><strong><a href="../../../../../../org/apache/cxf/service/model/OperationInfo.html#getFaults()">getFaults</a></strong>()</code>
+<div class="block">Returns all faults for this operation.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a>&gt;</code></td>
+<td class="colLast"><span class="strong">UnwrappedOperationInfo.</span><code><strong><a href="../../../../../../org/apache/cxf/service/model/UnwrappedOperationInfo.html#getFaults()">getFaults</a></strong>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../../org/apache/cxf/service/model/package-summary.html">org.apache.cxf.service.model</a> with parameters of type <a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="strong">OperationInfo.</span><code><strong><a href="../../../../../../org/apache/cxf/service/model/OperationInfo.html#addFault(org.apache.cxf.service.model.FaultInfo)">addFault</a></strong>(<a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a>&nbsp;fault)</code>
+<div class="block">Adds a fault to this operation.</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
+<caption><span>Constructors in <a href="../../../../../../org/apache/cxf/service/model/package-summary.html">org.apache.cxf.service.model</a> with parameters of type <a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colLast"><code><strong><a href="../../../../../../org/apache/cxf/service/model/BindingFaultInfo.html#BindingFaultInfo(org.apache.cxf.service.model.FaultInfo,%20org.apache.cxf.service.model.BindingOperationInfo)">BindingFaultInfo</a></strong>(<a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">FaultInfo</a>&nbsp;f,
+                <a href="../../../../../../org/apache/cxf/service/model/BindingOperationInfo.html" title="class in org.apache.cxf.service.model">BindingOperationInfo</a>&nbsp;info)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../../overview-summary.html">Overview</a></li>
+<li><a href="../package-summary.html">Package</a></li>
+<li><a href="../../../../../../org/apache/cxf/service/model/FaultInfo.html" title="class in org.apache.cxf.service.model">Class</a></li>
+<li class="navBarCell1Rev">Use</li>
+<li><a href="../../../../../../overview-tree.html">Tree</a></li>
+<li><a href="../../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev</li>
+<li>Next</li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../../index.html?org/apache/cxf/service/model/class-use/FaultInfo.html" target="_top">Frames</a></li>
+<li><a href="FaultInfo.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Apache CXF</small></p>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>UpfrontConduitSelector (Apache CXF JavaDoc 3.1.4 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="UpfrontConduitSelector (Apache CXF JavaDoc 3.1.4 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/UpfrontConduitSelector.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../org/apache/cxf/endpoint/SimpleEndpointImplFactory.html" title="class in org.apache.cxf.endpoint"><span class="strong">Prev Class</span></a></li>
+<li>Next Class</li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/cxf/endpoint/UpfrontConduitSelector.html" target="_top">Frames</a></li>
+<li><a href="UpfrontConduitSelector.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#fields_inherited_from_class_org.apache.cxf.endpoint.AbstractConduitSelector">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">org.apache.cxf.endpoint</div>
+<h2 title="Class UpfrontConduitSelector" class="title">Class UpfrontConduitSelector</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html" title="class in org.apache.cxf.endpoint">org.apache.cxf.endpoint.AbstractConduitSelector</a></li>
+<li>
+<ul class="inheritance">
+<li>org.apache.cxf.endpoint.UpfrontConduitSelector</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Closeable.html?is-external=true" title="class or interface in java.io">Closeable</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/AutoCloseable.html?is-external=true" title="class or interface in java.lang">AutoCloseable</a>, <a href="../../../../org/apache/cxf/endpoint/ConduitSelector.html" title="interface in org.apache.cxf.endpoint">ConduitSelector</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public class <span class="strong">UpfrontConduitSelector</span>
+extends <a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html" title="class in org.apache.cxf.endpoint">AbstractConduitSelector</a></pre>
+<div class="block">Strategy for eager upfront retreival of a Conduit to mediate an 
+ outbound message.</div>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<ul class="blockList">
+<li class="blockList"><a name="fields_inherited_from_class_org.apache.cxf.endpoint.AbstractConduitSelector">
+<!--   -->
+</a>
+<h3>Fields inherited from class&nbsp;org.apache.cxf.endpoint.<a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html" title="class in org.apache.cxf.endpoint">AbstractConduitSelector</a></h3>
+<code><a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html#CONDUIT_COMPARE_FULL_URL">CONDUIT_COMPARE_FULL_URL</a>, <a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html#conduits">conduits</a>, <a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html#endpoint">endpoint</a>, <a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html#KEEP_CONDUIT_ALIVE">KEEP_CONDUIT_ALIVE</a></code></li>
+</ul>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/cxf/endpoint/UpfrontConduitSelector.html#UpfrontConduitSelector()">UpfrontConduitSelector</a></strong>()</code>
+<div class="block">Normal constructor.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/cxf/endpoint/UpfrontConduitSelector.html#UpfrontConduitSelector(org.apache.cxf.transport.Conduit)">UpfrontConduitSelector</a></strong>(<a href="../../../../org/apache/cxf/transport/Conduit.html" title="interface in org.apache.cxf.transport">Conduit</a>&nbsp;c)</code>
+<div class="block">Constructor, allowing a specific conduit to override normal selection.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/util/logging/Logger.html?is-external=true" title="class or interface in java.util.logging">Logger</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/UpfrontConduitSelector.html#getLogger()">getLogger</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/UpfrontConduitSelector.html#prepare(org.apache.cxf.message.Message)">prepare</a></strong>(<a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;message)</code>
+<div class="block">Called prior to the interceptor chain being traversed.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/cxf/transport/Conduit.html" title="interface in org.apache.cxf.transport">Conduit</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/cxf/endpoint/UpfrontConduitSelector.html#selectConduit(org.apache.cxf.message.Message)">selectConduit</a></strong>(<a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;message)</code>
+<div class="block">Called when a Conduit is actually required.</div>
+</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.cxf.endpoint.AbstractConduitSelector">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.cxf.endpoint.<a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html" title="class in org.apache.cxf.endpoint">AbstractConduitSelector</a></h3>
+<code><a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html#close()">close</a>, <a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html#complete(org.apache.cxf.message.Exchange)">complete</a>, <a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html#createConduit(org.apache.cxf.message.Message,%20org.apache.cxf.message.Exchange,%20org.apache.cxf.transport.ConduitInitiator)">createConduit</a>, <a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html#findCompatibleConduit(org.apache.cxf.message.Message)">findCompatibleConduit</a>, <a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html#getEndpoint()">getEndpoint</a>, <a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html#getSelectedConduit(org.apache.cxf.message.Message)">getSelectedConduit</a>, <a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html#removeConduit(org.apache.cxf.transport.Conduit)">removeConduit</a>, <a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html#replaceEndpointAddressPropertyIfNeeded(org.apache.cxf.message.Message,%20java.lang.String,%20org.apache.cxf.transport.Conduit)">replaceEndpointAddressPropertyIfNeeded</a>, <a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html#setEndpoint(org.apache.cxf.endpoint.Endpoint)">setEndpoint</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long,%20int)" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="UpfrontConduitSelector()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>UpfrontConduitSelector</h4>
+<pre>public&nbsp;UpfrontConduitSelector()</pre>
+<div class="block">Normal constructor.</div>
+</li>
+</ul>
+<a name="UpfrontConduitSelector(org.apache.cxf.transport.Conduit)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>UpfrontConduitSelector</h4>
+<pre>public&nbsp;UpfrontConduitSelector(<a href="../../../../org/apache/cxf/transport/Conduit.html" title="interface in org.apache.cxf.transport">Conduit</a>&nbsp;c)</pre>
+<div class="block">Constructor, allowing a specific conduit to override normal selection.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>c</code> - specific conduit</dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="prepare(org.apache.cxf.message.Message)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>prepare</h4>
+<pre>public&nbsp;void&nbsp;prepare(<a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;message)</pre>
+<div class="block">Called prior to the interceptor chain being traversed.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - the current Message</dd></dl>
+</li>
+</ul>
+<a name="selectConduit(org.apache.cxf.message.Message)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>selectConduit</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/cxf/transport/Conduit.html" title="interface in org.apache.cxf.transport">Conduit</a>&nbsp;selectConduit(<a href="../../../../org/apache/cxf/message/Message.html" title="interface in org.apache.cxf.message">Message</a>&nbsp;message)</pre>
+<div class="block">Called when a Conduit is actually required.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - </dd>
+<dt><span class="strong">Returns:</span></dt><dd>the Conduit to use for mediation of the message</dd></dl>
+</li>
+</ul>
+<a name="getLogger()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getLogger</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/logging/Logger.html?is-external=true" title="class or interface in java.util.logging">Logger</a>&nbsp;getLogger()</pre>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html#getLogger()">getLogger</a></code>&nbsp;in class&nbsp;<code><a href="../../../../org/apache/cxf/endpoint/AbstractConduitSelector.html" title="class in org.apache.cxf.endpoint">AbstractConduitSelector</a></code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>the logger to use</dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/UpfrontConduitSelector.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../org/apache/cxf/endpoint/SimpleEndpointImplFactory.html" title="class in org.apache.cxf.endpoint"><span class="strong">Prev Class</span></a></li>
+<li>Next Class</li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/cxf/endpoint/UpfrontConduitSelector.html" target="_top">Frames</a></li>
+<li><a href="UpfrontConduitSelector.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#fields_inherited_from_class_org.apache.cxf.endpoint.AbstractConduitSelector">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Apache CXF</small></p>
+</body>
+</html>

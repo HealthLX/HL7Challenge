@@ -1,0 +1,499 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>SpringBusFactory (Apache CXF JavaDoc 3.1.4 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="SpringBusFactory (Apache CXF JavaDoc 3.1.4 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/SpringBusFactory.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../../org/apache/cxf/bus/spring/SpringBus.html" title="class in org.apache.cxf.bus.spring"><span class="strong">Prev Class</span></a></li>
+<li>Next Class</li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?org/apache/cxf/bus/spring/SpringBusFactory.html" target="_top">Frames</a></li>
+<li><a href="SpringBusFactory.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#fields_inherited_from_class_org.apache.cxf.BusFactory">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">org.apache.cxf.bus.spring</div>
+<h2 title="Class SpringBusFactory" class="title">Class SpringBusFactory</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../../../org/apache/cxf/BusFactory.html" title="class in org.apache.cxf">org.apache.cxf.BusFactory</a></li>
+<li>
+<ul class="inheritance">
+<li>org.apache.cxf.bus.spring.SpringBusFactory</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr>
+<br>
+<pre>public class <span class="strong">SpringBusFactory</span>
+extends <a href="../../../../../org/apache/cxf/BusFactory.html" title="class in org.apache.cxf">BusFactory</a></pre>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<ul class="blockList">
+<li class="blockList"><a name="fields_inherited_from_class_org.apache.cxf.BusFactory">
+<!--   -->
+</a>
+<h3>Fields inherited from class&nbsp;org.apache.cxf.<a href="../../../../../org/apache/cxf/BusFactory.html" title="class in org.apache.cxf">BusFactory</a></h3>
+<code><a href="../../../../../org/apache/cxf/BusFactory.html#BUS_FACTORY_PROPERTY_NAME">BUS_FACTORY_PROPERTY_NAME</a>, <a href="../../../../../org/apache/cxf/BusFactory.html#DEFAULT_BUS_FACTORY">DEFAULT_BUS_FACTORY</a>, <a href="../../../../../org/apache/cxf/BusFactory.html#defaultBus">defaultBus</a>, <a href="../../../../../org/apache/cxf/BusFactory.html#THREAD_BUS">THREAD_BUS</a>, <a href="../../../../../org/apache/cxf/BusFactory.html#THREAD_BUSSES">THREAD_BUSSES</a></code></li>
+</ul>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../../org/apache/cxf/bus/spring/SpringBusFactory.html#SpringBusFactory()">SpringBusFactory</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><strong><a href="../../../../../org/apache/cxf/bus/spring/SpringBusFactory.html#SpringBusFactory(org.springframework.context.ApplicationContext)">SpringBusFactory</a></strong>(org.springframework.context.ApplicationContext&nbsp;context)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../../org/apache/cxf/bus/spring/SpringBusFactory.html#SpringBusFactory(org.springframework.beans.factory.xml.NamespaceHandlerResolver)">SpringBusFactory</a></strong>(org.springframework.beans.factory.xml.NamespaceHandlerResolver&nbsp;r)</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected org.springframework.context.ConfigurableApplicationContext</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/bus/spring/SpringBusFactory.html#createAppContext(java.net.URL[],%20boolean)">createAppContext</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>[]&nbsp;urls,
+                boolean&nbsp;includeDefaults)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected org.springframework.context.ConfigurableApplicationContext</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/bus/spring/SpringBusFactory.html#createApplicationContext(java.lang.String[],%20boolean)">createApplicationContext</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;cfgFiles,
+                        boolean&nbsp;includeDefaults)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/bus/spring/SpringBusFactory.html#createBus()">createBus</a></strong>()</code>
+<div class="block">Creates a new bus.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/bus/spring/SpringBusFactory.html#createBus(java.lang.String)">createBus</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;cfgFile)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/bus/spring/SpringBusFactory.html#createBus(java.lang.String[])">createBus</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;cfgFiles)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/bus/spring/SpringBusFactory.html#createBus(java.lang.String[],%20boolean)">createBus</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;cfgFiles,
+         boolean&nbsp;includeDefaults)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/bus/spring/SpringBusFactory.html#createBus(java.lang.String,%20boolean)">createBus</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;cfgFile,
+         boolean&nbsp;includeDefaults)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/bus/spring/SpringBusFactory.html#createBus(java.net.URL)">createBus</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;url)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/bus/spring/SpringBusFactory.html#createBus(java.net.URL[])">createBus</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>[]&nbsp;urls)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/bus/spring/SpringBusFactory.html#createBus(java.net.URL[],%20boolean)">createBus</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>[]&nbsp;urls,
+         boolean&nbsp;includeDefaults)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/bus/spring/SpringBusFactory.html#createBus(java.net.URL,%20boolean)">createBus</a></strong>(<a href="http://docs.oracle.com/javase/7/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;url,
+         boolean&nbsp;includeDefaults)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/bus/spring/SpringBusFactory.html#finishCreatingBus(org.springframework.context.ConfigurableApplicationContext)">finishCreatingBus</a></strong>(org.springframework.context.ConfigurableApplicationContext&nbsp;bac)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>org.springframework.context.ApplicationContext</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/bus/spring/SpringBusFactory.html#getApplicationContext()">getApplicationContext</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/cxf/bus/spring/SpringBusFactory.html#setNamespaceHandlerResolver(org.springframework.beans.factory.xml.NamespaceHandlerResolver)">setNamespaceHandlerResolver</a></strong>(org.springframework.beans.factory.xml.NamespaceHandlerResolver&nbsp;r)</code>&nbsp;</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.cxf.BusFactory">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.cxf.<a href="../../../../../org/apache/cxf/BusFactory.html" title="class in org.apache.cxf">BusFactory</a></h3>
+<code><a href="../../../../../org/apache/cxf/BusFactory.html#clearDefaultBusForAnyThread(org.apache.cxf.Bus)">clearDefaultBusForAnyThread</a>, <a href="../../../../../org/apache/cxf/BusFactory.html#getAndSetThreadDefaultBus(org.apache.cxf.Bus)">getAndSetThreadDefaultBus</a>, <a href="../../../../../org/apache/cxf/BusFactory.html#getDefaultBus()">getDefaultBus</a>, <a href="../../../../../org/apache/cxf/BusFactory.html#getDefaultBus(boolean)">getDefaultBus</a>, <a href="../../../../../org/apache/cxf/BusFactory.html#getThreadDefaultBus()">getThreadDefaultBus</a>, <a href="../../../../../org/apache/cxf/BusFactory.html#getThreadDefaultBus(boolean)">getThreadDefaultBus</a>, <a href="../../../../../org/apache/cxf/BusFactory.html#initializeBus(org.apache.cxf.Bus)">initializeBus</a>, <a href="../../../../../org/apache/cxf/BusFactory.html#newInstance()">newInstance</a>, <a href="../../../../../org/apache/cxf/BusFactory.html#newInstance(java.lang.String)">newInstance</a>, <a href="../../../../../org/apache/cxf/BusFactory.html#possiblySetDefaultBus(org.apache.cxf.Bus)">possiblySetDefaultBus</a>, <a href="../../../../../org/apache/cxf/BusFactory.html#setDefaultBus(org.apache.cxf.Bus)">setDefaultBus</a>, <a href="../../../../../org/apache/cxf/BusFactory.html#setThreadDefaultBus(org.apache.cxf.Bus)">setThreadDefaultBus</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long,%20int)" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="SpringBusFactory()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SpringBusFactory</h4>
+<pre>public&nbsp;SpringBusFactory()</pre>
+</li>
+</ul>
+<a name="SpringBusFactory(org.springframework.context.ApplicationContext)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SpringBusFactory</h4>
+<pre>public&nbsp;SpringBusFactory(org.springframework.context.ApplicationContext&nbsp;context)</pre>
+</li>
+</ul>
+<a name="SpringBusFactory(org.springframework.beans.factory.xml.NamespaceHandlerResolver)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>SpringBusFactory</h4>
+<pre>public&nbsp;SpringBusFactory(org.springframework.beans.factory.xml.NamespaceHandlerResolver&nbsp;r)</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="getApplicationContext()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getApplicationContext</h4>
+<pre>public&nbsp;org.springframework.context.ApplicationContext&nbsp;getApplicationContext()</pre>
+</li>
+</ul>
+<a name="setNamespaceHandlerResolver(org.springframework.beans.factory.xml.NamespaceHandlerResolver)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setNamespaceHandlerResolver</h4>
+<pre>public&nbsp;void&nbsp;setNamespaceHandlerResolver(org.springframework.beans.factory.xml.NamespaceHandlerResolver&nbsp;r)</pre>
+</li>
+</ul>
+<a name="createBus()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createBus</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;createBus()</pre>
+<div class="block"><strong>Description copied from class:&nbsp;<code><a href="../../../../../org/apache/cxf/BusFactory.html#createBus()">BusFactory</a></code></strong></div>
+<div class="block">Creates a new bus. While concrete <code>BusFactory</code> may offer differently parameterized methods
+ for creating a bus, all factories support this no-arg factory method.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../../org/apache/cxf/BusFactory.html#createBus()">createBus</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/cxf/BusFactory.html" title="class in org.apache.cxf">BusFactory</a></code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>the newly created bus.</dd></dl>
+</li>
+</ul>
+<a name="createBus(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createBus</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;createBus(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;cfgFile)</pre>
+</li>
+</ul>
+<a name="createBus(java.lang.String[])">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createBus</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;createBus(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;cfgFiles)</pre>
+</li>
+</ul>
+<a name="finishCreatingBus(org.springframework.context.ConfigurableApplicationContext)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>finishCreatingBus</h4>
+<pre>protected&nbsp;<a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;finishCreatingBus(org.springframework.context.ConfigurableApplicationContext&nbsp;bac)</pre>
+</li>
+</ul>
+<a name="createBus(java.lang.String, boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createBus</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;createBus(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;cfgFile,
+            boolean&nbsp;includeDefaults)</pre>
+</li>
+</ul>
+<a name="createBus(java.lang.String[], boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createBus</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;createBus(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;cfgFiles,
+            boolean&nbsp;includeDefaults)</pre>
+</li>
+</ul>
+<a name="createApplicationContext(java.lang.String[], boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createApplicationContext</h4>
+<pre>protected&nbsp;org.springframework.context.ConfigurableApplicationContext&nbsp;createApplicationContext(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;cfgFiles,
+                                                                                  boolean&nbsp;includeDefaults)</pre>
+</li>
+</ul>
+<a name="createBus(java.net.URL)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createBus</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;createBus(<a href="http://docs.oracle.com/javase/7/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;url)</pre>
+</li>
+</ul>
+<a name="createBus(java.net.URL[])">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createBus</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;createBus(<a href="http://docs.oracle.com/javase/7/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>[]&nbsp;urls)</pre>
+</li>
+</ul>
+<a name="createBus(java.net.URL, boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createBus</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;createBus(<a href="http://docs.oracle.com/javase/7/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;url,
+            boolean&nbsp;includeDefaults)</pre>
+</li>
+</ul>
+<a name="createBus(java.net.URL[], boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createBus</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/cxf/Bus.html" title="interface in org.apache.cxf">Bus</a>&nbsp;createBus(<a href="http://docs.oracle.com/javase/7/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>[]&nbsp;urls,
+            boolean&nbsp;includeDefaults)</pre>
+</li>
+</ul>
+<a name="createAppContext(java.net.URL[], boolean)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>createAppContext</h4>
+<pre>protected&nbsp;org.springframework.context.ConfigurableApplicationContext&nbsp;createAppContext(<a href="http://docs.oracle.com/javase/7/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>[]&nbsp;urls,
+                                                                          boolean&nbsp;includeDefaults)</pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/SpringBusFactory.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+<div class="aboutLanguage"><em>Apache CXF API</em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../../org/apache/cxf/bus/spring/SpringBus.html" title="class in org.apache.cxf.bus.spring"><span class="strong">Prev Class</span></a></li>
+<li>Next Class</li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?org/apache/cxf/bus/spring/SpringBusFactory.html" target="_top">Frames</a></li>
+<li><a href="SpringBusFactory.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#fields_inherited_from_class_org.apache.cxf.BusFactory">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Apache CXF</small></p>
+</body>
+</html>

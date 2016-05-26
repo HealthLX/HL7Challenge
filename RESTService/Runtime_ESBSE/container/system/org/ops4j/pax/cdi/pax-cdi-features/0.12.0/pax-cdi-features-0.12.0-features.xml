@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="org.ops4j.pax.cdi-0.12.0" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
+
+    <feature name="pax-cdi" description="Provide CDI support" version="0.12.0"
+        resolver="(obr)">
+        <feature>scr</feature>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-annotation_1.1_spec/1.0.1</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jcdi_1.0_spec/1.0</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/1.0</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-interceptor_1.1_spec/1.0</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-el_2.2_spec/1.0.3</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-tracker/1.8.0</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-lifecycle/1.8.0</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-extender/1.8.0</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-core/1.8.0</bundle>
+        <bundle dependency="true">mvn:org.ops4j.base/ops4j-base/1.5.0</bundle>
+        <bundle dependency="true">mvn:org.apache.xbean/xbean-bundleutils/4.1</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-api/0.12.0</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-spi/0.12.0</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-extension/0.12.0</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-extender/0.12.0</bundle>
+    </feature>
+
+    <feature name="pax-cdi-1.1" description="Provide CDI 1.1 support" version="0.12.0"
+        resolver="(obr)">
+        <feature>scr</feature>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-annotation_1.1_spec/1.0.1</bundle>
+        <bundle dependency="true">mvn:javax.interceptor/javax.interceptor-api/1.2</bundle>
+        <bundle dependency="true">mvn:javax.enterprise/cdi-api/1.1-20130918</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/1.0</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-el_2.2_spec/1.0.3</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-tracker/1.8.0</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-lifecycle/1.8.0</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-extender/1.8.0</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-core/1.8.0</bundle>
+        <bundle dependency="true">mvn:org.ops4j.base/ops4j-base/1.5.0</bundle>
+        <bundle dependency="true">mvn:org.apache.xbean/xbean-bundleutils/4.1</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-api/0.12.0</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-spi/0.12.0</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-extension/0.12.0</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-extender/0.12.0</bundle>
+    </feature>
+
+    <feature name="pax-cdi-1.2" description="Provide CDI 1.2 support" version="0.12.0"
+        resolver="(obr)">
+        <feature>scr</feature>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-annotation_1.1_spec/1.0.1</bundle>
+        <bundle dependency="true">mvn:javax.interceptor/javax.interceptor-api/1.2</bundle>
+        <bundle dependency="true">mvn:javax.enterprise/cdi-api/1.2</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-atinject_1.0_spec/1.0</bundle>
+        <bundle dependency="true">mvn:javax.el/javax.el-api/3.0.0</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-tracker/1.8.0</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-lifecycle/1.8.0</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-extender/1.8.0</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.swissbox/pax-swissbox-core/1.8.0</bundle>
+        <bundle dependency="true">mvn:org.ops4j.base/ops4j-base/1.5.0</bundle>
+        <bundle dependency="true">mvn:org.apache.xbean/xbean-bundleutils/4.1</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-api/0.12.0</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-spi/0.12.0</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-extension/0.12.0</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-extender/0.12.0</bundle>
+    </feature>
+
+    <feature name="pax-cdi-weld" description="Weld CDI support" version="0.12.0"
+        resolver="(obr)">
+        <feature version="0.12.0">pax-cdi</feature>
+        <bundle dependency="true">mvn:org.jboss.weld/weld-osgi-bundle/1.2.0.Beta1</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-weld/0.12.0</bundle>
+    </feature>
+
+    <feature name="pax-cdi-1.1-weld" description="Weld CDI 1.1 support" version="0.12.0"
+        resolver="(obr)">
+        <feature version="0.12.0">pax-cdi-1.1</feature>
+        <bundle dependency="true">mvn:org.jboss.weld/weld-osgi-bundle/2.1.2.Final</bundle>
+        <bundle>mvn:org.jboss.logging/jboss-logging/3.1.3.GA</bundle>
+        <bundle>mvn:com.google.guava/guava/13.0</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-weld/0.12.0</bundle>
+    </feature>
+
+    <feature name="pax-cdi-1.2-weld" description="Weld CDI 1.2 support" version="0.12.0"
+        resolver="(obr)">
+        <feature version="0.12.0">pax-cdi-1.2</feature>
+        <bundle dependency="true">mvn:org.jboss.weld/weld-osgi-bundle/2.2.4.Final</bundle>
+        <bundle>mvn:org.jboss.logging/jboss-logging/3.1.3.GA</bundle>
+        <bundle>mvn:com.google.guava/guava/13.0.1</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-weld/0.12.0</bundle>
+    </feature>
+
+    <feature name="pax-cdi-openwebbeans" description="OpenWebBeans CDI support" version="0.12.0"
+        resolver="(obr)">
+        <feature version="0.12.0">pax-cdi</feature>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-validation_1.0_spec/1.1</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/1.1.1</bundle>
+<!--         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/1.0</bundle> -->
+        <bundle dependency="true">mvn:org.apache.xbean/xbean-asm5-shaded/4.1</bundle>
+        <bundle dependency="true">mvn:org.apache.xbean/xbean-finder-shaded/4.1</bundle>
+        <bundle dependency="true">mvn:org.apache.openwebbeans/openwebbeans-spi/1.2.6</bundle>
+        <bundle dependency="true">mvn:org.apache.openwebbeans/openwebbeans-impl/1.2.6</bundle>
+        <bundle dependency="true">mvn:org.apache.openwebbeans/openwebbeans-el22/1.2.6</bundle>
+        <bundle dependency="true">mvn:org.apache.openwebbeans/openwebbeans-osgi/1.2.6</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-openwebbeans/0.12.0</bundle>
+    </feature>
+
+    <feature name="pax-cdi-web" description="Web CDI support" version="0.12.0"
+        resolver="(obr)">
+        <feature version="0.12.0">pax-cdi</feature>
+        <feature>war</feature>
+<!--         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/1.0</bundle> -->
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-web/0.12.0</bundle>
+    </feature>
+
+    <feature name="pax-cdi-1.1-web" description="Web CDI 1.1 support" version="0.12.0"
+        resolver="(obr)">
+        <feature version="0.12.0">pax-cdi-1.1</feature>
+        <feature>war</feature>
+<!--         <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/1.0</bundle> -->
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-web/0.12.0</bundle>
+    </feature>
+
+    <feature name="pax-cdi-1.2-web" description="Web CDI 1.2 support" version="0.12.0"
+        resolver="(obr)">
+        <feature version="0.12.0">pax-cdi-1.2</feature>
+        <feature>war</feature>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-web/0.12.0</bundle>
+    </feature>
+
+    <feature name="pax-cdi-web-weld" description="Weld Web CDI support" version="0.12.0"
+        resolver="(obr)">
+        <feature version="0.12.0">pax-cdi-web</feature>
+        <feature version="0.12.0">pax-cdi-weld</feature>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-web-weld/0.12.0</bundle>
+    </feature>
+
+    <feature name="pax-cdi-1.1-web-weld" description="Weld Web CDI 1.1 support" version="0.12.0"
+        resolver="(obr)">
+        <feature version="0.12.0">pax-cdi-1.1-web</feature>
+        <feature version="0.12.0">pax-cdi-1.1-weld</feature>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-web-weld/0.12.0</bundle>
+    </feature>
+
+    <feature name="pax-cdi-1.2-web-weld" description="Weld Web CDI 1.2 support" version="0.12.0"
+        resolver="(obr)">
+        <feature version="0.12.0">pax-cdi-1.2-web</feature>
+        <feature version="0.12.0">pax-cdi-1.2-weld</feature>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-web-weld/0.12.0</bundle>
+    </feature>
+
+    <feature name="pax-cdi-web-openwebbeans" description="OpenWebBeans Web CDI support"
+        version="0.12.0" resolver="(obr)">
+        <feature version="0.12.0">pax-cdi-web</feature>
+        <feature version="0.12.0">pax-cdi-openwebbeans</feature>
+        <bundle dependency="true">mvn:org.apache.openwebbeans/openwebbeans-web/1.2.6</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi/pax-cdi-web-openwebbeans/0.12.0</bundle>
+    </feature>
+
+    <feature name="deltaspike-core" description="Apache Deltaspike core support" version="1.2.1"
+        resolver="(obr)">
+        <feature version="0.12.0">pax-cdi</feature>
+        <bundle>mvn:org.apache.deltaspike.core/deltaspike-core-api/1.2.1</bundle>
+        <bundle>mvn:org.apache.deltaspike.core/deltaspike-core-impl/1.2.1</bundle>
+    </feature>
+
+    <feature name="deltaspike-jpa" description="Apache Deltaspike jpa support" version="1.2.1"
+        resolver="(obr)">
+        <feature version="1.2.1">deltaspike-core</feature>
+        <bundle dependency="true">mvn:org.ops4j.base/ops4j-base/1.5.0</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/1.1.1</bundle>
+        <bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/1.1</bundle>
+        <bundle dependency="true">mvn:org.osgi/org.osgi.enterprise/4.2.0</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.jpa/pax-jpa/0.3.0</bundle>
+        <bundle dependency="true">mvn:org.ops4j.pax.jdbc/pax-jdbc/0.3.0</bundle>
+        <bundle>mvn:org.apache.deltaspike.modules/deltaspike-jpa-module-api/1.2.1</bundle>
+        <bundle>mvn:org.apache.deltaspike.modules/deltaspike-jpa-module-impl/1.2.1</bundle>
+        <bundle>mvn:org.ops4j.pax.cdi.fragment/pax-cdi-fragment-ds-jpa/0.12.0</bundle>
+    </feature>
+
+    <feature name="deltaspike-partial-bean" description="Apache Deltaspike partial bean support" version="1.2.1"
+             resolver="(obr)">
+        <feature version="1.2.1">deltaspike-core</feature>
+        <bundle>mvn:org.apache.deltaspike.modules/deltaspike-partial-bean-module-api/1.2.1</bundle>
+        <bundle>mvn:org.apache.deltaspike.modules/deltaspike-partial-bean-module-impl/1.2.1</bundle>
+    </feature>
+
+    <feature name="deltaspike-data" description="Apache Deltaspike data support" version="1.2.1"
+             resolver="(obr)">
+        <feature version="1.2.1">deltaspike-jpa</feature>
+        <feature version="1.2.1">deltaspike-partial-bean</feature>
+        <bundle>mvn:org.apache.deltaspike.modules/deltaspike-data-module-api/1.2.1</bundle>
+        <bundle>mvn:org.apache.deltaspike.modules/deltaspike-data-module-impl/1.2.1</bundle>
+    </feature>
+
+</features>
