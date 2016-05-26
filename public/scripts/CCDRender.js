@@ -236,8 +236,8 @@ class PatientDetails extends React.Component
         return(
             <div>
               <div className="col-lg-12 col-md-12 col-sm-12 mb">
-                  <div className="patientDetails">
-                      <div className="row data">
+                  <div className="patientDetails panel pn">
+                      <div className="data">
                             <span className="fa-stack fa-5x icon-person">
                               <i className="fa fa-circle fa-stack-2x mint-color"></i>
                               <i className="fa fa-user fa-stack-1x fa-inverse"></i>
