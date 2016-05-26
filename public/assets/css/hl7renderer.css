@@ -45,6 +45,20 @@ body {
     margin-bottom: 15px;
 }
 
+.mint-header-clear
+{
+    background-color: #aeddcb;
+    padding: 3px;
+    text-align: left;
+    color: #fff;
+}
+
+.mint-main
+{
+    background-color: #8ad0b8;
+    color: #000;
+}
+
 .mint-panel .mint-header-no-margin
 {
     background: rgb(141, 208, 182);
@@ -55,6 +69,21 @@ body {
 .mint-panel p
 {
 	margin-left: 5px;
+}
+
+.initial-footer {
+    position:absolute;
+    background-color: #f3f3f3;
+    text-align: left;
+    font-size: 2.5em;
+    color: 202020;
+    width:100%;
+    bottom:0px;
+}
+
+.full{
+    width: 100%;
+    height: 100%;
 }
 
 .table
@@ -460,4 +489,18 @@ table.dataTable thead .sorting:after {
 .icon-person {
     float: left;
     margin-right: 40px;
+}
+
+.boxed {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#8ad0b8+0,e3f3ed+100 */
+    background: #8ad0b8; /* Old browsers */
+    background: -moz-linear-gradient(45deg,  #8ad0b8 0%, #e3f3ed 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg,  #8ad0b8 0%,#e3f3ed 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg,  #8ad0b8 0%,#e3f3ed 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8ad0b8', endColorstr='#e3f3ed',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    border: 3px #000 solid;
+    border-radius: 25px;
+    width: 50%;
+    height: 75%;
+    vertical-align: middle;
 }

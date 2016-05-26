@@ -767,6 +767,8 @@ class XMLForm extends React.Component
 
                 // Close modal window with the upload form when the service call has finished
                 $("#myModal").modal("toggle");
+                
+                showOtherSection();
 
                 var originalData = [];
                 originalData.push({text: 'Main Information', href: "javascript:goToByScroll('#patientDetails');", icon: 'glyphicon glyphicon-signal'});

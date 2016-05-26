@@ -18,6 +18,8 @@ $(function() {
         if (height > topOffset) {
             $("#page-wrapper").css("min-height", (height) + "px");
         }
+
+
     });
 
     var url = window.location;
@@ -60,4 +62,12 @@ function goToByScroll(id)
             });
         });
     });
+}
+
+function showOtherSection() {
+    console.log("Hiding");
+    // Hide the initial Panel and show the one with data.
+    $('i_container').slideToggle();
+    console.log("Showing");
+    $('container').show();
 }

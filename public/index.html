@@ -27,60 +27,100 @@
 
 <body>
     <div id="wrapper">
-    <section id="container">
-    	<div id="alerts" class="alerts-container"></div>
-        <!-- Navigation -->
-        <nav class="navbar navbar-heading navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">HL7 Renderer [TeschGlobal]</a>
-            </div>
-            <!-- /.navbar-header -->
+		<!-- MODAL UPLOAD-->
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog" id="modal-container">
+			</div>
+		</div>
+		<section id="i_container">
+			<div id="i-main" class="full" >
+			<div class="mint-header-clear" id="i-header">
+				<h1>Medical Report</h1>
+			</div>
+			<div class="mint-main" id="i-contents">
+				<div class="col-lg-4 col-md-4 col-sm-4 goright">
+					<h1>Hello!</h1>
+					<p>
+						Get started Here:
+					</p>
+				</div>
+				<div class="col-lg-8 col-md-8 col-sm-8">
+					<div class="boxed">
+			            <a data-toggle="modal" data-target="#myModal" data-tooltip="tooltip" title="Load XML" data-placement="bottom">
+							<i class="fa fa-file-code-o fa-fw" style="font-size: 25em; color: #000;"></i>
+							upload file
+						</a>
+					</div>
+			    </div>
+			</div>
+			<div class="initial-footer" id="i-footer">
+				<div class="col-lg-6 col-md-6 col-sm-6">
+					<p><b>Step 1:</b> Identify the XML file to load.
+					</p>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6">
+					<p>
+						<b>Step 2:</b> Drag & drop the file, or just click the Upload icon.
+					</p>
+				</div>
+			</div>
+			</div>
+		</section>
+		<section id="container" style="display:none;">
+			<div id="alerts" class="alerts-container"></div>
+			<!-- Navigation -->
+			<nav class="navbar navbar-heading navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+			<div class="navbar-header">
+			    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			    </button>
+			    <a class="navbar-brand" href="index.html">HL7 Renderer [TeschGlobal]</a>
+			</div>
+			<!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a data-toggle="modal" data-target="#myModal" data-tooltip="tooltip" title="Load XML" data-placement="bottom">
+			<ul class="nav navbar-top-links navbar-right">
+			    <li class="dropdown">
+			        <a data-toggle="modal" data-target="#myModal" data-tooltip="tooltip" title="Load XML" data-placement="bottom">
 						<i class="fa fa-file-code-o fa-fw fa-2x"></i>
 					</a>
 
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
+			    </li>
+			    <!-- /.dropdown -->
+			</ul>
+			<!-- /.navbar-top-links -->
 
-            <div class="navbar-default sidebar" role="navigation">
-                <div id="main_menu" class="sidebar-nav navbar-collapse">
-                    <script src="/main.js"></script>
-                </div>
-                <div id="tree_menu" class="sidebar-nav navbar-collapse">
+			<div class="navbar-default sidebar" role="navigation">
+			    <div id="main_menu" class="sidebar-nav navbar-collapse">
+			        <script src="/main.js"></script>
+			    </div>
+			    <div id="tree_menu" class="sidebar-nav navbar-collapse">
 
-                </div>
+			    </div>
 
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
-            <!--<script type="text/babel" src="scripts/TreeView.js"></script> -->
-        </nav>
+			    <!-- /.sidebar-collapse -->
+			</div>
+			<!-- /.navbar-static-side -->
+			<!--<script type="text/babel" src="scripts/TreeView.js"></script> -->
+			</nav>
 
-        <div id="page-wrapper">
+			<div id="page-wrapper">
 			<div class="row">
 				<div id="patientDetails"></div>
 				<div id="allergies"></div>
 				<div id="medications"></div>
 			</div>
-            <div id="panels" class="row">
-            	<div class="jumbotron">
-            		<h1>HL7 Renderer</h1>
-            		<p>
-            			This is the description of the renderer TeschGlobal flavored.
-            		</p>
-            	</div>
-            	<div id="hl7Carousel" class="carousel slide" data-ride="carousel">
+			<div id="panels" class="row">
+				<div class="jumbotron">
+					<h1>HL7 Renderer</h1>
+					<p>
+						This is the description of the renderer TeschGlobal flavored.
+					</p>
+				</div>
+				<div id="hl7Carousel" class="carousel slide" data-ride="carousel">
 				  <!-- Indicators -->
 				  <ol class="carousel-indicators">
 				    <li data-target="#hl7Carousel" data-slide-to="0" class="active"></li>
@@ -126,18 +166,11 @@
 				    <span class="sr-only">Next</span>
 				  </a>
 				</div>
-            </div>
-
-            <!-- MODAL UPLOAD-->
-			<!-- Modal -->
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			  <div class="modal-dialog" id="modal-container">
-			  </div>
 			</div>
-        </div>
-        <!-- /#page-wrapper -->
 
-    </section>
+			</div>
+			<!-- /#page-wrapper -->
+		</section>
     </div>
     <!-- /#wrapper -->
 
