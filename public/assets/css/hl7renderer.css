@@ -451,3 +451,13 @@ table.dataTable thead .sorting:after {
 .carousel-inner .item img {
     margin: auto;
 }
+
+.mint-color
+{
+    color: rgb(141, 208, 182);
+}
+
+.icon-person {
+    float: left;
+    margin-right: 40px;
+}

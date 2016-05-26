@@ -235,28 +235,30 @@ class PatientDetails extends React.Component
     {
         var patientRole=this.props.patientRole;
         var patientMap = getPatientDetails(patientRole);
-        var iconGender = (patientMap.gender==="Female" || patientMap.gender==="F")?"assets/img/woman.png":"assets/img/man.jpg";
+        // var iconGender = (patientMap.gender==="Female" || patientMap.gender==="F")?"assets/img/woman.png":"assets/img/man.jpg";
+        console.log(JSON.stringify(patientMap));
         return(
             <div>
               <div className="col-lg-12 col-md-12 col-sm-12 mb">
                   <div className="patientDetails">
-                      <div className="white-header">
-                          <h1 className="centered">{patientMap.name}</h1>
-                      </div>
                       <div className="row data">
-                        <p>
-                            <span className="fa-stack fa-5x mint-header">
-                              <i className="fa fa-circle fa-stack-2x"></i>
+                            <span className="fa-stack fa-5x icon-person">
+                              <i className="fa fa-circle fa-stack-2x mint-color"></i>
                               <i className="fa fa-user fa-stack-1x fa-inverse"></i>
                             </span>
-                          <b>{patientMap.firstName}</b> is a {patientMap.age} year old <b>{patientMap.race}</b>&nbsp;
-                          <b>{patientMap.maritalStatus}</b> <b>{patientMap.gender}</b> who speaks <b>{patientMap.language}</b>.
-                        </p>
+                            <h1 className="go-left">{patientMap.name} (<span className="mint-color">{patientMap.age}</span>)</h1>
+                            <p className="patientData">
+                                <b className="mint-color">{patientMap.firstName}</b> is a&nbsp;
+                                <span className="mint-color">{patientMap.maritalStatus}</span>&nbsp; 
+                                <span className="mint-color">{patientMap.race}</span>&nbsp;
+                                <span className="mint-color">{patientMap.gender}</span>&nbsp;
+                                who is <span className="mint-color">{patientMap.religion}</span>&nbsp;
+                                and speaks <span className="mint-color">{patientMap.language}</span>.
+                            </p>
                         <dl>
-                            <li><dt><span className="fa fa-birthday-cake"></span> Day of Birth: </dt><dd>{patientMap.dob}</dd></li>
+                            <li><dt><span className="fa fa-birthday-cake"></span> DOB: </dt><dd>{patientMap.dob}</dd></li>
                             <li><dt><span className="fa fa-map-marker"></span> Address: </dt><dd>{patientMap.address}</dd></li>
-                            <li><dt><span className="fa fa-book"></span> Religion: </dt><dd>{patientMap.religion}</dd></li>
-                            <li><dt><span className="fa fa-phone"></span> Phone: </dt><dd>{patientMap.contact}</dd></li>
+                            <li><dt><span className="fa fa-phone"></span> Telephone: </dt><dd>{patientMap.contact}</dd></li>
                             <li><dt><span className="fa fa-user"></span> Guardian: </dt><dd>{patientMap.guardianName}</dd></li>
                         </dl>
                       </div>
@@ -1202,14 +1204,7 @@ function getPatientDetails(patientRole)
       var guardianEntity=guardian.guardianPerson ? guardian.guardianPerson : guardian.guardianOrganization;
       guardianName=buildName(guardianEntity.name);
   }
-  var fName = "";
-  if(Array.isArray(patientRole.patient.name.given))
-    {
-        for(var i=0; i<patientRole.patient.name.given; i++)
-            fName+=getNodeText(patientRole.patient.name.given[i])+" ";
-    }
-    else
-        fName=getNodeText(patientRole.patient.name.given);
+  var fName = buildFirstName(patientName);
   var patientMap = {
     "firstName":fName,
     "name":name,
@@ -1357,6 +1352,32 @@ function buildName(nameNode)
 
     if(nameNode.suffix)
         name+=", "+getNodeText(nameNode.suffix);
+
+    return name;
+}
+
+/* Get the first name of a person */
+function buildFirstName(nameNode)
+{
+    if(!nameNode)
+        return null;
+
+    var name="";
+
+    // use the first occurrence of name if more than one is found
+    if(Array.isArray(nameNode))
+        nameNode=nameNode[0];
+
+    if(nameNode.prefix)
+        name=getNodeText(nameNode.prefix)+" ";
+
+    if(Array.isArray(nameNode.given))
+    {
+        for(var i=0; i<nameNode.given.length; i++)
+            name+=getNodeText(nameNode.given[i])+" ";
+    }
+    else
+        name+=getNodeText(nameNode.given)+" ";
 
     return name;
 }

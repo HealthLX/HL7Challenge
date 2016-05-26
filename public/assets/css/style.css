@@ -44,7 +44,7 @@ a, a:hover, a:focus {
 
 /* Bootstrap Modifications */
 .modal-header {
-	background: #68dff0;
+	background: rgb(141, 208, 182);
 }
 
 .modal-title {
@@ -69,7 +69,10 @@ a, a:hover, a:focus {
 	text-decoration: none;
 }	
 
-
+.btn-primary {
+    background-color: #419044;
+    border-color: #1D4D3A;
+}
 
 /*Theme Backgrounds*/
 
@@ -2254,27 +2257,34 @@ label {
 
 
 .h1 centered {
-    text-align: center;
+    text-align: left;
+    color: #000000;
 }
 
 #patientDetails {
     overflow: hidden;
     list-style-type: none;
+    color: #000;
 }
 
 #patientDetails dl li {
     float: left;
-    width: 20%;
-    font-size: 12px;
+    width: 15%;
+    border-right: 1px solid #aaa;
+    margin-right: 10px;
 }
 
 #patientDetails dl li dt {
     font-variant: bold;
 }
 
-#patientDetails p {
-    padding-bottom: 20px;
+#patientDetails dl {
+    padding-bottom: 50px;
     border-bottom: 1px solid #cdcdcd;
+}
+
+#patientDetails .patientData {
+    font-size: 1.5em;
 }
 
 .panel-title a:hover {
