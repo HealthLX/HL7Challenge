@@ -246,15 +246,17 @@ class PatientDetails extends React.Component
         var iconGender = (patientMap.gender==="Female" || patientMap.gender==="F")?"assets/img/woman.png":"assets/img/man.jpg";
         return(
             <div>
-              <div className="col-lg-2 col-md-2 col-sm-2 mb"></div>
-              <div className="col-lg-8 col-md-8 col-sm-8 mb">
-                  <div className="weather-2 patientDetails">
-                      <div className="weather-2-header">
+              <div className="col-lg-12 col-md-12 col-sm-12 mb">
+                  <div className="patientDetails">
+                      <div className="white-header">
                           <h1 className="centered">{patientMap.name}</h1>
                       </div>
                       <div className="row data">
                         <p>
-                          <img src={iconGender} className="img-circle" width="80" />
+                            <span className="fa-stack fa-5x mint-header">
+                              <i className="fa fa-circle fa-stack-2x"></i>
+                              <i className="fa fa-user fa-stack-1x fa-inverse"></i>
+                            </span>
                           <b>{patientMap.firstName}</b> is a {patientMap.age} year old <b>{patientMap.race}</b>&nbsp;
                           <b>{patientMap.maritalStatus}</b> <b>{patientMap.gender}</b> who speaks <b>{patientMap.language}</b>.
                         </p>
