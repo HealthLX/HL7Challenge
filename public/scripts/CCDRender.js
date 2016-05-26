@@ -542,6 +542,19 @@ var CollapsiblePanel=React.createClass(
         e.preventDefault();
     },
 
+    // update finished
+    componentDidMount(prevProps, prevState)
+    {
+        var titleRef=this.props.id;
+        $("#accordion"+titleRef).on('shown.bs.collapse', function () {
+            $("#panels").masonry("reloadItems").masonry();
+        })
+
+        $("#accordion"+titleRef).on('hidden.bs.collapse', function () {
+            $("#panels").masonry("reloadItems").masonry();
+        })
+    },
+
     render()
     {
         if(!this.props.data)
@@ -550,6 +563,8 @@ var CollapsiblePanel=React.createClass(
         var tables=[];
         var collapsePanelHeading = [];
         var titlePanel = this.props.title;
+        var accordion = "accordion"+this.props.id;
+
         for(var tableNum=0; tableNum<this.props.data.length; tableNum++)
         {
             var table=this.props.data[tableNum];
@@ -599,11 +614,12 @@ var CollapsiblePanel=React.createClass(
                 var indexRef = "#"+finalStr+index;
                 var indexRefNo = finalStr+index;
 
+
                 return(
                       <span key={index}>
                       <div className="panel-heading mint-header-no-margin">
                         <h4 className="panel-title">
-                          <a href={indexRef} data-parent="accordion" data-toggle="collapse">{collapsePanelHeading[index]}
+                          <a href={indexRef} data-parent={accordion} data-toggle="collapse" >{collapsePanelHeading[index]}
                           </a>
                         </h4>
                       </div>
@@ -613,7 +629,7 @@ var CollapsiblePanel=React.createClass(
                       </div>
                       </span>
                 );
-            }));
+            }, this));
 
             tables.push(
                 <div key={tableNum} className="panel-default">
@@ -638,7 +654,7 @@ var CollapsiblePanel=React.createClass(
                   </div>
                   <span className={"pn-bg fa "+this.props.iconClass+" fa-5x"}></span>
                   <div className="panel-body">
-                    <div id="accordion" className="panel-group">
+                    <div id={accordion} className="panel-group" onExited={this.handleClick}>
                       {tables}
                     </div>
                   </div>
