@@ -84,7 +84,6 @@ var PanelBox=React.createClass(
     // first time load finished
     componentDidMount: function()
     {
-        console.log("componentDidMount");
         // Use masonry for the layout of the panels
         $("#panels").masonry({itemSelector: ".grid-item"});
     },
@@ -92,7 +91,6 @@ var PanelBox=React.createClass(
     // update finished
     componentDidUpdate: function(prevProps, prevState)
     {
-        console.log("componentDidUpdate");
         // Mark all panels as visible in case some were hidden previously
         $(".section-panel").addClass("grid-item").show(0);
         $("#panels").masonry("reloadItems").masonry();
@@ -707,6 +705,7 @@ class XMLForm extends React.Component
             // JSON data received from the service
             success: function(data)
             {
+                debugvar=data;
                 // Extract needed parts of the document to process them
                 var components = data.ClinicalDocument.component.structuredBody.component;
                 var title = data.ClinicalDocument.title;
@@ -726,7 +725,7 @@ class XMLForm extends React.Component
                     let otherText=[];
                     //console.log("displaying section: "+sectionTitle);
 
-                    // if(section.code.code == "30954-2")
+                    // if(section.code["@code"] == "30954-2")
                     // {
                         // if the section only contains a string
                         if(typeof sectionText == "string")
@@ -755,11 +754,11 @@ class XMLForm extends React.Component
                     // }
 
                     /* Added by VV to get the sections, for build the menu. */
-                    var titleRef="javascript:goToByScroll('#panel-"+components[i].section.code.code+"-"+i+"');";
-                    titles.push({"text": sectionTitle, href: titleRef, "code": components[i].section.code.code});
+                    var titleRef="javascript:goToByScroll('#panel-"+components[i].section.code["@code"]+"-"+i+"');";
+                    titles.push({"text": sectionTitle, href: titleRef, "code": components[i].section.code["@code"]});
                     /* * */
 
-                    allComponents.push({"type": section.code.code, "title": sectionTitle, "data": tableData, "otherText": otherText});
+                    allComponents.push({"type": section.code["@code"], "title": sectionTitle, "data": tableData, "otherText": otherText});
                 }
 
                 // Close modal window with the upload form when the service call has finished
@@ -871,7 +870,7 @@ var TreeView = React.createClass(
       var _this = this;
       var nodeIdKey = "IntTreeNode";
       this.treeData.forEach(function (node) {
-        children.push(React.createElement(TreeNode, {node: node, key: nodeIdKey+""+node.nodeId, 
+        children.push(React.createElement(TreeNode, {node: node, key: nodeIdKey+""+node.nodeId,
                                 level: 1,
                                 visible: true,
                                 options: _this.props}));
@@ -1010,7 +1009,7 @@ var TreeNode = React.createClass({
       var _this = this;
       var nodeIdKey = "TreeNode";
       node.nodes.forEach(function (node) {
-        children.push(React.createElement(TreeNode, {node: node, key: nodeIdKey+""+node.nodeId, 
+        children.push(React.createElement(TreeNode, {node: node, key: nodeIdKey+""+node.nodeId,
                                 level: _this.props.level+1,
                                 visible: _this.state.expanded && _this.props.visible,
                                 options: options}));
@@ -1019,7 +1018,7 @@ var TreeNode = React.createClass({
 
     var keyLI = "li"+node.nodeId;
     return (
-      React.createElement("li", {key: {keyLI}, className: "list-group-item",  
+      React.createElement("li", {key: {keyLI}, className: "list-group-item",
           style: style,
           onClick: this.toggleSelected.bind(this, node.nodeId)
           },
@@ -1028,7 +1027,7 @@ var TreeNode = React.createClass({
         nodeIcon,
         nodeText,
         badges,
-        children
+        <ul>children</ul>
       )
     );
   }
@@ -1062,7 +1061,7 @@ function getTextObject(nodeElement, tableData, hasTh)
         iterate(nodeElement, txtArr);
         jsonArr.push(buildTableCellObject(nodeElement, txtArr, hasTh));
         // check for colspan/rowspan
-        if(nodeElement.rowspan || nodeElement.colspan)
+        if(nodeElement["@rowspan"] || nodeElement["@colspan"])
             tableData.hasSpans=true;
     }
 
@@ -1105,10 +1104,10 @@ function getGender(patientObj) {
   //console.log("for Gender:" +  JSON.stringify(patientObj));
   if (patientObj.administrativeGenderCode) {
     //if (searchString("displayName", patientObj.administrativeGenderCode)) {
-    if (patientObj.administrativeGenderCode.displayName) {
-      gender = patientObj.administrativeGenderCode.displayName;
-    } else if (patientObj.administrativeGenderCode.code) {
-      gender = patientObj.administrativeGenderCode.code=="F"?"Female":"Male";
+    if (patientObj.administrativeGenderCode["@displayName"]) {
+        gender = patientObj.administrativeGenderCode["@displayName;"]
+    } else if (patientObj.administrativeGenderCode["@code"]) {
+        gender = patientObj.administrativeGenderCode["@code"]=="F"?"Female":"Male";
     } else gender = "UNKNOWN";
   }
   return gender;
@@ -1119,20 +1118,17 @@ function getRace(patientObj) {
   var race = "";
 
   if (patientObj.raceCode && !Array.isArray(patientObj.raceCode)) {
-    //if (searchString("displayName", patientObj.raceCode)) {
-    if (patientObj.raceCode.displayName) {
-      race = patientObj.raceCode.displayName;
+    if (patientObj.raceCode["@displayName"]) {
+        race = patientObj.raceCode["@displayName"];
     }
   } else if (patientObj.raceCode && patientObj.raceCode.length>1) {
     race = "Unkown race";
-    //if (searchString("displayName", patientObj.raceCode[0])) {
-    if (patientObj.raceCode[0].displayName) {
-        race = patientObj.raceCode[0].displayName;
+    if (patientObj.raceCode[0]["@displayName"]) {
+        race = patientObj.raceCode[0]["@displayName"];
     }
     for (var i=1; i<patientObj.raceCode.length;i++) {
-      //if (searchString("displayName", patientObj.raceCode[i])) {
-        if (patientObj.raceCode[i].displayName) {
-            race += " [" + patientObj.raceCode[i].displayName + "]";
+        if (patientObj.raceCode[i]["@displayName"]) {
+            race += " [" + patientObj.raceCode[i]["@displayName"] + "]";
       }
     }
   }
@@ -1143,8 +1139,8 @@ function getRace(patientObj) {
 function getReligion(patientObj) {
   var religion;
   if (patientObj.religiousAffiliationCode) {
-    if (searchString("displayName", patientObj.religiousAffiliationCode)) {
-      religion = patientObj.religiousAffiliationCode.displayName;
+    if (searchString("@displayName", patientObj.religiousAffiliationCode)) {
+        religion = patientObj.religiousAffiliationCode["@displayName"];
     } else religion = "";
   }
   return religion;
@@ -1154,10 +1150,10 @@ function getReligion(patientObj) {
 function getMaritalStatus(patientObj) {
   var mStatus;
   if (patientObj.maritalStatusCode) {
-    if (searchString("displayName", patientObj.maritalStatusCode)) {
-      mStatus = patientObj.maritalStatusCode.displayName;
-    } else if (patientObj.maritalStatusCode.code) {
-      mStatus = patientObj.maritalStatusCode.code;
+    if (searchString("@displayName", patientObj.maritalStatusCode)) {
+        mStatus = patientObj.maritalStatusCode["@displayName;"]
+    } else if (patientObj.maritalStatusCode["@code"]) {
+        mStatus = patientObj.maritalStatusCode["@code"];
     } else mStatus = "";
   }
   return mStatus;
@@ -1167,7 +1163,7 @@ function getMaritalStatus(patientObj) {
 function getLanguage(patientObj) {
   var language, languageCode;
   if (patientObj.languageCommunication && patientObj.languageCommunication.languageCode) {
-    languageCode = patientObj.languageCommunication.languageCode.code;
+    languageCode = patientObj.languageCommunication.languageCode["@code"];
   } else return "?";
 
   language = languageCode.length==2?languages639_1.filter(function(obj) { return obj.code.toLowerCase() === languageCode.toLowerCase() }):languages639_2.filter(function(obj) { return obj.code.toLowerCase() === languageCode.toLowerCase() });
@@ -1181,7 +1177,7 @@ function getPatientDetails(patientRole)
   //console.log("getPatientDetails: " + JSON.stringify(patientRole));
   var patientName=patientRole.patient.name;
   var name=buildName(patientName);
-  var dob=moment(patientRole.patient.birthTime.value).format("LL");
+  var dob=moment(patientRole.patient.birthTime["@value"]).format("LL");
   var guardian=patientRole.patient.guardian;
   var address=buildAddress(patientRole.addr);
   var contact=buildTelecom(patientRole.telecom);
@@ -1198,7 +1194,7 @@ function getPatientDetails(patientRole)
   var religion = getReligion(patientRole.patient);
   var race = getRace(patientRole.patient);
   var mStatus = getMaritalStatus(patientRole.patient);
-  var age = Math.floor(moment(new Date()).diff(patientRole.patient.birthTime.value,'years',true));
+  var age = Math.floor(moment(new Date()).diff(patientRole.patient.birthTime["@value"],'years',true));
   var language = getLanguage(patientRole.patient);
   if(guardian) {
       var guardianEntity=guardian.guardianPerson ? guardian.guardianPerson : guardian.guardianOrganization;
@@ -1241,8 +1237,8 @@ function buildTableCellObject(dataNode, txtObject, hasTh)
     return (
     {
         text: (txtObject == null ? getNodeText(dataNode) : txtObject),
-        colspan: (dataNode.colspan == undefined ? null : dataNode.colspan),
-        rowspan: (dataNode.rowspan == undefined ? null : dataNode.rowspan),
+        colspan: (dataNode["@colspan"] == undefined ? null : dataNode["@colspan"]),
+        rowspan: (dataNode["@rowspan"] == undefined ? null : dataNode["@rowspan"]),
         isTh: hasTh
     });
 }
@@ -1279,7 +1275,7 @@ function getNodeTableData(tableNode)
             {
                 tableData.headers[tableData.headers.length-1].push(buildTableCellObject(tableNode.thead.tr[j].th[i], null, true));
                 // check for colspan/rowspan
-                if(tableNode.thead.tr[j].th[i].rowspan || tableNode.thead.tr[j].th[i].colspan)
+                if(tableNode.thead.tr[j].th[i]["@rowspan"] || tableNode.thead.tr[j].th[i]["@colspan"])
                     tableData.hasSpans=true;
             }
         }
@@ -1416,13 +1412,13 @@ function buildTelecom(telecomNode)
         }
         for(var i=0; i<telecomNode.length; i++)
         {
-            var value=telecomNode[i].value;
+            var value=telecomNode[i]["@value"];
             contact.push({value});
         }
         return contact;
     }
 
-    return telecomNode.value;
+    return telecomNode["@value"];
 }
 
 //Alerts function

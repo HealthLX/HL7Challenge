@@ -1,3 +1,8 @@
 *~
 .DS_Store
 app.sublime-workspace
+
+RESTService/Runtime_ESBSE/container/log/*
+RESTService/Runtime_ESBSE/container/data/tmp/*
+RESTService/Runtime_ESBSE/container/data/cache/*
+
