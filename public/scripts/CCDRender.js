@@ -515,9 +515,9 @@ var GenericPanel=React.createClass(
                 <div className="mint-panel pn">
                     <div className="mint-header">
                         <h4>
-                            <a href="#" className="pull-right" onClick={this.onClick}>
+                            <button className="close" onClick={this.onClick}>
                                 <i className="fa fa-trash-o fa-lg"></i>
-                            </a>
+                            </button>
                             {this.props.title}
                         </h4>
                     </div>
