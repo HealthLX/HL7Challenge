@@ -237,6 +237,8 @@ class PatientDetails extends React.Component
         // /
         if (patientMap.religion==undefined || patientMap.religion==="")
             patientMap.religion="[no religion defined]";
+        if (patientMap.language==undefined || patientMap.language==="" || patientMap.language==="?")
+            patientMap.language="[no language defined]";
         return(
             <div>
               <div className="col-lg-12 col-md-12 col-sm-12 mb">
@@ -661,16 +663,14 @@ var CollapsiblePanel=React.createClass(
         return(
             <div id={titleRef} className="grid-item section-panel col-lg-3 col-md-4 col-sm-12 mb" style={{display: this.state.display}}>
                 <div className="mint-panel pn">
-                  <div className="mint-header">
-                    <div className="row">
-                        <div className="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                            <h4>{this.props.title}</h4>
-                        </div>
-                        <div className="col-sm-2 col-xs-2 goright">
-                            <a href="#" onClick={this.onClick}><i className="fa fa-trash-o fa-2x"></i></a>
-                        </div>
+                    <div className="mint-header">
+                        <h4>
+                            <button className="close" onClick={this.onClick}>
+                                <i className="fa fa-trash-o fa-lg"></i>
+                            </button>
+                            {this.props.title}
+                        </h4>
                     </div>
-                  </div>
                   <span className={"pn-bg fa "+this.props.iconClass+" fa-5x"}></span>
                   <div className="panel-body">
                     <div id={accordion} className="panel-group" onExited={this.handleClick}>
