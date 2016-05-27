@@ -1183,9 +1183,12 @@ var FilterBox=React.createClass(
         });
 
         return (
-            <select onChange={this.handleChange}>
-                {choices}
-            </select>
+            <div className="form-group">
+                <label className="">Apply Filter</label>
+                <select onChange={this.handleChange} className="form-control">
+                    {choices}
+                </select>
+            </div>
         );
     }
 });
