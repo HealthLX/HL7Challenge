@@ -893,16 +893,6 @@ var TreeView = React.createClass(
       _this.setNodeId(node);
     });
   },
-componentWillMount: function()
-  {
-      var component=this;
-      
-      globalVar.callbackTreeView=function(filterName)
-      {
-        component.setState({filter: filters[filterName]});
-        globalVar.callbackTreeNode(filterName);
-      };
-  },
   render: function() {
     this.treeData = this.props.treeData;
     this.setNodeId({ nodes: this.treeData });
@@ -1059,21 +1049,27 @@ var TreeNode = React.createClass({
 
     var children = [];
     // console.log("Rendering: " + JSON.stringify(node));
+    console.log(this.state.filter);
     if (node.nodes) {
       var _this = this;
       var filter=this.state.filter;
       var nodeIdKey = "TreeNode";
-      
+
+      console.log(this.state.filter);
+
       node.nodes.forEach(function (node) {
-        console.log(filter);
         // if there's a filter set, check ignore the sections that aren't part of it
-        if (filter && node.code) console.log("Node : " + JSON.stringify(node.code));
-        if (!(filter && $.inArray(node.code, filter.sections)==-1)) {
-            children.push(React.createElement(TreeNode, {node: node, key: nodeIdKey+""+node.nodeId,
-                                    level: _this.props.level+1,
-                                    visible: _this.state.expanded && _this.props.visible,
-                                    options: options}));
-        }
+        if (filter && node.code)
+            console.log("Node : " + JSON.stringify(node.code));
+        if (!(filter && $.inArray(node.code, filter.sections)==-1))
+            children.push(React.createElement(TreeNode,
+            {
+                node: node,
+                key: nodeIdKey+""+node.nodeId,
+                level: _this.props.level+1,
+                visible: _this.state.expanded && _this.props.visible,
+                options: options
+            }));
       });
     }
 
@@ -1100,7 +1096,7 @@ var FilterBox=React.createClass(
     handleChange: function(event)
     {
         globalVar.callbackPanelBox(event.target.value);
-        globalVar.callbackTreeView(event.target.value);
+        globalVar.callbackTreeNode(event.target.value);
     },
 
     render: function()
