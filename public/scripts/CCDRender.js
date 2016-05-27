@@ -303,8 +303,6 @@ var GenericPanel=React.createClass(
             var rows=table.rows;
             var headers=table.headers;
 
-            debug2=rows;
-
             //handle tables with spans differently
             if(table.hasSpans || table.caption != null)
             {
@@ -433,7 +431,6 @@ var GenericPanel=React.createClass(
                         let text = rows[0][r][i][0];
                         var listText = [];
 
-                        debug2=text;
                         //Less rows than headers *CHECK*
                         if(text)
                         {
@@ -742,8 +739,8 @@ class XMLForm extends React.Component
                     let otherText=[];
                     console.log("displaying section: "+sectionTitle);
 
-                if(section.code["@code"] == "11369-6")
-                {
+                // if(section.code["@code"] == "11369-6")
+                // {
                         // if the section only contains a string
                         if(typeof sectionText == "string")
                             otherText.push({"key": "string", "text": sectionText});
@@ -768,7 +765,7 @@ class XMLForm extends React.Component
                                         iterate(sectionText[item], otherText);
                                 }
                             }
-                    }
+                    // }
 
                     /* Added by VV to get the sections, for build the menu. */
                     var titleRef="javascript:goToByScroll('#panel-"+components[i].section.code["@code"]+"-"+i+"');";
