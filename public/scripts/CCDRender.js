@@ -358,6 +358,8 @@ var GenericPanel=React.createClass(
 
                 for(var b=0; b<rows.length; b++)
                 {
+                    tblBodyTr = [];
+
                     for(var r=0; r<rows[b].length; r++)
                     {
                         elements = [];
@@ -427,13 +429,11 @@ var GenericPanel=React.createClass(
             {
                 for(var r=0; r<rows[0].length; r++)
                 {
-                    console.log("1");
                     if(!elements[r])
                         elements[r]=[];
 
                     for(var i=0; i<headers[0].length; i++)
                     {
-                        console.log("2");
                         let text = rows[0][r][i][0];
                         var listText = [];
 
@@ -741,10 +741,10 @@ class XMLForm extends React.Component
                     let tableData=[];
                     // other strings found inside a section
                     let otherText=[];
-                    console.log("displaying section: "+sectionTitle);
+                    // console.log("displaying section: "+sectionTitle);
 
-                // if(section.code["@code"] == "11369-6")
-                // {
+                    // if(section.code["@code"] == "47420-5")
+                    // {
                         // if the section only contains a string
                         if(typeof sectionText == "string")
                             otherText.push({"key": "string", "text": sectionText});
@@ -760,6 +760,27 @@ class XMLForm extends React.Component
                                         tables=[tables];
                                     for(var numTable=0; numTable<tables.length; numTable++)
                                         tableData.push(getNodeTableData(tables[numTable]));
+                                }
+                                else if(item=="list" && searchString("table", sectionText[item]))
+                                {
+                                    var tables=sectionText[item];
+                                    // if only one table is found make it an array to be able to use the loop in the next step
+                                    if(!Array.isArray(tables))
+                                        tables=[tables];
+
+                                    for(var numTable=0; numTable<tables.length; numTable++)
+                                    {
+                                        var items=tables[numTable].item;
+
+                                        if(!Array.isArray(items))
+                                            items=[items];
+
+                                        for(var numItem=0; numItem<items.length; numItem++)
+                                        {
+                                            tableData.push(getNodeTableData(items[numItem].table));
+                                            tableData.caption = items[numItem].caption;
+                                        }
+                                    }
                                 }
                                 else // print/save texts recursively
                                 {
@@ -1257,13 +1278,13 @@ function getPatientDetails(patientRole)
 // Check recursively if a node contains a string
 function searchString(str, obj) {
     for(var key in obj) {
-        if(key.toString() === str)
+        if(key.toString() == str){
             return true;
+        }
 
         var elem = obj[key];
-
         if(typeof elem === "object")
-            searchString(elem); // call recursively
+            return searchString(str, elem); // call recursively
     }
     return false;
 }
@@ -1285,7 +1306,7 @@ function getNodeTableData(tableNode)
     if(!tableNode)
         return null;
 
-    var tableData={headers:[], rows:[[]], hasSpans:false, caption:null};
+    var tableData={headers:[], rows:[], hasSpans:false, caption:null};
 
     //Look for caption tag before the table tag
     if(searchString("caption", tableNode))
@@ -1294,128 +1315,137 @@ function getNodeTableData(tableNode)
     //Search for <td> inside <thead>
     var hasSameTd = false;
 
-    // Save table header cells contents to tableData
-    if(tableNode.thead)
+    try
     {
-        //When more than 1 header exist
-        if(!Array.isArray(tableNode.thead.tr))
-            tableNode.thead.tr = [tableNode.thead.tr];
+        // Save table header cells contents to tableData
+        if(tableNode.thead)
+        {
+            //When more than 1 header exist
+            if(!Array.isArray(tableNode.thead.tr))
+                tableNode.thead.tr = [tableNode.thead.tr];
+            else
+                tableData.hasSpans=true;
+
+
+            for(var j=0; j<tableNode.thead.tr.length; j++)
+            {
+                if(tableNode.thead.tr[j].td)
+                    if(tableNode.thead.tr[j].th.length == tableNode.thead.tr[j].td.length)
+                        hasSameTd = true;
+
+                tableData.headers.push(new Array());
+
+                if(!Array.isArray(tableNode.thead.tr[j].th))
+                    tableNode.thead.tr[j].th=[tableNode.thead.tr[j].th];
+
+                if(tableNode.thead.tr[j].td)
+                    if(!Array.isArray(tableNode.thead.tr[j].td))
+                        tableNode.thead.tr[j].td=[tableNode.thead.tr[j].td];
+
+                for(var i=0; i<tableNode.thead.tr[j].th.length; i++)
+                {
+                    tableData.headers[tableData.headers.length-1].push(buildTableCellObject(tableNode.thead.tr[j].th[i], null, true));
+
+                    if(hasSameTd)
+                        tableData.headers[tableData.headers.length-1].push(buildTableCellObject(tableNode.thead.tr[j].td[i], null, false));
+
+                    // check for colspan/rowspan
+                    if(tableNode.thead.tr[j].th[i]["@rowspan"] || tableNode.thead.tr[j].th[i]["@colspan"])
+                        tableData.hasSpans=true;
+                }
+
+                if(!hasSameTd && tableNode.thead.tr[j].td)
+                {
+                    for(var i=0; i<tableNode.thead.tr[j].td.length; i++)
+                    {
+                        tableData.headers[tableData.headers.length-1].push(buildTableCellObject(tableNode.thead.tr[j].td[i], null, false));
+
+                        // check for colspan/rowspan
+                        if(tableNode.thead.tr[j].td[i]["@rowspan"] || tableNode.thead.tr[j].td[i]["@colspan"])
+                            tableData.hasSpans=true;
+                    }
+                }
+
+                hasSameTd = false;
+            }
+        }
         else
             tableData.hasSpans=true;
 
+        hasSameTd = false;
 
-        for(var j=0; j<tableNode.thead.tr.length; j++)
+        //handle multiple tbodies
+        if(!Array.isArray(tableNode.tbody))
+           tableNode.tbody=[tableNode.tbody];
+
+        if(tableNode.tbody.length > 1)
+            tableData.hasSpans = true;
+
+
+        // Save table body cells contents to tableData
+        for(var b=0; b<tableNode.tbody.length; b++)
         {
-            if(tableNode.thead.tr[j].td)
-                if(tableNode.thead.tr[j].th.length == tableNode.thead.tr[j].td.length)
-                    hasSameTd = true;
+            debug2=tableNode;
 
-            tableData.headers.push(new Array());
+            // if table only has one row, make it an arraw to access it in the loop below
+            if(!Array.isArray(tableNode.tbody[b].tr))
+               tableNode.tbody[b].tr=[tableNode.tbody[b].tr];
 
-            if(!Array.isArray(tableNode.thead.tr[j].th))
-                tableNode.thead.tr[j].th=[tableNode.thead.tr[j].th];
+            tableData.rows.push([]);
 
-            if(tableNode.thead.tr[j].td)
-                if(!Array.isArray(tableNode.thead.tr[j].td))
-                    tableNode.thead.tr[j].td=[tableNode.thead.tr[j].td];
-
-            for(var i=0; i<tableNode.thead.tr[j].th.length; i++)
+            for(var r=0; r<tableNode.tbody[b].tr.length; r++)
             {
-                tableData.headers[tableData.headers.length-1].push(buildTableCellObject(tableNode.thead.tr[j].th[i], null, true));
+                tableData.rows[b].push([]);
 
-                if(hasSameTd)
-                    tableData.headers[tableData.headers.length-1].push(buildTableCellObject(tableNode.thead.tr[j].td[i], null, false));
-
-                // check for colspan/rowspan
-                if(tableNode.thead.tr[j].th[i]["@rowspan"] || tableNode.thead.tr[j].th[i]["@colspan"])
-                    tableData.hasSpans=true;
-            }
-
-            if(!hasSameTd && tableNode.thead.tr[j].td)
-            {
-                for(var i=0; i<tableNode.thead.tr[j].td.length; i++)
+                if(tableNode.tbody[b].tr[r].th || tableNode.tbody[b].tr[r].td)
                 {
-                    tableData.headers[tableData.headers.length-1].push(buildTableCellObject(tableNode.thead.tr[j].td[i], null, false));
-
-                    // check for colspan/rowspan
-                    if(tableNode.thead.tr[j].td[i]["@rowspan"] || tableNode.thead.tr[j].td[i]["@colspan"])
-                        tableData.hasSpans=true;
-                }
-            }
-
-            hasSameTd = false;
-        }
-    }
-    else
-        tableData.hasSpans=true;
-
-    hasSameTd = false;
-
-    //handle multiple tbodies
-    if(!Array.isArray(tableNode.tbody))
-       tableNode.tbody=[tableNode.tbody];
-
-    if(tableNode.tbody.length > 1)
-        tableData.hasSpans = true;
-
-
-    // Save table body cells contents to tableData
-    for(var b=0; b<tableNode.tbody.length; b++)
-    {
-        // if table only has one row, make it an arraw to access it in the loop below
-        if(!Array.isArray(tableNode.tbody[b].tr))
-           tableNode.tbody[b].tr=[tableNode.tbody[b].tr];
-
-        tableData.rows.push([]);
-
-        for(var r=0; r<tableNode.tbody[b].tr.length; r++)
-        {
-            tableData.rows[b].push([]);
-
-            if(tableNode.tbody[b].tr[r].th || tableNode.tbody[b].tr[r].td)
-            {
-                //if headers are found inside rows
-                if(tableNode.tbody[b].tr[r].th)
-                {
-                    if(tableNode.tbody[b].tr[r].td && tableNode.tbody[b].tr[r].th.length == tableNode.tbody[b].tr[r].td.length)
+                    //if headers are found inside rows
+                    if(tableNode.tbody[b].tr[r].th)
                     {
-                        hasSameTd = true;
-                        tableData.hasSpans=true;
-                    }
-                    else
-                    {
-                        var jsonArr = new Array();
-                        var jsonArr = getTextObject(tableNode.tbody[b].tr[r].th, tableData, true);
-                        tableData.rows[b][r].push(jsonArr);
-
-                        tableData.hasSpans=true;
-                    }
-                }
-
-                if(tableNode.tbody[b].tr[r].td)
-                {
-                    // if only one column is found, make it an array
-                    if(!Array.isArray(tableNode.tbody[b].tr[r].td))
-                        tableNode.tbody[b].tr[r].td=[tableNode.tbody[b].tr[r].td];
-
-                    for(var c=0; c<tableNode.tbody[b].tr[r].td.length; c++)
-                    {
-                        if(hasSameTd)
+                        if(tableNode.tbody[b].tr[r].td && tableNode.tbody[b].tr[r].th.length == tableNode.tbody[b].tr[r].td.length)
+                        {
+                            hasSameTd = true;
+                            tableData.hasSpans=true;
+                        }
+                        else
                         {
                             var jsonArr = new Array();
-                            jsonArr = getTextObject(tableNode.tbody[b].tr[r].th[c], tableData, true);
+                            var jsonArr = getTextObject(tableNode.tbody[b].tr[r].th, tableData, true);
+                            tableData.rows[b][r].push(jsonArr);
 
+                            tableData.hasSpans=true;
+                        }
+                    }
+
+                    if(tableNode.tbody[b].tr[r].td)
+                    {
+                        // if only one column is found, make it an array
+                        if(!Array.isArray(tableNode.tbody[b].tr[r].td))
+                            tableNode.tbody[b].tr[r].td=[tableNode.tbody[b].tr[r].td];
+
+                        for(var c=0; c<tableNode.tbody[b].tr[r].td.length; c++)
+                        {
+                            if(hasSameTd)
+                            {
+                                var jsonArr = new Array();
+                                jsonArr = getTextObject(tableNode.tbody[b].tr[r].th[c], tableData, true);
+
+                                tableData.rows[b][r].push(jsonArr);
+                            }
+
+                            var jsonArr = new Array();
+                            jsonArr = getTextObject(tableNode.tbody[b].tr[r].td[c], tableData, false);
                             tableData.rows[b][r].push(jsonArr);
                         }
-
-                        var jsonArr = new Array();
-                        jsonArr = getTextObject(tableNode.tbody[b].tr[r].td[c], tableData, false);
-                        tableData.rows[b][r].push(jsonArr);
                     }
                 }
+                hasSameTd = false;
             }
-            hasSameTd = false;
         }
+    }
+    catch(err){
+        console.log("Error leyendo "+err);
+        showAlert("danger", "Error leyendo el archivo");
     }
 
     return tableData;
