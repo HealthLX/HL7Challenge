@@ -22,7 +22,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
 <!-- Charts used in sample panels -->
 <script src="assets/js/chart-master/Chart.js"></script>
-<script type="text/babel" src="scripts/CCDRender.js"></script>
 </head>
 
 <body>
@@ -65,7 +64,7 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6">
 					<p>
-						<b>Step 2:</b> Drag & drop the file, or just click the Upload icon.
+						<b>Step 2:</b> Drag &amp; drop the file, or just click the Upload icon.
 					</p>
 				</div>
 			</div>
@@ -76,6 +75,7 @@
 				    <div id="main_menu" class="sidebar-nav navbar-collapse" style="display: none;">
 				        <script src="/main.js"></script>
 				    </div>
+                    <div id="filter-container" class="sidebar-nav navbar-collapse"></div>
 				    <div id="tree_menu" class="sidebar-nav navbar-collapse">
 
 				    </div>
@@ -105,7 +105,7 @@
 				</ul>
 				<!-- /.navbar-top-links -->
 
-				
+
 				<!-- /.navbar-static-side -->
 			</nav>
 
@@ -114,8 +114,7 @@
 					<div id="patientDetails"></div>
 					<div id="healthstatus"></div>
 				</div>
-				<div id="panels" class="row">
-				</div>
+				<div id="panels" class="row"></div>
 			</div>
 			<!-- /#page-wrapper -->
 		</section>
@@ -138,5 +137,7 @@
 	        $('[data-tooltip="tooltip"]').tooltip();
 	    });
     </script>
+    <script src="scripts/filterGroups.js"></script>
+    <script type="text/babel" src="scripts/CCDRender.js"></script>
 </body>
 </html>

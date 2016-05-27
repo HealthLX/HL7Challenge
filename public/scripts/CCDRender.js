@@ -1,3 +1,4 @@
+var globalVar={};
 var languages639_1= [
 {'code':'ab','value':'Abkhaz'}, {'code':'aa','value':'Afar'}, {'code':'af','value':'Afrikaans'}, {'code':'ak','value':'Akan'}, {'code':'sq','value':'Albanian'},
 {'code':'am','value':'Amharic'}, {'code':'ar','value':'Arabic'}, {'code':'an','value':'Aragonese'}, {'code':'hy','value':'Armenian'}, {'code':'as','value':'Assamese'},
@@ -81,6 +82,24 @@ var menuData =  [
 /* Container of panels */
 var PanelBox=React.createClass(
 {
+    getInitialState: function()
+    {
+        return {
+            filter: null
+        };
+    },
+
+    componentWillMount: function()
+    {
+        var component=this;
+        globalVar.callback=function(filterName)
+        {
+            console.log("name received "+filterName);
+            component.setState({filter: filters[filterName]});
+            debugvar=component;
+        };
+    },
+
     // first time load finished
     componentDidMount: function()
     {
@@ -98,8 +117,14 @@ var PanelBox=React.createClass(
 
     render: function()
     {
+        var filter=this.state.filter;
+
         var nodes = this.props.data.map(function(component, index)
         {
+          // if there's a filter set, check ignore the sections that aren't part of it
+          if(filter && $.inArray(component.type, filter.sections)==-1)
+            return null;
+
           var panel;
           // font awesome default icon class for panel
           var iconClass="fa-heart-o";
@@ -206,12 +231,12 @@ var PanelBox=React.createClass(
                         hasSpans = true;
 
                 if(component.data.length == 1 && component.data[0].rows[0].length >= 5 && !hasSpans)
-                    panel = (<CollapsiblePanel key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} iconClass={iconClass}/>);
+                    panel = (<CollapsiblePanel key={index} id={component.id} title={component.title} data={component.data} iconClass={iconClass}/>);
                 else
-                    panel = (<GenericPanel key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                    panel = (<GenericPanel key={index} id={component.id} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
             }
             else
-                panel = (<GenericPanel key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                panel = (<GenericPanel key={index} id={component.id} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
 
             return(panel);
         });
@@ -274,17 +299,17 @@ class PatientDetails extends React.Component
 /* Panel containing the Health Status of the patient */
 class HealthStatusPanel extends React.Component
 {
-    
+
     render()
     {
-        
+
         return(
             <div className="col-lg-12 col-md-12 col-sm-12 mb" style={{display: 'none'}}>
                 <div className="mint-panel pn">
                     <div className="mint-header">
                         <h3 className="panel-title">Health Status</h3>
                         <canvas id="myCanvas" width="400" height="400">
-                           
+
                         </canvas>
                     </div>
                     <div class="panel-body">
@@ -739,7 +764,6 @@ class XMLForm extends React.Component
     {
         event.preventDefault();
         // this.setState({ type: 'info', message: 'Sending...' }, this.sendFormData);
-
         // Calls web service that receives the XML file and returns it converted to JSON
         $.ajax(
         {
@@ -753,20 +777,21 @@ class XMLForm extends React.Component
                 var components = data.ClinicalDocument.component.structuredBody.component;
                 var title = data.ClinicalDocument.title;
                 var patientRole=data.ClinicalDocument.recordTarget.patientRole;
-                var allComponents = new Array();
+                var allComponents=new Array();
                 var titles=[];
 
                 // components contains the sections to display as panels
                 for(let i=0; i<components.length; i++)
                 {
                     let section=components[i].section;
+                    let sectionCode=section.code["@code"];
                     let sectionTitle=section.title;
                     let sectionText=section.text;
+                    let panelId="panel-"+sectionCode+"-"+i;
                     // tables found inside a section
                     let tableData=[];
                     // other strings found inside a section
                     let otherText=[];
-                    // console.log("displaying section: "+sectionTitle);
 
                     // if(section.code["@code"] == "47420-5")
                     // {
@@ -818,11 +843,11 @@ class XMLForm extends React.Component
                     // }
 
                     /* Added by VV to get the sections, for build the menu. */
-                    var titleRef="javascript:goToByScroll('#panel-"+components[i].section.code["@code"]+"-"+i+"');";
-                    titles.push({"text": sectionTitle, href: titleRef, "code": components[i].section.code["@code"]});
+                    var titleRef="javascript:goToByScroll('#"+panelId+"');";
+                    titles.push({"text": sectionTitle, href: titleRef, "code": sectionCode});
                     /* * */
 
-                    allComponents.push({"type": section.code["@code"], "title": sectionTitle, "data": tableData, "otherText": otherText});
+                    allComponents.push({"type": sectionCode, id: panelId, "title": sectionTitle, "data": tableData, "otherText": otherText});
                 }
 
                 // Close modal window with the upload form when the service call has finished
@@ -1100,6 +1125,37 @@ var TreeNode = React.createClass({
   }
 });
 
+/* Filters drop down */
+var FilterBox=React.createClass(
+{
+    handleChange: function(event)
+    {
+        console.log("filter changed to "+event.target.value);
+        globalVar.callback(event.target.value);
+    },
+
+    render: function()
+    {
+        var names=[""];
+
+        for(var filterName in filters)
+            names.push(filterName);
+
+        var choices=names.map(function(name, index)
+        {
+            return(
+                <option id="filter" value={name} key={index}>{name}</option>
+            );
+        });
+
+        return (
+            <select onChange={this.handleChange}>
+                {choices}
+            </select>
+        );
+    }
+});
+
 /*** Utility functions ***/
 
 /* Extract just the text inside a node when there might be additional attributes
@@ -1238,14 +1294,14 @@ function getLanguage(patientObj) {
         language = "";
         patientObj.languageCommunication.forEach(function(lang) {
             languageCode = lang.languageCode["@code"];
-            
+
             languages = languageCode.length==2?languages639_1.filter(function(obj) { return obj.code.toLowerCase() === languageCode.toLowerCase() }):languages639_2.filter(function(obj) { return obj.code.toLowerCase() === languageCode.toLowerCase() });
             language += languages.length>0?languages[0].value:"";
             language += " and ";
         });
         language = language.substring(0, language.length-5);
         return language;
-    } else 
+    } else
         languageCode = patientObj.languageCommunication.languageCode["@code"];
   } else return "?";
 
@@ -1596,3 +1652,4 @@ function buildTelecom(telecomNode)
 
 ReactDOM.render(<XMLForm/>, document.getElementById("modal-container"));
 ReactDOM.render(<TreeView treeData={menuData}/>, document.getElementById("tree_menu"));
+ReactDOM.render(<FilterBox/>, document.getElementById("filter-container"));
