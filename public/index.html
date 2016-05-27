@@ -40,7 +40,7 @@
 					<h1>Medical Report</h1>
 				</div>
 				<div class="mint-main" id="i-contents">
-					<div class="row">
+					<div class="row all-page">
 						<div class="col-lg-4 col-md-4 col-sm-4 goright middle">
 							<h1>Hello!</h1>
 							<p>
@@ -72,102 +72,100 @@
 		</section>
 		<section id="container" style="display:none;">
 			<!-- Navigation -->
-			<nav class="navbar navbar-heading navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-			<div class="navbar-header">
-			    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-			        <span class="sr-only">Toggle navigation</span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			    </button>
-			    <a class="navbar-brand" href="index.html">HL7 Renderer [TeschGlobal]</a>
-			</div>
-			<!-- /.navbar-header -->
+			<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; background-color: rgb(141, 208, 182);">
+				<div class="navbar-header">
+				    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				    </button>
+				    <a class="navbar-brand" href="index.html">HL7 Renderer [TeschGlobal]</a>
+				</div>
+				<!-- /.navbar-header -->
 
-			<ul class="nav navbar-top-links navbar-right">
-			    <li class="dropdown">
-			        <a data-toggle="modal" data-target="#myModal" data-tooltip="tooltip" title="Load XML" data-placement="bottom">
-						<i class="fa fa-file-code-o fa-fw fa-2x"></i>
-					</a>
+				<ul class="nav navbar-top-links navbar-right">
+				    <li class="dropdown">
+				        <a data-toggle="modal" data-target="#myModal" data-tooltip="tooltip" title="Load XML" data-placement="bottom">
+							<i class="fa fa-file-code-o fa-fw fa-2x"></i>
+						</a>
 
-			    </li>
-			    <!-- /.dropdown -->
-			</ul>
-			<!-- /.navbar-top-links -->
+				    </li>
+				    <!-- /.dropdown -->
+				</ul>
+				<!-- /.navbar-top-links -->
 
-			<div class="navbar-default sidebar" role="navigation">
-			    <div id="main_menu" class="sidebar-nav navbar-collapse">
-			        <script src="/main.js"></script>
-			    </div>
-			    <div id="tree_menu" class="sidebar-nav navbar-collapse">
+				<div class="navbar-default sidebar" role="navigation">
+				    <div id="main_menu" class="sidebar-nav navbar-collapse">
+				        <script src="/main.js"></script>
+				    </div>
+				    <div id="tree_menu" class="sidebar-nav navbar-collapse">
 
-			    </div>
+				    </div>
 
-			    <!-- /.sidebar-collapse -->
-			</div>
-			<!-- /.navbar-static-side -->
-			<!--<script type="text/babel" src="scripts/TreeView.js"></script> -->
+				    <!-- /.sidebar-collapse -->
+				</div>
+				<!-- /.navbar-static-side -->
 			</nav>
 
 			<div id="page-wrapper">
-			<div class="row">
-				<div id="patientDetails"></div>
-			</div>
-			<div id="panels" class="row">
-				<div class="jumbotron">
-					<h1>HL7 Renderer</h1>
-					<p>
-						This is the description of the renderer TeschGlobal flavored.
-					</p>
+				<div class="row">
+					<div id="patientDetails"></div>
 				</div>
-				<div id="hl7Carousel" class="carousel slide" data-ride="carousel">
-				  <!-- Indicators -->
-				  <ol class="carousel-indicators">
-				    <li data-target="#hl7Carousel" data-slide-to="0" class="active"></li>
-				    <li data-target="#hl7Carousel" data-slide-to="1"></li>
-				    <li data-target="#hl7Carousel" data-slide-to="2"></li>
-				    <li data-target="#hl7Carousel" data-slide-to="3"></li>
-				  </ol>
+				<div id="panels" class="row">
+					<div class="jumbotron">
+						<h1>HL7 Renderer</h1>
+						<p>
+							This is the description of the renderer TeschGlobal flavored.
+						</p>
+					</div>
+					<div id="hl7Carousel" class="carousel slide" data-ride="carousel">
+					  <!-- Indicators -->
+					  <ol class="carousel-indicators">
+					    <li data-target="#hl7Carousel" data-slide-to="0" class="active"></li>
+					    <li data-target="#hl7Carousel" data-slide-to="1"></li>
+					    <li data-target="#hl7Carousel" data-slide-to="2"></li>
+					    <li data-target="#hl7Carousel" data-slide-to="3"></li>
+					  </ol>
 
-				  <!-- Wrapper for slides -->
-				  <div class="carousel-inner" role="listbox">
-				    <div class="item active">
-				      <img src="assets/img/health1.jpg" alt="HL7 renderer">
-				      <div class="carousel-caption">
-				        <h3>TeschGlobal</h3>
-				        <p>The trusting HealthLX company.</p>
-				      </div>
-				    </div>
+					  <!-- Wrapper for slides -->
+					  <div class="carousel-inner" role="listbox">
+					    <div class="item active">
+					      <img src="assets/img/health1.jpg" alt="HL7 renderer">
+					      <div class="carousel-caption">
+					        <h3>TeschGlobal</h3>
+					        <p>The trusting HealthLX company.</p>
+					      </div>
+					    </div>
 
-				    <div class="item">
-				      <img src="assets/img/health2.jpg" alt="HL7 renderer">
-				      <div class="carousel-caption">
-				        <h3>We have the experience</h3>
-				        <p>We have 10+ years experience.</p>
-				      </div>
-				    </div>
+					    <div class="item">
+					      <img src="assets/img/health2.jpg" alt="HL7 renderer">
+					      <div class="carousel-caption">
+					        <h3>We have the experience</h3>
+					        <p>We have 10+ years experience.</p>
+					      </div>
+					    </div>
 
-				    <div class="item">
-				      <img src="assets/img/health3.jpg" alt="HL7 renderer">
-				    </div>
+					    <div class="item">
+					      <img src="assets/img/health3.jpg" alt="HL7 renderer">
+					    </div>
 
-				    <div class="item">
-				      <img src="assets/img/health4.jpg" alt="HL7 renderer">
-				    </div>
-				  </div>
+					    <div class="item">
+					      <img src="assets/img/health4.jpg" alt="HL7 renderer">
+					    </div>
+					  </div>
 
-				  <!-- Left and right controls -->
-				  <a class="left carousel-control" href="#hl7Carousel" role="button" data-slide="prev">
-				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				    <span class="sr-only">Previous</span>
-				  </a>
-				  <a class="right carousel-control" href="#hl7Carousel" role="button" data-slide="next">
-				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				    <span class="sr-only">Next</span>
-				  </a>
+					  <!-- Left and right controls -->
+					  <a class="left carousel-control" href="#hl7Carousel" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					  </a>
+					  <a class="right carousel-control" href="#hl7Carousel" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					</div>
 				</div>
-			</div>
-
 			</div>
 			<!-- /#page-wrapper -->
 		</section>

@@ -883,7 +883,7 @@ var TreeView = React.createClass(
       });
     }
     return (
-      <div id="treeview" clasName="treeview">
+      <div id="treeviewList" className="treeview">
         <ul className="list-group" key="treeviewKey">
           { children }
         </ul>
@@ -952,12 +952,12 @@ var TreeNode = React.createClass({
         style.border = '1px solid ' + options.borderColor;
       }
     }
-
+/*
     var indents = [];
     for (var i = 0; i < this.props.level-1; i++) {
       indents.push(React.createElement("span", {key: "span"+i, className: "indent"}));
     }
-
+*/
     var expandCollapseIcon;
     if (node.nodes) {
       if (!this.state.expanded) {
@@ -1028,7 +1028,7 @@ var TreeNode = React.createClass({
           style: style,
           onClick: this.toggleSelected.bind(this, node.nodeId)
           },
-        indents,
+  //      indents,
         expandCollapseIcon,
         nodeIcon,
         nodeText,

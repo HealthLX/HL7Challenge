@@ -78,7 +78,7 @@ body {
 }
 
 .initial-footer {
-    position:absolute;
+    position:fixed;
     background-color: #f3f3f3;
     text-align: left;
     font-size: 2.5em;
@@ -519,4 +519,8 @@ table.dataTable thead .sorting:after {
 
 .middle {
     vertical-align: middle;
+}
+.all-page {
+    height: 100%;
+    overflow-y: hidden;
 }
