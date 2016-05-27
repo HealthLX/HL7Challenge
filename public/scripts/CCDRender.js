@@ -271,6 +271,31 @@ class PatientDetails extends React.Component
     }
 }
 
+/* Panel containing the Health Status of the patient */
+class HealthStatusPanel extends React.Component
+{
+    
+    render()
+    {
+        
+        return(
+            <div className="col-lg-12 col-md-12 col-sm-12 mb" style={{display: 'none'}}>
+                <div className="mint-panel pn">
+                    <div className="mint-header">
+                        <h3 className="panel-title">Health Status</h3>
+                        <canvas id="myCanvas" width="400" height="400">
+                           
+                        </canvas>
+                    </div>
+                    <div class="panel-body">
+                        Panel content
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
+
 /* Generic Panel to display information of a specific CCD section */
 var GenericPanel=React.createClass(
 {
@@ -807,13 +832,14 @@ class XMLForm extends React.Component
 
                 var originalData = [];
                 originalData.push({text: 'Main Information', href: "javascript:goToByScroll('#patientDetails');", icon: 'glyphicon glyphicon-signal'});
-                originalData.push({text: 'Health Status',href: "javascript:goToByScroll('#healthStatus');", icon: 'glyphicon glyphicon-scale'});
+                //originalData.push({text: 'Health Status',href: "javascript:goToByScroll('#healthStatus');", icon: 'glyphicon glyphicon-scale'});
                 originalData.push({text: 'CCDA Info',icon: 'glyphicon glyphicon-list-alt', nodes: titles});
 
                 // Render components
                 ReactDOM.render(<PanelBox data={allComponents}/>, document.getElementById("panels"));
-                ReactDOM.render(<PatientDetails patientRole={patientRole}/>, document.getElementById("patientDetails"));
                 ReactDOM.render(<TreeView treeData={originalData} enableLinks={true}/>, document.getElementById("tree_menu"));
+                ReactDOM.render(<PatientDetails patientRole={patientRole}/>, document.getElementById("patientDetails"));
+                ReactDOM.render(<HealthStatusPanel id="idMain" />, document.getElementById("healthstatus"));
             },
             // Web service call error
             error: function(err)
