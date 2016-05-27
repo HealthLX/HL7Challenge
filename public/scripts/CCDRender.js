@@ -205,7 +205,7 @@ var PanelBox=React.createClass(
                     if(component.data[i].hasSpans)
                         hasSpans = true;
 
-                if(component.data.length == 1 && component.data[0].rows.length >= 5 && !hasSpans)
+                if(component.data.length == 1 && component.data[0].rows[0].length >= 5 && !hasSpans)
                     panel = (<CollapsiblePanel key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} iconClass={iconClass}/>);
                 else
                     panel = (<GenericPanel key={index} id={"panel-"+component.type+"-"+index} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
@@ -232,7 +232,7 @@ class PatientDetails extends React.Component
         var patientRole=this.props.patientRole;
         var patientMap = getPatientDetails(patientRole);
         // var iconGender = (patientMap.gender==="Female" || patientMap.gender==="F")?"assets/img/woman.png":"assets/img/man.jpg";
-        console.log(JSON.stringify(patientMap));
+        //console.log(JSON.stringify(patientMap));
         return(
             <div>
               <div className="col-lg-12 col-md-12 col-sm-12 mb">
@@ -303,12 +303,15 @@ var GenericPanel=React.createClass(
             var rows=table.rows;
             var headers=table.headers;
 
+            debug2=rows;
+
             //handle tables with spans differently
             if(table.hasSpans || table.caption != null)
             {
                 var tblCaption;
                 var tblHeader = [];
                 var tblBody=[];
+                var tblBodyTr=[];
 
                 panelSizeClasses="col-lg-6 col-md-8 col-sm-12";
 
@@ -349,44 +352,53 @@ var GenericPanel=React.createClass(
 
                 elements = [];
 
-                for(var r=0; r<rows.length; r++)
+                for(var b=0; b<rows.length; b++)
                 {
-                    elements = [];
-
-                    for(var i=0; i<rows[r].length; i++)
+                    for(var r=0; r<rows[b].length; r++)
                     {
-                        if(!elements[i])
-                            elements[i]=[];
+                        elements = [];
 
-                        let text = rows[r][i][0];
-                        var listText = [];
+                        for(var i=0; i<rows[b][r].length; i++)
+                        {
+                            if(!elements[i])
+                                elements[i]=[];
 
-                        if(!Array.isArray(text.text))
-                                text.text = [text.text];
+                            let text = rows[b][r][i][0];
+                            var listText = [];
 
-                        for(var t=0; t<text.text.length; t++)
-                            if(text.text[t].text != "")
-                                listText.push(<p key={r+""+i+""+t}>{text.text[t].text}</p>);
+                            if(!Array.isArray(text.text))
+                                    text.text = [text.text];
+
+                            for(var t=0; t<text.text.length; t++)
+                                if(text.text[t].text != "")
+                                    listText.push(<p key={b+""+r+""+i+""+t}>{text.text[t].text}</p>);
 
 
-                        if(text.isTh)
-                            elements[i].push(
-                                <th  key={r+""+i} colSpan={text.colspan} rowSpan={text.rowspan}>
-                                    {listText}
-                                </th>
-                            );
-                        else
-                            elements[i].push(
-                                <td  key={r+""+i} colSpan={text.colspan} rowSpan={text.rowspan}>
-                                    {listText}
-                                </td>
-                            );
+                            if(text.isTh)
+                                elements[i].push(
+                                    <th  key={b+""+r+""+i} colSpan={text.colspan} rowSpan={text.rowspan}>
+                                        {listText}
+                                    </th>
+                                );
+                            else
+                                elements[i].push(
+                                    <td  key={b+""+r+""+i} colSpan={text.colspan} rowSpan={text.rowspan}>
+                                        {listText}
+                                    </td>
+                                );
+                        }
+
+                        tblBodyTr.push(
+                            <tr key={b+""+r}>
+                                {elements}
+                            </tr>
+                        );
                     }
 
                     tblBody.push(
-                        <tr key={r}>
-                            {elements}
-                        </tr>
+                        <tbody key={b}>
+                            {tblBodyTr}
+                        </tbody>
                     );
                 }
 
@@ -400,9 +412,7 @@ var GenericPanel=React.createClass(
                                     <thead>
                                         {tblHeader}
                                     </thead>
-                                    <tbody>
-                                        {tblBody}
-                                    </tbody>
+                                    {tblBody}
                                 </table>
                             </div>
                         </div>
@@ -411,16 +421,19 @@ var GenericPanel=React.createClass(
             }
             else
             {
-                for(var r=0; r<rows.length; r++)
+                for(var r=0; r<rows[0].length; r++)
                 {
+                    console.log("1");
                     if(!elements[r])
                         elements[r]=[];
 
                     for(var i=0; i<headers[0].length; i++)
                     {
-                        let text = rows[r][i][0];
+                        console.log("2");
+                        let text = rows[0][r][i][0];
                         var listText = [];
 
+                        debug2=text;
                         //Less rows than headers *CHECK*
                         if(text)
                         {
@@ -436,7 +449,7 @@ var GenericPanel=React.createClass(
                         else
                             break;
 
-                        if(rows[r].length > 1)
+                        if(rows[0][r].length > 1)
                             elements[r].push(
                                 <dl key={r+""+i} className="dl-horizontal">
                                     <dt><span className="label label-default">{headers[0][i].text}</span></dt>
@@ -577,13 +590,13 @@ var CollapsiblePanel=React.createClass(
             var rows=table.rows;
             var headers=table.headers;
 
-            for(var r=0; r<rows.length; r++)
+            for(var r=0; r<rows[0].length; r++)
             {
                 if(!elements[r])
                     elements[r]=[];
 
                 for(var i=0; i<headers[0].length; i++) {
-                    let text = rows[r][i][0];
+                    let text = rows[0][r][i][0];
                     var listText = [];
 
                     if(text)
@@ -727,10 +740,10 @@ class XMLForm extends React.Component
                     let tableData=[];
                     // other strings found inside a section
                     let otherText=[];
-                    //console.log("displaying section: "+sectionTitle);
+                    console.log("displaying section: "+sectionTitle);
 
-                    // if(section.code["@code"] == "30954-2")
-                    // {
+                if(section.code["@code"] == "11369-6")
+                {
                         // if the section only contains a string
                         if(typeof sectionText == "string")
                             otherText.push({"key": "string", "text": sectionText});
@@ -755,7 +768,7 @@ class XMLForm extends React.Component
                                         iterate(sectionText[item], otherText);
                                 }
                             }
-                    // }
+                    }
 
                     /* Added by VV to get the sections, for build the menu. */
                     var titleRef="javascript:goToByScroll('#panel-"+components[i].section.code["@code"]+"-"+i+"');";
@@ -783,7 +796,7 @@ class XMLForm extends React.Component
             // Web service call error
             error: function(err)
             {
-               var message = "";
+                var message = "";
 
                 if(err.responseText != null)
                   message = $.parseJSON(err.responseText).errorMessage;
@@ -1094,7 +1107,7 @@ function iterate(obj, jsonArr) {
             iterate(elem, jsonArr); // call recursively
         }
         else{
-            var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan|href|align/;
+            var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan|href|align|listType/;
 
             if(!patt.test(key.toString())){
                 if(elem == undefined)
@@ -1257,7 +1270,7 @@ function getNodeTableData(tableNode)
     if(!tableNode)
         return null;
 
-    var tableData={headers:[], rows:[], hasSpans:false, caption:null};
+    var tableData={headers:[], rows:[[]], hasSpans:false, caption:null};
 
     //Look for caption tag before the table tag
     if(searchString("caption", tableNode))
@@ -1310,7 +1323,7 @@ function getNodeTableData(tableNode)
                     tableData.headers[tableData.headers.length-1].push(buildTableCellObject(tableNode.thead.tr[j].td[i], null, false));
 
                     // check for colspan/rowspan
-                    if(tableNode.thead.tr[j].td[i].rowspan || tableNode.thead.tr[j].td[i].colspan)
+                    if(tableNode.thead.tr[j].td[i]["@rowspan"] || tableNode.thead.tr[j].td[i]["@colspan"])
                         tableData.hasSpans=true;
                 }
             }
@@ -1319,62 +1332,75 @@ function getNodeTableData(tableNode)
         }
     }
     else
-        tableData.headers.push(new Array());
+        tableData.hasSpans=true;
 
     hasSameTd = false;
 
-    // if table only has one row, make it an arraw to access it in the loop below
-    if(!Array.isArray(tableNode.tbody.tr))
-       tableNode.tbody.tr=[tableNode.tbody.tr];
+    //handle multiple tbodies
+    if(!Array.isArray(tableNode.tbody))
+       tableNode.tbody=[tableNode.tbody];
+
+    if(tableNode.tbody.length > 1)
+        tableData.hasSpans = true;
+
 
     // Save table body cells contents to tableData
-    for(var r=0; r<tableNode.tbody.tr.length; r++)
+    for(var b=0; b<tableNode.tbody.length; b++)
     {
-        if(tableNode.tbody.tr[r].th || tableNode.tbody.tr[r].td)
+        // if table only has one row, make it an arraw to access it in the loop below
+        if(!Array.isArray(tableNode.tbody[b].tr))
+           tableNode.tbody[b].tr=[tableNode.tbody[b].tr];
+
+        tableData.rows.push([]);
+
+        for(var r=0; r<tableNode.tbody[b].tr.length; r++)
         {
-            tableData.rows.push([]);
+            tableData.rows[b].push([]);
 
-            //if headers are found inside rows
-            if(tableNode.tbody.tr[r].th)
+            if(tableNode.tbody[b].tr[r].th || tableNode.tbody[b].tr[r].td)
             {
-                if(tableNode.tbody.tr[r].td && tableNode.tbody.tr[r].th.length == tableNode.tbody.tr[r].td.length)
+                //if headers are found inside rows
+                if(tableNode.tbody[b].tr[r].th)
                 {
-                    hasSameTd = true;
-                    tableData.hasSpans=true;
-                }
-                else
-                {
-                    var jsonArr = new Array();
-                    var jsonArr = getTextObject(tableNode.tbody.tr[r].th, tableData, true);
-                    tableData.rows[r].push(jsonArr);
-
-                    tableData.hasSpans=true;
-                }
-            }
-
-            if(tableNode.tbody.tr[r].td)
-            {
-                // if only one column is found, make it an array
-                if(!Array.isArray(tableNode.tbody.tr[r].td))
-                    tableNode.tbody.tr[r].td=[tableNode.tbody.tr[r].td];
-
-                for(var c=0; c<tableNode.tbody.tr[r].td.length; c++)
-                {
-                    if(hasSameTd)
+                    if(tableNode.tbody[b].tr[r].td && tableNode.tbody[b].tr[r].th.length == tableNode.tbody[b].tr[r].td.length)
+                    {
+                        hasSameTd = true;
+                        tableData.hasSpans=true;
+                    }
+                    else
                     {
                         var jsonArr = new Array();
-                        jsonArr = getTextObject(tableNode.tbody.tr[r].th[c], tableData, true);
-                        tableData.rows[tableData.rows.length-1].push(jsonArr);
-                    }
+                        var jsonArr = getTextObject(tableNode.tbody[b].tr[r].th, tableData, true);
+                        tableData.rows[b][r].push(jsonArr);
 
-                    var jsonArr = new Array();
-                    jsonArr = getTextObject(tableNode.tbody.tr[r].td[c], tableData, false);
-                    tableData.rows[tableData.rows.length-1].push(jsonArr);
+                        tableData.hasSpans=true;
+                    }
+                }
+
+                if(tableNode.tbody[b].tr[r].td)
+                {
+                    // if only one column is found, make it an array
+                    if(!Array.isArray(tableNode.tbody[b].tr[r].td))
+                        tableNode.tbody[b].tr[r].td=[tableNode.tbody[b].tr[r].td];
+
+                    for(var c=0; c<tableNode.tbody[b].tr[r].td.length; c++)
+                    {
+                        if(hasSameTd)
+                        {
+                            var jsonArr = new Array();
+                            jsonArr = getTextObject(tableNode.tbody[b].tr[r].th[c], tableData, true);
+
+                            tableData.rows[b][r].push(jsonArr);
+                        }
+
+                        var jsonArr = new Array();
+                        jsonArr = getTextObject(tableNode.tbody[b].tr[r].td[c], tableData, false);
+                        tableData.rows[b][r].push(jsonArr);
+                    }
                 }
             }
+            hasSameTd = false;
         }
-
-        hasSameTd = false;
     }
 
     return tableData;
