@@ -258,7 +258,7 @@ class PatientDetails extends React.Component
         var patientMap = getPatientDetails(patientRole);
         var marital = "", religion = "";
         // var iconGender = (patientMap.gender==="Female" || patientMap.gender==="F")?"assets/img/woman.png":"assets/img/man.jpg";
-        console.log("MaritalStatus: " + patientMap.maritalStatus);
+        //console.log("MaritalStatus: " + patientMap.maritalStatus);
         // /
         if (patientMap.religion==undefined || patientMap.religion==="")
             patientMap.religion="[no religion defined]";
@@ -793,7 +793,7 @@ class XMLForm extends React.Component
                     // other strings found inside a section
                     let otherText=[];
 
-                    // if(section.code["@code"] == "47420-5")
+                    // if(section.code["@code"] == "18776-5")
                     // {
                         // if the section only contains a string
                         if(typeof sectionText == "string")
@@ -811,24 +811,43 @@ class XMLForm extends React.Component
                                     for(var numTable=0; numTable<tables.length; numTable++)
                                         tableData.push(getNodeTableData(tables[numTable]));
                                 }
-                                else if(item=="list" && searchString("table", sectionText[item]))
+                                else if(item=="list")
                                 {
-                                    var tables=sectionText[item];
-                                    // if only one table is found make it an array to be able to use the loop in the next step
-                                    if(!Array.isArray(tables))
-                                        tables=[tables];
+                                    var lists=sectionText[item];
 
-                                    for(var numTable=0; numTable<tables.length; numTable++)
+                                    if(!Array.isArray(lists))
+                                        lists=[lists];
+
+                                    for(var numList=0; numList<lists.length; numList++)
                                     {
-                                        var items=tables[numTable].item;
+                                        var tables=lists[numList];
+                                        // if only one table is found make it an array to be able to use the loop in the next step
 
-                                        if(!Array.isArray(items))
-                                            items=[items];
-
-                                        for(var numItem=0; numItem<items.length; numItem++)
+                                        if(searchString("table", tables))
                                         {
-                                            tableData.push(getNodeTableData(items[numItem].table));
-                                            tableData.caption = items[numItem].caption;
+                                            if(!Array.isArray(tables))
+                                                tables=[tables];
+
+                                            for(var numTable=0; numTable<tables.length; numTable++)
+                                            {
+                                                var items=tables[numTable].item;
+
+                                                if(!Array.isArray(items))
+                                                    items=[items];
+
+                                                for(var numItem=0; numItem<items.length; numItem++)
+                                                {
+                                                    tableData.push(getNodeTableData(items[numItem].table));
+                                                    tableData.caption = items[numItem].caption;
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if(typeof tables == "string")
+                                                otherText.push({"key": "string", "text": getNodeText(tables)});
+                                            else
+                                                iterate(tables, otherText);
                                         }
                                     }
                                 }
@@ -1290,7 +1309,7 @@ function getLanguage(patientObj) {
   var languages;
   if (patientObj.languageCommunication && ( patientObj.languageCommunication.languageCode || Array.isArray(patientObj.languageCommunication))) {
     if (Array.isArray(patientObj.languageCommunication)) {
-        console.log(JSON.stringify(patientObj.languageCommunication));
+        //console.log(JSON.stringify(patientObj.languageCommunication));
         language = "";
         patientObj.languageCommunication.forEach(function(lang) {
             languageCode = lang.languageCode["@code"];
@@ -1463,12 +1482,9 @@ function getNodeTableData(tableNode)
         if(tableNode.tbody.length > 1)
             tableData.hasSpans = true;
 
-
         // Save table body cells contents to tableData
         for(var b=0; b<tableNode.tbody.length; b++)
         {
-            debug2=tableNode;
-
             // if table only has one row, make it an arraw to access it in the loop below
             if(!Array.isArray(tableNode.tbody[b].tr))
                tableNode.tbody[b].tr=[tableNode.tbody[b].tr];
