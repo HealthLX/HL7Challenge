@@ -231,8 +231,12 @@ class PatientDetails extends React.Component
     {
         var patientRole=this.props.patientRole;
         var patientMap = getPatientDetails(patientRole);
+        var marital = "", religion = "";
         // var iconGender = (patientMap.gender==="Female" || patientMap.gender==="F")?"assets/img/woman.png":"assets/img/man.jpg";
-        console.log(JSON.stringify(patientMap));
+        console.log("MaritalStatus: " + patientMap.maritalStatus);
+        // /
+        if (patientMap.religion==undefined || patientMap.religion==="")
+            patientMap.religion="[no religion defined]";
         return(
             <div>
               <div className="col-lg-12 col-md-12 col-sm-12 mb">
@@ -244,8 +248,8 @@ class PatientDetails extends React.Component
                             </span>
                             <h1 className="go-left">{patientMap.name} (<span className="mint-color">{patientMap.age}</span>)</h1>
                             <p className="patientData">
-                                <b className="mint-color">{patientMap.firstName}</b> is a&nbsp;
-                                <span className="mint-color">{patientMap.maritalStatus}</span>&nbsp;
+                                <b className="mint-color">{patientMap.firstName}</b> is a
+                                <span className='mint-color'> {patientMap.maritalStatus}</span>&nbsp;
                                 <span className="mint-color">{patientMap.race}</span>&nbsp;
                                 <span className="mint-color">{patientMap.gender}</span>&nbsp;
                                 who is <span className="mint-color">{patientMap.religion}</span>&nbsp;
@@ -1113,7 +1117,7 @@ function getGender(patientObj) {
   if (patientObj.administrativeGenderCode) {
     //if (searchString("displayName", patientObj.administrativeGenderCode)) {
     if (patientObj.administrativeGenderCode["@displayName"]) {
-        gender = patientObj.administrativeGenderCode["@displayName;"]
+        gender = patientObj.administrativeGenderCode["@displayName"];
     } else if (patientObj.administrativeGenderCode["@code"]) {
         gender = patientObj.administrativeGenderCode["@code"]=="F"?"Female":"Male";
     } else gender = "UNKNOWN";
@@ -1159,7 +1163,7 @@ function getMaritalStatus(patientObj) {
   var mStatus;
   if (patientObj.maritalStatusCode) {
     if (searchString("@displayName", patientObj.maritalStatusCode)) {
-        mStatus = patientObj.maritalStatusCode["@displayName;"]
+        mStatus = patientObj.maritalStatusCode["@displayName"];
     } else if (patientObj.maritalStatusCode["@code"]) {
         mStatus = patientObj.maritalStatusCode["@code"];
     } else mStatus = "";
@@ -1170,8 +1174,22 @@ function getMaritalStatus(patientObj) {
 /*VV, Get the Language out of the languageCommunication */
 function getLanguage(patientObj) {
   var language, languageCode;
-  if (patientObj.languageCommunication && patientObj.languageCommunication.languageCode) {
-    languageCode = patientObj.languageCommunication.languageCode["@code"];
+  var languages;
+  if (patientObj.languageCommunication && ( patientObj.languageCommunication.languageCode || Array.isArray(patientObj.languageCommunication))) {
+    if (Array.isArray(patientObj.languageCommunication)) {
+        console.log(JSON.stringify(patientObj.languageCommunication));
+        language = "";
+        patientObj.languageCommunication.forEach(function(lang) {
+            languageCode = lang.languageCode["@code"];
+            
+            languages = languageCode.length==2?languages639_1.filter(function(obj) { return obj.code.toLowerCase() === languageCode.toLowerCase() }):languages639_2.filter(function(obj) { return obj.code.toLowerCase() === languageCode.toLowerCase() });
+            language += languages.length>0?languages[0].value:"";
+            language += " and ";
+        });
+        language = language.substring(0, language.length-5);
+        return language;
+    } else 
+        languageCode = patientObj.languageCommunication.languageCode["@code"];
   } else return "?";
 
   language = languageCode.length==2?languages639_1.filter(function(obj) { return obj.code.toLowerCase() === languageCode.toLowerCase() }):languages639_2.filter(function(obj) { return obj.code.toLowerCase() === languageCode.toLowerCase() });
