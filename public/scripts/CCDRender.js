@@ -92,11 +92,9 @@ var PanelBox=React.createClass(
     componentWillMount: function()
     {
         var component=this;
-        globalVar.callback=function(filterName)
+        globalVar.callbackPanelBox=function(filterName)
         {
-            console.log("name received "+filterName);
             component.setState({filter: filters[filterName]});
-            debugvar=component;
         };
     },
 
@@ -960,6 +958,23 @@ var TreeView = React.createClass(
     }
   },
 
+  getInitialState: function()
+  {
+      return {
+          filter: null
+      };
+  },
+
+  componentWillMount: function()
+  {
+      var component=this;
+      globalVar.callbackTreeView=function(filterName)
+      {
+          component.setState({filter: filters[filterName]});
+      };
+  },
+
+
   setNodeId: function(node) {
 
     if (!node.nodes) return;
@@ -1149,8 +1164,8 @@ var FilterBox=React.createClass(
 {
     handleChange: function(event)
     {
-        console.log("filter changed to "+event.target.value);
-        globalVar.callback(event.target.value);
+        globalVar.callbackPanelBox(event.target.value);
+        globalVar.callbackTreeView(event.target.value);
     },
 
     render: function()
