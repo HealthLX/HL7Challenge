@@ -873,9 +873,9 @@ class XMLForm extends React.Component
                 showOtherSection();
 
                 var originalData = [];
-                originalData.push({text: 'Main Information', href: "javascript:goToByScroll('#patientDetails');", icon: 'glyphicon glyphicon-signal'});
+                originalData.push({text: "Patient Details", href: "javascript:goToByScroll('#patientDetails');", icon: "fa fa-users fa-lg"});
                 //originalData.push({text: 'Health Status',href: "javascript:goToByScroll('#healthStatus');", icon: 'glyphicon glyphicon-scale'});
-                originalData.push({text: 'CCDA Info',icon: 'glyphicon glyphicon-list-alt', nodes: titles});
+                originalData.push({text: "CCDA Sections", icon: "fa fa-code fa-lg", nodes: titles});
 
                 // Render components
                 ReactDOM.render(<PanelBox data={allComponents}/>, document.getElementById("panels"));
@@ -937,10 +937,10 @@ var TreeView = React.createClass(
     return {
       levels: 2,
       treeData: undefined,
-      expandIcon: 'glyphicon glyphicon-plus',
-      collapseIcon: 'glyphicon glyphicon-minus',
+      expandIcon: 'fa fa-chevron-right',
+      collapseIcon: 'fa fa-chevron-down',
       emptyIcon: 'glyphicon',
-      nodeIcon: 'glyphicon glyphicon-asterisk',
+      nodeIcon: 'fa fa-bookmark',
 
       color: '#0A3F6C',
       backColor: undefined,
