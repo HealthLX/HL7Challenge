@@ -1,8 +1,5 @@
 var globalVar={};
-var menuData =  [
-
-];
-
+var menuData =  [];
 /* Container of panels */
 var PanelBox=React.createClass(
 {
@@ -176,12 +173,11 @@ class PatientDetails extends React.Component
 {
     render()
     {
+        // /
         var patientRole=this.props.patientRole;
         var patientMap = getPatientDetails(patientRole);
         var marital = "", religion = "";
-        // var iconGender = (patientMap.gender==="Female" || patientMap.gender==="F")?"assets/img/woman.png":"assets/img/man.jpg";
-        //console.log("MaritalStatus: " + patientMap.maritalStatus);
-        // /
+        
         if (patientMap.religion==undefined || patientMap.religion==="")
             patientMap.religion="[no religion defined]";
         if (patientMap.language==undefined || patientMap.language==="" || patientMap.language==="?")
@@ -785,7 +781,7 @@ class XMLForm extends React.Component
 
                     /* Added by VV to get the sections, for build the menu. */
                     var titleRef="javascript:goToByScroll('#"+panelId+"');";
-                    titles.push({"text": sectionTitle, href: titleRef, "code": sectionCode});
+                    titles.push({"text": sectionTitle, href: titleRef, "code": sectionCode, "visible": true});
                     /* * */
 
                     allComponents.push({"type": sectionCode, id: panelId, "title": sectionTitle, "data": tableData, "otherText": otherText});
@@ -881,7 +877,11 @@ var TreeView = React.createClass(
       nodes: []
     }
   },
-
+    getInitialState: function() {
+        return {
+            filterTV: null
+        };
+    },
   setNodeId: function(node) {
 
     if (!node.nodes) return;
@@ -899,20 +899,26 @@ componentWillMount: function()
       
       globalVar.callbackTreeView=function(filterName)
       {
-        component.setState({filter: filters[filterName]});
-        globalVar.callbackTreeNode(filterName);
+        component.setState({filterTV: filters[filterName]});
       };
   },
   render: function() {
     this.treeData = this.props.treeData;
     this.setNodeId({ nodes: this.treeData });
     var component = this;
+    var filterTV=this.state.filterTV;
     var children = [];
     if (this.treeData) {
       var _this = this;
-
       var nodeIdKey = "IntTreeNode";
       this.treeData.forEach(function (node) {
+        if (node.nodes) {
+            node.nodes.forEach (function (nodeLast){
+                nodeLast.visible = true;
+                if (filterTV)
+                    nodeLast.visible = $.inArray(nodeLast.code, filterTV.sections)>=0;
+            });   
+        } 
         children.push(React.createElement(TreeNode, {node: node, key: nodeIdKey+""+node.nodeId,
                                 level: 1,
                                 visible: true,
@@ -943,18 +949,8 @@ var TreeNode = React.createClass({
                       false,
       selected: (node.state && node.state.hasOwnProperty('selected')) ?
                   node.state.selected :
-                  false,
-        filter: null
+                  false
     }
-  },
-  componentWillMount: function()
-  {
-      var component=this;
-      globalVar.callbackTreeNode=function(filterName)
-      {
-        console.log("***** Calling back Node.");
-        component.setState({ filter: filters[filterName] });
-      };
   },
   toggleExpanded: function(id, event) {
     this.setState({ expanded: !this.state.expanded });
@@ -1058,22 +1054,16 @@ var TreeNode = React.createClass({
     }
 
     var children = [];
-    // console.log("Rendering: " + JSON.stringify(node));
     if (node.nodes) {
       var _this = this;
-      var filter=this.state.filter;
       var nodeIdKey = "TreeNode";
       
       node.nodes.forEach(function (node) {
-        console.log(filter);
-        // if there's a filter set, check ignore the sections that aren't part of it
-        if (filter && node.code) console.log("Node : " + JSON.stringify(node.code));
-        if (!(filter && $.inArray(node.code, filter.sections)==-1)) {
+            if (node.visible)
             children.push(React.createElement(TreeNode, {node: node, key: nodeIdKey+""+node.nodeId,
                                     level: _this.props.level+1,
                                     visible: _this.state.expanded && _this.props.visible,
                                     options: options}));
-        }
       });
     }
 
@@ -1198,7 +1188,6 @@ function iterate(obj, jsonArr) {
 /*VV, Get the gender out of the genderCode */
 function getGender(patientObj) {
   var gender;
-  //console.log("for Gender:" +  JSON.stringify(patientObj));
   if (patientObj.administrativeGenderCode) {
     //if (searchString("displayName", patientObj.administrativeGenderCode)) {
     if (patientObj.administrativeGenderCode["@displayName"]) {
@@ -1262,7 +1251,6 @@ function getLanguage(patientObj) {
   var languages;
   if (patientObj.languageCommunication && ( patientObj.languageCommunication.languageCode || Array.isArray(patientObj.languageCommunication))) {
     if (Array.isArray(patientObj.languageCommunication)) {
-        //console.log(JSON.stringify(patientObj.languageCommunication));
         language = "";
         patientObj.languageCommunication.forEach(function(lang) {
             languageCode = lang.languageCode["@code"];
@@ -1285,7 +1273,6 @@ function getLanguage(patientObj) {
 /* Extract the patient details form the patientRole section of the document */
 function getPatientDetails(patientRole)
 {
-  //console.log("getPatientDetails: " + JSON.stringify(patientRole));
   var patientName=patientRole.patient.name;
   var name=buildName(patientName);
   var dob=moment(patientRole.patient.birthTime["@value"]).format("LL");
@@ -1495,8 +1482,8 @@ function getNodeTableData(tableNode)
         }
     }
     catch(err){
-        console.log("Error leyendo "+err);
-        showAlert("danger", "Error leyendo el archivo");
+        console.log("Error Reading file "+err);
+        showAlert("danger", "Error reading the file.");
     }
 
     return tableData;
