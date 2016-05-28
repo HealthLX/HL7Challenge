@@ -402,12 +402,13 @@ var GenericPanel=React.createClass(
 
                     for(var i=0; i<headers[0].length; i++)
                     {
-                        let text = rows[0][r][i][0];
                         var listText = [];
 
                         //Less rows than headers *CHECK*
-                        if(text)
+                        if(rows[0][r][i])
                         {
+                            let text = rows[0][r][i][0];
+
                             if(!Array.isArray(text.text))
                                 text.text = [text.text];
 
@@ -583,7 +584,12 @@ var CollapsiblePanel=React.createClass(
                     }
 
                     if (i===0 && text) {
-                        collapsePanelHeading.push(text.text[0].text.toUpperCase());
+                        if(!text.text[0].text)
+                            var title = "";
+                        else
+                            var title = text.text[0].text.toUpperCase()
+
+                        collapsePanelHeading.push(title);
                     }
                     elements[r].push(
                         <dl key={r+""+i} className="dl-horizontal">
@@ -697,6 +703,8 @@ class XMLForm extends React.Component
                 var patientRole=data.ClinicalDocument.recordTarget.patientRole;
                 var allComponents=new Array();
                 var titles=[];
+                //Adding pattern for regexp
+                var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan|href|align|listType|mediaType/;
 
                 // components contains the sections to display as panels
                 for(let i=0; i<components.length; i++)
@@ -711,7 +719,7 @@ class XMLForm extends React.Component
                     // other strings found inside a section
                     let otherText=[];
 
-                    // if(section.code["@code"] == "18776-5")
+                    // if(section.code["@code"] == "11369-6")
                     // {
                         // if the section only contains a string
                         if(typeof sectionText == "string")
@@ -763,7 +771,10 @@ class XMLForm extends React.Component
                                         else
                                         {
                                             if(typeof tables == "string")
-                                                otherText.push({"key": "string", "text": getNodeText(tables)});
+                                            {
+                                                if(!patt.test(item.toString()))
+                                                    otherText.push({"key": "string", "text": getNodeText(tables)});
+                                            }
                                             else
                                                 iterate(tables, otherText);
                                         }
@@ -772,7 +783,10 @@ class XMLForm extends React.Component
                                 else // print/save texts recursively
                                 {
                                     if(typeof sectionText[item] == "string")
-                                        otherText.push({"key": "string", "text": getNodeText(sectionText[item])});
+                                    {
+                                        if(!patt.test(item.toString()))
+                                            otherText.push({"key": "string", "text": getNodeText(sectionText[item])});
+                                    }
                                     else
                                         iterate(sectionText[item], otherText);
                                 }
@@ -784,7 +798,8 @@ class XMLForm extends React.Component
                     titles.push({"text": sectionTitle, href: titleRef, "code": sectionCode, "visible": true});
                     /* * */
 
-                    allComponents.push({"type": sectionCode, id: panelId, "title": sectionTitle, "data": tableData, "otherText": otherText});
+                    if(tableData != null)
+                        allComponents.push({"type": sectionCode, id: panelId, "title": sectionTitle, "data": tableData, "otherText": otherText});
                 }
 
                 // Close modal window with the upload form when the service call has finished
@@ -1172,7 +1187,7 @@ function iterate(obj, jsonArr) {
             iterate(elem, jsonArr); // call recursively
         }
         else{
-            var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan|href|align|listType/;
+            var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan|href|align|listType|mediaType/;
 
             if(!patt.test(key.toString())){
                 if(elem == undefined)
@@ -1473,6 +1488,10 @@ function getNodeTableData(tableNode)
                             var jsonArr = new Array();
                             jsonArr = getTextObject(tableNode.tbody[b].tr[r].td[c], tableData, false);
                             tableData.rows[b][r].push(jsonArr);
+
+                            if(c==0 && jsonArr[0].text)
+                                if(jsonArr[0].text.text == null)
+                                    tableData.hasSpans=true;
                         }
                     }
                 }
@@ -1483,6 +1502,7 @@ function getNodeTableData(tableNode)
     catch(err){
         console.log("Error Reading file "+err);
         showAlert("danger", "Error reading the file.");
+        return null;
     }
 
     return tableData;
