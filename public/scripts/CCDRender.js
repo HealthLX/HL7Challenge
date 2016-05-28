@@ -704,7 +704,7 @@ class XMLForm extends React.Component
                 var allComponents=new Array();
                 var titles=[];
                 //Adding pattern for regexp
-                var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan|href|align|listType|mediaType/;
+                var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan|href|align|listType|mediaType|br/;
 
                 // components contains the sections to display as panels
                 for(let i=0; i<components.length; i++)
@@ -719,7 +719,7 @@ class XMLForm extends React.Component
                     // other strings found inside a section
                     let otherText=[];
 
-                    // if(section.code["@code"] == "11369-6")
+                    // if(section.code["@code"] == "46240-8")
                     // {
                         // if the section only contains a string
                         if(typeof sectionText == "string")
@@ -1187,13 +1187,16 @@ function iterate(obj, jsonArr) {
             iterate(elem, jsonArr); // call recursively
         }
         else{
-            var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan|href|align|listType|mediaType/;
+            var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan|href|align|listType|mediaType|br/;
 
             if(!patt.test(key.toString())){
                 if(elem == undefined)
                     jsonArr.push({"key":key.toString(),"text":null});
                 else
-                    jsonArr.push({"key":key.toString(),"text":elem});
+                {
+                    if(elem != "")
+                        jsonArr.push({"key":key.toString(),"text":elem});
+                }
             }
         }
     }
@@ -1489,9 +1492,8 @@ function getNodeTableData(tableNode)
                             jsonArr = getTextObject(tableNode.tbody[b].tr[r].td[c], tableData, false);
                             tableData.rows[b][r].push(jsonArr);
 
-                            if(c==0 && jsonArr[0].text)
-                                if(jsonArr[0].text.text == null)
-                                    tableData.hasSpans=true;
+                            if(c==0 &&  tableNode.tbody[b].tr[r].td[c] == "")
+                                tableData.hasSpans=true;
                         }
                     }
                 }
