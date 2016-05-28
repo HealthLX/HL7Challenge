@@ -6,6 +6,9 @@ RESTService/Runtime_ESBSE/container/log/*
 RESTService/Runtime_ESBSE/container/data/*
 RESTService/Runtime_ESBSE/container/etc/jetty.xml
 RESTService/Runtime_ESBSE/container/etc/keystores/clientKeystore.properties
+RESTService/Runtime_ESBSE/container/etc/keystores/clientstore.jks
+RESTService/Runtime_ESBSE/container/etc/keystores/serviceKeystore.properties
+RESTService/Runtime_ESBSE/container/etc/keystores/servicestore.jks
 RESTService/Runtime_ESBSE/container/etc/org.talend.esb.auxiliary.storage.client.rest.cfg
 RESTService/Runtime_ESBSE/container/etc/org.talend.esb.job*
 RESTService/Runtime_ESBSE/container/etc/org.talend.esb.locator.server.cfg
