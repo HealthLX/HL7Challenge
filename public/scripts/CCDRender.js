@@ -1057,11 +1057,8 @@ var TreeNode = React.createClass({
     if (node.nodes) {
       var _this = this;
       var nodeIdKey = "TreeNode";
-
-      console.log(this.state.filter);
-
       node.nodes.forEach(function (node) {
-            if (node.visible)
+        if (node.visible)
             children.push(React.createElement(TreeNode, {node: node, key: nodeIdKey+""+node.nodeId,
                                     level: _this.props.level+1,
                                     visible: _this.state.expanded && _this.props.visible,
@@ -1092,7 +1089,7 @@ var FilterBox=React.createClass(
     handleChange: function(event)
     {
         globalVar.callbackPanelBox(event.target.value);
-        globalVar.callbackTreeNode(event.target.value);
+        globalVar.callbackTreeView(event.target.value);
     },
 
     render: function()
