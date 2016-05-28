@@ -11,7 +11,3 @@ RESTService/Runtime_ESBSE/container/etc/org.talend.esb.job*
 RESTService/Runtime_ESBSE/container/etc/org.talend.esb.locator.server.cfg
 RESTService/Runtime_ESBSE/container/instances/instance.properties
 RESTService/Runtime_ESBSE/container/lock
-
-RESTService/Runtime_ESBSE/container/instances/instance.properties
-
-RESTService/Runtime_ESBSE/container/data/port
