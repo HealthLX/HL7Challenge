@@ -23,9 +23,9 @@ var DroppableContainer = React.createClass ({
     onDrop(e) {
          $("#droppable-container").css('border', '2px dotted #0B85A1');
          e.preventDefault();
-         
+
          var files = e.dataTransfer.files;
-     
+
         // this.setState({ type: 'info', message: 'Sending...' }, this.sendFormData);
         // Calls web service that receives the XML file and returns it converted to JSON
         var fd = new FormData();
@@ -151,9 +151,9 @@ var DroppableContainer = React.createClass ({
                         titles.push({"text": sectionTitle, href: titleRef, "code": sectionCode, "visible": true});
                         /* * */
 
-                        allComponents.push({"type": sectionCode, id: panelId, "title": sectionTitle, "data": tableData, "otherText": otherText});   
+                        allComponents.push({"type": sectionCode, id: panelId, "title": sectionTitle, "data": tableData, "otherText": otherText});
                     }
-                } 
+                }
 
                 // Close modal window with the upload form when the service call has finished
                 if ($('#myModal').is(':visible'))
@@ -197,14 +197,14 @@ var DroppableContainer = React.createClass ({
     componentDidMount: function() {
         var tempForm = React.createElement(XMLForm);
         this.setState({form: tempForm});
-        
+
         ReactDOM.render(tempForm, document.getElementById("modal-container"));
     },
     render: function() {
 
         return (
 
-            <div id="droppable-container" className="boxed text-center div-center" onDragEnter={this.onDragEnter} 
+            <div id="droppable-container" className="boxed text-center div-center" onDragEnter={this.onDragEnter}
             onDragOver={this.onDragOver} onDrop={this.onDrop}>
                 <p><i className="fa fa-file-code-o fa-fw fa-inverse" style={{fontSize: '20em', color: '#000'}}>
                 </i></p>
@@ -404,7 +404,7 @@ class PatientDetails extends React.Component
         var patientRole=this.props.patientRole;
         var patientMap = getPatientDetails(patientRole);
         var marital = "", religion = "";
-        
+
         if (patientMap.religion==undefined || patientMap.religion==="")
             patientMap.religion="[no religion defined]";
         if (patientMap.language==undefined || patientMap.language==="" || patientMap.language==="?")
@@ -830,23 +830,17 @@ var CollapsiblePanel=React.createClass(
 
             var listItems=(elements.map(function(element, index)
             {
-                var finalStr = collapsePanelHeading[index].replace(/,|:| |\u0028|\u0029|\u002E/g,"_");
-                var where = finalStr.indexOf("/");
-                if (where > 0)
-                  finalStr = finalStr.substring(0,where);
-                var indexRef = "#"+finalStr+index;
-                var indexRefNo = finalStr+index;
-
+                var href="ref-"+this.props.id+"-"+index;
 
                 return(
                       <span key={index}>
                       <div className="panel-heading mint-header-no-margin">
                         <h4 className="panel-title">
-                          <a href={indexRef} data-parent={accordion} data-toggle="collapse" >{collapsePanelHeading[index]}
+                          <a href={"#"+href} data-parent={accordion} data-toggle="collapse" >{collapsePanelHeading[index]}
                           </a>
                         </h4>
                       </div>
-                      <div id={indexRefNo} className="panel-collapse collapse white-back">
+                      <div id={href} className="panel-collapse collapse white-back">
                           {element}
                           <hr/>
                       </div>
@@ -1040,9 +1034,9 @@ var XMLForm = React.createClass ({
                         titles.push({"text": sectionTitle, href: titleRef, "code": sectionCode, "visible": true});
                         /* * */
 
-                        allComponents.push({"type": sectionCode, id: panelId, "title": sectionTitle, "data": tableData, "otherText": otherText});   
+                        allComponents.push({"type": sectionCode, id: panelId, "title": sectionTitle, "data": tableData, "otherText": otherText});
                     }
-                } 
+                }
 
                 // Close modal window with the upload form when the service call has finished
                 if ($('#myModal').is(':visible'))
@@ -1084,7 +1078,7 @@ var XMLForm = React.createClass ({
             contentType: false
         });
     },
-    
+
 });
 
 /* Classes created by VV to create handle the menu. */
@@ -1157,7 +1151,7 @@ var TreeView = React.createClass(
 componentWillMount: function()
   {
       var component=this;
-      
+
       globalVar.callbackTreeView=function(filterName)
       {
         component.setState({filterTV: filters[filterName]});
@@ -1178,8 +1172,8 @@ componentWillMount: function()
                 nodeLast.visible = true;
                 if (filterTV)
                     nodeLast.visible = $.inArray(nodeLast.code, filterTV.sections)>=0;
-            });   
-        } 
+            });
+        }
         children.push(React.createElement(TreeNode, {node: node, key: nodeIdKey+""+node.nodeId,
                                 level: 1,
                                 visible: true,

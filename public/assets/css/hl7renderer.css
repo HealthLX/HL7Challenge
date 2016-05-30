@@ -37,6 +37,11 @@ body {
     height: auto;
 }
 
+.pn-bg
+{
+    margin-bottom: 17px;
+}
+
 .mint-panel
 {
     text-align: center;
