@@ -214,7 +214,7 @@ hr
     width: 250px;
 }
 
-.sidebar .sidebar-nav.navbar-collapse {
+.sidebar .sidebar-nav .navbar-collapse {
     padding-right: 0;
     padding-left: 0;
 }
