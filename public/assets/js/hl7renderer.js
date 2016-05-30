@@ -74,5 +74,5 @@ function showOtherSection() {
 
 function showTitle(title) {
     // Show document's title
-    $('#title').html(title);
+    $('#title').html('<h3>'+title+'</h3>');
 }

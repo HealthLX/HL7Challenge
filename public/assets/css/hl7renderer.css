@@ -526,3 +526,12 @@ table.dataTable thead .sorting:after {
     height: 100%;
     overflow-y: hidden;
 }
+
+.title{
+    color:white;
+}
+
+.navbar .navbar-center {
+    position: absolute;
+    width: 100%;;
+}
