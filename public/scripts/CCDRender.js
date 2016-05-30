@@ -810,16 +810,17 @@ var CollapsiblePanel=React.createClass(
                         }
                     }
 
-                    if (i===0 && text && text.text.length>0) {
-                        // debug2=text;
+                    var title = "[no title defined]";
 
-                        if(!text.text[0].text)
-                            var title = "";
-                        else
-                            var title = text.text[0].text.toUpperCase()
+                    if (i===0)
+                    { 
+                        if(text && text.text.length>0) 
+                            if(text.text[0].text)
+                                var title = text.text[0].text.toUpperCase();
 
                         collapsePanelHeading.push(title);
                     }
+                    
                     elements[r].push(
                         <dl key={r+""+i} className="dl-horizontal">
                             <dt><span className="label label-default">{headers[0][i].text}</span></dt>
