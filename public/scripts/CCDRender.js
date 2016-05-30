@@ -812,6 +812,7 @@ var CollapsiblePanel=React.createClass(
 
                     if (i===0 && text && text.length>0) {
                         // debug2=text;
+
                         if(!text.text[0].text)
                             var title = "";
                         else
@@ -1518,11 +1519,11 @@ function getLanguage(patientObj) {
         return language;
     } else
         languageCode = patientObj.languageCommunication.languageCode["@code"];
-  } else return "?";
+  } else return "UNKNOWN";
+  if (languageCode==undefined) return "UNKNOWN";
+    language = languageCode.length==2?languages639_1.filter(function(obj) { return obj.code.toLowerCase() === languageCode.toLowerCase() }):languages639_2.filter(function(obj) { return obj.code.toLowerCase() === languageCode.toLowerCase() });
 
-  language = languageCode.length==2?languages639_1.filter(function(obj) { return obj.code.toLowerCase() === languageCode.toLowerCase() }):languages639_2.filter(function(obj) { return obj.code.toLowerCase() === languageCode.toLowerCase() });
-
-  return language.length>0?language[0].value:"?";
+  return language.length>0?language[0].value:"UNKNOWN";
 }
 
 /* Extract the patient details form the patientRole section of the document */
