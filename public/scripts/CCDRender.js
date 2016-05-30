@@ -29,169 +29,7 @@ var DroppableContainer = React.createClass ({
         // Calls web service that receives the XML file and returns it converted to JSON
         var fd = new FormData();
         fd.append( 'file', files[0] );
-        $.ajax(
-        {
-            url: serviceURL,
-            type: "POST",
-            data: fd,
-            success: function(data)
-            {
-                //Search for needed part of the document to process
-                var allComponents=new Array();
-                var title = '[no title defined]';
-                if(data.ClinicalDocument.title)
-                    title = data.ClinicalDocument.title;
-                var patientRole=data.ClinicalDocument.recordTarget.patientRole;
-
-                if(data.ClinicalDocument.component.structuredBody)
-                {
-                    // Extract needed parts of the document to process them
-                    var components = data.ClinicalDocument.component.structuredBody.component;
-                    var titles=[];
-
-                    // components contains the sections to display as panels
-                    for(let i=0; i<components.length; i++)
-                    {
-                        let section=components[i].section;
-                        let sectionCode='';
-                        if(section.code)
-                            sectionCode=section.code["@code"];
-                        let sectionTitle='[no title defined]';
-                        if(section.title)
-                            sectionTitle=section.title;
-                        let sectionText=section.text;
-                        let panelId="panel-"+sectionCode+"-"+i;
-                        // tables found inside a section
-                        let tableData=[];
-                        // other strings found inside a section
-                        let otherText=[];
-
-                        console.log("displaying section: "+sectionTitle);
-
-                        // if(section.code["@code"] == "47420-5")
-                        // {
-                            // if the section only contains a string
-                            if(typeof sectionText == "string")
-                                otherText.push({"key": "string", "text": sectionText});
-                            else
-                                for(var item in sectionText)
-                                {
-                                    // extract tables information
-                                    if(item=="table")
-                                    {
-                                        var tables=sectionText[item];
-                                        // if only one table is found make it an array to be able to use the loop in the next step
-                                        if(!Array.isArray(tables))
-                                            tables=[tables];
-                                        for(var numTable=0; numTable<tables.length; numTable++)
-                                            tableData.push(getNodeTableData(tables[numTable]));
-                                    }
-                                    else if(item=="list")
-                                    {
-                                        var lists=sectionText[item];
-
-                                        if(!Array.isArray(lists))
-                                            lists=[lists];
-
-                                        for(var numList=0; numList<lists.length; numList++)
-                                        {
-                                            var tables=lists[numList];
-
-                                            // if only one table is found make it an array to be able to use the loop in the next step
-                                            if(searchString("table", tables))
-                                            {
-                                                if(!Array.isArray(tables))
-                                                    tables=[tables];
-
-                                                for(var numTable=0; numTable<tables.length; numTable++)
-                                                {
-                                                    var items=tables[numTable].item;
-
-                                                    if(!Array.isArray(items))
-                                                        items=[items];
-
-                                                    for(var numItem=0; numItem<items.length; numItem++)
-                                                    {
-                                                        tableData.push(getNodeTableData(items[numItem].table));
-
-                                                        console.log("numList: "+numList+" numTable: "+numTable+" numItem: "+numItem);
-                                                        console.log("caption: "+tables[numTable].caption);
-                                                        if(numItem == 0)
-                                                            tableData[tableData.length-1].caption = tables[numTable].caption;
-                                                    }
-                                                }
-                                            }
-                                            else
-                                            {
-                                                if(typeof tables == "string")
-                                                {
-                                                    if(!patt.test(item.toString()))
-                                                        otherText.push({"key": "string", "text": getNodeText(tables)});
-                                                }
-                                                else
-                                                    iterate(tables, otherText);
-                                            }
-                                        }
-                                    }
-                                    else // print/save texts recursively
-                                    {
-                                        if(typeof sectionText[item] == "string")
-                                        {
-                                            if(!patt.test(item.toString()))
-                                                otherText.push({"key": "string", "text": getNodeText(sectionText[item])});
-                                        }
-                                        else
-                                            iterate(sectionText[item], otherText);
-                                    }
-                                }
-                        // }
-                        /* Added by VV to get the sections, for build the menu. */
-                        var titleRef="javascript:goToByScroll('#"+panelId+"');";
-                        titles.push({"text": sectionTitle, href: titleRef, "code": sectionCode, "visible": true});
-                        /* * */
-
-                        allComponents.push({"type": sectionCode, id: panelId, "title": sectionTitle, "data": tableData, "otherText": otherText});
-                    }
-                }
-
-                // Close modal window with the upload form when the service call has finished
-                if ($('#myModal').is(':visible'))
-                    $("#myModal").modal("toggle");
-
-                showOtherSection();
-                showTitle(title);
-
-                var originalData = [];
-                originalData.push({text: "Patient Details", href: "javascript:goToByScroll('#patientDetails');", icon: "fa fa-users fa-lg"});
-                //originalData.push({text: 'Health Status',href: "javascript:goToByScroll('#healthStatus');", icon: 'glyphicon glyphicon-scale'});
-                originalData.push({text: "CCDA Sections", icon: "fa fa-code fa-lg", nodes: titles});
-
-                // Render components
-                ReactDOM.render(<PanelBox data={allComponents}/>, document.getElementById("panels"));
-                ReactDOM.render(<TreeView treeData={originalData} enableLinks={true}/>, document.getElementById("tree_menu"));
-                ReactDOM.render(<PatientDetails patientRole={patientRole}/>, document.getElementById("patientDetails"));
-                ReactDOM.render(<HealthStatusPanel id="idMain" />, document.getElementById("healthstatus"));
-            },
-            // Web service call error
-            error: function(err)
-            {
-                var message = "";
-
-                if(err.responseText != null)
-                  message = $.parseJSON(err.responseText).errorMessage;
-                else if(err.statusText != null)
-                  message = err.statusText;
-
-                // service is not active or unreachable
-                if(err.status == 0)
-                  message = "Service Unavailable";
-
-                // show error message to the user
-                showAlert("danger", "Error: "+message);
-            },
-            processData: false,
-            contentType: false
-        });
+        callService(serviceURL, fd);
     },
     componentDidMount: function() {
         var tempForm = React.createElement(XMLForm);
@@ -212,7 +50,6 @@ var DroppableContainer = React.createClass ({
         );
     }
 });
-
 
 /* Container of panels */
 var PanelBox=React.createClass(
@@ -912,174 +749,8 @@ var XMLForm = React.createClass ({
         // this.setState({ type: 'info', message: 'Sending...' }, this.sendFormData);
         // Calls web service that receives the XML file and returns it converted to JSON
         var _this = this;
-        $.ajax(
-        {
-            url: $(event.target).prop("action"),
-            type: "POST",
-            data: new FormData(event.target),
-            // JSON data received from the service
-            success: function(data)
-            {
-
-                //Search for needed part of the document to process
-                var allComponents=new Array();
-                var title = '[no title defined]';
-                if(data.ClinicalDocument.title)
-                    title = data.ClinicalDocument.title;
-                var patientRole=data.ClinicalDocument.recordTarget.patientRole;
-
-                if(data.ClinicalDocument.component.structuredBody)
-                {
-                    // Extract needed parts of the document to process them
-                    var components = data.ClinicalDocument.component.structuredBody.component;
-                    var titles=[];
-
-                    // components contains the sections to display as panels
-                    for(let i=0; i<components.length; i++)
-                    {
-                        let section=components[i].section;
-                        let sectionCode='';
-                        if(section.code)
-                            sectionCode=section.code["@code"];
-                        let sectionTitle='[no title defined]';
-                        if(section.title)
-                            sectionTitle=section.title;
-                        let sectionText=section.text;
-                        let panelId="panel-"+sectionCode+"-"+i;
-                        // tables found inside a section
-                        let tableData=[];
-                        // other strings found inside a section
-                        let otherText=[];
-
-                        console.log("displaying section: "+sectionTitle);
-
-                        // if(section.code["@code"] == "47420-5")
-                        // {
-                            // if the section only contains a string
-                            if(typeof sectionText == "string")
-                                otherText.push({"key": "string", "text": sectionText});
-                            else
-                                for(var item in sectionText)
-                                {
-                                    // extract tables information
-                                    if(item=="table")
-                                    {
-                                        var tables=sectionText[item];
-                                        // if only one table is found make it an array to be able to use the loop in the next step
-                                        if(!Array.isArray(tables))
-                                            tables=[tables];
-                                        for(var numTable=0; numTable<tables.length; numTable++)
-                                            tableData.push(getNodeTableData(tables[numTable]));
-                                    }
-                                    else if(item=="list")
-                                    {
-                                        var lists=sectionText[item];
-
-                                        if(!Array.isArray(lists))
-                                            lists=[lists];
-
-                                        for(var numList=0; numList<lists.length; numList++)
-                                        {
-                                            var tables=lists[numList];
-
-                                            // if only one table is found make it an array to be able to use the loop in the next step
-                                            if(searchString("table", tables))
-                                            {
-                                                if(!Array.isArray(tables))
-                                                    tables=[tables];
-
-                                                for(var numTable=0; numTable<tables.length; numTable++)
-                                                {
-                                                    var items=tables[numTable].item;
-
-                                                    if(!Array.isArray(items))
-                                                        items=[items];
-
-                                                    for(var numItem=0; numItem<items.length; numItem++)
-                                                    {
-                                                        tableData.push(getNodeTableData(items[numItem].table));
-
-                                                        console.log("numList: "+numList+" numTable: "+numTable+" numItem: "+numItem);
-                                                        console.log("caption: "+tables[numTable].caption);
-                                                        if(numItem == 0)
-                                                            tableData[tableData.length-1].caption = tables[numTable].caption;
-                                                    }
-                                                }
-                                            }
-                                            else
-                                            {
-                                                if(typeof tables == "string")
-                                                {
-                                                    if(!patt.test(item.toString()))
-                                                        otherText.push({"key": "string", "text": getNodeText(tables)});
-                                                }
-                                                else
-                                                    iterate(tables, otherText);
-                                            }
-                                        }
-                                    }
-                                    else // print/save texts recursively
-                                    {
-                                        if(typeof sectionText[item] == "string")
-                                        {
-                                            if(!patt.test(item.toString()))
-                                                otherText.push({"key": "string", "text": getNodeText(sectionText[item])});
-                                        }
-                                        else
-                                            iterate(sectionText[item], otherText);
-                                    }
-                                }
-                        // }
-                        /* Added by VV to get the sections, for build the menu. */
-                        var titleRef="javascript:goToByScroll('#"+panelId+"');";
-                        titles.push({"text": sectionTitle, href: titleRef, "code": sectionCode, "visible": true});
-                        /* * */
-
-                        allComponents.push({"type": sectionCode, id: panelId, "title": sectionTitle, "data": tableData, "otherText": otherText});
-                    }
-                }
-
-                // Close modal window with the upload form when the service call has finished
-                if ($('#myModal').is(':visible'))
-                    $("#myModal").modal("toggle");
-
-                showOtherSection();
-                showTitle(title);
-
-                var originalData = [];
-                originalData.push({text: "Patient Details", href: "javascript:goToByScroll('#patientDetails');", icon: "fa fa-users fa-lg"});
-                //originalData.push({text: 'Health Status',href: "javascript:goToByScroll('#healthStatus');", icon: 'glyphicon glyphicon-scale'});
-                originalData.push({text: "CCDA Sections", icon: "fa fa-code fa-lg", nodes: titles});
-
-                // Render components
-                ReactDOM.render(<PanelBox data={allComponents}/>, document.getElementById("panels"));
-                ReactDOM.render(<TreeView treeData={originalData} enableLinks={true}/>, document.getElementById("tree_menu"));
-                ReactDOM.render(<PatientDetails patientRole={patientRole}/>, document.getElementById("patientDetails"));
-                ReactDOM.render(<HealthStatusPanel id="idMain" />, document.getElementById("healthstatus"));
-
-            },
-            // Web service call error
-            error: function(err)
-            {
-                var message = "";
-
-                if(err.responseText != null)
-                  message = $.parseJSON(err.responseText).errorMessage;
-                else if(err.statusText != null)
-                  message = err.statusText;
-
-                // service is not active or unreachable
-                if(err.status == 0)
-                  message = "Service Unavailable";
-
-                // show error message to the user
-                showAlert("danger", "Error: "+message);
-            },
-            processData: false,
-            contentType: false
-        });
+        callService($(event.target).prop("action"), new FormData(event.target));
     },
-
 });
 
 /* Classes created by VV to create handle the menu. */
@@ -1374,6 +1045,179 @@ var FilterBox=React.createClass(
 });
 
 /*** Utility functions ***/
+
+// Calls web service that receives the XML file and returns it converted to JSON
+function callService(url, formData)
+{
+    $.ajax(
+    {
+        url: url,
+        type: "POST",
+        data: formData,
+        success: processServiveResponse,
+        error: processServiceError,
+        processData: false,
+        contentType: false
+    });
+}
+
+// process successful responses from ajax call
+function processServiveResponse(data)
+{
+    //Search for needed part of the document to process
+    var allComponents=new Array();
+    var title = '[no title defined]';
+    if(data.ClinicalDocument.title)
+        title = data.ClinicalDocument.title;
+    var patientRole=data.ClinicalDocument.recordTarget.patientRole;
+
+    if(data.ClinicalDocument.component.structuredBody)
+    {
+        // Extract needed parts of the document to process them
+        var components = data.ClinicalDocument.component.structuredBody.component;
+        var titles=[];
+
+        // components contains the sections to display as panels
+        for(let i=0; i<components.length; i++)
+        {
+            let section=components[i].section;
+            let sectionCode='';
+            if(section.code)
+                sectionCode=section.code["@code"];
+            let sectionTitle='[no title defined]';
+            if(section.title)
+                sectionTitle=section.title;
+            let sectionText=section.text;
+            let panelId="panel-"+sectionCode+"-"+i;
+            // tables found inside a section
+            let tableData=[];
+            // other strings found inside a section
+            let otherText=[];
+
+            console.log("displaying section: "+sectionTitle);
+
+            // if(section.code["@code"] == "47420-5")
+            // {
+                // if the section only contains a string
+                if(typeof sectionText == "string")
+                    otherText.push({"key": "string", "text": sectionText});
+                else
+                    for(var item in sectionText)
+                    {
+                        // extract tables information
+                        if(item=="table")
+                        {
+                            var tables=sectionText[item];
+                            // if only one table is found make it an array to be able to use the loop in the next step
+                            if(!Array.isArray(tables))
+                                tables=[tables];
+                            for(var numTable=0; numTable<tables.length; numTable++)
+                                tableData.push(getNodeTableData(tables[numTable]));
+                        }
+                        else if(item=="list")
+                        {
+                            var lists=sectionText[item];
+
+                            if(!Array.isArray(lists))
+                                lists=[lists];
+
+                            for(var numList=0; numList<lists.length; numList++)
+                            {
+                                var tables=lists[numList];
+
+                                // if only one table is found make it an array to be able to use the loop in the next step
+                                if(searchString("table", tables))
+                                {
+                                    if(!Array.isArray(tables))
+                                        tables=[tables];
+
+                                    for(var numTable=0; numTable<tables.length; numTable++)
+                                    {
+                                        var items=tables[numTable].item;
+
+                                        if(!Array.isArray(items))
+                                            items=[items];
+
+                                        for(var numItem=0; numItem<items.length; numItem++)
+                                        {
+                                            tableData.push(getNodeTableData(items[numItem].table));
+
+                                            console.log("numList: "+numList+" numTable: "+numTable+" numItem: "+numItem);
+                                            console.log("caption: "+tables[numTable].caption);
+                                            if(numItem == 0)
+                                                tableData[tableData.length-1].caption = tables[numTable].caption;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if(typeof tables == "string")
+                                    {
+                                        if(!patt.test(item.toString()))
+                                            otherText.push({"key": "string", "text": getNodeText(tables)});
+                                    }
+                                    else
+                                        iterate(tables, otherText);
+                                }
+                            }
+                        }
+                        else // print/save texts recursively
+                        {
+                            if(typeof sectionText[item] == "string")
+                            {
+                                if(!patt.test(item.toString()))
+                                    otherText.push({"key": "string", "text": getNodeText(sectionText[item])});
+                            }
+                            else
+                                iterate(sectionText[item], otherText);
+                        }
+                    }
+            // }
+            /* Added by VV to get the sections, for build the menu. */
+            var titleRef="javascript:goToByScroll('#"+panelId+"');";
+            titles.push({"text": sectionTitle, href: titleRef, "code": sectionCode, "visible": true});
+            /* * */
+
+            allComponents.push({"type": sectionCode, id: panelId, "title": sectionTitle, "data": tableData, "otherText": otherText});
+        }
+    }
+
+    // Close modal window with the upload form when the service call has finished
+    if ($('#myModal').is(':visible'))
+        $("#myModal").modal("toggle");
+
+    showOtherSection();
+    showTitle(title);
+
+    var originalData = [];
+    originalData.push({text: "Patient Details", href: "javascript:goToByScroll('#patientDetails');", icon: "fa fa-users fa-lg"});
+    //originalData.push({text: 'Health Status',href: "javascript:goToByScroll('#healthStatus');", icon: 'glyphicon glyphicon-scale'});
+    originalData.push({text: "CCDA Sections", icon: "fa fa-code fa-lg", nodes: titles});
+
+    // Render components
+    ReactDOM.render(<PanelBox data={allComponents}/>, document.getElementById("panels"));
+    ReactDOM.render(<TreeView treeData={originalData} enableLinks={true}/>, document.getElementById("tree_menu"));
+    ReactDOM.render(<PatientDetails patientRole={patientRole}/>, document.getElementById("patientDetails"));
+    ReactDOM.render(<HealthStatusPanel id="idMain" />, document.getElementById("healthstatus"));
+}
+
+// process error responses from ajax call
+function processServiceError(err)
+{
+    var message = "";
+
+    if(err.responseText != null)
+      message = $.parseJSON(err.responseText).errorMessage;
+    else if(err.statusText != null)
+      message = err.statusText;
+
+    // service is not active or unreachable
+    if(err.status == 0)
+      message = "Service Unavailable";
+
+    // show error message to the user
+    showAlert("danger", "Error: "+message);
+}
 
 /* Extract just the text inside a node when there might be additional attributes
 (in that case the text content is inside "$") */
