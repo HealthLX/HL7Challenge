@@ -1,11 +1,10 @@
+var serviceURL="http://"+window.location.hostname+":8088/cda";
 var globalVar={};
 var menuData =  [];
 //Adding pattern for regexp
 var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan|href|align|listType|mediaType|br/;
 
-
 var DroppableContainer = React.createClass ({
-
     getInitialState: function () {
         return {
             form: null
@@ -32,7 +31,7 @@ var DroppableContainer = React.createClass ({
         fd.append( 'file', files[0] );
         $.ajax(
         {
-            url: "http://localhost:8088/cda",
+            url: serviceURL,
             type: "POST",
             data: fd,
             success: function(data)
@@ -813,14 +812,14 @@ var CollapsiblePanel=React.createClass(
                     var title = "[no title defined]";
 
                     if (i===0)
-                    { 
-                        if(text && text.text.length>0) 
+                    {
+                        if(text && text.text.length>0)
                             if(text.text[0].text)
                                 var title = text.text[0].text.toUpperCase();
 
                         collapsePanelHeading.push(title);
                     }
-                    
+
                     elements[r].push(
                         <dl key={r+""+i} className="dl-horizontal">
                             <dt><span className="label label-default">{headers[0][i].text}</span></dt>
@@ -892,7 +891,7 @@ var XMLForm = React.createClass ({
                     <h4 className="modal-title" id="myModalLabel">Load new patient data</h4>
                 </div>
                 <div className="modal-body">
-                    <form id="upload-form" action="http://localhost:8088/cda" method="post" enctype="multipart/form-data" onSubmit={this.handleSubmit}>
+                    <form id="upload-form" action={serviceURL} method="post" enctype="multipart/form-data" onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             <label>Choose file</label>
                             <input id="file-upload" type="file" name="file"/>
