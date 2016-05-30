@@ -810,7 +810,7 @@ var CollapsiblePanel=React.createClass(
                         }
                     }
 
-                    if (i===0 && text) {
+                    if (i===0 && text && text.length>0) {
                         // debug2=text;
                         if(!text.text[0].text)
                             var title = "";
