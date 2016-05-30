@@ -35,6 +35,8 @@ var DroppableContainer = React.createClass ({
             url: "http://localhost:8088/cda",
             type: "POST",
             data: fd,
+            success: function(data)
+            {
                 //Search for needed part of the document to process
                 var allComponents=new Array();
                 var title = '[no title defined]';
@@ -211,7 +213,7 @@ var DroppableContainer = React.createClass ({
         );
     }
 });
->>>>>>> Stashed changes
+
 
 /* Container of panels */
 var PanelBox=React.createClass(
