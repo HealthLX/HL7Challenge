@@ -71,3 +71,8 @@ function showOtherSection() {
         $('#container').slideToggle();
     }
 }
+
+function showTitle(title) {
+    // Show document's title
+    $('#title').html(title);
+}

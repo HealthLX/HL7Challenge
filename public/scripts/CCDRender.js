@@ -1,5 +1,8 @@
 var globalVar={};
 var menuData =  [];
+//Adding pattern for regexp
+var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan|href|align|listType|mediaType|br/;
+
 /* Container of panels */
 var PanelBox=React.createClass(
 {
@@ -37,6 +40,7 @@ var PanelBox=React.createClass(
     render: function()
     {
         var filter=this.state.filter;
+        var nodes = new Array();
 
         var nodes = this.props.data.map(function(component, index)
         {
@@ -143,19 +147,30 @@ var PanelBox=React.createClass(
 
             var hasSpans = false;
 
-            if(component.otherText.length == 0 && component.data.length > 0)
+            if(component.data && component.otherText)
             {
-                for(var i=0; i < component.data.length; i++)
-                    if(component.data[i].hasSpans)
-                        hasSpans = true;
-
-                if(component.data.length == 1 && component.data[0].rows[0].length >= 5 && !hasSpans)
-                    panel = (<CollapsiblePanel key={index} id={component.id} title={component.title} data={component.data} iconClass={iconClass}/>);
+                if(component.data.length == 1 && !component.data[0])
+                {
+                    if(component.otherText.length > 0)
+                        panel = (<CollapsiblePanel key={index} id={component.id} title={component.title} data={component.data} iconClass={iconClass}/>);
+                }
                 else
-                    panel = (<GenericPanel key={index} id={component.id} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                {
+                    if(component.otherText.length == 0 && component.data.length > 0)
+                    {
+                        for(var i=0; i < component.data.length; i++)
+                            if(component.data[i].hasSpans)
+                                hasSpans = true;
+
+                        if(component.data.length == 1 && component.data[0].rows[0].length >= 5 && !hasSpans)
+                            panel = (<CollapsiblePanel key={index} id={component.id} title={component.title} data={component.data} iconClass={iconClass}/>);
+                        else
+                            panel = (<GenericPanel key={index} id={component.id} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                    }
+                    else
+                        panel = (<GenericPanel key={index} id={component.id} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                }
             }
-            else
-                panel = (<GenericPanel key={index} id={component.id} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
 
             return(panel);
         });
@@ -697,115 +712,124 @@ class XMLForm extends React.Component
             // JSON data received from the service
             success: function(data)
             {
-                // Extract needed parts of the document to process them
-                var components = data.ClinicalDocument.component.structuredBody.component;
-                var title = data.ClinicalDocument.title;
-                var patientRole=data.ClinicalDocument.recordTarget.patientRole;
+                //Search for needed part of the document to process
                 var allComponents=new Array();
-                var titles=[];
-                //Adding pattern for regexp
-                var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan|href|align|listType|mediaType|br/;
+                var title = '';
+                if(data.ClinicalDocument.title)
+                    title = data.ClinicalDocument.title;
+                var patientRole=data.ClinicalDocument.recordTarget.patientRole;
 
-                // components contains the sections to display as panels
-                for(let i=0; i<components.length; i++)
+                if(data.ClinicalDocument.component.structuredBody)
                 {
-                    let section=components[i].section;
-                    let sectionCode=section.code["@code"];
-                    let sectionTitle=section.title;
-                    let sectionText=section.text;
-                    let panelId="panel-"+sectionCode+"-"+i;
-                    // tables found inside a section
-                    let tableData=[];
-                    // other strings found inside a section
-                    let otherText=[];
+                    // Extract needed parts of the document to process them
+                    var components = data.ClinicalDocument.component.structuredBody.component;
+                    var titles=[];
 
-                    // if(section.code["@code"] == "46240-8")
-                    // {
-                        // if the section only contains a string
-                        if(typeof sectionText == "string")
-                            otherText.push({"key": "string", "text": sectionText});
-                        else
-                            for(var item in sectionText)
-                            {
-                                // extract tables information
-                                if(item=="table")
+                    // components contains the sections to display as panels
+                    for(let i=0; i<components.length; i++)
+                    {
+                        let section=components[i].section;
+                        let sectionCode=section.code["@code"];
+                        let sectionTitle='';
+                        if(section.title)
+                            sectionTitle=section.title;
+                        let sectionText=section.text;
+                        let panelId="panel-"+sectionCode+"-"+i;
+                        // tables found inside a section
+                        let tableData=[];
+                        // other strings found inside a section
+                        let otherText=[];
+
+                        console.log("displaying section: "+sectionTitle);
+
+                        // if(section.code["@code"] == "8716-3")
+                        // {
+                            // if the section only contains a string
+                            if(typeof sectionText == "string")
+                                otherText.push({"key": "string", "text": sectionText});
+                            else
+                                for(var item in sectionText)
                                 {
-                                    var tables=sectionText[item];
-                                    // if only one table is found make it an array to be able to use the loop in the next step
-                                    if(!Array.isArray(tables))
-                                        tables=[tables];
-                                    for(var numTable=0; numTable<tables.length; numTable++)
-                                        tableData.push(getNodeTableData(tables[numTable]));
-                                }
-                                else if(item=="list")
-                                {
-                                    var lists=sectionText[item];
-
-                                    if(!Array.isArray(lists))
-                                        lists=[lists];
-
-                                    for(var numList=0; numList<lists.length; numList++)
+                                    // extract tables information
+                                    if(item=="table")
                                     {
-                                        var tables=lists[numList];
+                                        var tables=sectionText[item];
                                         // if only one table is found make it an array to be able to use the loop in the next step
+                                        if(!Array.isArray(tables))
+                                            tables=[tables];
+                                        for(var numTable=0; numTable<tables.length; numTable++)
+                                            tableData.push(getNodeTableData(tables[numTable]));
+                                    }
+                                    else if(item=="list")
+                                    {
+                                        var lists=sectionText[item];
 
-                                        if(searchString("table", tables))
+                                        if(!Array.isArray(lists))
+                                            lists=[lists];
+
+                                        for(var numList=0; numList<lists.length; numList++)
                                         {
-                                            if(!Array.isArray(tables))
-                                                tables=[tables];
+                                            var tables=lists[numList];
+                                            // if only one table is found make it an array to be able to use the loop in the next step
 
-                                            for(var numTable=0; numTable<tables.length; numTable++)
+                                            if(searchString("table", tables))
                                             {
-                                                var items=tables[numTable].item;
+                                                if(!Array.isArray(tables))
+                                                    tables=[tables];
 
-                                                if(!Array.isArray(items))
-                                                    items=[items];
-
-                                                for(var numItem=0; numItem<items.length; numItem++)
+                                                for(var numTable=0; numTable<tables.length; numTable++)
                                                 {
-                                                    tableData.push(getNodeTableData(items[numItem].table));
-                                                    tableData.caption = items[numItem].caption;
+                                                    var items=tables[numTable].item;
+
+                                                    if(!Array.isArray(items))
+                                                        items=[items];
+
+                                                    for(var numItem=0; numItem<items.length; numItem++)
+                                                    {
+                                                        tableData.push(getNodeTableData(items[numItem].table));
+                                                        tableData.caption = items[numItem].caption;
+                                                    }
                                                 }
                                             }
+                                            else
+                                            {
+                                                if(typeof tables == "string")
+                                                {
+                                                    if(!patt.test(item.toString()))
+                                                        otherText.push({"key": "string", "text": getNodeText(tables)});
+                                                }
+                                                else
+                                                    iterate(tables, otherText);
+                                            }
+                                        }
+                                    }
+                                    else // print/save texts recursively
+                                    {
+                                        if(typeof sectionText[item] == "string")
+                                        {
+                                            if(!patt.test(item.toString()))
+                                                otherText.push({"key": "string", "text": getNodeText(sectionText[item])});
                                         }
                                         else
-                                        {
-                                            if(typeof tables == "string")
-                                            {
-                                                if(!patt.test(item.toString()))
-                                                    otherText.push({"key": "string", "text": getNodeText(tables)});
-                                            }
-                                            else
-                                                iterate(tables, otherText);
-                                        }
+                                            iterate(sectionText[item], otherText);
                                     }
                                 }
-                                else // print/save texts recursively
-                                {
-                                    if(typeof sectionText[item] == "string")
-                                    {
-                                        if(!patt.test(item.toString()))
-                                            otherText.push({"key": "string", "text": getNodeText(sectionText[item])});
-                                    }
-                                    else
-                                        iterate(sectionText[item], otherText);
-                                }
-                            }
-                    // }
+                        // }
 
-                    /* Added by VV to get the sections, for build the menu. */
-                    var titleRef="javascript:goToByScroll('#"+panelId+"');";
-                    titles.push({"text": sectionTitle, href: titleRef, "code": sectionCode, "visible": true});
-                    /* * */
+                        /* Added by VV to get the sections, for build the menu. */
+                        var titleRef="javascript:goToByScroll('#"+panelId+"');";
+                        titles.push({"text": sectionTitle, href: titleRef, "code": sectionCode, "visible": true});
+                        /* * */
 
-                    if(tableData != null)
-                        allComponents.push({"type": sectionCode, id: panelId, "title": sectionTitle, "data": tableData, "otherText": otherText});
-                }
+                        allComponents.push({"type": sectionCode, id: panelId, "title": sectionTitle, "data": tableData, "otherText": otherText});   
+                    }
+                } 
 
                 // Close modal window with the upload form when the service call has finished
                 $("#myModal").modal("toggle");
 
                 showOtherSection();
+                showTitle(title);
 
                 var originalData = [];
                 originalData.push({text: "Patient Details", href: "javascript:goToByScroll('#patientDetails');", icon: "fa fa-users fa-lg"});
@@ -1162,7 +1186,7 @@ function getTextObject(nodeElement, tableData, hasTh)
         iterate(nodeElement, txtArr);
         jsonArr.push(buildTableCellObject(nodeElement, txtArr, boolTh));
         // check for colspan/rowspan
-        if(nodeElement["@rowspan"] || nodeElement["@colspan"])
+        if(nodeElement && (nodeElement["@rowspan"] || nodeElement["@colspan"]))
             tableData.hasSpans=true;
     }
 
@@ -1187,8 +1211,6 @@ function iterate(obj, jsonArr) {
             iterate(elem, jsonArr); // call recursively
         }
         else{
-            var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan|href|align|listType|mediaType|br/;
-
             if(!patt.test(key.toString())){
                 if(elem == undefined)
                     jsonArr.push({"key":key.toString(),"text":null});
@@ -1353,8 +1375,8 @@ function buildTableCellObject(dataNode, txtObject, hasTh)
     {
         isTh: hasTh,
         text: (txtObject == null ? getNodeText(dataNode) : txtObject),
-        colspan: (dataNode["@colspan"] == undefined ? null : dataNode["@colspan"]),
-        rowspan: (dataNode["@rowspan"] == undefined ? null : dataNode["@rowspan"])
+        colspan: (!dataNode || dataNode["@colspan"] == undefined ? null : dataNode["@colspan"]),
+        rowspan: (!dataNode || dataNode["@rowspan"] == undefined ? null : dataNode["@rowspan"])
     });
 }
 
