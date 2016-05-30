@@ -3,6 +3,216 @@ var menuData =  [];
 //Adding pattern for regexp
 var patt = /ID|border|width|height|styleCode|cellpadding|cellspacing|rowspan|colspan|href|align|listType|mediaType|br/;
 
+
+var DroppableContainer = React.createClass ({
+
+    getInitialState: function () {
+        return {
+            form: null
+        }
+    },
+    onDragEnter(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        $("#droppable-container").css('border', '5px solid #0B85A1');
+    },
+    onDragOver(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    },
+    onDrop(e) {
+         $("#droppable-container").css('border', '2px dotted #0B85A1');
+         e.preventDefault();
+         
+         var files = e.dataTransfer.files;
+     
+        // this.setState({ type: 'info', message: 'Sending...' }, this.sendFormData);
+        // Calls web service that receives the XML file and returns it converted to JSON
+        var fd = new FormData();
+        fd.append( 'file', files[0] );
+        $.ajax(
+        {
+            url: "http://localhost:8088/cda",
+            type: "POST",
+            data: fd,
+                //Search for needed part of the document to process
+                var allComponents=new Array();
+                var title = '[no title defined]';
+                if(data.ClinicalDocument.title)
+                    title = data.ClinicalDocument.title;
+                var patientRole=data.ClinicalDocument.recordTarget.patientRole;
+
+                if(data.ClinicalDocument.component.structuredBody)
+                {
+                    // Extract needed parts of the document to process them
+                    var components = data.ClinicalDocument.component.structuredBody.component;
+                    var titles=[];
+
+                    // components contains the sections to display as panels
+                    for(let i=0; i<components.length; i++)
+                    {
+                        let section=components[i].section;
+                        let sectionCode='';
+                        if(section.code)
+                            sectionCode=section.code["@code"];
+                        let sectionTitle='[no title defined]';
+                        if(section.title)
+                            sectionTitle=section.title;
+                        let sectionText=section.text;
+                        let panelId="panel-"+sectionCode+"-"+i;
+                        // tables found inside a section
+                        let tableData=[];
+                        // other strings found inside a section
+                        let otherText=[];
+
+                        console.log("displaying section: "+sectionTitle);
+
+                        // if(section.code["@code"] == "47420-5")
+                        // {
+                            // if the section only contains a string
+                            if(typeof sectionText == "string")
+                                otherText.push({"key": "string", "text": sectionText});
+                            else
+                                for(var item in sectionText)
+                                {
+                                    // extract tables information
+                                    if(item=="table")
+                                    {
+                                        var tables=sectionText[item];
+                                        // if only one table is found make it an array to be able to use the loop in the next step
+                                        if(!Array.isArray(tables))
+                                            tables=[tables];
+                                        for(var numTable=0; numTable<tables.length; numTable++)
+                                            tableData.push(getNodeTableData(tables[numTable]));
+                                    }
+                                    else if(item=="list")
+                                    {
+                                        var lists=sectionText[item];
+
+                                        if(!Array.isArray(lists))
+                                            lists=[lists];
+
+                                        for(var numList=0; numList<lists.length; numList++)
+                                        {
+                                            var tables=lists[numList];
+
+                                            // if only one table is found make it an array to be able to use the loop in the next step
+                                            if(searchString("table", tables))
+                                            {
+                                                if(!Array.isArray(tables))
+                                                    tables=[tables];
+
+                                                for(var numTable=0; numTable<tables.length; numTable++)
+                                                {
+                                                    var items=tables[numTable].item;
+
+                                                    if(!Array.isArray(items))
+                                                        items=[items];
+
+                                                    for(var numItem=0; numItem<items.length; numItem++)
+                                                    {
+                                                        tableData.push(getNodeTableData(items[numItem].table));
+
+                                                        console.log("numList: "+numList+" numTable: "+numTable+" numItem: "+numItem);
+                                                        console.log("caption: "+tables[numTable].caption);
+                                                        if(numItem == 0)
+                                                            tableData[tableData.length-1].caption = tables[numTable].caption;
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if(typeof tables == "string")
+                                                {
+                                                    if(!patt.test(item.toString()))
+                                                        otherText.push({"key": "string", "text": getNodeText(tables)});
+                                                }
+                                                else
+                                                    iterate(tables, otherText);
+                                            }
+                                        }
+                                    }
+                                    else // print/save texts recursively
+                                    {
+                                        if(typeof sectionText[item] == "string")
+                                        {
+                                            if(!patt.test(item.toString()))
+                                                otherText.push({"key": "string", "text": getNodeText(sectionText[item])});
+                                        }
+                                        else
+                                            iterate(sectionText[item], otherText);
+                                    }
+                                }
+                        // }
+                        /* Added by VV to get the sections, for build the menu. */
+                        var titleRef="javascript:goToByScroll('#"+panelId+"');";
+                        titles.push({"text": sectionTitle, href: titleRef, "code": sectionCode, "visible": true});
+                        /* * */
+
+                        allComponents.push({"type": sectionCode, id: panelId, "title": sectionTitle, "data": tableData, "otherText": otherText});   
+                    }
+                } 
+
+                // Close modal window with the upload form when the service call has finished
+                if ($('#myModal').is(':visible'))
+                    $("#myModal").modal("toggle");
+
+                showOtherSection();
+                showTitle(title);
+
+                var originalData = [];
+                originalData.push({text: "Patient Details", href: "javascript:goToByScroll('#patientDetails');", icon: "fa fa-users fa-lg"});
+                //originalData.push({text: 'Health Status',href: "javascript:goToByScroll('#healthStatus');", icon: 'glyphicon glyphicon-scale'});
+                originalData.push({text: "CCDA Sections", icon: "fa fa-code fa-lg", nodes: titles});
+
+                // Render components
+                ReactDOM.render(<PanelBox data={allComponents}/>, document.getElementById("panels"));
+                ReactDOM.render(<TreeView treeData={originalData} enableLinks={true}/>, document.getElementById("tree_menu"));
+                ReactDOM.render(<PatientDetails patientRole={patientRole}/>, document.getElementById("patientDetails"));
+                ReactDOM.render(<HealthStatusPanel id="idMain" />, document.getElementById("healthstatus"));
+            },
+            // Web service call error
+            error: function(err)
+            {
+                var message = "";
+
+                if(err.responseText != null)
+                  message = $.parseJSON(err.responseText).errorMessage;
+                else if(err.statusText != null)
+                  message = err.statusText;
+
+                // service is not active or unreachable
+                if(err.status == 0)
+                  message = "Service Unavailable";
+
+                // show error message to the user
+                showAlert("danger", "Error: "+message);
+            },
+            processData: false,
+            contentType: false
+        });
+    },
+    componentDidMount: function() {
+        var tempForm = React.createElement(XMLForm);
+        this.setState({form: tempForm});
+        
+        ReactDOM.render(tempForm, document.getElementById("modal-container"));
+    },
+    render: function() {
+
+        return (
+
+            <div id="droppable-container" className="boxed text-center div-center" onDragEnter={this.onDragEnter} 
+            onDragOver={this.onDragOver} onDrop={this.onDrop}>
+                <p><i className="fa fa-file-code-o fa-fw fa-inverse" style={{fontSize: '20em', color: '#000'}}>
+                </i></p>
+                <h1><span style={{'color':'#000'}}>Click to Upload XML File</span></h1>
+            </div>
+        );
+    }
+});
+>>>>>>> Stashed changes
+
 /* Container of panels */
 var PanelBox=React.createClass(
 {
@@ -674,9 +884,8 @@ var CollapsiblePanel=React.createClass(
 });
 
 /* CCDA XML File Upload form. Main step */
-class XMLForm extends React.Component
-{
-    render()
+var XMLForm = React.createClass ({
+    render ()
     {
         return(
             <div className="modal-content" >
@@ -688,23 +897,24 @@ class XMLForm extends React.Component
                     <form id="upload-form" action="http://localhost:8088/cda" method="post" enctype="multipart/form-data" onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             <label>Choose file</label>
-                            <input type="file" name="file"/>
+                            <input id="file-upload" type="file" name="file"/>
                         </div>
                     </form>
                 </div>
                 <div className="modal-footer">
                     <button type="button" className="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <input type="submit" form="upload-form" className="btn btn-info" value="Upload"/>
+                    <input id="btn-submit" type="submit" form="upload-form" className="btn btn-info" value="Upload"/>
                 </div>
             </div>
         );
-    }
+    },
 
-    handleSubmit(event)
+    handleSubmit: function (event)
     {
         event.preventDefault();
         // this.setState({ type: 'info', message: 'Sending...' }, this.sendFormData);
         // Calls web service that receives the XML file and returns it converted to JSON
+        var _this = this;
         $.ajax(
         {
             url: $(event.target).prop("action"),
@@ -713,6 +923,7 @@ class XMLForm extends React.Component
             // JSON data received from the service
             success: function(data)
             {
+
                 //Search for needed part of the document to process
                 var allComponents=new Array();
                 var title = '[no title defined]';
@@ -822,7 +1033,6 @@ class XMLForm extends React.Component
                                     }
                                 }
                         // }
-
                         /* Added by VV to get the sections, for build the menu. */
                         var titleRef="javascript:goToByScroll('#"+panelId+"');";
                         titles.push({"text": sectionTitle, href: titleRef, "code": sectionCode, "visible": true});
@@ -833,7 +1043,8 @@ class XMLForm extends React.Component
                 } 
 
                 // Close modal window with the upload form when the service call has finished
-                $("#myModal").modal("toggle");
+                if ($('#myModal').is(':visible'))
+                    $("#myModal").modal("toggle");
 
                 showOtherSection();
                 showTitle(title);
@@ -848,6 +1059,7 @@ class XMLForm extends React.Component
                 ReactDOM.render(<TreeView treeData={originalData} enableLinks={true}/>, document.getElementById("tree_menu"));
                 ReactDOM.render(<PatientDetails patientRole={patientRole}/>, document.getElementById("patientDetails"));
                 ReactDOM.render(<HealthStatusPanel id="idMain" />, document.getElementById("healthstatus"));
+
             },
             // Web service call error
             error: function(err)
@@ -869,8 +1081,9 @@ class XMLForm extends React.Component
             processData: false,
             contentType: false
         });
-    }
-}
+    },
+    
+});
 
 /* Classes created by VV to create handle the menu. */
 var TreeView = React.createClass(
@@ -1671,6 +1884,6 @@ function buildTelecom(telecomNode)
    });
  }
 
-ReactDOM.render(<XMLForm/>, document.getElementById("modal-container"));
 ReactDOM.render(<TreeView treeData={menuData}/>, document.getElementById("tree_menu"));
 ReactDOM.render(<FilterBox/>, document.getElementById("filter-container"));
+ReactDOM.render(<DroppableContainer />, document.getElementById("link-container"));

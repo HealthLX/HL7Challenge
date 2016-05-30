@@ -1,27 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>HL7 Renderer</title>
+	<meta charset="utf-8">
+	<title>HL7 Renderer</title>
 
-<!-- Bootstrap Core CSS -->
-<link href="assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap Core CSS -->
+	<link href="assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom styles for alternate template -->
+	<link href="assets/css/style.css" rel="stylesheet">
+	<link href="assets/css/style-responsive.css" rel="stylesheet">
+	<link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/hl7renderer.css" />
+	<link rel="stylesheet" href="assets/css/treeview.css" />
 
-<!-- Custom styles for alternate template -->
-<link href="assets/css/style.css" rel="stylesheet">
-<link href="assets/css/style-responsive.css" rel="stylesheet">
-<link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/hl7renderer.css" />
-<link rel="stylesheet" href="assets/css/treeview.css" />
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react-dom.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
-<!-- Charts used in sample panels -->
-<script src="assets/js/chart-master/Chart.js"></script>
 </head>
 
 <body>
@@ -47,11 +38,8 @@
 							</p>
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6">
-                            <a data-toggle="modal" data-target="#myModal" data-placement="bottom">
-    							<div class="boxed text-center div-center">
-									<p><i class="fa fa-file-code-o fa-fw fa-inverse" style="font-size: 20em; color: #000;"></i></p>
-									<h1><span style="color:#000;">Click to Upload XML File</span></h1>
-    							</div>
+                            <a id="link-container" data-toggle="modal" data-target="#myModal" data-placement="bottom">
+    							
                             </a>
 					    </div>
 				    </div>
@@ -73,7 +61,7 @@
 			<!-- Navigation -->
 			<div class="navbar-default sidebar" role="navigation">
 				    <div id="main_menu" class="sidebar-nav navbar-collapse" style="display: none;">
-				        <script src="/main.js"></script>
+				        <!--script src="/main.js"></script-->
 				    </div>
                     <div id="filter-container" class="sidebar-nav navbar-collapse"></div>
 				    <div id="tree_menu" class="sidebar-nav navbar-collapse">
@@ -126,6 +114,14 @@
     </div>
     <!-- /#wrapper -->
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react-dom.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+	<!-- Charts used in sample panels -->
+	<script src="assets/js/chart-master/Chart.js"></script>
 	<!-- jQuery -->
 	<script src="assets/jquery/dist/jquery.min.js"></script>
     <script src="assets/jquery/dist/jquery-ui.min.js"></script>
@@ -144,6 +140,7 @@
     </script>
     <script src="scripts/filterGroups.js"></script>
     <script src="scripts/languageCodes.js"></script>
+     <script src="scripts/dragndrop.js"></script>
     <script type="text/babel" src="scripts/CCDRender.js"></script>
 </body>
 </html>
