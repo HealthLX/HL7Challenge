@@ -810,7 +810,7 @@ var CollapsiblePanel=React.createClass(
                         }
                     }
 
-                    if (i===0 && text && text.length>0) {
+                    if (i===0 && text && text.text.length>0) {
                         // debug2=text;
 
                         if(!text.text[0].text)
