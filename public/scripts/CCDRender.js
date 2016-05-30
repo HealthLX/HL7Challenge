@@ -599,6 +599,7 @@ var CollapsiblePanel=React.createClass(
                     }
 
                     if (i===0 && text) {
+                        // debug2=text;
                         if(!text.text[0].text)
                             var title = "";
                         else
@@ -714,7 +715,7 @@ class XMLForm extends React.Component
             {
                 //Search for needed part of the document to process
                 var allComponents=new Array();
-                var title = '';
+                var title = '[no title defined]';
                 if(data.ClinicalDocument.title)
                     title = data.ClinicalDocument.title;
                 var patientRole=data.ClinicalDocument.recordTarget.patientRole;
@@ -729,8 +730,10 @@ class XMLForm extends React.Component
                     for(let i=0; i<components.length; i++)
                     {
                         let section=components[i].section;
-                        let sectionCode=section.code["@code"];
-                        let sectionTitle='';
+                        let sectionCode='';
+                        if(section.code)
+                            sectionCode=section.code["@code"];
+                        let sectionTitle='[no title defined]';
                         if(section.title)
                             sectionTitle=section.title;
                         let sectionText=section.text;
@@ -742,7 +745,7 @@ class XMLForm extends React.Component
 
                         console.log("displaying section: "+sectionTitle);
 
-                        // if(section.code["@code"] == "8716-3")
+                        // if(section.code["@code"] == "47420-5")
                         // {
                             // if the section only contains a string
                             if(typeof sectionText == "string")
@@ -770,8 +773,8 @@ class XMLForm extends React.Component
                                         for(var numList=0; numList<lists.length; numList++)
                                         {
                                             var tables=lists[numList];
-                                            // if only one table is found make it an array to be able to use the loop in the next step
 
+                                            // if only one table is found make it an array to be able to use the loop in the next step
                                             if(searchString("table", tables))
                                             {
                                                 if(!Array.isArray(tables))
@@ -787,7 +790,11 @@ class XMLForm extends React.Component
                                                     for(var numItem=0; numItem<items.length; numItem++)
                                                     {
                                                         tableData.push(getNodeTableData(items[numItem].table));
-                                                        tableData.caption = items[numItem].caption;
+
+                                                        console.log("numList: "+numList+" numTable: "+numTable+" numItem: "+numItem);
+                                                        console.log("caption: "+tables[numTable].caption);
+                                                        if(numItem == 0)
+                                                            tableData[tableData.length-1].caption = tables[numTable].caption;
                                                     }
                                                 }
                                             }
@@ -1487,8 +1494,20 @@ function getNodeTableData(tableNode)
                         else
                         {
                             var jsonArr = new Array();
-                            var jsonArr = getTextObject(tableNode.tbody[b].tr[r].th, tableData, true);
-                            tableData.rows[b][r].push(jsonArr);
+
+                            // if only one column is found, make it an array
+                            if(Array.isArray(tableNode.tbody[b].tr[r].th))
+                            {
+                                for(var h=0; h<tableNode.tbody[b].tr[r].th.length; h++){
+                                    var jsonArr = getTextObject(tableNode.tbody[b].tr[r].th[h], tableData, true);
+                                    tableData.rows[b][r].push(jsonArr);
+                                }
+                            }
+                            else
+                            {
+                                var jsonArr = getTextObject(tableNode.tbody[b].tr[r].th, tableData, true);
+                                tableData.rows[b][r].push(jsonArr);
+                            }
 
                             tableData.hasSpans=true;
                         }
@@ -1504,6 +1523,9 @@ function getNodeTableData(tableNode)
                         {
                             if(hasSameTd)
                             {
+                                if(!Array.isArray(tableNode.tbody[b].tr[r].th))
+                                    tableNode.tbody[b].tr[r].th=[tableNode.tbody[b].tr[r].th];
+
                                 var jsonArr = new Array();
                                 jsonArr = getTextObject(tableNode.tbody[b].tr[r].th[c], tableData, true);
 

@@ -480,7 +480,7 @@ table.dataTable thead .sorting:after {
 }
 
 .alerts-container{
-    position: absolute;
+    position: fixed;
     top: 30px;
     right: 20px;
     z-index: 5000;
