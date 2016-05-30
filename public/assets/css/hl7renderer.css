@@ -211,7 +211,7 @@ hr
 .sidebar {
     overflow-x: hidden;
     overflow-y: auto;
-
+    width: 250px;
 }
 
 .sidebar .sidebar-nav.navbar-collapse {
@@ -259,9 +259,8 @@ hr
 @media(min-width:768px) {
     .sidebar {
         z-index: 1;
-        position: absolute;
         width: 250px;
-        margin-top: 65px;
+        margin-top: 58px;
         overflow-x: hidden;
         overflow-y: auto;
     }
@@ -540,3 +539,4 @@ table.dataTable thead .sorting:after {
     position: absolute;
     width: 100%;;
 }
+

@@ -58,18 +58,8 @@
 			</div>
 		</section>
 		<section id="container" style="display:none;">
-			<!-- Navigation -->
-			<div class="navbar-default sidebar" role="navigation">
-				    <div id="main_menu" class="sidebar-nav navbar-collapse" style="display: none;">
-				        <!--script src="/main.js"></script-->
-				    </div>
-                    <div id="filter-container" class="sidebar-nav navbar-collapse"></div>
-				    <div id="tree_menu" class="sidebar-nav navbar-collapse">
 
-				    </div>
-
-				    <!-- /.sidebar-collapse -->
-				</div>
+		    <!-- header -->
 			<nav class="navbar navbar-heading navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; background-color: rgb(141, 208, 182);">
 				<div class="navbar-header">
 				    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -97,11 +87,17 @@
 				    <!-- /.dropdown -->
 				</ul>
 				<!-- /.navbar-top-links -->
-
-
-				<!-- /.navbar-static-side -->
 			</nav>
+			<nav class="navbar navbar-default navbar-fixed-top sidebar" id="sidebar-wrapper" role="navigation">
+				<!-- Navigation -->
+			    <div id="main_menu" class="sidebar-nav navbar-collapse" style="display: none;">
+			        <!--script src="/main.js"></script-->
+			    </div>
+	            <div id="filter-container" class="sidebar-nav navbar-collapse"></div>
+			    <div id="tree_menu" class="sidebar-nav navbar-collapse">
 
+			    </div>
+		    </nav>
 			<div id="page-wrapper">
 				<div class="row">
 					<div id="patientDetails"></div>
