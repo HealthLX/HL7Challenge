@@ -212,6 +212,7 @@ hr
     overflow-x: hidden;
     overflow-y: auto;
     width: 250px;
+    height: 94%;
 }
 
 .sidebar .sidebar-nav .navbar-collapse {
@@ -539,4 +540,3 @@ table.dataTable thead .sorting:after {
     position: absolute;
     width: 100%;;
 }
-
