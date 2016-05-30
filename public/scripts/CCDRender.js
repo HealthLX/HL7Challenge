@@ -1432,7 +1432,7 @@ function iterate(obj, jsonArr) {
                     jsonArr.push({"key":key.toString(),"text":null});
                 else
                 {
-                    if(elem != "")
+                    if($.trim(elem) != "")
                         jsonArr.push({"key":key.toString(),"text":elem});
                 }
             }
