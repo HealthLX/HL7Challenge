@@ -107,8 +107,9 @@ var PanelBox=React.createClass(
             case "48765-2":
                 iconClass="fa-info-circle";
                 break;
-            //Medications
+            //Medications / Medications Administered
             case "10160-0":
+            case "29549-3":
                 iconClass="fa-asterisk";
                 break;
             //Immunizations
@@ -342,11 +343,8 @@ var GenericPanel=React.createClass(
 
             //Checking for medication title
             var medColumn = -1;
-            if(this.props.data.type == "10160-0")
-            {
+            if(this.props.type == "10160-0" || this.props.type == "29549-3")
                 medColumn = getMedColumn(headers);
-                console.log("Columna: "+medColumn);
-            }
 
             //handle tables with spans differently
             if(table.hasSpans || table.caption != null)
@@ -418,7 +416,7 @@ var GenericPanel=React.createClass(
 
                             for(var t=0; t<text.text.length; t++)
                                 if(text.text[t].text != "")
-                                    if(medColumn == i)
+                                    if(medColumn == i && !text.colspan )
                                         listText.push(<p className="mint-color" key={b+""+r+""+i+""+t}><b>{text.text[t].text.toUpperCase()}</b></p>);
                                     else
                                         listText.push(<p key={b+""+r+""+i+""+t}>{text.text[t].text}</p>);
@@ -491,7 +489,10 @@ var GenericPanel=React.createClass(
                             for(var t=0; t<text.text.length; t++)
                             {
                                 if(text.text[t].text != "")
-                                   listText.push(<p key={r+""+i+""+t}>{text.text[t].text}</p>);
+                                    if(medColumn == i && t == 0 && !text.colspan )
+                                        listText.push(<p className="mint-color" key={r+""+i+""+t}><b>{text.text[t].text.toUpperCase()}</b></p>);
+                                    else
+                                        listText.push(<p key={r+""+i+""+t}>{text.text[t].text}</p>);
                             }
                         }
                         else
@@ -1067,7 +1068,7 @@ function callService(url, formData)
         url: url,
         type: "POST",
         data: formData,
-        success: processServiveResponse,
+        success: processServiceResponse,
         error: processServiceError,
         processData: false,
         contentType: false
@@ -1075,13 +1076,13 @@ function callService(url, formData)
 }
 
 // process successful responses from ajax call
-function processServiveResponse(data)
+function processServiceResponse(data)
 {
     //Search for needed part of the document to process
     var allComponents=new Array();
     var title = '[no title defined]';
     if(data.ClinicalDocument.title)
-        title = data.ClinicalDocument.title;
+        title = getNodeText(data.ClinicalDocument.title);
     var patientRole=data.ClinicalDocument.recordTarget.patientRole;
 
     if(data.ClinicalDocument.component.structuredBody)
@@ -1107,83 +1108,79 @@ function processServiveResponse(data)
             // other strings found inside a section
             let otherText=[];
 
-            console.log("displaying section: "+sectionTitle);
-
-            // if(section.code["@code"] == "47420-5")
-            // {
-                // if the section only contains a string
-                if(typeof sectionText == "string")
-                    otherText.push({"key": "string", "text": sectionText});
-                else
-                    for(var item in sectionText)
+            // if the section only contains a string
+            if(typeof sectionText == "string")
+                otherText.push({"key": "string", "text": sectionText});
+            else
+                for(var item in sectionText)
+                {
+                    // extract tables information
+                    if(item=="table")
                     {
-                        // extract tables information
-                        if(item=="table")
+                        var tables=sectionText[item];
+                        // if only one table is found make it an array to be able to use the loop in the next step
+                        if(!Array.isArray(tables))
+                            tables=[tables];
+                        for(var numTable=0; numTable<tables.length; numTable++)
+                            tableData.push(getNodeTableData(tables[numTable]));
+                    }
+                    else if(item=="list")
+                    {
+                        var lists=sectionText[item];
+
+                        if(!Array.isArray(lists))
+                            lists=[lists];
+
+                        for(var numList=0; numList<lists.length; numList++)
                         {
-                            var tables=sectionText[item];
+                            var tables=lists[numList];
+
                             // if only one table is found make it an array to be able to use the loop in the next step
-                            if(!Array.isArray(tables))
-                                tables=[tables];
-                            for(var numTable=0; numTable<tables.length; numTable++)
-                                tableData.push(getNodeTableData(tables[numTable]));
-                        }
-                        else if(item=="list")
-                        {
-                            var lists=sectionText[item];
-
-                            if(!Array.isArray(lists))
-                                lists=[lists];
-
-                            for(var numList=0; numList<lists.length; numList++)
+                            if(searchString("table", tables))
                             {
-                                var tables=lists[numList];
+                                if(!Array.isArray(tables))
+                                    tables=[tables];
 
-                                // if only one table is found make it an array to be able to use the loop in the next step
-                                if(searchString("table", tables))
+                                for(var numTable=0; numTable<tables.length; numTable++)
                                 {
-                                    if(!Array.isArray(tables))
-                                        tables=[tables];
+                                    var items=tables[numTable].item;
 
-                                    for(var numTable=0; numTable<tables.length; numTable++)
+                                    if(!Array.isArray(items))
+                                        items=[items];
+
+                                    for(var numItem=0; numItem<items.length; numItem++)
                                     {
-                                        var items=tables[numTable].item;
+                                        tableData.push(getNodeTableData(items[numItem].table));
 
-                                        if(!Array.isArray(items))
-                                            items=[items];
-
-                                        for(var numItem=0; numItem<items.length; numItem++)
-                                        {
-                                            tableData.push(getNodeTableData(items[numItem].table));
-
-                                            if(numItem == 0)
-                                                tableData[tableData.length-1].caption = tables[numTable].caption;
-                                        }
+                                        if(numItem == 0)
+                                            tableData[tableData.length-1].caption = tables[numTable].caption;
                                     }
                                 }
-                                else
-                                {
-                                    if(typeof tables == "string")
-                                    {
-                                        if(!patt.test(item.toString()))
-                                            otherText.push({"key": "string", "text": getNodeText(tables)});
-                                    }
-                                    else
-                                        iterate(tables, otherText);
-                                }
-                            }
-                        }
-                        else // print/save texts recursively
-                        {
-                            if(typeof sectionText[item] == "string")
-                            {
-                                if(!patt.test(item.toString()))
-                                    otherText.push({"key": "string", "text": getNodeText(sectionText[item])});
                             }
                             else
-                                iterate(sectionText[item], otherText);
+                            {
+                                if(typeof tables == "string")
+                                {
+                                    if(!patt.test(item.toString()))
+                                        otherText.push({"key": "string", "text": getNodeText(tables)});
+                                }
+                                else
+                                    iterate(tables, otherText);
+                            }
                         }
                     }
-            // }
+                    else // print/save texts recursively
+                    {
+                        if(typeof sectionText[item] == "string")
+                        {
+                            if(!patt.test(item.toString()))
+                                otherText.push({"key": "string", "text": getNodeText(sectionText[item])});
+                        }
+                        else
+                            iterate(sectionText[item], otherText);
+                    }
+                }
+
             /* Added by VV to get the sections, for build the menu. */
             var titleRef="javascript:goToByScroll('#"+panelId+"');";
             titles.push({"text": sectionTitle, href: titleRef, "code": sectionCode, "visible": true});
@@ -1452,6 +1449,7 @@ function buildTableCellObject(dataNode, txtObject, hasTh)
     });
 }
 
+/*Get maximum number of columns for a table */
 function getMaxColumns(headers, rows)
 {
     var maxColumn = 0;
@@ -1474,6 +1472,7 @@ function getMaxColumns(headers, rows)
     return maxColumn;
 }
 
+/*Get number of column for medicine name*/
 function getMedColumn(headers)
 {
     var medColumn = -1;
@@ -1482,15 +1481,18 @@ function getMedColumn(headers)
     {
         for(var j=0; j<headers[i].length; j++)
         {
-            var title = $.trim(headers[i][j].text.toUpperCase());
-            if(maxColumn < title  == "GEN MED NAME" || title == "MEDICATION")
+            var title = "";
+
+            if(headers[i][j].text)
+                title = $.trim(headers[i][j].text.toUpperCase());
+
+            if(title  == "GEN MED NAME" || title == "MEDICATION" || title == "NAME" || title == "MATERIAL")
                 medColumn = j;
         }
     }
 
     return medColumn;
 }
-
 
 /* Parse table information to a JS object */
 function getNodeTableData(tableNode)
