@@ -1063,6 +1063,12 @@ var FilterBox=React.createClass(
 // / Calls web service that receives the XML file and returns it converted to JSON
 function callService(url, formData)
 {
+    // Close modal window with the upload form when the service call has finished
+    if ($('#myModal').is(':visible')) {
+        $("#myModal").modal("toggle");
+    }
+    // Show modal panel to inform the file is loading
+    $("#waitDialog").modal();
     $.ajax(
     {
         url: url,
@@ -1078,13 +1084,6 @@ function callService(url, formData)
 // /process successful responses from ajax call
 function processServiceResponse(data)
 {
-    // Close modal window with the upload form when the service call has finished
-    if ($('#myModal').is(':visible')) {
-        $("#myModal").modal("toggle");
-    }
-
-    // Show modal panel to inform the file is loading
-    $("#waitDialog").modal();
     //Search for needed part of the document to process
     var allComponents=new Array();
     var title = '[no title defined]';
