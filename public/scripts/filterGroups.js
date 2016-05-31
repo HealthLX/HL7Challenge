@@ -25,16 +25,43 @@ codes.reasonForReferral="42349-1";
 codes.reasonForVisit="29299-5";
 codes.instructions="69730-0";
 
-filters["Basics"]=
+filters["Care Manager"]=
 {
     sections: [
     	codes.allergies,
         codes.medications,
-        codes.immunizations
+        codes.immunizations,
+        codes.planOfCare,
+        codes.problemList,
+        codes.vitalSigns,
+        codes.encounters,
+        codes.procedures,
+        codes.results,
+        codes.healthConcerns,
+        codes.goals,
+        codes.interventions,
+        codes.healthStatusEvaluationsOutcomes,
+        codes.advanceDirectives,
+        codes.familyHistory,
+        codes.functionalStatus,
+        codes.medicalEquipment,
+        codes.insuranceProviders,
+        codes.reasonForReferral,
+        codes.reasonForVisit,
+        codes.instructions
     ]
 };
 
-filters["Doctor Type 1"]=
+filters["Dentist"]=
+{
+    sections: [
+        codes.allergies,
+        codes.medications,
+        codes.planOfCare
+    ]
+};
+
+filters["Primary Doctor"]=
 {
     sections: [
         codes.allergies,
@@ -42,6 +69,43 @@ filters["Doctor Type 1"]=
         codes.immunizations,
         codes.planOfCare,
         codes.problemList,
-        codes.vitalSigns
+        codes.vitalSigns,
+        codes.encounters,
+        codes.procedures,
+        codes.results,
+        codes.socialHistory,
+        codes.healthConcerns,
+        codes.goals,
+        codes.interventions,
+        codes.healthStatusEvaluationsOutcomes,
+        codes.advanceDirectives,
+        codes.familyHistory,
+        codes.functionalStatus,
+        codes.medicalEquipment,
+        codes.insuranceProviders,
+        codes.reasonForReferral,
+        codes.reasonForVisit,
+        codes.instructions
     ]
 };
+filters["Family Member"]=
+{
+    sections: [
+        codes.allergies,
+        codes.medications,
+        codes.immunizations,
+        codes.planOfCare,
+        codes.problemList,
+        codes.vitalSigns,
+        codes.procedures,
+        codes.results,
+        codes.socialHistory,
+        codes.healthConcerns,
+        codes.interventions,
+        codes.familyHistory,
+        codes.functionalStatus,
+        codes.medicalEquipment,
+        codes.reasonForVisit
+    ]
+};
+
