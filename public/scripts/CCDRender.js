@@ -1060,7 +1060,7 @@ var FilterBox=React.createClass(
 
 /*** Utility functions ***/
 
-// Calls web service that receives the XML file and returns it converted to JSON
+// / Calls web service that receives the XML file and returns it converted to JSON
 function callService(url, formData)
 {
     $.ajax(
@@ -1075,9 +1075,16 @@ function callService(url, formData)
     });
 }
 
-// process successful responses from ajax call
+// /process successful responses from ajax call
 function processServiceResponse(data)
 {
+    // Close modal window with the upload form when the service call has finished
+    if ($('#myModal').is(':visible')) {
+        $("#myModal").modal("toggle");
+    }
+
+    // Show modal panel to inform the file is loading
+    $("#waitDialog").modal();
     //Search for needed part of the document to process
     var allComponents=new Array();
     var title = '[no title defined]';
@@ -1189,11 +1196,6 @@ function processServiceResponse(data)
             allComponents.push({"type": sectionCode, id: panelId, "title": sectionTitle, "data": tableData, "otherText": otherText});
         }
     }
-
-    // Close modal window with the upload form when the service call has finished
-    if ($('#myModal').is(':visible'))
-        $("#myModal").modal("toggle");
-
     showOtherSection();
     showTitle(title);
 
@@ -1207,6 +1209,8 @@ function processServiceResponse(data)
     ReactDOM.render(<TreeView treeData={originalData} enableLinks={true}/>, document.getElementById("tree_menu"));
     ReactDOM.render(<PatientDetails patientRole={patientRole}/>, document.getElementById("patientDetails"));
     ReactDOM.render(<HealthStatusPanel id="idMain" />, document.getElementById("healthstatus"));
+
+    $("#waitDialog").modal("toggle");
 }
 
 // process error responses from ajax call
@@ -1387,13 +1391,14 @@ function getPatientDetails(patientRole)
   var guardian=patientRole.patient.guardian;
   var address=buildAddress(patientRole.addr);
   var contact=buildTelecom(patientRole.telecom);
-  var lastContact = "";
+  var lastContact = [];
   if (Array.isArray(contact)) {
     contact.forEach(function(cntc) {
-        lastContact += cntc.value + " ";
+        lastContact.push(React.createElement("a", {href: cntc.value}, cntc.value));
+        lastContact.push(React.createElement("br"));
     })
   } else {
-    lastContact = contact;
+    lastContact.push(React.createElement("a", {href: contact}, contact));
   }
   var guardianName;
   var gender = getGender(patientRole.patient);
