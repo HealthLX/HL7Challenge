@@ -200,7 +200,7 @@ var PanelBox=React.createClass(
                 if(component.data.length == 1 && !component.data[0])
                 {
                     if(component.otherText.length > 0)
-                        panel = (<CollapsiblePanel key={index} id={component.id} title={component.title} data={component.data} iconClass={iconClass}/>);
+                        panel = (<CollapsiblePanel key={index} id={component.id} title={component.title} data={component.data} iconClass={iconClass} />);
                 }
                 else
                 {
@@ -211,12 +211,12 @@ var PanelBox=React.createClass(
                                 hasSpans = true;
 
                         if(component.data.length == 1 && component.data[0].rows[0].length >= 5 && !hasSpans)
-                            panel = (<CollapsiblePanel key={index} id={component.id} title={component.title} data={component.data} iconClass={iconClass}/>);
+                            panel = (<CollapsiblePanel key={index} id={component.id} title={component.title} data={component.data} iconClass={iconClass} />);
                         else
-                            panel = (<GenericPanel key={index} id={component.id} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                            panel = (<GenericPanel key={index} id={component.id} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass} type={component.type} />);
                     }
                     else
-                        panel = (<GenericPanel key={index} id={component.id} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass}/>);
+                        panel = (<GenericPanel key={index} id={component.id} title={component.title} data={component.data} otherText={component.otherText} iconClass={iconClass} type={component.type} />);
                 }
             }
 
@@ -340,6 +340,14 @@ var GenericPanel=React.createClass(
             var rows=table.rows;
             var headers=table.headers;
 
+            //Checking for medication title
+            var medColumn = -1;
+            if(this.props.data.type == "10160-0")
+            {
+                medColumn = getMedColumn(headers);
+                console.log("Columna: "+medColumn);
+            }
+
             //handle tables with spans differently
             if(table.hasSpans || table.caption != null)
             {
@@ -353,6 +361,8 @@ var GenericPanel=React.createClass(
                 if(table.caption != null)
                     tblCaption = (<caption className="text-center">{table.caption}</caption>);
 
+                var maxColumn = getMaxColumns(headers, rows);
+
                 for(var r=0; r<headers.length; r++)
                 {
                     elements = [];
@@ -365,13 +375,13 @@ var GenericPanel=React.createClass(
 
                         if(headers[r][i].isTh)
                             elements[i].push(
-                                    <th key={i} colSpan={headers[r][i].colspan} rowSpan={headers[r][i].rowspan}>
+                                    <th key={i} colSpan={(maxColumn < headers[r][i].colspan ? maxColumn : headers[r][i].colspan)} rowSpan={headers[r][i].rowspan}>
                                         {headers[r][i].text}
                                     </th>
                                 );
                         else
                             elements[i].push(
-                                    <td key={i} colSpan={headers[r][i].colspan} rowSpan={headers[r][i].rowspan}>
+                                    <td key={i} colSpan={(maxColumn < headers[r][i].colspan ? maxColumn : headers[r][i].colspan)} rowSpan={headers[r][i].rowspan}>
                                         {headers[r][i].text}
                                     </td>
                                 );
@@ -408,18 +418,21 @@ var GenericPanel=React.createClass(
 
                             for(var t=0; t<text.text.length; t++)
                                 if(text.text[t].text != "")
-                                    listText.push(<p key={b+""+r+""+i+""+t}>{text.text[t].text}</p>);
+                                    if(medColumn == i)
+                                        listText.push(<p className="mint-color" key={b+""+r+""+i+""+t}><b>{text.text[t].text.toUpperCase()}</b></p>);
+                                    else
+                                        listText.push(<p key={b+""+r+""+i+""+t}>{text.text[t].text}</p>);
 
 
                             if(text.isTh)
                                 elements[i].push(
-                                    <th  key={b+""+r+""+i} colSpan={text.colspan} rowSpan={text.rowspan}>
+                                    <th  key={b+""+r+""+i} colSpan={(maxColumn < text.colspan ? maxColumn : text.colspan)} rowSpan={text.rowspan}>
                                         {listText}
                                     </th>
                                 );
                             else
                                 elements[i].push(
-                                    <td  key={b+""+r+""+i} colSpan={text.colspan} rowSpan={text.rowspan}>
+                                    <td  key={b+""+r+""+i} colSpan={(maxColumn < text.colspan ? maxColumn : text.colspan)} rowSpan={text.rowspan}>
                                         {listText}
                                     </td>
                                 );
@@ -1142,8 +1155,6 @@ function processServiveResponse(data)
                                         {
                                             tableData.push(getNodeTableData(items[numItem].table));
 
-                                            console.log("numList: "+numList+" numTable: "+numTable+" numItem: "+numItem);
-                                            console.log("caption: "+tables[numTable].caption);
                                             if(numItem == 0)
                                                 tableData[tableData.length-1].caption = tables[numTable].caption;
                                         }
@@ -1440,6 +1451,46 @@ function buildTableCellObject(dataNode, txtObject, hasTh)
         rowspan: (!dataNode || dataNode["@rowspan"] == undefined ? null : dataNode["@rowspan"])
     });
 }
+
+function getMaxColumns(headers, rows)
+{
+    var maxColumn = 0;
+
+    for(var i=0; i<headers.length; i++)
+    {
+        if(maxColumn < headers[i].length)
+            maxColumn = headers[i].length;
+    }
+
+    for(var i=0; i<rows.length; i++)
+    {
+        for(var j=0; j<rows[i].length; j++)
+        {
+            if(maxColumn < rows[i][j].length)
+                maxColumn = rows[i][j].length;
+        }
+    }
+
+    return maxColumn;
+}
+
+function getMedColumn(headers)
+{
+    var medColumn = -1;
+
+    for(var i=0; i<headers.length; i++)
+    {
+        for(var j=0; j<headers[i].length; j++)
+        {
+            var title = $.trim(headers[i][j].text.toUpperCase());
+            if(maxColumn < title  == "GEN MED NAME" || title == "MEDICATION")
+                medColumn = j;
+        }
+    }
+
+    return medColumn;
+}
+
 
 /* Parse table information to a JS object */
 function getNodeTableData(tableNode)
