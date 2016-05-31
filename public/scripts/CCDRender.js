@@ -1067,7 +1067,7 @@ function callService(url, formData)
     if ($('#myModal').is(':visible')) {
         $("#myModal").modal("toggle");
     }
-    showAlert("success","Loading file...");
+    showAlert("info","Loading file...");
     $.ajax(
     {
         url: url,
