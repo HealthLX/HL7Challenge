@@ -1,5 +1,5 @@
 {
-  "name": "hl7-ccda-renderer",
+  "name": "patient-insight",
   "version": "0.0.1",
   "description": "TeschGlobal's approach to HL7 CCDA Renderer Challenge.",
   "main": "server.js",

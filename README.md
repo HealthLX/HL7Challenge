@@ -1,4 +1,4 @@
-# HL7Challenge
+# Patient Insight 1.0
 CCD-CDA Rendering Tool
 
 
@@ -21,3 +21,6 @@ filters["Fiter Name Goes Here"]=
 If you need a code for a section that hasn't been defined at the start of this same file yet, create them by appending lines like this one for each code you want to add:
 
 codes.newCodeName="code number goes here";
+
+Want to give it a try?
+http://52.20.128.239:3000/
