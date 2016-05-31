@@ -1067,8 +1067,7 @@ function callService(url, formData)
     if ($('#myModal').is(':visible')) {
         $("#myModal").modal("toggle");
     }
-    // Show modal panel to inform the file is loading
-    $("#waitDialog").modal();
+    showAlert("success","Loading file...");
     $.ajax(
     {
         url: url,
@@ -1208,8 +1207,6 @@ function processServiceResponse(data)
     ReactDOM.render(<TreeView treeData={originalData} enableLinks={true}/>, document.getElementById("tree_menu"));
     ReactDOM.render(<PatientDetails patientRole={patientRole}/>, document.getElementById("patientDetails"));
     ReactDOM.render(<HealthStatusPanel id="idMain" />, document.getElementById("healthstatus"));
-
-    $("#waitDialog").modal("toggle");
 }
 
 // process error responses from ajax call
