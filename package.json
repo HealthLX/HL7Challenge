@@ -16,14 +16,13 @@
     "type": "git",
     "url": "https://github.com/healthlx/HL7Challenge.git"
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "author": "TeschGlobal",
   "bugs": {
     "url": "https://teschglobal.com/hl7bugs"
   },
   "homepage": "",
-  "engines" : {
-    "node" : "0.12.x"
+  "engines": {
+    "node": "0.12.x"
   }
 }

@@ -1,6 +1,5 @@
 var gulp       = require('gulp'),
     browserify = require('gulp-browserify');
-
 gulp.task('scripts', function () {
 
     gulp.src(['app/main.js'])
